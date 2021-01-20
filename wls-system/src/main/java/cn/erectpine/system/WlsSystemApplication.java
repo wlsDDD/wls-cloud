@@ -1,5 +1,6 @@
-package cn.erectpine.wlssystem;
+package cn.erectpine.system;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,11 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author wls
  * @date 2021/01/20 14:28:02
  */
-@SpringBootApplication
+@Slf4j
+@SpringBootApplication(scanBasePackages = "cn.erectpine")
 public class WlsSystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WlsSystemApplication.class, args);
+		log.warn("(♥◠‿◠)ﾉﾞ  {}   ლ(´ڡ`ლ)ﾞ  ","系统模块启动成功");
 	}
 
 }

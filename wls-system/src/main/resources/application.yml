@@ -1,0 +1,164 @@
+# 项目相关配置
+wls:
+  # 服务名
+  serviceName: ${spring.application.name}
+  # 版本
+  version: 0.0.1-SNAPSHOT
+  # 版权年份
+  copyrightYear: 2021
+  # 文件路径 示例（ Windows配置D:/wls/uploadPath，Linux配置 /home/wsl/uploadPath）
+  profile: /Users/${spring.application.name}/${spring.profiles.active}-upload/
+  # 获取ip地址开关
+  addressEnabled: false
+  # 日志文件打印路径前缀
+  logsPath: /Users/${spring.application.name}/${spring.profiles.active}-log/
+  # 日志级别
+  logLevel: info
+
+
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 8090
+  servlet:
+    # 应用的访问路径
+    context-path: /wls-system
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+
+
+# Spring配置
+spring:
+  application:
+    name: wls-boot-demo
+  profiles:
+    active: dev
+
+  # json中忽略null属性值
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ruoyi-vue?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    druid:
+      # 初始连接数
+      initialSize: 5
+      # 最小连接池数量
+      minIdle: 10
+      # 最大连接池数量
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 900000
+      # 配置检测连接是否有效
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      webStatFilter:
+        enabled: true
+      statViewServlet:
+        enabled: true
+        # 设置白名单，不填则允许所有访问
+        allow:
+        url-pattern: /druid/*
+        # 控制台管理用户名和密码
+        login-username:
+        login-password:
+      filter:
+        stat:
+          enabled: true
+          # 慢SQL记录
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+  # 文件上传
+  servlet:
+    multipart:
+      # 单个文件大小
+      max-file-size: 10MB
+      # 设置总上传的文件大小
+      max-request-size: 50MB
+
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+
+  # redis 配置
+  redis:
+    # 地址
+    host: localhost
+    # 端口，默认为6379
+    port: 6379
+    # 数据库索引
+    database: 0
+    # 密码
+    password:
+    # 连接超时时间
+    timeout: 10s
+    lettuce:
+      pool:
+        # 连接池中的最小空闲连接
+        min-idle: 0
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池的最大数据库连接数
+        max-active: 8
+        # #连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1ms
+
+# MyBatis
+mybatis-plus:
+  # 扫描加载枚举
+  typeEnumsPackage: cn.erectpine.mybootdemo.common.enums
+  # 扫描识别加载*mapper.xml
+  #mapperLocations: classpath*:mapper/**/*Mapper.xml
+  # 扫描加载包别名
+  #typeAliasesPackage: cn.erectpine.mybootdemo.project.*.entity
+  global-config:
+    db-config:
+      # 设置空不查询
+      select-strategy: not_empty
+      # 设置空不更新
+      updateStrategy: not_empty
+      #主键类型 AUTO:"数据库ID自增" INPUT:"用户输入ID",ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: AUTO
+      # 全局的entity的逻辑删除字段属性名-对应实体类名
+      logicDeleteField: usable
+      # 逻辑未删除值
+      logicNotDeleteValue: 0
+      # 逻辑已删除值
+      logicDeleteValue: 1
+      #驼峰下划线转换
+      table-underline: true
+  configuration:
+    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true
+    # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+    call-setters-on-nulls: false
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# Logger Config
+logging:
+  level:
+    com.baomidou.mybatisplus.samples: debug

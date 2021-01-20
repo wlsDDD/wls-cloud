@@ -31,5 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
-**/.mvn/
+#**/.mvn/
 **/test/
