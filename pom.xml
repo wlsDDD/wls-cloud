@@ -15,7 +15,7 @@
 
         <spring.boot.version>2.4.1</spring.boot.version>
         <spring.cloud.version>2020.0.0</spring.cloud.version>
-        <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
+        <spring.cloud.alibaba.version>2.2.4.RELEASE</spring.cloud.alibaba.version>
 
         <mybatis.plus.version>3.4.1</mybatis.plus.version>
         <druid.version>1.2.4</druid.version>
@@ -27,6 +27,7 @@
     <modules>
         <module>wls-system</module>
         <module>wls-common</module>
+        <module>wls-gateway</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -89,18 +90,18 @@
     </dependencies>
 
 
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <source>${java.version}</source>-->
-<!--                    <target>${java.version}</target>-->
-<!--                    <encoding>${project.build.sourceEncoding}</encoding>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

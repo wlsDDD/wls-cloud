@@ -1,12 +1,11 @@
 package cn.erectpine.system.project.core.controller;
 
+import cn.erectpine.common.web.ResponseTemplate;
+import cn.erectpine.system.project.core.entity.User;
+import cn.erectpine.system.project.core.service.IUserService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import cn.erectpine.system.project.core.entity.User;
-import cn.erectpine.system.project.core.service.IUserService;
-import org.springframework.web.bind.annotation.RestController;
-import cn.erectpine.common.web.ResponseTemplate;
 
 /**
  * <p>
@@ -19,10 +18,10 @@ import cn.erectpine.common.web.ResponseTemplate;
 @RestController
 @RequestMapping("/core/user")
 public class UserController {
-
+    
     @Autowired IUserService userService;
-
-
+    
+    
     /**
      * 用户信息-分页列表
      */
@@ -30,7 +29,7 @@ public class UserController {
     public ResponseTemplate pageUser(@RequestBody Page<User> page, User user) {
         return ResponseTemplate.success(userService.pageUser(page, user));
     }
-
+    
     /**
      * 根据id获取用户信息详情
      */
@@ -38,7 +37,7 @@ public class UserController {
     public ResponseTemplate getUserById(@PathVariable Long id) {
         return ResponseTemplate.success(userService.getUserById(id));
     }
-
+    
     /**
      * 新增-用户信息
      */
@@ -47,7 +46,7 @@ public class UserController {
         userService.insertUser(user);
         return ResponseTemplate.success();
     }
-
+    
     /**
      * 修改-用户信息
      */
@@ -56,7 +55,7 @@ public class UserController {
         userService.updateUser(user);
         return ResponseTemplate.success();
     }
-
+    
     /**
      * 删除-用户信息
      */
@@ -65,5 +64,5 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseTemplate.success();
     }
-
+    
 }
