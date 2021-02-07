@@ -3,7 +3,7 @@ package cn.erectpine.common.aspect;
 import cn.erectpine.common.annotation.LogIgnore;
 import cn.erectpine.common.enums.CodeMsgEnum;
 import cn.erectpine.common.enums.LogTypeEnum;
-import cn.erectpine.common.util.Aspects;
+import cn.erectpine.common.util.AspectUtil;
 import cn.erectpine.common.util.Assert;
 import cn.erectpine.common.util.IpUtils;
 import cn.erectpine.common.util.ServletUtils;
@@ -55,7 +55,7 @@ public class LogAspect {
      */
     @Around("pointCut()")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
-        LogIgnore logIgnore = Aspects.getAnnotationLog(joinPoint, LogIgnore.class);
+        LogIgnore logIgnore = AspectUtil.getAnnotationLog(joinPoint, LogIgnore.class);
         
         // 开始记录日志
         ApiLog apiLog = new ApiLog();
@@ -96,7 +96,7 @@ public class LogAspect {
                   .setIp(IpUtils.getIpAddr(request))
                   .setUrl(request.getRequestURL().toString())
                   .setAuthorization(request.getHeader("Authorization"))
-                  .setMethod(Aspects.getMethodName(joinPoint));
+                  .setMethod(AspectUtil.getMethodName(joinPoint));
             consoleLogSync(apiLog);
         }
         

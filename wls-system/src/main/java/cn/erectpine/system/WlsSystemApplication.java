@@ -1,7 +1,8 @@
 package cn.erectpine.system;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * wls系统应用
@@ -9,13 +10,13 @@ import org.springframework.cloud.client.SpringCloudApplication;
  * @author wls
  * @date 2021/01/20 14:28:02
  */
-//@Slf4j
-@SpringCloudApplication
+@EnableDiscoveryClient
+@SpringBootApplication
 public class WlsSystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WlsSystemApplication.class, args);
-//		log.warn("(♥◠‿◠)ﾉﾞ  {}   ლ(´ڡ`ლ)ﾞ  ","系统模块启动成功");
+		System.out.println("(♥◠‿◠)ﾉﾞ  系统模块启动成功   ლ(´ڡ`ლ)ﾞ  ");
 	}
 
 }

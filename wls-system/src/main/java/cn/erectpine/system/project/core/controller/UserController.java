@@ -5,6 +5,7 @@ import cn.erectpine.system.project.core.entity.User;
 import cn.erectpine.system.project.core.service.IUserService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.*;
  * @author wls
  * @since 2021-01-20
  */
+@RefreshScope
 @RestController
 @RequestMapping("/core/user")
 public class UserController {
+    
     
     @Autowired IUserService userService;
     

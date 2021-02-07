@@ -2,6 +2,7 @@ package cn.erectpine.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * wls系统应用
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author wls
  * @date 2021/01/20 14:28:02
  */
+@EnableDiscoveryClient
 @SpringBootApplication
 public class WlsGatewayApplication {
 

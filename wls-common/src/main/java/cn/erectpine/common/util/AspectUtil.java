@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
  * @Author wls
  * @Date 2021/1/15 9:48
  */
-public class Aspects {
+public class AspectUtil {
     
     /**
      * 获取方法全名

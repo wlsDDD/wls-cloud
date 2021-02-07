@@ -16,7 +16,3 @@ spring:
         server-addr: 123.57.101.219:8848
         # 配置文件格式
         file-extension: yml
-        # 前缀
-        #        prefix: ${spring.application.name}
-        # 共享配置
-#        shared-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
