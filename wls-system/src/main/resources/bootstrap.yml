@@ -18,5 +18,7 @@ spring:
         # 命名空间
         namespace: c49938e7-209f-499c-8b24-ef4c746b90a5
         group: DEFAULT_GROUP
-
-
+        # 共享配置
+        shared-configs:
+          - dataId: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+            refresh: true

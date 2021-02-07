@@ -16,7 +16,7 @@ public class WlsSystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WlsSystemApplication.class, args);
-		System.out.println("(♥◠‿◠)ﾉﾞ  系统模块启动成功   ლ(´ڡ`ლ)ﾞ  ");
+		System.err.println("(♥◠‿◠)ﾉﾞ  系统模块启动成功   ლ(´ڡ`ლ)ﾞ  ");
 	}
 
 }
