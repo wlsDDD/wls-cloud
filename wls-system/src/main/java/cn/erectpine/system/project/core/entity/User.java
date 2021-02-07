@@ -26,9 +26,9 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 @TableName("sys_user")
 public class User extends BaseEntity {
-
+    
     private static final long serialVersionUID = 1L;
-
+    
     /**
      * 用户ID
      */
@@ -106,5 +106,5 @@ public class User extends BaseEntity {
      */
     @TableField("remark")
     private String remark;
-
+    
 }
