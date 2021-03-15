@@ -117,7 +117,7 @@ public class LogAspect {
             logMap.forEach((s, o) -> log.info(s + ": {}", o));
             log.info(LogTypeEnum.END.getDelimiter());
         } else {
-            log.warn(LogTypeEnum.ERROR.getDelimiter());
+            log.warn(LogTypeEnum.WARN.getDelimiter());
             logMap.forEach((s, o) -> log.warn(s + ": {}", o));
             log.warn(LogTypeEnum.END.getDelimiter());
         }

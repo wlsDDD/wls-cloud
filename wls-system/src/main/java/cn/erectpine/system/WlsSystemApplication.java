@@ -11,7 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @date 2021/01/20 14:28:02
  */
 @EnableDiscoveryClient
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "cn.erectpine")
 public class WlsSystemApplication {
 
 	public static void main(String[] args) {

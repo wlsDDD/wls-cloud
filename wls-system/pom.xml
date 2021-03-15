@@ -30,6 +30,11 @@
 			<artifactId>spring-cloud-starter-bootstrap</artifactId>
 		</dependency>
 
+		<!--SpringBoot-aop-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
 		<!--mysql-->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -44,6 +49,11 @@
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
+		</dependency>
+		<!--邮件服务-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
 		<dependency>

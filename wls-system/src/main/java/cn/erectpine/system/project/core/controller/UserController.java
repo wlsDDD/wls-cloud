@@ -1,5 +1,6 @@
 package cn.erectpine.system.project.core.controller;
 
+import cn.erectpine.common.annotation.Log;
 import cn.erectpine.common.web.ResponseTemplate;
 import cn.erectpine.system.project.core.entity.User;
 import cn.erectpine.system.project.core.service.IUserService;
@@ -27,6 +28,7 @@ public class UserController {
     /**
      * 用户信息-分页列表
      */
+    @Log
     @PostMapping("/list")
     public ResponseTemplate pageUser(@RequestBody Page<User> page, User user) {
         return ResponseTemplate.success(userService.pageUser(page, user));
