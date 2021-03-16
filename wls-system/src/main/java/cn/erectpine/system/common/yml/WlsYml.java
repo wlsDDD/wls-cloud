@@ -18,19 +18,19 @@ public final class WlsYml {
     /**
      * 服务名
      */
-    private String  serviceName;
+    private String serviceName;
     /**
      * 版本
      */
-    private String  version;
+    private String version;
     /**
      * 版权年份
      */
-    private String  copyrightYear;
+    private String copyrightYear;
     /**
      * 文件路径
      */
-    private String  profile;
+    private String profile;
     /**
      * 获取ip地址开关
      */
@@ -38,11 +38,19 @@ public final class WlsYml {
     /**
      * 日志文件地址
      */
-    private String  logsPath;
+    private String logsPath;
     /**
      * 日志级别
      */
-    private String  logLevel;
+    private String logLevel;
+    /**
+     * 邮件发送人
+     */
+    private String emailTo;
+    /**
+     * 邮件收件人
+     */
+    private String[] addressee;
     
     
 }

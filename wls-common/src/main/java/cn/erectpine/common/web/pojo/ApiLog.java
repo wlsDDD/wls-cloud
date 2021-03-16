@@ -1,4 +1,4 @@
-package cn.erectpine.common.web;
+package cn.erectpine.common.web.pojo;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -16,33 +16,41 @@ import java.time.LocalDateTime;
 public class ApiLog {
     
     /**
+     * 请求id
+     */
+    private String requestId;
+    /**
      * 请求状态 200成功 500失败
      */
-    private Integer       status;
+    private Integer status;
     /**
      * 接口耗时 单位毫秒
      */
-    private long          consumeTime;
+    private long consumeTime;
+    /**
+     * 处理请求方法
+     */
+    private String method;
+    /**
+     * 请求headers
+     */
+    private String headers;
     /**
      * 请求数据
      */
-    private String        method;
-    /**
-     * 请求数据
-     */
-    private String        requestData;
+    private String requestData;
     /**
      * 响应数据
      */
-    private String        responseData;
+    private String responseData;
     /**
      * 请求URL
      */
-    private String        url;
+    private String url;
     /**
      * 请求IP
      */
-    private String        ip;
+    private String ip;
     /**
      * 接口调用开始时间
      */
@@ -54,14 +62,14 @@ public class ApiLog {
     /**
      * 请求token
      */
-    private String        authorization;
+    private String authorization;
     /**
      * 错误信息
      */
-    private String        errorMessage;
+    private String errorMessage;
     /**
      * 错误堆栈信息
      */
-    private String        stacktrace;
+    private String stacktrace;
     
 }

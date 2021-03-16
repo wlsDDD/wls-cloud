@@ -1,12 +1,15 @@
 package cn.erectpine.common.web.handler;
 
+import cn.erectpine.common.enums.ActiveEnum;
 import cn.erectpine.common.enums.CodeMsgEnum;
-import cn.erectpine.common.enums.OperatingEnvironmentEnum;
+import cn.erectpine.common.properties.SpringYml;
+import cn.erectpine.common.util.EmailUtil;
 import cn.erectpine.common.web.ResponseTemplate;
 import cn.erectpine.common.web.exception.BaseException;
 import cn.erectpine.common.web.exception.BusinessException;
+import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -24,13 +27,12 @@ import javax.servlet.http.HttpServletResponse;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     
-    @Value("${spring.profiles.active}")
-    public static String active;
+    @Autowired private EmailUtil emailUtil;
+    @Autowired private SpringYml springYml;
     
     
     @ExceptionHandler(Throwable.class)
     public ResponseTemplate caughtException(HttpServletRequest request, HttpServletResponse response, Throwable e) {
-        
         if ((e instanceof HttpMessageConversionException)) {
             log.warn("【全局异常拦截】{}", "参数不合法, 请检查参数后重试");
             return ResponseTemplate.error(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
@@ -40,23 +42,28 @@ public class GlobalExceptionHandler {
             log.warn("【全局异常拦截】{}", "参数不合法");
             return ResponseTemplate.error(CodeMsgEnum.ARG_VERIFY_ERROR);
         }
-    
+        
         if ((e instanceof BusinessException)) {
             log.warn("【全局异常拦截】{}", "业务类异常");
             return ResponseTemplate.error((BaseException) e);
         }
-    
+        
         if ((e instanceof BaseException)) {
             log.warn("【全局异常拦截】{}", "基础异常", e);
             return ResponseTemplate.error((BaseException) e);
         }
-    
+        
+        // 处理未知异常
         log.error("【全局异常拦截】{}", "未定义异常类型", e);
-        if (OperatingEnvironmentEnum.prod.name().equals(active)) {
+        // 发送邮件
+        emailUtil.sendSimpleMail(StrUtil.format("{}服务-{}环境-发现异常，请排查！",
+                springYml.getApplicationName(), springYml.getActive()), e.getMessage() + StrUtil.CRLF + e);
+        // 定义返回-正式环境屏蔽错误信息
+        if (ActiveEnum.prod.name().equals(springYml.getActive())) {
             return ResponseTemplate.error(CodeMsgEnum.UNKNOWN_PROD_ERROR);
-        } else {
-            return ResponseTemplate.error(CodeMsgEnum.UNKNOWN_DEV_ERROR);
         }
+        return ResponseTemplate.error(CodeMsgEnum.UNKNOWN_DEV_ERROR);
+        
     }
     
 }

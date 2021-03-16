@@ -50,11 +50,6 @@
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 		</dependency>
-		<!--邮件服务-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>cn.erectpine</groupId>

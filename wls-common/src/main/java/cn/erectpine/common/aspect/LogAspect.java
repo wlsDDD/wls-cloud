@@ -2,12 +2,13 @@ package cn.erectpine.common.aspect;
 
 import cn.erectpine.common.annotation.LogIgnore;
 import cn.erectpine.common.enums.CodeMsgEnum;
+import cn.erectpine.common.enums.CommonEnum;
 import cn.erectpine.common.enums.LogTypeEnum;
 import cn.erectpine.common.util.AspectUtil;
 import cn.erectpine.common.util.Assert;
 import cn.erectpine.common.util.IpUtils;
-import cn.erectpine.common.util.ServletUtils;
-import cn.erectpine.common.web.ApiLog;
+import cn.erectpine.common.util.ServletUtil;
+import cn.erectpine.common.web.pojo.ApiLog;
 import cn.hutool.core.bean.BeanUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
@@ -38,7 +39,7 @@ public class LogAspect {
     /**
      * 配置切入点
      */
-//    @Pointcut("execution(* cn.erectpine.mybootdemo.project.*.controller..*.*(..))")
+    @Pointcut("execution(* cn.erectpine.*.project.*.controller..*.*(..))")
     public void logPointCut() {
     }
     
@@ -53,42 +54,40 @@ public class LogAspect {
      * 日志切面
      * 记录日志
      */
-    @Around("pointCut()")
+    @Around("logPointCut()")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         LogIgnore logIgnore = AspectUtil.getAnnotationLog(joinPoint, LogIgnore.class);
-        
+    
         // 开始记录日志
-        ApiLog apiLog = new ApiLog();
-        apiLog.setStartTime(LocalDateTime.now());
-        apiLog.setStatus(CodeMsgEnum.SUCCESS.getCode());
-        if (logIgnore == null) {
-            apiLog.setRequestData(JSON.toJSONString(joinPoint.getArgs()));
-        } else if (logIgnore.ignoreRequestData()) {
+        ApiLog apiLog = new ApiLog()
+                .setRequestId(ServletUtil.getAttribute(CommonEnum.requestId.name()).toString())
+                .setHeaders(JSON.toJSONString(ServletUtil.getHeaders()))
+                .setStartTime(LocalDateTime.now())
+                .setStatus(CodeMsgEnum.SUCCESS.getCode());
+    
+        if (logIgnore == null || logIgnore.ignoreRequestData()) {
             apiLog.setRequestData(JSON.toJSONString(joinPoint.getArgs()));
         }
-        
+    
         Object proceed = null;
         // 调用方法
         try {
             proceed = joinPoint.proceed();
         } catch (Throwable e) {
             // 记录异常日志
-            if (logIgnore == null) {
-                apiLog.setStacktrace(JSON.toJSONString(e, SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.WriteMapNullValue));
-            } else if (logIgnore.ignoreStacktrace()) {
+            if (logIgnore == null || logIgnore.ignoreStacktrace()) {
                 apiLog.setStacktrace(JSON.toJSONString(e, SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.WriteMapNullValue));
             }
             apiLog.setStatus(CodeMsgEnum.ERROR.getCode())
                   .setErrorMessage(e.getMessage());
             throw e;
         } finally {
-            if (logIgnore == null) {
-                apiLog.setResponseData((JSON.toJSONString(proceed)));
-            } else if (logIgnore.ignoreResponseData()) {
+            if (logIgnore == null || logIgnore.ignoreResponseData()) {
                 apiLog.setResponseData((JSON.toJSONString(proceed)));
             }
-            HttpServletRequest request = ServletUtils.getRequest();
-            
+        
+            HttpServletRequest request = ServletUtil.getRequest();
+        
             // 记录日志
             Assert.notNull(request, "请求对象不能为空");
             apiLog.setEndTime(LocalDateTime.now())

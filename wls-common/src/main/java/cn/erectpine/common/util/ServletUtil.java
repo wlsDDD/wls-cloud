@@ -22,7 +22,7 @@ import java.util.Map;
  * @author wls
  * @date 2021/01/13
  */
-public class ServletUtils {
+public class ServletUtil {
     /**
      * 获取String参数
      */
@@ -62,6 +62,10 @@ public class ServletUtils {
         }
     }
     
+    public static Object getAttribute(String key) {
+        return getRequest().getAttribute(key);
+    }
+    
     /**
      * 获取response
      */
@@ -87,6 +91,10 @@ public class ServletUtils {
         } catch (Exception e) {
             return null;
         }
+    }
+    
+    public static Map<String, String> getHeaders() {
+        return getHeaders(getRequest());
     }
     
     public static Map<String, String> getHeaders(HttpServletRequest request) {

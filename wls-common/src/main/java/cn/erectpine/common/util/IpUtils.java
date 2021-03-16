@@ -45,7 +45,7 @@ public class IpUtils {
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ipAddresses)) {
             ip = request.getRemoteAddr();
         }
-        return ip.equals("0:0:0:0:0:0:0:1") ? "127.0.0.1" : ip;
+        return "0:0:0:0:0:0:0:1".equals(ip) ? "127.0.0.1" : ip;
     }
     
     public static boolean internalIp(String ip) {
@@ -162,7 +162,7 @@ public class IpUtils {
     public static String getHostIp() {
         try {
             return InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
+        } catch (UnknownHostException ignored) {
         }
         return "127.0.0.1";
     }
@@ -170,7 +170,7 @@ public class IpUtils {
     public static String getHostName() {
         try {
             return InetAddress.getLocalHost().getHostName();
-        } catch (UnknownHostException e) {
+        } catch (UnknownHostException ignored) {
         }
         return "未知";
     }

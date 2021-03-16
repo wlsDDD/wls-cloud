@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  * @Author wls
  * @Date 2021/1/12 11:58
  */
-public class CoreUtils {
+public class CoreUtil {
     
     /**
      * 自定义树相关属性配置

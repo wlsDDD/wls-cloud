@@ -6,7 +6,7 @@ package cn.erectpine.common.enums;
  * @Author wls
  * @Date 2021/1/18 11:45
  */
-public enum OperatingEnvironmentEnum {
+public enum ActiveEnum {
     
     /**
      * 开发环境
