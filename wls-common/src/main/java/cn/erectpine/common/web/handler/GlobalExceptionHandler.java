@@ -61,9 +61,8 @@ public class GlobalExceptionHandler {
         log.error("【全局异常拦截】{}", "未定义异常类型", e);
         ApiLog apiLog = (ApiLog) request.getAttribute(SystemEnum.apiLog.name());
         // 发送邮件
-        String subject = StrUtil.format("{}服务-{}环境-发现异常，请排查！", springYml.getApplicationName(), springYml.getActive());
-        String text = JSON.toJSONString(apiLog);
-        emailUtil.sendSimpleMail(subject, CoreUtil.jsonDelEscape(text));
+        String title = StrUtil.format("{}服务-{}环境-发现异常，请排查！", springYml.getApplicationName(), springYml.getActive());
+        emailUtil.sendSimpleMail(title, CoreUtil.jsonDelEscape(JSON.toJSONString(apiLog)));
         // 定义返回-正式环境屏蔽错误信息
         if (ActiveEnum.prod.name().equals(springYml.getActive())) {
             return ResponseTemplate.error(CodeMsgEnum.UNKNOWN_PROD_ERROR);

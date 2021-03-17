@@ -67,11 +67,10 @@ public class LogAspect {
         HttpServletRequest request = ServletUtil.getRequest();
         Assert.notNull(request, "请求对象不能为空");
     
-    
         // 开始记录日志
         ApiLog apiLog = (ApiLog) request.getAttribute(SystemEnum.apiLog.name());
-        apiLog.setRequestId(request.getAttribute(SystemEnum.requestId.name()).toString())
-              .setHeaders(JSON.toJSONString(ServletUtil.getHeaders()))
+    
+        apiLog.setHeaders(JSON.toJSONString(ServletUtil.getHeaders(request)))
               .setStartTime(LocalDateTime.now())
               .setStatus(CodeMsgEnum.SUCCESS.getCode());
     
@@ -85,15 +84,14 @@ public class LogAspect {
             proceed = joinPoint.proceed();
         } catch (Throwable e) {
             // 记录异常日志
-//            if (logIgnore == null || logIgnore.ignoreStacktrace()) {
+//            if (logIgnore == null || logIgnore.ignoreStacktrace()) {}
             Object[] stacktrace = Arrays.stream(e.getStackTrace()).distinct().parallel().filter(
                     el -> el.getLineNumber() != -1 && el.getClassName().contains(wlsShareYml.getStacktrace())).toArray();
-            apiLog.setStacktrace(JSON.toJSONString(stacktrace));
-//            }
             SimplePropertyPreFilter filter = new SimplePropertyPreFilter();
             filter.getExcludes().add("stackTrace");
             apiLog.setError(JSON.toJSONString(e, filter, SerializerFeature.WriteMapNullValue))
-                  .setStatus(CodeMsgEnum.ERROR.getCode());
+                  .setStatus(CodeMsgEnum.ERROR.getCode())
+                  .setStacktrace(JSON.toJSONString(stacktrace));
             throw e;
         } finally {
             if (logIgnore == null || logIgnore.ignoreResponseData()) {
@@ -108,7 +106,9 @@ public class LogAspect {
                   .setRequestMethod(request.getMethod())
                   .setAuthorization(request.getHeader("Authorization"))
                   .setHandleMethod(AspectUtil.getMethodName(joinPoint));
+        
             request.setAttribute(SystemEnum.apiLog.name(), apiLog);
+        
             consoleLogSync(apiLog);
         }
         

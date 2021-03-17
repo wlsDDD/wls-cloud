@@ -18,8 +18,9 @@ public class LogInterceptor implements HandlerInterceptor {
     
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        request.setAttribute(SystemEnum.requestId.name(), IdUtil.simpleUUID());
-        request.setAttribute(SystemEnum.apiLog.name(), new ApiLog());
+        String uuid = IdUtil.simpleUUID();
+        request.setAttribute(SystemEnum.requestId.name(), uuid);
+        request.setAttribute(SystemEnum.apiLog.name(), new ApiLog().setRequestId(uuid));
         return true;
     }
     
