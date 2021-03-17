@@ -37,6 +37,20 @@ public class CoreUtil {
     }
     
     /**
+     * json 去除json文本中的转义字符
+     *
+     * @param text 文本
+     * @return {@link String}
+     */
+    public static String jsonDelEscape(String text) {
+        return text.replaceAll("\\\\", "")
+                   .replaceAll("\"\\{", "{")
+                   .replaceAll("\"\\[", "[")
+                   .replaceAll("]\"", "]")
+                   .replaceAll("}\"", "}");
+    }
+    
+    /**
      * 列表转树
      *
      * @param list 列表

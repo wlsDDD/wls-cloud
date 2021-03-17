@@ -6,11 +6,16 @@ package cn.erectpine.common.enums;
  * @Author wls
  * @Date 2021/3/16 11:42
  */
-public enum CommonEnum {
+public enum SystemEnum {
     
     /**
      * 请求id
      */
     requestId,
+    
+    /**
+     * 接口日志key
+     */
+    apiLog,
     
 }

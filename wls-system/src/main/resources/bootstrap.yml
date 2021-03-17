@@ -25,6 +25,24 @@ spring:
           - dataId: wls-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
             refresh: true
 
+#  mail:
+#    # 配置 SMTP 服务器地址
+#    host: smtp.qq.com
+#    # 发送者邮箱
+#    username: 1626961806@qq.com
+#    # 配置密码，注意不是真正的密码，而是刚刚申请到的授权码
+#    password: hkqvshrsbnxuchgj
+#    # 端口号465或587
+#    port: 587
+#    # 默认的邮件编码为UTF-8
+#    default-encoding: UTF-8
+#    # 配置SSL 加密工厂
+#    properties:
+#    mail:
+#      smtp:
+#      socketFactoryClass: javax.net.ssl.SSLSocketFactory
+#      #表示开启 DEBUG 模式，这样，邮件发送过程的日志会在控制台打印出来，方便排查错误
+#      debug: false
 
 server:
   port: 8088

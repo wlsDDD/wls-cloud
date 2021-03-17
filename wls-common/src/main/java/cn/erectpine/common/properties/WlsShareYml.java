@@ -19,9 +19,20 @@ public class WlsShareYml {
      * 邮件发送人
      */
     private String emailTo;
+    
     /**
      * 邮件收件人
      */
     private String[] addressee;
+    
+    /**
+     * 堆栈日志过滤关键字
+     */
+    private String stacktrace;
+    
+    /**
+     * 接口日志切面
+     */
+    public static String apiLogPointCut;
     
 }

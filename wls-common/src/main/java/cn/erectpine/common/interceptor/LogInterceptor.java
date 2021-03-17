@@ -1,6 +1,7 @@
 package cn.erectpine.common.interceptor;
 
-import cn.erectpine.common.enums.CommonEnum;
+import cn.erectpine.common.enums.SystemEnum;
+import cn.erectpine.common.web.pojo.ApiLog;
 import cn.hutool.core.util.IdUtil;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -17,7 +18,9 @@ public class LogInterceptor implements HandlerInterceptor {
     
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        request.setAttribute(CommonEnum.requestId.name(), IdUtil.simpleUUID());
+        request.setAttribute(SystemEnum.requestId.name(), IdUtil.simpleUUID());
+        request.setAttribute(SystemEnum.apiLog.name(), new ApiLog());
         return true;
     }
+    
 }

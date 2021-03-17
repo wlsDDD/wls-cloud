@@ -3,7 +3,7 @@ package cn.erectpine.common.web;
 
 import cn.erectpine.common.constant.HttpStatus;
 import cn.erectpine.common.enums.CodeMsgEnum;
-import cn.erectpine.common.enums.CommonEnum;
+import cn.erectpine.common.enums.SystemEnum;
 import cn.erectpine.common.util.ServletUtil;
 import cn.erectpine.common.web.exception.BaseException;
 import cn.hutool.core.bean.BeanUtil;
@@ -35,7 +35,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
     /**
      * 请求唯一ID
      */
-    public static final String REQUEST_ID = CommonEnum.requestId.name();
+    public static final String REQUEST_ID = SystemEnum.requestId.name();
     
     /**
      * 请求操作成功提示语
@@ -51,7 +51,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * 初始化一个新创建的 ResponseTemplate 对象，使其表示一个空消息。
      */
     public ResponseTemplate() {
-        super.put(REQUEST_ID, ServletUtil.getAttribute(CommonEnum.requestId.name()));
+        super.put(REQUEST_ID, ServletUtil.getAttribute(SystemEnum.requestId.name()));
     }
     
     /**
@@ -61,7 +61,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * @param msg  返回内容
      */
     public ResponseTemplate(int code, String msg) {
-        super.put(REQUEST_ID, ServletUtil.getAttribute(CommonEnum.requestId.name()));
+        super.put(REQUEST_ID, ServletUtil.getAttribute(SystemEnum.requestId.name()));
         super.put(CODE_TAG, code);
         super.put(MSG_TAG, msg);
     }
@@ -76,7 +76,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
     public ResponseTemplate(int code, String msg, Object data) {
         super.put(CODE_TAG, code);
         super.put(MSG_TAG, msg);
-        super.put(REQUEST_ID, ServletUtil.getAttribute(CommonEnum.requestId.name()));
+        super.put(REQUEST_ID, ServletUtil.getAttribute(SystemEnum.requestId.name()));
         if (BeanUtil.isNotEmpty(data)) {
             super.put(DATA_TAG, data);
         }
