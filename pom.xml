@@ -28,6 +28,7 @@
         <module>wls-system</module>
         <module>wls-common</module>
         <module>wls-gateway</module>
+        <module>wls-dict</module>
     </modules>
     <packaging>pom</packaging>
 

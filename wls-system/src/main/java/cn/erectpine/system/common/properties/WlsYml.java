@@ -1,4 +1,4 @@
-package cn.erectpine.system.common.yml;
+package cn.erectpine.system.common.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

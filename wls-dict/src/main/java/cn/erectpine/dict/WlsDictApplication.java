@@ -1,22 +1,22 @@
-package cn.erectpine.system;
+package cn.erectpine.dict;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * wls系统应用
+ * wls-数据字典服务
  *
  * @author wls
- * @date 2021/01/20 14:28:02
+ * @date 2021-03-18 16:29:10
  */
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "cn.erectpine")
-public class WlsSystemApplication {
-
+public class WlsDictApplication {
+	
 	public static void main(String[] args) {
-		SpringApplication.run(WlsSystemApplication.class, args);
-		System.err.println("(♥◠‿◠)ﾉﾞ  wls系统服务-启动完成   ლ(´ڡ`ლ)ﾞ  ");
+		SpringApplication.run(WlsDictApplication.class, args);
+		System.err.println("(♥◠‿◠)ﾉﾞ  wls数据字典服务-启动完成   ლ(´ڡ`ლ)ﾞ  ");
 	}
-
+	
 }

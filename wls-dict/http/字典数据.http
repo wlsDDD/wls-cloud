@@ -1,0 +1,23 @@
+
+###
+POST http://{{host}}/dict-data/list
+Content-Type: application/json
+
+{
+  "current": "1",
+  "size": 2,
+  "orders": [
+    {
+      "column": "create_time",
+      "asc": true
+    }
+  ]
+}
+
+
+
+
+
+
+
+
