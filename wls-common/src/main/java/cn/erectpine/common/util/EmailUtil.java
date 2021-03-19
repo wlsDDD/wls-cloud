@@ -27,14 +27,27 @@ public class EmailUtil {
      * @param text  邮件正文
      */
     public void sendSimpleMail(String title, String text) {
+        sendSimpleMail(title, text, wlsYml.getEmailTo(), wlsYml.getAddressee());
+    }
+    
+    /**
+     * 发送简单的邮件
+     * 普通邮件发送
+     *
+     * @param title   邮件标题
+     * @param text    邮件正文
+     * @param from    发件人
+     * @param address 收件人-可以是多个
+     */
+    public void sendSimpleMail(String title, String text, String from, String... address) {
         // 构建一个邮件对象
         SimpleMailMessage message = new SimpleMailMessage();
         // 设置邮件主题
         message.setSubject(title);
         // 设置邮件发送者，这个跟application.yml中设置的要一致
-        message.setFrom(wlsYml.getEmailTo());
+        message.setFrom(from);
         // 设置邮件接收者，可以有多个接收者，中间用逗号隔开，以下类似
-        message.setTo(wlsYml.getAddressee());
+        message.setTo(address);
         // 设置邮件发送日期
         message.setSentDate(new Date());
         // 设置邮件的正文
