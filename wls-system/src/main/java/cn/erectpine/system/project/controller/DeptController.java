@@ -1,8 +1,8 @@
-package cn.erectpine.system.project.core.controller;
+package cn.erectpine.system.project.controller;
 
 import cn.erectpine.common.web.ResponseTemplate;
-import cn.erectpine.system.project.core.entity.Dept;
-import cn.erectpine.system.project.core.service.IDeptService;
+import cn.erectpine.system.project.entity.Dept;
+import cn.erectpine.system.project.service.IDeptService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2021-03-15
  */
 @RestController
-@RequestMapping("/core/dept")
+@RequestMapping("/dept")
 public class DeptController {
     
     @Autowired IDeptService deptService;

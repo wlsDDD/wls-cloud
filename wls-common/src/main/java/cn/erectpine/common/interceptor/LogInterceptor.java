@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 生成请求ID拦截器
+ * 生成请求ID
+ * 拦截器
  *
  * @Author wls
  * @Date 2021/3/16 10:31

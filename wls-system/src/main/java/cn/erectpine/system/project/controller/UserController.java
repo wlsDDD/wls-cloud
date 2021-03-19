@@ -1,8 +1,8 @@
-package cn.erectpine.system.project.core.controller;
+package cn.erectpine.system.project.controller;
 
 import cn.erectpine.common.web.ResponseTemplate;
-import cn.erectpine.system.project.core.entity.User;
-import cn.erectpine.system.project.core.service.IUserService;
+import cn.erectpine.system.project.entity.User;
+import cn.erectpine.system.project.service.IUserService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RefreshScope
 @RestController
-@RequestMapping("/core/user")
+@RequestMapping("/user")
 public class UserController {
     
     @Autowired IUserService userService;

@@ -1,5 +1,5 @@
 ### 分页列表
-POST http://{{host}}/core/user/list
+POST http://{{host}}/user/list
 Content-Type: application/json
 
 {
@@ -14,11 +14,11 @@ Content-Type: application/json
 }
 
 ### 根据id获取用户信息详情
-GET http://{{host}}/core/user/1
+GET http://{{host}}/user/1
 
 
 ### 新增-用户信息
-POST http://{{host}}/core/user
+POST http://{{host}}/user
 Content-Type: application/json
 
 {
@@ -28,7 +28,7 @@ Content-Type: application/json
 }
 
 ### 修改-用户信息
-PUT http://{{host}}/core/user
+PUT http://{{host}}/user
 Content-Type: application/json
 
 {
@@ -37,7 +37,7 @@ Content-Type: application/json
 }
 
 ### 删除-用户信息
-DELETE http://{{host}}/core/user/100
+DELETE http://{{host}}/user/100
 Content-Type: application/json
 
 {

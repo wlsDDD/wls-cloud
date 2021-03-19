@@ -1,6 +1,6 @@
-package cn.erectpine.system.project.core.service;
+package cn.erectpine.system.project.service;
 
-import cn.erectpine.system.project.core.entity.Dept;
+import cn.erectpine.system.project.entity.Dept;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;

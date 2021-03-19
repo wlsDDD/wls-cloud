@@ -1,4 +1,4 @@
-package cn.erectpine.system.project.core.entity;
+package cn.erectpine.system.project.entity;
 
 import cn.erectpine.common.web.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;

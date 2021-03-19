@@ -1,8 +1,8 @@
-package cn.erectpine.system.project.core.service.impl;
+package cn.erectpine.system.project.service.impl;
 
-import cn.erectpine.system.project.core.entity.Dept;
-import cn.erectpine.system.project.core.mapper.DeptMapper;
-import cn.erectpine.system.project.core.service.IDeptService;
+import cn.erectpine.system.project.entity.Dept;
+import cn.erectpine.system.project.mapper.DeptMapper;
+import cn.erectpine.system.project.service.IDeptService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;

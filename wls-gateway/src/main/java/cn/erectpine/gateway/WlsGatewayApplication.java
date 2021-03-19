@@ -16,8 +16,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class WlsGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WlsGatewayApplication.class, args);
-		System.err.println("(♥◠‿◠)ﾉﾞ  网关模块启动成功   ლ(´ڡ`ლ)ﾞ  ");
-	}
+        SpringApplication.run(WlsGatewayApplication.class, args);
+        System.err.println("(♥◠‿◠)ﾉﾞ  wls网关服务-启动完成   ლ(´ڡ`ლ)ﾞ  ");
+    }
 
 }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 @ConfigurationProperties("share")
-public class WlsShareYml {
+public final class WlsShareYml {
     
     /**
      * 邮件发送人

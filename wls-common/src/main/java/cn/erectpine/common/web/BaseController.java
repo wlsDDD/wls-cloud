@@ -7,4 +7,6 @@ package cn.erectpine.common.web;
  * @Date 2021/1/13 9:35
  */
 public abstract class BaseController {
+
+
 }

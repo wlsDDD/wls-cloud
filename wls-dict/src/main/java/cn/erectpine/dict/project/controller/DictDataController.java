@@ -1,5 +1,6 @@
 package cn.erectpine.dict.project.controller;
 
+import cn.erectpine.common.web.BaseController;
 import cn.erectpine.common.web.ResponseTemplate;
 import cn.erectpine.dict.project.entity.DictData;
 import cn.erectpine.dict.project.service.IDictDataService;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/dict-data")
-public class DictDataController {
+public class DictDataController extends BaseController {
     
     @Autowired IDictDataService dictDataService;
     

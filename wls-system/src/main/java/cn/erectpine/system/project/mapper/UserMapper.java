@@ -1,6 +1,6 @@
-package cn.erectpine.system.project.core.mapper;
+package cn.erectpine.system.project.mapper;
 
-import cn.erectpine.system.project.core.entity.User;
+import cn.erectpine.system.project.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

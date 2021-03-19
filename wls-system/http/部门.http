@@ -1,5 +1,5 @@
 ### 部门列表
-POST http://{{host}}/core/dept/list
+POST http://{{host}}/dept/list
 Content-Type: application/json
 
 {

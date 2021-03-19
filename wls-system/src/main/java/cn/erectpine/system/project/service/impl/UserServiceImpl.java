@@ -1,14 +1,14 @@
-package cn.erectpine.system.project.core.service.impl;
+package cn.erectpine.system.project.service.impl;
 
-import cn.erectpine.system.project.core.entity.User;
-import cn.erectpine.system.project.core.mapper.UserMapper;
-import cn.erectpine.system.project.core.service.IUserService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import cn.erectpine.system.project.entity.User;
+import cn.erectpine.system.project.mapper.UserMapper;
+import cn.erectpine.system.project.service.IUserService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * <p>

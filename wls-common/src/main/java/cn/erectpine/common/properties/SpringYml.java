@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-public class SpringYml {
+public final class SpringYml {
     
     /**
      * 项目启动环境
