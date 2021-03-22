@@ -5,7 +5,7 @@ import cn.erectpine.common.enums.CodeMsgEnum;
 import cn.erectpine.common.enums.SystemEnum;
 import cn.erectpine.common.properties.SpringYml;
 import cn.erectpine.common.util.CoreUtil;
-import cn.erectpine.common.util.EmailUtil;
+import cn.erectpine.common.util.MailServer;
 import cn.erectpine.common.web.ResponseTemplate;
 import cn.erectpine.common.web.exception.BaseException;
 import cn.erectpine.common.web.exception.BusinessException;
@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     
-    @Autowired private EmailUtil emailUtil;
+    @Autowired private MailServer mailServer;
     @Autowired private SpringYml springYml;
     
     
@@ -62,7 +62,7 @@ public class GlobalExceptionHandler {
         ApiLog apiLog = (ApiLog) request.getAttribute(SystemEnum.apiLog.name());
         // 发送邮件
         String title = StrUtil.format("{}服务-{}环境-发现异常，请排查！", springYml.getApplicationName(), springYml.getActive());
-        emailUtil.sendSimpleMail(title, CoreUtil.jsonDelEscape(JSON.toJSONString(apiLog)));
+        mailServer.sendSimpleMail(title, CoreUtil.jsonDelEscape(JSON.toJSONString(apiLog)), mailServer.wlsShareYml.getAddressee());
         // 定义返回-正式环境屏蔽错误信息
         if (ActiveEnum.prod.name().equals(springYml.getActive())) {
             return ResponseTemplate.error(CodeMsgEnum.UNKNOWN_PROD_ERROR);

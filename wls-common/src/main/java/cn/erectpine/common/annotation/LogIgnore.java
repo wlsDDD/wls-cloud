@@ -28,4 +28,5 @@ public @interface LogIgnore {
      * 默认忽略堆栈日志
      */
     boolean ignoreStacktrace() default false;
+    
 }

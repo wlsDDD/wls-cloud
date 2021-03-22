@@ -18,7 +18,7 @@ public final class WlsShareYml {
     /**
      * 邮件发送人
      */
-    private String emailTo;
+    private String from;
     
     /**
      * 邮件收件人
