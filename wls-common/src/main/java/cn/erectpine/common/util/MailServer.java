@@ -49,7 +49,7 @@ public class MailServer {
             message.setText(text);
             // 发送邮件
             javaMailSender.send(message);
-            //日志信息
+            // 日志信息
             log.info("普通邮件发送成功。");
         } catch (MailException e) {
             log.error("发送普通邮件时异常！", e);

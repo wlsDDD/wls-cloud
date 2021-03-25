@@ -2,8 +2,8 @@
 <configuration>
 
     <!-- 配置文件名必须为logback-spring.xml，否则env在一开始会找不到，会生成一个env_IS_UNDEFINED.log的空文件 -->
-    <springProperty scope="context" name="logsPath" source="wls.logsPath" defaultValue="/opt/logs/"/>
-    <springProperty scope="context" name="logLevel" source="wls.logLevel" defaultValue="info"/>
+    <springProperty scope="context" name="logsPath" source="share.logsPath" defaultValue="/opt/logs/"/>
+    <springProperty scope="context" name="logLevel" source="share.logLevel" defaultValue="info"/>
 
     <!-- 定义日志文件 输出位置 -->
     <property name="log.dir" value="${logsPath}"/>
