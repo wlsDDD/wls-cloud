@@ -35,6 +35,26 @@ public class CoreUtil {
         TREE_CONFIG.setParentIdKey("parentId");
         TREE_CONFIG.setWeightKey("createTime");
     }
+
+    /**
+     * 封装PageHelper分页，使其支持0时返回全部
+     *
+     * @param pageNum  页面num
+     * @param pageSize 页面大小
+     */
+    public static void pageStart(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize, true, null, true);
+    }
+    
+    /**
+     * 转换 "yyyy-MM" 为 LocalDate
+     *
+     * @param yearMonth 年月 yyyy-MM
+     * @return {@link LocalDate}
+     */
+    public static LocalDate convertLocalDate(String yearMonth) {
+        return LocalDateTimeUtil.parseDate(yearMonth, "yyyy-MM");
+    }
     
     /**
      * json 去除json文本中的转义字符
