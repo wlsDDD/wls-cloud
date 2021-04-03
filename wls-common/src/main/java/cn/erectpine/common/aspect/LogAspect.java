@@ -37,7 +37,6 @@ import java.util.Map;
 @Aspect
 @Component
 public class LogAspect {
-    
     /**
      * 配置切入点
      */
