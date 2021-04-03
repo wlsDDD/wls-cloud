@@ -15,6 +15,7 @@ import java.net.URLEncoder;
 import java.util.Enumeration;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 客户端工具类
@@ -55,11 +56,7 @@ public class ServletUtil {
      * 获取request
      */
     public static HttpServletRequest getRequest() {
-        try {
-            return getRequestAttributes().getRequest();
-        } catch (Exception e) {
-            return null;
-        }
+        return Objects.requireNonNull(getRequestAttributes()).getRequest();
     }
     
     public static Object getAttribute(String key) {

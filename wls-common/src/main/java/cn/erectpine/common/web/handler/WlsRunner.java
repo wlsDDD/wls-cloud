@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @Date 2021/4/3 18:11
  */
 @Component
-public class InitRunner implements CommandLineRunner {
+public class WlsRunner implements CommandLineRunner {
     
     @Autowired WlsShareYml wlsShareYml;
     

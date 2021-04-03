@@ -6,7 +6,6 @@ import cn.erectpine.common.enums.LogTypeEnum;
 import cn.erectpine.common.enums.SystemEnum;
 import cn.erectpine.common.properties.WlsShareYml;
 import cn.erectpine.common.util.AspectUtil;
-import cn.erectpine.common.util.Assert;
 import cn.erectpine.common.util.IpUtils;
 import cn.erectpine.common.util.ServletUtil;
 import cn.erectpine.common.web.pojo.ApiLog;
@@ -62,22 +61,17 @@ public class LogAspect {
      */
     @Around("logPointCut()")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
+        // 获取日志忽略注解
         LogIgnore logIgnore = AspectUtil.getAnnotationLog(joinPoint, LogIgnore.class);
-    
         HttpServletRequest request = ServletUtil.getRequest();
-        Assert.notNull(request, "请求对象不能为空");
-    
         // 开始记录日志
         ApiLog apiLog = (ApiLog) request.getAttribute(SystemEnum.apiLog.name());
-    
         apiLog.setHeaders(JSON.toJSONString(ServletUtil.getHeaders(request)))
               .setStartTime(LocalDateTime.now())
               .setStatus(CodeMsgEnum.SUCCESS.getCode());
-    
         if (logIgnore == null || logIgnore.ignoreRequestData()) {
             apiLog.setRequestData(JSON.toJSONString(joinPoint.getArgs()));
         }
-    
         Object proceed = null;
         // 调用方法
         try {
@@ -97,7 +91,6 @@ public class LogAspect {
             if (logIgnore == null || logIgnore.ignoreResponseData()) {
                 apiLog.setResponseData((JSON.toJSONString(proceed)));
             }
-        
             // 记录日志
             apiLog.setEndTime(LocalDateTime.now())
                   .setConsumeTime(Duration.between(apiLog.getStartTime(), apiLog.getEndTime()).toMillis())
@@ -106,12 +99,9 @@ public class LogAspect {
                   .setRequestMethod(request.getMethod())
                   .setAuthorization(request.getHeader("Authorization"))
                   .setHandleMethod(AspectUtil.getMethodName(joinPoint));
-        
             request.setAttribute(SystemEnum.apiLog.name(), apiLog);
-        
             consoleLogSync(apiLog);
         }
-        
         return proceed;
     }
     
@@ -125,15 +115,14 @@ public class LogAspect {
     public void consoleLogSync(ApiLog apiLog) {
         Map<String, Object> logMap = BeanUtil.beanToMap(apiLog, false, false);
         if (CodeMsgEnum.SUCCESS.getCode().equals(apiLog.getStatus())) {
-            log.info(LogTypeEnum.INFO.getDelimiter());
+            log.info(LogTypeEnum.SUCCESS.getDelimiter());
             logMap.forEach((s, o) -> log.info(s + ": {}", o));
             log.info(LogTypeEnum.END.getDelimiter());
         } else {
-            log.warn(LogTypeEnum.WARN.getDelimiter());
+            log.warn(LogTypeEnum.FAIL.getDelimiter());
             logMap.forEach((s, o) -> log.warn(s + ": {}", o));
             log.warn(LogTypeEnum.END.getDelimiter());
         }
-        
     }
     
 }

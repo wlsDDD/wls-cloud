@@ -69,7 +69,6 @@ public class GlobalExceptionHandler {
             return ResponseTemplate.error(CodeMsgEnum.UNKNOWN_PROD_ERROR);
         }
         return ResponseTemplate.error(CodeMsgEnum.UNKNOWN_DEV_ERROR);
-    
     }
     
 }
