@@ -1,10 +1,10 @@
 package cn.erectpine.common.aspect;
 
 import cn.erectpine.common.annotation.LogIgnore;
+import cn.erectpine.common.constant.GlobalConstants;
 import cn.erectpine.common.enums.CodeMsgEnum;
 import cn.erectpine.common.enums.LogTypeEnum;
 import cn.erectpine.common.enums.SystemEnum;
-import cn.erectpine.common.properties.WlsShareYml;
 import cn.erectpine.common.util.AspectUtil;
 import cn.erectpine.common.util.IpUtils;
 import cn.erectpine.common.util.ServletUtil;
@@ -18,7 +18,6 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -38,8 +37,6 @@ import java.util.Map;
 @Aspect
 @Component
 public class LogAspect {
-    
-    @Autowired WlsShareYml wlsShareYml;
     
     /**
      * 配置切入点
@@ -80,7 +77,7 @@ public class LogAspect {
             // 记录异常日志
 //            if (logIgnore == null || logIgnore.ignoreStacktrace()) {}
             Object[] stacktrace = Arrays.stream(e.getStackTrace()).distinct().parallel().filter(
-                    el -> el.getLineNumber() != -1 && el.getClassName().contains(wlsShareYml.getStacktrace())).toArray();
+                    el -> el.getLineNumber() != -1 && el.getClassName().contains(GlobalConstants.stackFilter)).toArray();
             SimplePropertyPreFilter filter = new SimplePropertyPreFilter();
             filter.getExcludes().add("stackTrace");
             apiLog.setError(JSON.toJSONString(e, filter, SerializerFeature.WriteMapNullValue))
