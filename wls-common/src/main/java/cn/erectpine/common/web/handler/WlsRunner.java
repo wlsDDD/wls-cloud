@@ -7,7 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 /**
- * 项目启动时初始化公共资源
+ * 项目启动时-立即初始化公共资源
  *
  * @Author wls
  * @Date 2021/4/3 18:11
