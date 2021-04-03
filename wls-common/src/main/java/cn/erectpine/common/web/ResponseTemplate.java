@@ -5,7 +5,7 @@ import cn.erectpine.common.constant.HttpStatus;
 import cn.erectpine.common.enums.CodeMsgEnum;
 import cn.erectpine.common.enums.SystemEnum;
 import cn.erectpine.common.util.ServletUtil;
-import cn.erectpine.common.web.exception.BaseException;
+import cn.erectpine.common.web.exception.BaseRunTimeException;
 import cn.hutool.core.bean.BeanUtil;
 
 import java.util.HashMap;
@@ -205,10 +205,10 @@ public class ResponseTemplate extends HashMap<String, Object> {
     /**
      * 返回错误消息
      *
-     * @param e {@link BaseException}
+     * @param e {@link BaseRunTimeException}
      * @return 警告消息
      */
-    public static ResponseTemplate error(BaseException e) {
+    public static ResponseTemplate error(BaseRunTimeException e) {
         return error(e.getCode(), e.getMessage());
     }
     

@@ -1,15 +1,18 @@
 package cn.erectpine.common.util;
 
+import cn.erectpine.common.function.FunctionSerializable;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.LocalDateTimeUtil;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
-import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -21,7 +24,9 @@ import java.util.stream.Collectors;
  * @Author wls
  * @Date 2021/1/12 11:58
  */
+@Component
 public class CoreUtil {
+    
     
     /**
      * 自定义树相关属性配置
@@ -35,40 +40,7 @@ public class CoreUtil {
         TREE_CONFIG.setParentIdKey("parentId");
         TREE_CONFIG.setWeightKey("createTime");
     }
-
-    /**
-     * 封装PageHelper分页，使其支持0时返回全部
-     *
-     * @param pageNum  页面num
-     * @param pageSize 页面大小
-     */
-    public static void pageStart(int pageNum, int pageSize) {
-        PageHelper.startPage(pageNum, pageSize, true, null, true);
-    }
     
-    /**
-     * 转换 "yyyy-MM" 为 LocalDate
-     *
-     * @param yearMonth 年月 yyyy-MM
-     * @return {@link LocalDate}
-     */
-    public static LocalDate convertLocalDate(String yearMonth) {
-        return LocalDateTimeUtil.parseDate(yearMonth, "yyyy-MM");
-    }
-    
-    /**
-     * json 去除json文本中的转义字符
-     *
-     * @param text 文本
-     * @return {@link String}
-     */
-    public static String jsonDelEscape(String text) {
-        return text.replaceAll("\\\\", "")
-                   .replaceAll("\"\\{", "{")
-                   .replaceAll("\"\\[", "[")
-                   .replaceAll("]\"", "]")
-                   .replaceAll("}\"", "}");
-    }
     
     /**
      * 列表转树
@@ -78,7 +50,7 @@ public class CoreUtil {
      * @Author wls
      */
     public static <T> List<Tree<Long>> toTree(List<T> list) {
-        return TreeUtil.build(list, 0L, TREE_CONFIG, (treeNode, tree) -> tree.putAll(BeanUtil.beanToMap(treeNode)));
+        return toTree(list, TREE_CONFIG);
     }
     
     /**
@@ -114,20 +86,55 @@ public class CoreUtil {
         }).collect(Collectors.toList());
     }
     
-    
     /**
      * 浅拷贝-拷贝属性
      * 将old类中的属性拷贝到fresh中
      * 拷贝规则: 属性名相同
      *
-     * @param old   源对象
-     * @param fresh 拷贝后的对象
+     * @param old     源对象
+     * @param fresh   拷贝后的对象
+     * @param ignores 忽略字段
      * @return fresh
      * @Author wls
      */
-    public static <T> T convertFor(Object old, T fresh) {
-        BeanUtils.copyProperties(old, fresh);
+    @SafeVarargs
+    public static <T> T copyProperties(Object old, T fresh, FunctionSerializable<T, ?>... ignores) {
+        BeanUtil.copyProperties(old, fresh, getFieldNames(ignores));
         return fresh;
+    }
+    
+    /**
+     * 获取方法引用型函数FieldNames
+     *
+     * @param func 函数 只能是方法引用型函数
+     * @return {@link String[]}
+     */
+    public static String[] getFieldNames(FunctionSerializable<?, ?>... func) {
+        return Arrays.stream(func).map(LamUtil::getFieldName).toArray(String[]::new);
+    }
+    
+    /**
+     * 转换 "yyyy-MM" 为 LocalDate
+     *
+     * @param yearMonth 年月 yyyy-MM
+     * @return {@link LocalDate}
+     */
+    public static LocalDate convertLocalDate(String yearMonth) {
+        return LocalDateTimeUtil.parseDate(yearMonth, DatePattern.NORM_MONTH_PATTERN);
+    }
+    
+    /**
+     * json 去除json文本中的转义字符
+     *
+     * @param text 文本
+     * @return {@link String}
+     */
+    public static String jsonDelEscape(String text) {
+        return text.replaceAll("\\\\", "")
+                   .replaceAll("\"\\{", "{")
+                   .replaceAll("\"\\[", "[")
+                   .replaceAll("]\"", "]")
+                   .replaceAll("}\"", "}");
     }
     
     /**

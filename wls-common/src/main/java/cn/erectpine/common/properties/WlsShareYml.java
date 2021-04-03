@@ -1,5 +1,6 @@
 package cn.erectpine.common.properties;
 
+import cn.erectpine.common.enums.ActiveEnum;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -16,23 +17,33 @@ import org.springframework.stereotype.Component;
 public final class WlsShareYml {
     
     /**
+     * 服务名
+     */
+    private String serviceName;
+    /**
+     * 项目启动环境
+     */
+    private ActiveEnum active;
+    /**
+     * 堆栈信息过滤
+     */
+    private String stackFilter;
+    
+    /**
      * 邮件发送人
      */
     private String from;
-    
     /**
      * 邮件收件人
      */
     private String[] addressee;
-    
     /**
      * 堆栈日志过滤关键字
      */
     private String stacktrace;
-    
     /**
      * 接口日志切面
      */
-    public static String apiLogPointCut;
+    private String apiLogPointCut;
     
 }

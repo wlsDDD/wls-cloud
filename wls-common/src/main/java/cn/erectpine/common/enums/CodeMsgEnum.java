@@ -28,19 +28,18 @@ public enum CodeMsgEnum {
     DATA_SAVE_ERROR(5001, "新增数据失败，请联系数据库管理员"),
     DATA_UPDATE_ERROR(5002, "修改数据失败，请联系数据库管理员"),
     DATA_DELETE_ERROR(5003, "删除数据失败，请联系数据库管理员"),
-    ;
     
+    ;
     
     private final Integer code;
     private String msg;
-    
     
     CodeMsgEnum(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }
     
-    public CodeMsgEnum setMsg(String msg) {
+    public CodeMsgEnum setMsg(Object... msg) {
         this.msg = StrUtil.format(this.msg, msg);
         return this;
     }
