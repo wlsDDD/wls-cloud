@@ -61,7 +61,7 @@ public class MysqlGenerator {
     static String dataSourceDriverName = "com.mysql.cj.jdbc.Driver";
     
     
-    public static void main(String[] args) {
+    public static void generatorCode() {
         // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
         
