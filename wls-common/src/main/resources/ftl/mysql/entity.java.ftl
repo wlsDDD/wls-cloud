@@ -48,7 +48,6 @@ public class ${entity} extends Model<${entity}> {
 <#else>
 public class ${entity} implements Serializable {
 </#if>
-
 <#if entitySerialVersionUID>
     private static final long serialVersionUID = 1L;
 </#if>
