@@ -149,6 +149,7 @@ public class MysqlGenerator {
         templateConfig.setController("ftl/mysql/controller.java");
         templateConfig.setService("ftl/mysql/service.java");
         templateConfig.setServiceImpl("ftl/mysql/serviceImpl.java");
+        templateConfig.setMapper("ftl/mysql/mapper.java");
         
         templateConfig.setXml(null);
         mpg.setTemplate(templateConfig);
