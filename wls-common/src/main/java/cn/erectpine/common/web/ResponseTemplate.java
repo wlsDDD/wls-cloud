@@ -6,7 +6,6 @@ import cn.erectpine.common.enums.CodeMsgEnum;
 import cn.erectpine.common.enums.SystemAttributeEnum;
 import cn.erectpine.common.util.ServletUtil;
 import cn.erectpine.common.web.exception.BaseRunTimeException;
-import cn.hutool.core.bean.BeanUtil;
 
 import java.util.HashMap;
 
@@ -35,12 +34,12 @@ public class ResponseTemplate extends HashMap<String, Object> {
     /**
      * 请求唯一ID
      */
-    public static final String REQUEST_ID = SystemAttributeEnum.requestId.name();
+    public static final String REQUEST_ID_TAG = SystemAttributeEnum.requestId.name();
     
     /**
      * 请求操作成功提示语
      */
-    public static final String SUCCESS_MSG = "操作成功";
+    public static final String SUCCESS_MSG = "请求成功";
     /**
      * 请求操作失败提示语
      */
@@ -51,7 +50,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * 初始化一个新创建的 ResponseTemplate 对象，使其表示一个空消息。
      */
     public ResponseTemplate() {
-        super.put(REQUEST_ID, ServletUtil.getAttribute(SystemAttributeEnum.requestId.name()));
+        super.put(REQUEST_ID_TAG, ServletUtil.getAttribute(SystemAttributeEnum.requestId.name()));
     }
     
     /**
@@ -61,7 +60,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * @param msg  返回内容
      */
     public ResponseTemplate(int code, String msg) {
-        super.put(REQUEST_ID, ServletUtil.getAttribute(SystemAttributeEnum.requestId.name()));
+        super.put(REQUEST_ID_TAG, ServletUtil.getAttribute(SystemAttributeEnum.requestId.name()));
         super.put(CODE_TAG, code);
         super.put(MSG_TAG, msg);
     }
@@ -76,11 +75,8 @@ public class ResponseTemplate extends HashMap<String, Object> {
     public ResponseTemplate(int code, String msg, Object data) {
         super.put(CODE_TAG, code);
         super.put(MSG_TAG, msg);
-        super.put(REQUEST_ID, ServletUtil.getAttribute(SystemAttributeEnum.requestId.name()));
-        if (BeanUtil.isNotEmpty(data)) {
-            super.put(DATA_TAG, data);
-        }
-        
+        super.put(REQUEST_ID_TAG, ServletUtil.getAttribute(SystemAttributeEnum.requestId.name()));
+        super.put(DATA_TAG, null == data ? "" : data);
     }
     
     

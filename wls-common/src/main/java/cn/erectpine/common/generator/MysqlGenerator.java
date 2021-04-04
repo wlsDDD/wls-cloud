@@ -24,46 +24,46 @@ import java.util.Map;
 public class MysqlGenerator {
     
     /**
-     * 表名称，多个逗号隔开 支持正则表达式
-     */
-    static String[] tableName = {"sys_user_post", "sys_user"};
-    /**
      * 去除表前缀
      */
-    static String tablePrefix = "sys_";
+    public static String tablePrefix = "sys_";
     
     /**
      * 模块名称
      */
-    static String moduleName = "";
+    public static String moduleName = "";
     /**
      * 本项目路径
      */
-    static String path = "/wls-system";
+    public static String path = "";
     /**
      * 包路径
      */
-    static String packagePath = "cn.erectpine.system.project";
+    public static String packagePath = "cn.erectpine.system.project";
     
     /**
      * 数据源-URL
      */
-    static String dataSourceUrl = "jdbc:mysql://localhost:3306/ry-cloud?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8";
+    public static String dataSourceUrl = "jdbc:mysql://localhost:3306/ry-cloud?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8";
     /**
      * 数据源-用户名
      */
-    static String dataSourceUsername = "root";
+    public static String dataSourceUsername = "root";
     /**
      * 数据源-密码
      */
-    static String dataSourcePassword = "Wls-root";
+    public static String dataSourcePassword = "Wls-root";
     /**
      * 数据源-驱动
      */
-    static String dataSourceDriverName = "com.mysql.cj.jdbc.Driver";
+    public static String dataSourceDriverName = "com.mysql.cj.jdbc.Driver";
     
-    
-    public static void generatorCode() {
+    /**
+     * 代码生成
+     *
+     * @param tableName 表名称，多个逗号隔开 支持正则表达式
+     */
+    public static void generatorCode(String[] tableName) {
         // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
         
