@@ -22,9 +22,9 @@ POST http://{{host}}/user
 Content-Type: application/json
 
 {
-  "userName": "wls",
+  "userName": "wls2",
   "sex": 1,
-  "nickName": "wls"
+  "nickName": "wls2"
 }
 
 ### 修改-用户信息

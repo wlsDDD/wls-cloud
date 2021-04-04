@@ -4,7 +4,7 @@ import cn.erectpine.common.annotation.LogIgnore;
 import cn.erectpine.common.constant.GlobalConstants;
 import cn.erectpine.common.enums.CodeMsgEnum;
 import cn.erectpine.common.enums.LogTypeEnum;
-import cn.erectpine.common.enums.SystemEnum;
+import cn.erectpine.common.enums.SystemAttributeEnum;
 import cn.erectpine.common.util.AspectUtil;
 import cn.erectpine.common.util.CoreUtil;
 import cn.erectpine.common.util.IpUtils;
@@ -61,7 +61,7 @@ public class LogAspect {
         LogIgnore logIgnore = AspectUtil.getAnnotationLog(joinPoint, LogIgnore.class);
         HttpServletRequest request = ServletUtil.getRequest();
         // 开始记录日志
-        ApiLog apiLog = (ApiLog) request.getAttribute(SystemEnum.apiLog.name());
+        ApiLog apiLog = (ApiLog) request.getAttribute(SystemAttributeEnum.apiLog.name());
         apiLog.setHeaders(JSON.toJSONString(ServletUtil.getHeaders(request)))
               .setStartTime(LocalDateTime.now())
               .setStatus(CodeMsgEnum.SUCCESS.getCode());
@@ -93,7 +93,7 @@ public class LogAspect {
                   .setRequestMethod(request.getMethod())
                   .setAuthorization(request.getHeader("Authorization"))
                   .setHandleMethod(AspectUtil.getMethodName(joinPoint));
-            request.setAttribute(SystemEnum.apiLog.name(), apiLog);
+            request.setAttribute(SystemAttributeEnum.apiLog.name(), apiLog);
             consoleLogSync(apiLog);
         }
         return proceed;

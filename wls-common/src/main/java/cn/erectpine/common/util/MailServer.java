@@ -24,7 +24,7 @@ import java.util.Date;
 public class MailServer {
     
     @Autowired public WlsShareYml wlsShareYml;
-    @Autowired public JavaMailSender javaMailSender;
+    @Autowired private JavaMailSender javaMailSender;
     
     /**
      * 发送普通邮件

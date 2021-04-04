@@ -1,5 +1,8 @@
 package cn.erectpine.system.project.service.impl;
 
+import cn.erectpine.common.enums.CodeMsgEnum;
+import cn.erectpine.common.util.Assert;
+import cn.erectpine.common.web.exception.BusinessException;
 import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.mapper.UserMapper;
 import cn.erectpine.system.project.service.IUserService;
@@ -7,7 +10,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -20,14 +22,18 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
-
-    @Autowired UserMapper userMapper;
-
-
+    
+    private final UserMapper userMapper;
+    
+    public UserServiceImpl(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
+    
+    
     /**
      * 用户信息-列表
      *
-     * @param page  分页参数
+     * @param page 分页参数
      * @param user 查询条件
      * @return 分页列表
      */
@@ -35,7 +41,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public IPage<User> pageUser(Page<User> page, User user) {
         return page(page, Wrappers.lambdaQuery(user));
     }
-
+    
     /**
      * 根据id获取用户信息表详情
      *
@@ -46,7 +52,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public User getUserById(Long id) {
         return getById(id);
     }
-
+    
     /**
      * 新增-用户信息
      *
@@ -54,9 +60,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      */
     @Override
     public void insertUser(User user) {
-        save(user);
+        Assert.isTrue(save(user), () -> new BusinessException(CodeMsgEnum.DATA_INSERT_ERROR));
     }
-
+    
     /**
      * 修改-用户信息
      *
@@ -64,9 +70,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      */
     @Override
     public void updateUser(User user) {
-        updateById(user);
+        Assert.isTrue(updateById(user), () -> new BusinessException(CodeMsgEnum.DATA_UPDATE_ERROR));
     }
-
+    
     /**
      * 删除-用户信息
      *
@@ -74,7 +80,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      */
     @Override
     public void deleteUser(Long id) {
-        removeById(id);
+        Assert.isTrue(removeById(id), () -> new BusinessException(CodeMsgEnum.DATA_DELETE_ERROR));
     }
-
+    
 }
