@@ -37,7 +37,7 @@ public class Tests {
     public void test01() {
         User wls = new User().setUserId(1L).setUserName("wls").setNickName("nick-wls");
 //        User nickName = CoreUtil.convertFor(wls, new User(), User::getNickName);
-        User user = CoreUtil.copyProperties(wls, new User(), User::getNickName);
+        User user = CoreUtil.copyBean(wls, new User(), User::getNickName);
         
     }
     

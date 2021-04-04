@@ -4,7 +4,6 @@ import cn.erectpine.common.constant.GlobalConstants;
 import cn.erectpine.common.enums.ActiveEnum;
 import cn.erectpine.common.enums.CodeMsgEnum;
 import cn.erectpine.common.enums.SystemEnum;
-import cn.erectpine.common.properties.WlsShareYml;
 import cn.erectpine.common.util.CoreUtil;
 import cn.erectpine.common.util.MailServer;
 import cn.erectpine.common.web.ResponseTemplate;
@@ -33,7 +32,6 @@ import javax.servlet.http.HttpServletResponse;
 public class GlobalExceptionHandler {
     
     @Autowired private MailServer mailServer;
-    @Autowired private WlsShareYml wlsShareYml;
     
     
     @ExceptionHandler(Throwable.class)
@@ -63,7 +61,7 @@ public class GlobalExceptionHandler {
         ApiLog apiLog = (ApiLog) request.getAttribute(SystemEnum.apiLog.name());
         // 发送邮件
         String title = StrUtil.format("{}服务-{}环境-发现异常，请排查！", GlobalConstants.serviceName, GlobalConstants.active.name());
-        mailServer.sendSimpleMail(title, CoreUtil.jsonDelEscape(JSON.toJSONString(apiLog)), wlsShareYml.getAddressee());
+        mailServer.sendSimpleMail(title, CoreUtil.jsonDelEscape(JSON.toJSONString(apiLog)), mailServer.wlsShareYml.getAddressee());
         // 定义返回-正式环境屏蔽错误信息
         if (ActiveEnum.prod.equals(GlobalConstants.active)) {
             return ResponseTemplate.error(CodeMsgEnum.UNKNOWN_PROD_ERROR);

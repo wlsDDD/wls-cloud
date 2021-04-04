@@ -3,10 +3,9 @@ package cn.erectpine.common.web.exception;
 import cn.erectpine.common.constant.GlobalConstants;
 import cn.erectpine.common.enums.ActiveEnum;
 import cn.erectpine.common.enums.CodeMsgEnum;
+import cn.erectpine.common.util.CoreUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.Arrays;
 
 /**
  * 自定义异常基类
@@ -53,9 +52,7 @@ public class BaseRunTimeException extends RuntimeException {
      * @return {@link StackTraceElement[]}
      */
     public StackTraceElement[] getSimpleStackTrace() {
-        return Arrays.stream(getStackTrace()).distinct().parallel()
-                     .filter(el -> el.getLineNumber() != -1 && el.getClassName().contains(GlobalConstants.stackFilter))
-                     .toArray(StackTraceElement[]::new);
+        return CoreUtil.getSimpleStackTrace(this, GlobalConstants.stackFilter);
     }
     
     public BaseRunTimeException() {

@@ -27,7 +27,6 @@ import java.util.stream.Collectors;
 @Component
 public class CoreUtil {
     
-    
     /**
      * 自定义树相关属性配置
      * 树属性配置参考  {@link TreeNodeConfig}
@@ -98,7 +97,7 @@ public class CoreUtil {
      * @Author wls
      */
     @SafeVarargs
-    public static <T> T copyProperties(Object old, T fresh, FunctionSerializable<T, ?>... ignores) {
+    public static <T> T copyBean(Object old, T fresh, FunctionSerializable<T, ?>... ignores) {
         BeanUtil.copyProperties(old, fresh, getFieldNames(ignores));
         return fresh;
     }
@@ -106,7 +105,7 @@ public class CoreUtil {
     /**
      * 获取方法引用型函数FieldNames
      *
-     * @param func 函数 只能是方法引用型函数
+     * @param func 方法引用型函数
      * @return {@link String[]}
      */
     public static String[] getFieldNames(FunctionSerializable<?, ?>... func) {
@@ -114,13 +113,16 @@ public class CoreUtil {
     }
     
     /**
-     * 转换 "yyyy-MM" 为 LocalDate
+     * 得到简单的堆栈跟踪
      *
-     * @param yearMonth 年月 yyyy-MM
-     * @return {@link LocalDate}
+     * @param e       e
+     * @param contain 包含字符串
+     * @return {@link StackTraceElement[]}
      */
-    public static LocalDate convertLocalDate(String yearMonth) {
-        return LocalDateTimeUtil.parseDate(yearMonth, DatePattern.NORM_MONTH_PATTERN);
+    public static StackTraceElement[] getSimpleStackTrace(Throwable e, String contain) {
+        return Arrays.stream(e.getStackTrace()).distinct().parallel()
+                     .filter(item -> item.getLineNumber() != -1 && item.getClassName().contains(contain))
+                     .toArray(StackTraceElement[]::new);
     }
     
     /**
@@ -135,6 +137,16 @@ public class CoreUtil {
                    .replaceAll("\"\\[", "[")
                    .replaceAll("]\"", "]")
                    .replaceAll("}\"", "}");
+    }
+    
+    /**
+     * 转换 "yyyy-MM" 为 LocalDate
+     *
+     * @param yearMonth 年月 yyyy-MM
+     * @return {@link LocalDate}
+     */
+    public static LocalDate convertLocalDate(String yearMonth) {
+        return LocalDateTimeUtil.parseDate(yearMonth, DatePattern.NORM_MONTH_PATTERN);
     }
     
     /**

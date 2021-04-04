@@ -6,6 +6,7 @@ import cn.erectpine.common.enums.CodeMsgEnum;
 import cn.erectpine.common.enums.LogTypeEnum;
 import cn.erectpine.common.enums.SystemEnum;
 import cn.erectpine.common.util.AspectUtil;
+import cn.erectpine.common.util.CoreUtil;
 import cn.erectpine.common.util.IpUtils;
 import cn.erectpine.common.util.ServletUtil;
 import cn.erectpine.common.web.pojo.ApiLog;
@@ -24,7 +25,6 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.Map;
 
 /**
@@ -75,13 +75,11 @@ public class LogAspect {
         } catch (Throwable e) {
             // 记录异常日志
 //            if (logIgnore == null || logIgnore.ignoreStacktrace()) {}
-            Object[] stacktrace = Arrays.stream(e.getStackTrace()).distinct().parallel().filter(
-                    el -> el.getLineNumber() != -1 && el.getClassName().contains(GlobalConstants.stackFilter)).toArray();
             SimplePropertyPreFilter filter = new SimplePropertyPreFilter();
             filter.getExcludes().add("stackTrace");
             apiLog.setError(JSON.toJSONString(e, filter, SerializerFeature.WriteMapNullValue))
                   .setStatus(CodeMsgEnum.ERROR.getCode())
-                  .setStacktrace(JSON.toJSONString(stacktrace));
+                  .setStacktrace(JSON.toJSONString(CoreUtil.getSimpleStackTrace(e, GlobalConstants.stackFilter)));
             throw e;
         } finally {
             if (logIgnore == null || logIgnore.ignoreResponseData()) {
