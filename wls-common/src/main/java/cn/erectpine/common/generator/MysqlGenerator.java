@@ -1,3 +1,5 @@
+package cn.erectpine.common.generator;
+
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
@@ -68,20 +70,19 @@ public class MysqlGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-//        gc.setOutputDir(projectPath + "/src/main/java");
         gc.setOutputDir(projectPath + path + "/src/main/java");
         gc.setAuthor("wls");
         gc.setOpen(false);
         // 实体属性 Swagger2 注解
-//        gc.setSwagger2(true);
+        // gc.setSwagger2(true)
         gc.setDateType(DateType.TIME_PACK);
         gc.setIdType(IdType.AUTO);
+        gc.setFileOverride(false);
         mpg.setGlobalConfig(gc);
         
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl(dataSourceUrl);
-        // dsc.setSchemaName("public");
         dsc.setDriverName(dataSourceDriverName);
         dsc.setDbType(DbType.MYSQL);
         dsc.setUsername(dataSourceUsername);
@@ -122,21 +123,7 @@ public class MysqlGenerator {
                 return projectPath + path + "/src/main/resources/mapper/" + moduleName + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
-        /*
-        cfg.setFileCreate(new IFileCreate() {
-            @Override
-            public boolean isCreate(ConfigBuilder configBuilder, FileType fileType, String filePath) {
-                // 判断自定义文件夹是否需要创建
-                checkDir("调用默认方法创建的目录，自定义目录用");
-                if (fileType == FileType.MAPPER) {
-                    // 已经生成 mapper 文件判断存在，不想重新生成返回 false
-                    return !new File(filePath).exists();
-                }
-                // 允许生成模板文件
-                return true;
-            }
-        });
-        */
+        
         cfg.setFileOutConfigList(focList);
         mpg.setCfg(cfg);
         
@@ -164,7 +151,7 @@ public class MysqlGenerator {
         strategy.setEntityBooleanColumnRemoveIsPrefix(true);
         
         // 是否生成实体时，生成字段注解
-//        strategy.setEntityTableFieldAnnotationEnable(true);
+        // strategy.setEntityTableFieldAnnotationEnable(true)
         // 公共父类
         strategy.setSuperControllerClass("cn.erectpine.common.web.BaseController");
         strategy.setSuperEntityClass("cn.erectpine.common.web.BaseEntity");

@@ -9,6 +9,7 @@ import java.beans.Introspector;
 import java.lang.invoke.SerializedLambda;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -22,6 +23,16 @@ import java.util.concurrent.ConcurrentHashMap;
 public class LamUtil {
     
     private static final Map<FunctionSerializable<?, ?>, Field> CACHE = new ConcurrentHashMap<>();
+    
+    /**
+     * 获取方法引用型函数FieldNames
+     *
+     * @param func 方法引用型函数
+     * @return {@link String[]}
+     */
+    public static String[] getFieldNames(FunctionSerializable<?, ?>... func) {
+        return Arrays.stream(func).map(LamUtil::getFieldName).toArray(String[]::new);
+    }
     
     /**
      * 获取字段名

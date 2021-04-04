@@ -98,18 +98,8 @@ public class CoreUtil {
      */
     @SafeVarargs
     public static <T> T copyBean(Object old, T fresh, FunctionSerializable<T, ?>... ignores) {
-        BeanUtil.copyProperties(old, fresh, getFieldNames(ignores));
+        BeanUtil.copyProperties(old, fresh, LamUtil.getFieldNames(ignores));
         return fresh;
-    }
-    
-    /**
-     * 获取方法引用型函数FieldNames
-     *
-     * @param func 方法引用型函数
-     * @return {@link String[]}
-     */
-    public static String[] getFieldNames(FunctionSerializable<?, ?>... func) {
-        return Arrays.stream(func).map(LamUtil::getFieldName).toArray(String[]::new);
     }
     
     /**
