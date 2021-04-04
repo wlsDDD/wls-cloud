@@ -24,7 +24,7 @@ public class MysqlGenerator {
     /**
      * 表名称，多个逗号隔开 支持正则表达式
      */
-    static String[] tableName = {"sys_dict_type", "sys_dict_data"};
+    static String[] tableName = {"sys_user_post", "sys_user"};
     /**
      * 去除表前缀
      */
@@ -37,11 +37,11 @@ public class MysqlGenerator {
     /**
      * 本项目路径
      */
-    static String path = "/wls-dict";
+    static String path = "/wls-system";
     /**
      * 包路径
      */
-    static String packagePath = "cn.erectpine.dict.project";
+    static String packagePath = "cn.erectpine.system.project";
     
     /**
      * 数据源-URL
@@ -100,6 +100,9 @@ public class MysqlGenerator {
             public void initMap() {
                 Map<String, Object> map = new HashMap<>();
                 map.put("ResponseTemplate", "cn.erectpine.common.web.ResponseTemplate");
+                map.put("Assert", "cn.erectpine.common.util.Assert");
+                map.put("BusinessException", "cn.erectpine.common.web.exception.BusinessException");
+                map.put("CodeMsgEnum", "cn.erectpine.common.enums.CodeMsgEnum");
                 this.setMap(map);
             }
         };

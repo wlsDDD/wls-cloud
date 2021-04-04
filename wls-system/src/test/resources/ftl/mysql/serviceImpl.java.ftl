@@ -8,7 +8,9 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+import ${cfg.BusinessException};
+import ${cfg.CodeMsgEnum};
+import ${cfg.Assert};
 
 /**
  * <p>
@@ -25,7 +27,11 @@ open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperNam
 public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
 </#if>
 
-    @Autowired ${table.mapperName} ${table.entityPath}Mapper;
+    private final ${table.mapperName} ${table.entityPath}Mapper;
+
+    public ${table.serviceImplName}(${table.mapperName} ${table.entityPath}Mapper) {
+        this.${table.entityPath}Mapper = ${table.entityPath}Mapper;
+    }
 
 
     /**
@@ -58,7 +64,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      */
     @Override
     public void insert${entity}(${entity} ${table.entityPath}) {
-        save(${table.entityPath});
+        Assert.isTrue(save(${table.entityPath}), () -> new BusinessException(CodeMsgEnum.DATA_INSERT_ERROR));
     }
 
     /**
@@ -68,7 +74,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      */
     @Override
     public void update${entity}(${entity} ${table.entityPath}) {
-        updateById(${table.entityPath});
+        Assert.isTrue(updateById(${table.entityPath}), () -> new BusinessException(CodeMsgEnum.DATA_UPDATE_ERROR));
     }
 
     /**
@@ -78,7 +84,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      */
     @Override
     public void delete${entity}(Long id) {
-        removeById(id);
+        Assert.isTrue(removeById(id), () -> new BusinessException(CodeMsgEnum.DATA_DELETE_ERROR));
     }
 
 }

@@ -7,7 +7,7 @@ import springfox.documentation.annotations.ApiIgnore;
 <#else>
 </#if>
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.web.bind.annotation.*;
 import ${package.Entity}.${entity};
 import ${package.Service}.${table.serviceName};
@@ -19,11 +19,10 @@ import org.springframework.stereotype.Controller;
 <#if superControllerClassPackage??>
 import ${superControllerClassPackage};
 </#if>
-import ${cfg.ResponseTemplate};
 
 /**
  * <p>
- * ${table.comment?substring(0,table.comment?length-1)} 前端控制器
+ * ${table.comment?substring(0,table.comment?length-1)} 控制器
  * </p>
  *
  * @author ${author}
@@ -48,7 +47,11 @@ public class ${table.controllerName} extends ${superControllerClass} {
 public class ${table.controllerName} {
 </#if>
 
-    @Autowired ${table.serviceName} ${table.entityPath}Service;
+    private final ${table.serviceName} ${table.entityPath}Service;
+
+    public ${table.controllerName}(${table.serviceName} ${table.entityPath}Service) {
+        this.${table.entityPath}Service = ${table.entityPath}Service;
+    }
 
 
     <#if !swagger2>
@@ -59,8 +62,8 @@ public class ${table.controllerName} {
     @ApiOperation("${table.comment?substring(0,table.comment?length-1)}-分页列表")
     </#if>
     @PostMapping("/list")
-    public ResponseTemplate page${entity}(@RequestBody <#if swagger2>@ApiIgnore </#if>Page<${entity}> page, ${entity} ${table.entityPath}) {
-        return ResponseTemplate.success(${table.entityPath}Service.page${entity}(page, ${table.entityPath}));
+    public IPage<${entity}> page${entity}(@RequestBody <#if swagger2>@ApiIgnore </#if>Page<${entity}> page, ${entity} ${table.entityPath}) {
+        return ${table.entityPath}Service.page${entity}(page, ${table.entityPath});
     }
 
     <#if !swagger2>
@@ -71,8 +74,8 @@ public class ${table.controllerName} {
     @ApiOperation("根据id获取${table.comment?substring(0,table.comment?length-1)}详情")
     </#if>
     @GetMapping("/{id}")
-    public ResponseTemplate get${entity}ById(@PathVariable Long id) {
-        return ResponseTemplate.success(${table.entityPath}Service.get${entity}ById(id));
+    public ${entity} get${entity}ById(@PathVariable Long id) {
+        return ${table.entityPath}Service.get${entity}ById(id);
     }
 
     <#if !swagger2>
@@ -83,9 +86,8 @@ public class ${table.controllerName} {
     @ApiOperation("新增-${table.comment?substring(0,table.comment?length-1)}")
     </#if>
     @PostMapping
-    public ResponseTemplate insert${entity}(@RequestBody ${entity} ${table.entityPath}) {
+    public void insert${entity}(@RequestBody ${entity} ${table.entityPath}) {
         ${table.entityPath}Service.insert${entity}(${table.entityPath});
-        return ResponseTemplate.success();
     }
 
     <#if !swagger2>
@@ -96,9 +98,8 @@ public class ${table.controllerName} {
     @ApiOperation("修改-${table.comment?substring(0,table.comment?length-1)}")
     </#if>
     @PutMapping
-    public ResponseTemplate update${entity}(@RequestBody ${entity} ${table.entityPath}) {
+    public void update${entity}(@RequestBody ${entity} ${table.entityPath}) {
         ${table.entityPath}Service.update${entity}(${table.entityPath});
-        return ResponseTemplate.success();
     }
 
     <#if !swagger2>
@@ -109,9 +110,8 @@ public class ${table.controllerName} {
     @ApiOperation("删除-${table.comment?substring(0,table.comment?length-1)}")
     </#if>
     @DeleteMapping("/{id}")
-    public ResponseTemplate delete${entity}(@PathVariable("id") Long id) {
+    public void delete${entity}(@PathVariable("id") Long id) {
         ${table.entityPath}Service.delete${entity}(id);
-        return ResponseTemplate.success();
     }
 
 }
