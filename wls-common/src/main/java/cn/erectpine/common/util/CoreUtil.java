@@ -73,15 +73,15 @@ public class CoreUtil {
      * @Author wls
      */
     public static <T> List<T> convertRootNode(List<T> list, TreeNodeConfig treeNodeConfig) {
-        return list.parallelStream().map(e -> {
-            Map<String, Object> map = BeanUtil.beanToMap(e);
+        return list.parallelStream().map(item -> {
+            Map<String, Object> map = BeanUtil.beanToMap(item);
             if (list.parallelStream().noneMatch(
                     value -> BeanUtil.beanToMap(value).get(treeNodeConfig.getIdKey())
                                      .equals(map.get(treeNodeConfig.getParentIdKey())))) {
                 map.put(treeNodeConfig.getParentIdKey(), 0L);
-                return (T) BeanUtil.toBean(map, e.getClass());
+                return (T) BeanUtil.toBean(map, item.getClass());
             }
-            return e;
+            return item;
         }).collect(Collectors.toList());
     }
     

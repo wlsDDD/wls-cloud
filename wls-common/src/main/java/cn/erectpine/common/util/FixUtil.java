@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public class FixUtil {
     
     /**
-     * 获得api日志
+     * 请求唯一ID
      *
      * @return {@link ApiLog}
      */

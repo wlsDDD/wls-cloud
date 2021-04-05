@@ -16,7 +16,7 @@ import java.util.HashMap;
  * @author wls
  * @date 2021/01/12
  */
-public class ResponseTemplate extends HashMap<String, Object> {
+public class HttpResult extends HashMap<String, Object> {
     
     private static final long serialVersionUID = 1L;
     
@@ -50,7 +50,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
     /**
      * 初始化一个新创建的 ResponseTemplate 对象，使其表示一个空消息。
      */
-    public ResponseTemplate() {
+    public HttpResult() {
         super.put(REQUEST_ID_TAG, ServletUtil.getAttribute(SystemAttributeEnum.requestId.name()));
     }
     
@@ -60,7 +60,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * @param code 状态码
      * @param msg  返回内容
      */
-    public ResponseTemplate(int code, String msg) {
+    public HttpResult(int code, String msg) {
         super.put(REQUEST_ID_TAG, ServletUtil.getAttribute(SystemAttributeEnum.requestId.name()));
         super.put(CODE_TAG, code);
         super.put(MSG_TAG, msg);
@@ -73,7 +73,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * @param msg  返回内容
      * @param data 数据对象
      */
-    public ResponseTemplate(int code, String msg, Object data) {
+    public HttpResult(int code, String msg, Object data) {
         super.put(CODE_TAG, code);
         super.put(MSG_TAG, msg);
         super.put(REQUEST_ID_TAG, FixUtil.getRequestId());
@@ -86,10 +86,10 @@ public class ResponseTemplate extends HashMap<String, Object> {
      *
      * @param key   key
      * @param value object
-     * @return {@link ResponseTemplate}
+     * @return {@link HttpResult}
      */
     @Override
-    public ResponseTemplate put(String key, Object value) {
+    public HttpResult put(String key, Object value) {
         super.put(key, value);
         return this;
     }
@@ -100,8 +100,8 @@ public class ResponseTemplate extends HashMap<String, Object> {
      *
      * @return 成功消息
      */
-    public static ResponseTemplate success() {
-        return ResponseTemplate.success(SUCCESS_MSG);
+    public static HttpResult success() {
+        return HttpResult.success(SUCCESS_MSG);
     }
     
     /**
@@ -109,8 +109,8 @@ public class ResponseTemplate extends HashMap<String, Object> {
      *
      * @return 成功消息
      */
-    public static ResponseTemplate success(Object data) {
-        return ResponseTemplate.success(SUCCESS_MSG, data);
+    public static HttpResult success(Object data) {
+        return HttpResult.success(SUCCESS_MSG, data);
     }
     
     /**
@@ -119,8 +119,8 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * @param msg 返回内容
      * @return 成功消息
      */
-    public static ResponseTemplate success(String msg) {
-        return ResponseTemplate.success(msg, null);
+    public static HttpResult success(String msg) {
+        return HttpResult.success(msg, null);
     }
     
     /**
@@ -130,8 +130,8 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * @param data 数据对象
      * @return 成功消息
      */
-    public static ResponseTemplate success(String msg, Object data) {
-        return new ResponseTemplate(HttpStatus.SUCCESS, msg, data);
+    public static HttpResult success(String msg, Object data) {
+        return new HttpResult(HttpStatus.SUCCESS, msg, data);
     }
     
     
@@ -139,10 +139,10 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * 错误
      * 返回错误消息
      *
-     * @return {@link ResponseTemplate}
+     * @return {@link HttpResult}
      */
-    public static ResponseTemplate error() {
-        return ResponseTemplate.error(ERROR_MSG);
+    public static HttpResult error() {
+        return HttpResult.error(ERROR_MSG);
     }
     
     /**
@@ -151,8 +151,8 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * @param msg 返回内容
      * @return 警告消息
      */
-    public static ResponseTemplate error(String msg) {
-        return ResponseTemplate.error(msg, null);
+    public static HttpResult error(String msg) {
+        return HttpResult.error(msg, null);
     }
     
     /**
@@ -162,8 +162,8 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * @param data 数据对象
      * @return 警告消息
      */
-    public static ResponseTemplate error(String msg, Object data) {
-        return new ResponseTemplate(HttpStatus.ERROR, msg, data);
+    public static HttpResult error(String msg, Object data) {
+        return new HttpResult(HttpStatus.ERROR, msg, data);
     }
     
     /**
@@ -173,8 +173,8 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * @param msg  返回内容
      * @return 警告消息
      */
-    public static ResponseTemplate error(int code, String msg) {
-        return new ResponseTemplate(code, msg, null);
+    public static HttpResult error(int code, String msg) {
+        return new HttpResult(code, msg, null);
     }
     
     /**
@@ -185,8 +185,8 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * @param data 数据对象
      * @return 警告消息
      */
-    public static ResponseTemplate error(int code, String msg, Object data) {
-        return new ResponseTemplate(code, msg, data);
+    public static HttpResult error(int code, String msg, Object data) {
+        return new HttpResult(code, msg, data);
     }
     
     /**
@@ -195,7 +195,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * @param codeMsgEnum {@link CodeMsgEnum}
      * @return 警告消息
      */
-    public static ResponseTemplate error(CodeMsgEnum codeMsgEnum) {
+    public static HttpResult error(CodeMsgEnum codeMsgEnum) {
         FixUtil.setApiLog(FixUtil.getApiLog().setStatus(codeMsgEnum));
         return error(codeMsgEnum.getCode(), codeMsgEnum.getMsg());
     }
@@ -206,7 +206,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * @param e {@link BaseRunTimeException}
      * @return 警告消息
      */
-    public static ResponseTemplate error(BaseRunTimeException e) {
+    public static HttpResult error(BaseRunTimeException e) {
         return error(e.getCode(), e.getMessage());
     }
     

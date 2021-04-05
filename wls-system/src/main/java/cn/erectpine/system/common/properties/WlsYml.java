@@ -52,5 +52,4 @@ public final class WlsYml {
      */
     private String[] addressee;
     
-    
 }

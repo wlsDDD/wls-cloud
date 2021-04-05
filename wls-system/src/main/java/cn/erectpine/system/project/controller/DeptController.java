@@ -1,7 +1,6 @@
 package cn.erectpine.system.project.controller;
 
-import cn.erectpine.common.annotation.Log;
-import cn.erectpine.common.web.ResponseTemplate;
+import cn.erectpine.common.web.HttpResult;
 import cn.erectpine.system.project.entity.Dept;
 import cn.erectpine.system.project.service.IDeptService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -27,43 +26,43 @@ public class DeptController {
      * 部门-分页列表
      */
     @PostMapping("/list")
-    public ResponseTemplate pageDept(@RequestBody Page<Dept> page, Dept dept) {
-        return ResponseTemplate.success(deptService.pageDept(page, dept));
+    public HttpResult pageDept(@RequestBody Page<Dept> page, Dept dept) {
+        return HttpResult.success(deptService.pageDept(page, dept));
     }
     
     /**
      * 根据id获取部门详情
      */
     @GetMapping("/{id}")
-    public ResponseTemplate getDeptById(@PathVariable Long id) {
-        return ResponseTemplate.success(deptService.getDeptById(id));
+    public HttpResult getDeptById(@PathVariable Long id) {
+        return HttpResult.success(deptService.getDeptById(id));
     }
     
     /**
      * 新增-部门
      */
     @PostMapping
-    public ResponseTemplate insertDept(@RequestBody Dept dept) {
+    public HttpResult insertDept(@RequestBody Dept dept) {
         deptService.insertDept(dept);
-        return ResponseTemplate.success();
+        return HttpResult.success();
     }
     
     /**
      * 修改-部门
      */
     @PutMapping
-    public ResponseTemplate updateDept(@RequestBody Dept dept) {
+    public HttpResult updateDept(@RequestBody Dept dept) {
         deptService.updateDept(dept);
-        return ResponseTemplate.success();
+        return HttpResult.success();
     }
     
     /**
      * 删除-部门
      */
     @DeleteMapping("/{id}")
-    public ResponseTemplate deleteDept(@PathVariable("id") Long id) {
+    public HttpResult deleteDept(@PathVariable("id") Long id) {
         deptService.deleteDept(id);
-        return ResponseTemplate.success();
+        return HttpResult.success();
     }
     
 }
