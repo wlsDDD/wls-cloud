@@ -1,12 +1,11 @@
 package cn.erectpine.system.project.controller;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.springframework.web.bind.annotation.*;
+import cn.erectpine.common.web.BaseController;
 import cn.erectpine.system.project.entity.Role;
 import cn.erectpine.system.project.service.IRoleService;
-import org.springframework.web.bind.annotation.RestController;
-import cn.erectpine.common.web.BaseController;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -56,6 +55,7 @@ public class RoleController extends BaseController {
      */
     @PutMapping
     public void updateRole(@RequestBody Role role) {
+    
         roleService.updateRole(role);
     }
 
