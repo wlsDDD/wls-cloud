@@ -55,7 +55,6 @@ public class RoleController extends BaseController {
      */
     @PutMapping
     public void updateRole(@RequestBody Role role) {
-    
         roleService.updateRole(role);
     }
 
