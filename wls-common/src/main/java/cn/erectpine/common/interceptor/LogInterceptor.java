@@ -1,6 +1,7 @@
 package cn.erectpine.common.interceptor;
 
 import cn.erectpine.common.enums.SystemAttributeEnum;
+import cn.erectpine.common.util.FixUtil;
 import cn.erectpine.common.web.pojo.ApiLog;
 import cn.hutool.core.util.IdUtil;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -22,7 +23,7 @@ public class LogInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String uuid = IdUtil.simpleUUID();
         request.setAttribute(SystemAttributeEnum.requestId.name(), uuid);
-        request.setAttribute(SystemAttributeEnum.apiLog.name(), new ApiLog().setRequestId(uuid));
+        FixUtil.setApiLog(new ApiLog().setRequestId(uuid));
         return true;
     }
     

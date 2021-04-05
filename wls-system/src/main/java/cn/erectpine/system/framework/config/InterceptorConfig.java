@@ -1,8 +1,7 @@
-package cn.erectpine.common.config;
+package cn.erectpine.system.framework.config;
 
-import cn.erectpine.common.interceptor.LogInterceptor;
+import cn.erectpine.system.framework.interceptor.SaveLogInterceptor;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -11,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @Date 2021/3/16 10:37
  */
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
+public class InterceptorConfig implements WebMvcConfigurer {
     
     /**
      * 注册拦截器
@@ -20,7 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LogInterceptor())
+        registry.addInterceptor(new SaveLogInterceptor())
                 .addPathPatterns("/**");
     }
     

@@ -1,12 +1,20 @@
 package cn.erectpine.common.util;
 
+import cn.erectpine.common.constant.GlobalConstants;
 import cn.erectpine.common.properties.WlsShareYml;
+import cn.erectpine.common.web.pojo.ApiLog;
+import cn.hutool.core.date.DatePattern;
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSON;
+import cn.hutool.json.JSONConfig;
+import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
@@ -42,7 +50,11 @@ public class MailServer {
             // 设置邮件发送者，这个跟application.yml中设置的要一致
             message.setFrom(wlsShareYml.getFrom());
             // 设置邮件接收者，可以有多个接收者，中间用逗号隔开，以下类似
-            message.setTo(address);
+            if (StrUtil.isAllEmpty(address)) {
+                message.setTo(wlsShareYml.getFrom());
+            } else {
+                message.setTo(address);
+            }
             // 设置邮件发送日期
             message.setSentDate(new Date());
             // 设置邮件的正文
@@ -83,6 +95,14 @@ public class MailServer {
         } catch (MessagingException e) {
             log.error("发送邮件时发生异常！", e);
         }
+    }
+    
+    @Async
+    public void sendObj(ApiLog apiLog) {
+        JSONConfig jsonConfig = new JSONConfig().setDateFormat(DatePattern.NORM_DATETIME_MS_PATTERN).setIgnoreNullValue(false);
+        JSON logJson = JSONUtil.parse(apiLog, jsonConfig);
+        String title = StrUtil.format("{}服务-{}环境-发现异常，请排查！", GlobalConstants.serviceName, GlobalConstants.active.name());
+        sendSimpleMail(title, JSONUtil.toJsonPrettyStr(logJson));
     }
     
 }

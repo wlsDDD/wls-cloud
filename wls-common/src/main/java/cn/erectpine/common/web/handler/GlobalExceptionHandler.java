@@ -1,17 +1,14 @@
 package cn.erectpine.common.web.handler;
 
-import cn.erectpine.common.constant.GlobalConstants;
-import cn.erectpine.common.enums.ActiveEnum;
 import cn.erectpine.common.enums.CodeMsgEnum;
-import cn.erectpine.common.enums.SystemAttributeEnum;
-import cn.erectpine.common.util.CoreUtil;
+import cn.erectpine.common.enums.LogTypeEnum;
+import cn.erectpine.common.util.FixUtil;
 import cn.erectpine.common.util.MailServer;
 import cn.erectpine.common.web.ResponseTemplate;
-import cn.erectpine.common.web.exception.BaseRunTimeException;
 import cn.erectpine.common.web.exception.BusinessException;
 import cn.erectpine.common.web.pojo.ApiLog;
-import cn.hutool.core.util.StrUtil;
-import com.alibaba.fastjson.JSON;
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
@@ -25,6 +22,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * 全局异常处理程序
@@ -52,26 +50,12 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
         
         if ((e instanceof BusinessException)) {
             log.warn("【全局异常拦截】{}", "业务类异常");
-            return ResponseTemplate.error((BaseRunTimeException) e);
+            return ResponseTemplate.error(CodeMsgEnum.BUSINESS_ERROR.setMsg(e.getMessage()));
         }
         
-        if ((e instanceof BaseRunTimeException)) {
-            log.warn("【全局异常拦截】{}", "基础异常", e);
-            return ResponseTemplate.error((BaseRunTimeException) e);
-        }
-        
-        // 处理未知异常
+        // 处理未知异常-生产环境屏蔽错误信息
         log.error("【全局异常拦截】{}", "未定义异常类型", e);
-        ApiLog apiLog = (ApiLog) request.getAttribute(SystemAttributeEnum.apiLog.name());
-        // 发送邮件
-        String title = StrUtil.format("{}服务-{}环境-发现异常，请排查！", GlobalConstants.serviceName, GlobalConstants.active.name());
-        mailServer.sendSimpleMail(title, CoreUtil.jsonDelEscape(JSON.toJSONString(apiLog)), mailServer.wlsShareYml.getAddressee());
-        
-        // 定义返回-正式环境屏蔽错误信息
-        if (ActiveEnum.prod.equals(GlobalConstants.active)) {
-            return ResponseTemplate.error(CodeMsgEnum.UNKNOWN_PROD_ERROR);
-        }
-        return ResponseTemplate.error(CodeMsgEnum.UNKNOWN_DEV_ERROR);
+        return ResponseTemplate.error(CodeMsgEnum.UNKNOWN_ERROR);
     }
     
     /**
@@ -79,13 +63,18 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
      */
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        if (null == body) {
-            return ResponseTemplate.success();
+        ApiLog apiLog = FixUtil.getApiLog();
+        ResponseTemplate responseTemplate = null == body ?
+                ResponseTemplate.success() : body instanceof ResponseTemplate ?
+                (ResponseTemplate) body : ResponseTemplate.success(body);
+        apiLog.setResponseData(JSONUtil.parse(responseTemplate));
+        FixUtil.setApiLog(apiLog);
+        // 未知异常时发送邮件
+        if (CodeMsgEnum.UNKNOWN_ERROR.equals(apiLog.getStatus())) {
+            mailServer.sendObj(apiLog);
         }
-        if (body instanceof ResponseTemplate) {
-            return body;
-        }
-        return ResponseTemplate.success(body);
+        consoleLogSync(apiLog);
+        return responseTemplate;
     }
     
     /**
@@ -94,6 +83,25 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {
         return true;
+    }
+    
+    /**
+     * 将日志输出到控制台
+     * TODO 将日志保存到数据库
+     *
+     * @param apiLog {@link ApiLog}
+     */
+    public static void consoleLogSync(ApiLog apiLog) {
+        Map<String, Object> logMap = BeanUtil.beanToMap(apiLog, false, false);
+        if (CodeMsgEnum.SUCCESS.equals(apiLog.getStatus())) {
+            log.info(LogTypeEnum.SUCCESS.getDelimiter());
+            logMap.forEach((s, o) -> log.info(s + ": {}", o));
+            log.info(LogTypeEnum.END.getDelimiter());
+        } else {
+            log.warn(LogTypeEnum.FAIL.getDelimiter());
+            logMap.forEach((s, o) -> log.warn(s + ": {}", o));
+            log.warn(LogTypeEnum.END.getDelimiter());
+        }
     }
     
 }

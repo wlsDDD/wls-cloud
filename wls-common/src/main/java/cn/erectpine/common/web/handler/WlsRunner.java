@@ -1,6 +1,8 @@
 package cn.erectpine.common.web.handler;
 
 import cn.erectpine.common.constant.GlobalConstants;
+import cn.erectpine.common.enums.ActiveEnum;
+import cn.erectpine.common.enums.CodeMsgEnum;
 import cn.erectpine.common.properties.WlsShareYml;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -22,6 +24,9 @@ public class WlsRunner implements CommandLineRunner {
         GlobalConstants.serviceName = wlsShareYml.getServiceName();
         GlobalConstants.active = wlsShareYml.getActive();
         GlobalConstants.stackFilter = wlsShareYml.getStackFilter();
+        boolean isProd = ActiveEnum.prod.equals(GlobalConstants.active);
+        CodeMsgEnum.UNKNOWN_ERROR.setMsg(isProd ? "服务器繁忙! 请稍后重试!" : "服务错误! 请联系开发人员!");
+        
     }
     
 }

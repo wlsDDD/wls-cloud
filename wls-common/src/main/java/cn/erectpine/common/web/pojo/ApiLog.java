@@ -1,5 +1,7 @@
 package cn.erectpine.common.web.pojo;
 
+import cn.erectpine.common.enums.CodeMsgEnum;
+import cn.hutool.json.JSON;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -21,9 +23,9 @@ public class ApiLog {
     private String requestId;
     
     /**
-     * 请求状态 200成功 500失败
+     * 请求状态 200成功 -500失败未处理
      */
-    private Integer status;
+    private CodeMsgEnum status;
     
     /**
      * 接口耗时 单位毫秒
@@ -36,7 +38,7 @@ public class ApiLog {
     private String url;
     
     /**
-     * 请求方法
+     * 请求方式
      */
     private String requestMethod;
     
@@ -48,12 +50,12 @@ public class ApiLog {
     /**
      * 请求headers
      */
-    private String headers;
+    private JSON headers;
     
     /**
      * 请求数据
      */
-    private String requestData;
+    private JSON requestData;
     
     /**
      * 处理请求方法
@@ -63,7 +65,7 @@ public class ApiLog {
     /**
      * 响应数据
      */
-    private String responseData;
+    private JSON responseData;
     
     /**
      * 接口调用开始时间
@@ -81,13 +83,13 @@ public class ApiLog {
     private String authorization;
     
     /**
-     * 异常堆栈信息
+     * 简单异常堆栈信息
      */
-    private String stacktrace;
+    private JSON simpleStacktrace;
     
     /**
-     * 完整异常信息
+     * 完整堆栈日志 暂时不记录
      */
-    private String error;
+    private JSON error;
     
 }

@@ -82,6 +82,11 @@ public interface HttpStatus {
     int ERROR = 500;
     
     /**
+     * 失败未处理
+     */
+    int UNTREATED_ERROR = -500;
+    
+    /**
      * 接口未实现
      */
     int NOT_IMPLEMENTED = 501;

@@ -18,17 +18,23 @@ public enum CodeMsgEnum {
      * 成功返回信息code&msg
      */
     SUCCESS(HttpStatus.SUCCESS, "success"),
-    ERROR(HttpStatus.ERROR, "fail"),
     /**
      * 统一验证参数错误
      */
     ARG_VERIFY_ERROR(-1, "统一验证参数不合法, 请检查参数后重试! 以下信息仅供参考 \r\n"),
-    UNKNOWN_DEV_ERROR(500, "服务错误! 请联系开发人员!"),
-    UNKNOWN_PROD_ERROR(500, "服务器繁忙! 请稍后重试!"),
+    /**
+     * 业务类异常，提示信息由抛异常时定义
+     */
+    BUSINESS_ERROR(6001, ""),
     DATA_INSERT_ERROR(5001, "新增数据失败，请联系数据库管理员"),
     DATA_UPDATE_ERROR(5002, "修改数据失败，请联系数据库管理员"),
     DATA_DELETE_ERROR(5003, "删除数据失败，请联系数据库管理员"),
-    
+    /**
+     * 项目启动时根据环境设置提示信息
+     * 最终兜底方案
+     * 其他状态码应避开此状态码
+     */
+    UNKNOWN_ERROR(500, ""),
     ;
     
     private final Integer code;

@@ -4,6 +4,7 @@ package cn.erectpine.common.web;
 import cn.erectpine.common.constant.HttpStatus;
 import cn.erectpine.common.enums.CodeMsgEnum;
 import cn.erectpine.common.enums.SystemAttributeEnum;
+import cn.erectpine.common.util.FixUtil;
 import cn.erectpine.common.util.ServletUtil;
 import cn.erectpine.common.web.exception.BaseRunTimeException;
 
@@ -195,6 +196,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
      * @return 警告消息
      */
     public static ResponseTemplate error(CodeMsgEnum codeMsgEnum) {
+        FixUtil.setApiLog(FixUtil.getApiLog().setStatus(codeMsgEnum));
         return error(codeMsgEnum.getCode(), codeMsgEnum.getMsg());
     }
     
