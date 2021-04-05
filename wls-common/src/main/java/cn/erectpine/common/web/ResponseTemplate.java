@@ -40,7 +40,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
     /**
      * 请求操作成功提示语
      */
-    public static final String SUCCESS_MSG = "请求成功";
+    public static final String SUCCESS_MSG = CodeMsgEnum.SUCCESS.getMsg();
     /**
      * 请求操作失败提示语
      */
@@ -76,7 +76,7 @@ public class ResponseTemplate extends HashMap<String, Object> {
     public ResponseTemplate(int code, String msg, Object data) {
         super.put(CODE_TAG, code);
         super.put(MSG_TAG, msg);
-        super.put(REQUEST_ID_TAG, ServletUtil.getAttribute(SystemAttributeEnum.requestId.name()));
+        super.put(REQUEST_ID_TAG, FixUtil.getRequestId());
         super.put(DATA_TAG, null == data ? "" : data);
     }
     

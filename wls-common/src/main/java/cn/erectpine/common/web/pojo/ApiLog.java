@@ -91,5 +91,9 @@ public class ApiLog {
      * 完整堆栈日志 暂时不记录
      */
     private JSON error;
+    /**
+     * 错误消息
+     */
+    private String errorMsg;
     
 }

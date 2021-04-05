@@ -1,7 +1,6 @@
 package cn.erectpine.common.enums;
 
 
-import cn.erectpine.common.constant.HttpStatus;
 import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 
@@ -17,7 +16,7 @@ public enum CodeMsgEnum {
     /**
      * 成功返回信息code&msg
      */
-    SUCCESS(HttpStatus.SUCCESS, "success"),
+    SUCCESS(200, "success"),
     /**
      * 统一验证参数错误
      */

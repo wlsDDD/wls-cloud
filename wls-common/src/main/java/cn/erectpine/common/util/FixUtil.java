@@ -18,6 +18,16 @@ public class FixUtil {
      *
      * @return {@link ApiLog}
      */
+    public static String getRequestId() {
+        HttpServletRequest request = ServletUtil.getRequest();
+        return request.getAttribute(SystemAttributeEnum.requestId.name()).toString();
+    }
+    
+    /**
+     * 获得api日志
+     *
+     * @return {@link ApiLog}
+     */
     public static ApiLog getApiLog() {
         HttpServletRequest request = ServletUtil.getRequest();
         return (ApiLog) request.getAttribute(SystemAttributeEnum.apiLog.name());
