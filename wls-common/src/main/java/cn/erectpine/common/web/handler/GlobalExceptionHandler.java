@@ -16,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
@@ -42,12 +43,16 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
             log.warn("【全局异常拦截】{}", "参数不合法, 请检查参数后重试");
             return HttpResult.error(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
         }
-        
+        if ((e instanceof MethodArgumentNotValidException)) {
+            log.warn("【全局异常拦截】{}", "参数不合法, 请检查参数后重试");
+            return HttpResult.error(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
+        }
+    
         if ((e instanceof IllegalArgumentException)) {
             log.warn("【全局异常拦截】{}", "参数不合法");
             return HttpResult.error(CodeMsgEnum.ARG_VERIFY_ERROR);
         }
-        
+    
         if ((e instanceof BusinessException)) {
             log.warn("【全局异常拦截】{}", "业务类异常");
             return HttpResult.error(CodeMsgEnum.BUSINESS_ERROR.setMsg(e.getMessage()));
@@ -69,11 +74,11 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
                 (HttpResult) body : HttpResult.success(body);
         apiLog.setResponseData(JSONUtil.parse(httpResult));
         FixUtil.setApiLog(apiLog);
+        consoleLog(apiLog);
         // 未知异常时发送邮件
         if (CodeMsgEnum.UNKNOWN_ERROR.equals(apiLog.getStatus())) {
-            mailServer.sendObj(apiLog);
+            mailServer.sendApiLog(apiLog);
         }
-        consoleLog(apiLog);
         return httpResult;
     }
     

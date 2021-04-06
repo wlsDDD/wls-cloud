@@ -98,7 +98,7 @@ public class MailServer {
     }
     
     @Async
-    public void sendObj(ApiLog apiLog) {
+    public void sendApiLog(ApiLog apiLog) {
         JSONConfig jsonConfig = new JSONConfig().setDateFormat(DatePattern.NORM_DATETIME_MS_PATTERN).setIgnoreNullValue(false);
         JSON logJson = JSONUtil.parse(apiLog, jsonConfig);
         String title = StrUtil.format("{}服务-{}环境-发现异常，请排查！", GlobalConstants.serviceName, GlobalConstants.active.name());

@@ -18,6 +18,11 @@ GET http://{{host}}/role/3
 
 ### 添加角色
 POST http://{{host}}/role
+Content-Type: application/json
+
+{
+  "roleKey": "list"
+}
 
 ### 根据ID修改角色
 PUT http://{{host}}/role

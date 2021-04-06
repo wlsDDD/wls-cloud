@@ -5,6 +5,7 @@ import cn.erectpine.system.project.entity.Role;
 import cn.erectpine.system.project.service.IRoleService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -24,13 +25,13 @@ public class RoleController extends BaseController {
     public RoleController(IRoleService roleService) {
         this.roleService = roleService;
     }
-
-
+    
+    
     /**
      * 角色信息-分页列表
      */
     @PostMapping("/list")
-    public IPage<Role> pageRole(@RequestBody Page<Role> page, Role role) {
+    public IPage<Role> pageRole(@RequestBody @Validated Page<Role> page, Role role) {
         return roleService.pageRole(page, role);
     }
 
