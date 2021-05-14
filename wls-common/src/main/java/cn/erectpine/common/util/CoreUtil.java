@@ -2,20 +2,20 @@ package cn.erectpine.common.util;
 
 import cn.erectpine.common.function.FunctionSerializable;
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.LocalDateTimeUtil;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
  * @Author wls
  * @Date 2021/1/12 11:58
  */
-@Component
 public class CoreUtil {
     
     /**
@@ -130,6 +129,34 @@ public class CoreUtil {
     }
     
     /**
+     * 判断是否存在空集合
+     *
+     * @param collections 集合
+     * @return true-存在空集合 false-不存在空集合，即全部集合为非空
+     */
+    public static boolean isNotAllEmpty(Collection<?>... collections) {
+        for (Collection<?> collection : collections) {
+            if (CollUtil.isEmpty(collection)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * 从字符串中获取数字数字
+     *
+     * @param str str
+     * @return {@link Integer}
+     */
+    public static Integer getNumeric(String str) {
+        String regEx = "[^0-9]";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(str);
+        return Integer.valueOf(m.replaceAll("").trim());
+    }
+    
+    /**
      * 转换 "yyyy-MM" 为 LocalDate
      *
      * @param yearMonth 年月 yyyy-MM
@@ -137,6 +164,33 @@ public class CoreUtil {
      */
     public static LocalDate convertLocalDate(String yearMonth) {
         return LocalDateTimeUtil.parseDate(yearMonth, DatePattern.NORM_MONTH_PATTERN);
+    }
+    
+    /**
+     * 获取两个时间间的所有月份
+     *
+     * @param start 起始时间 格式 yyyy-MM
+     * @param end   结束时间 格式 yyyy-MM
+     * @return 月份集合
+     */
+    public static List<String> getDates(String start, String end) {
+        return getDates(convertLocalDate(start), convertLocalDate(end));
+    }
+    
+    /**
+     * 获取两个时间间的所有月份
+     *
+     * @param startDate 起始时间
+     * @param endDate   结束时间
+     * @return 月份集合
+     */
+    public static List<String> getDates(LocalDate startDate, LocalDate endDate) {
+        List<String> dates = new LinkedList<>();
+        while (startDate.isBefore(endDate) || startDate.isEqual(endDate)) {
+            dates.add(startDate.format(DateTimeFormatter.ofPattern("yyyy-MM")));
+            startDate = startDate.plusMonths(1);
+        }
+        return dates;
     }
     
     /**

@@ -99,6 +99,7 @@ public class ${entity} implements Serializable {
 <#if (logicDeleteFieldName!"") == field.name>
     @TableLogic
 </#if>
+    // ${field.type}
     private ${field.propertyType} ${field.propertyName};
 
 </#list>

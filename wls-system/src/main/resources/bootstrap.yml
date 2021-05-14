@@ -9,17 +9,18 @@ spring:
     nacos:
       discovery:
         # 命名空间
-        namespace: c49938e7-209f-499c-8b24-ef4c746b90a5
+        namespace: fdd50687827f43de9f4cee4c0d72876c
         # 服务注册地址
-        server-addr: 123.57.101.219:8848
+        server-addr: 159.75.93.83:8848
+        group: dev
       config:
         # 配置中心地址
-        server-addr: 123.57.101.219:8848
+        server-addr: 159.75.93.83:8848
         # 配置文件格式
         file-extension: yml
         # 命名空间
-        namespace: c49938e7-209f-499c-8b24-ef4c746b90a5
-        group: DEFAULT_GROUP
+        namespace: fdd50687827f43de9f4cee4c0d72876c
+        group: dev
         # 共享配置
         shared-configs:
           - dataId: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}

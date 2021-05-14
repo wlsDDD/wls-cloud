@@ -12,12 +12,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @date 2021/01/20 14:28:02
  */
 @EnableDiscoveryClient
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class WlsGatewayApplication {
-
-	public static void main(String[] args) {
+    
+    public static void main(String[] args) {
         SpringApplication.run(WlsGatewayApplication.class, args);
-        System.err.println("(♥◠‿◠)ﾉﾞ  wls网关服务-启动完成   ლ(´ڡ`ლ)ﾞ  ");
+        System.err.println("(♥◠‿◠)ﾉﾞ  wls网关服务-启动完成   ლ(´ڡ`ლ)ﾞ ");
     }
-
+    
 }
