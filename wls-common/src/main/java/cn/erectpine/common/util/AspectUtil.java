@@ -81,7 +81,7 @@ public class AspectUtil {
             try {
                 org.springframework.util.Assert.notNull(apiLog, "日志切面异常");
                 apiLog.setStatus(CodeMsgEnum.UNKNOWN_ERROR)
-                      .setErrorMsg(e.getMessage())
+                      .setErrorMsg(e.toString())
                       .setSimpleStacktrace(JSONUtil.parse(CoreUtil.getSimpleStackTrace(e, GlobalConstants.stackFilter)));
             } catch (Exception exception) {
                 log.error("日志切面catch块异常", e);

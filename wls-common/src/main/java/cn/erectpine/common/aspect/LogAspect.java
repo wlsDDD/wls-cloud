@@ -34,6 +34,4 @@ public class LogAspect {
         return AspectUtil.logAround(joinPoint);
     }
     
-    
-    
 }

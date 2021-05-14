@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties("share")
 public final class WlsShareYml {
-    
     /**
      * 服务名
      */
@@ -24,26 +23,19 @@ public final class WlsShareYml {
      * 项目启动环境
      */
     private ActiveEnum active;
-    /**
-     * 堆栈信息过滤
-     */
-    private String stackFilter;
     
     /**
      * 邮件发送人
      */
-    private String from;
+    private String emailFrom;
     /**
      * 邮件收件人
      */
     private String[] addressee;
+    
     /**
-     * 堆栈日志过滤关键字
+     * 堆栈信息过滤关键字
      */
-    private String stacktrace;
-    /**
-     * 接口日志切面
-     */
-    private String apiLogPointCut;
+    private String stackFilter;
     
 }

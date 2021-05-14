@@ -93,11 +93,6 @@
                 <artifactId>wls-common</artifactId>
                 <version>${wls.common.version}</version>
             </dependency>
-            <dependency>
-                <groupId>cn.erectpine</groupId>
-                <artifactId>wls-system</artifactId>
-                <version>${wls.system.version}</version>
-            </dependency>
 
         </dependencies>
     </dependencyManagement>

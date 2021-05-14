@@ -48,10 +48,10 @@ public class MailServer {
             // 设置邮件主题
             message.setSubject(title);
             // 设置邮件发送者，这个跟application.yml中设置的要一致
-            message.setFrom(wlsShareYml.getFrom());
+            message.setFrom(wlsShareYml.getEmailFrom());
             // 设置邮件接收者，可以有多个接收者，中间用逗号隔开，以下类似
             if (StrUtil.isAllEmpty(address)) {
-                message.setTo(wlsShareYml.getFrom());
+                message.setTo(wlsShareYml.getEmailFrom());
             } else {
                 message.setTo(address);
             }
@@ -81,7 +81,7 @@ public class MailServer {
         try {
             MimeMessageHelper messageHelper = new MimeMessageHelper(message, true);
             //邮件发送人
-            messageHelper.setFrom(wlsShareYml.getFrom());
+            messageHelper.setFrom(wlsShareYml.getEmailFrom());
             //邮件接收人
             messageHelper.setTo(address);
             //邮件主题
@@ -99,9 +99,15 @@ public class MailServer {
     
     @Async
     public void sendApiLog(ApiLog apiLog) {
-        JSONConfig jsonConfig = new JSONConfig().setDateFormat(DatePattern.NORM_DATETIME_MS_PATTERN).setIgnoreNullValue(false);
+        // 排序
+        JSONConfig jsonConfig = new JSONConfig()
+                .setOrder(true)
+                .setDateFormat(DatePattern.NORM_DATETIME_MS_PATTERN)
+                .setIgnoreNullValue(false);
         JSON logJson = JSONUtil.parse(apiLog, jsonConfig);
-        String title = StrUtil.format("{}服务-{}环境-发现异常，请排查！", GlobalConstants.serviceName, GlobalConstants.active.name());
+        String title = StrUtil.format("{}服务-{}环境-发现异常！！",
+                GlobalConstants.serviceName,
+                GlobalConstants.active.name());
         sendSimpleMail(title, JSONUtil.toJsonPrettyStr(logJson));
     }
     

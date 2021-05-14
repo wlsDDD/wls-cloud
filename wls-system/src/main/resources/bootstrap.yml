@@ -23,9 +23,11 @@ spring:
         group: dev
         # 共享配置
         shared-configs:
-          - dataId: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          - dataId: wls-base-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+            group: dev
             refresh: true
-          - dataId: wls-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          - dataId: wls-mail-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+            group: dev
             refresh: true
 
 

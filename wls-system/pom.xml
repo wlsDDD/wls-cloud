@@ -14,12 +14,12 @@
     <description>系统核心项目</description>
 
     <dependencies>
-        <!-- SpringCloud Ailibaba Nacos -->
+        <!-- SpringCloud Alibaba Nacos -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-        <!-- SpringCloud Ailibaba Nacos Config -->
+        <!-- SpringCloud Alibaba Nacos Config -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
@@ -67,6 +67,12 @@
         </dependency>
 
         <!--***************************************** 开发工具库 ****************************************************-->
+        <!--springboot配置注解处理-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
         <!--热启动依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -74,19 +80,13 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-        <!--SpringBoot解析配置文件-->
-        <!--		<dependency>-->
-        <!--			<groupId>org.springframework.boot</groupId>-->
-        <!--			<artifactId>spring-boot-configuration-processor</artifactId>-->
-        <!--			<optional>true</optional>-->
-        <!--		</dependency>-->
         <!--lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--SpringBoot测试包-->
+        <!--SpringBoot-Junit5测试包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -107,6 +107,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
