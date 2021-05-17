@@ -61,7 +61,7 @@ public class ${table.controllerName} {
     <#else>
     @ApiOperation("${table.comment?substring(0,table.comment?length-1)}-分页列表")
     </#if>
-    @PostMapping("/list")
+    @PostMapping("/page")
     public IPage<${entity}> page${entity}(@RequestBody <#if swagger2>@ApiIgnore </#if>Page<${entity}> page, ${entity} ${table.entityPath}) {
         return ${table.entityPath}Service.page${entity}(page, ${table.entityPath});
     }
