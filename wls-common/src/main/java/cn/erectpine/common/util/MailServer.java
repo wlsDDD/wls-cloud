@@ -1,8 +1,8 @@
 package cn.erectpine.common.util;
 
 import cn.erectpine.common.constant.GlobalConstants;
+import cn.erectpine.common.pojo.ApiLog;
 import cn.erectpine.common.properties.WlsShareYml;
-import cn.erectpine.common.web.pojo.ApiLog;
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSON;

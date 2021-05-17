@@ -2,9 +2,9 @@ package cn.erectpine.common.util;
 
 import cn.erectpine.common.annotation.LogIgnore;
 import cn.erectpine.common.constant.GlobalConstants;
+import cn.erectpine.common.context.WlsContext;
 import cn.erectpine.common.enums.CodeMsgEnum;
-import cn.erectpine.common.enums.SystemAttributeEnum;
-import cn.erectpine.common.web.pojo.ApiLog;
+import cn.erectpine.common.pojo.ApiLog;
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -60,7 +60,7 @@ public class AspectUtil {
             logIgnore = AspectUtil.getAnnotationLog(joinPoint, LogIgnore.class);
             request = ServletUtil.getRequest();
             // 开始记录日志
-            apiLog = FixUtil.getApiLog();
+            apiLog = WlsContext.getContext().getApiLog();
             apiLog.setHeaders(JSONUtil.parseObj(ServletUtil.getHeaders(request)))
                   .setStartTime(LocalDateTime.now())
                   .setStatus(CodeMsgEnum.SUCCESS);
@@ -101,7 +101,6 @@ public class AspectUtil {
                       .setRequestMethod(request.getMethod())
                       .setAuthorization(request.getHeader("Authorization"))
                       .setHandleMethod(AspectUtil.getMethodName(joinPoint));
-                request.setAttribute(SystemAttributeEnum.apiLog.name(), apiLog);
             } catch (Exception e) {
                 log.error("日志切面后置异常", e);
             }

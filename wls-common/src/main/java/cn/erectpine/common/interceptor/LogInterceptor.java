@@ -1,17 +1,15 @@
 package cn.erectpine.common.interceptor;
 
-import cn.erectpine.common.enums.SystemAttributeEnum;
-import cn.erectpine.common.util.FixUtil;
-import cn.erectpine.common.web.pojo.ApiLog;
-import cn.hutool.core.util.IdUtil;
+import cn.erectpine.common.context.WlsContext;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 生成请求ID
  * 拦截器
+ * 生成请求ID
  * 封装返回结果
  *
  * @Author wls
@@ -21,10 +19,18 @@ public class LogInterceptor implements HandlerInterceptor {
     
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String uuid = IdUtil.simpleUUID();
-        request.setAttribute(SystemAttributeEnum.requestId.name(), uuid);
-        FixUtil.setApiLog(new ApiLog().setRequestId(uuid));
+        WlsContext.setContext();
         return true;
     }
     
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
+    }
+    
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        WlsContext.removeContext();
+        HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
+    }
 }

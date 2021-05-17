@@ -8,14 +8,4 @@ package cn.erectpine.common.enums;
  */
 public enum SystemAttributeEnum {
     
-    /**
-     * 请求id
-     */
-    requestId,
-    
-    /**
-     * 接口日志key
-     */
-    apiLog,
-    
 }

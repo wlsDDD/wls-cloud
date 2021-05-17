@@ -4,7 +4,6 @@ import cn.erectpine.common.web.HttpResult;
 import cn.erectpine.system.project.entity.Dept;
 import cn.erectpine.system.project.service.IDeptService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -19,7 +18,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/dept")
 public class DeptController {
     
-    @Autowired IDeptService deptService;
+    private final IDeptService deptService;
+    
+    public DeptController(IDeptService deptService) {
+        this.deptService = deptService;
+    }
     
     
     /**

@@ -1,12 +1,12 @@
 package cn.erectpine.common.web.handler;
 
+import cn.erectpine.common.context.WlsContext;
 import cn.erectpine.common.enums.CodeMsgEnum;
 import cn.erectpine.common.enums.LogTypeEnum;
-import cn.erectpine.common.util.FixUtil;
+import cn.erectpine.common.pojo.ApiLog;
 import cn.erectpine.common.util.MailServer;
 import cn.erectpine.common.web.HttpResult;
 import cn.erectpine.common.web.exception.BusinessException;
-import cn.erectpine.common.web.pojo.ApiLog;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -68,12 +68,11 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
      */
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        ApiLog apiLog = FixUtil.getApiLog();
+        ApiLog apiLog = WlsContext.getApiLog();
         HttpResult httpResult = null == body ?
                 HttpResult.success() : body instanceof HttpResult ?
                 (HttpResult) body : HttpResult.success(body);
         apiLog.setResponseData(JSONUtil.parse(httpResult));
-        FixUtil.setApiLog(apiLog);
         consoleLog(apiLog);
         // 未知异常时发送邮件
         if (CodeMsgEnum.UNKNOWN_ERROR.equals(apiLog.getStatus())) {
