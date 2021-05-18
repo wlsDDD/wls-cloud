@@ -1,6 +1,5 @@
 package cn.erectpine.common.generator.doc;
 
-import cn.erectpine.common.pojo.ApiLog;
 import cn.hutool.core.annotation.AnnotationUtil;
 import cn.hutool.core.bean.BeanDesc;
 import cn.hutool.core.bean.BeanUtil;
@@ -33,24 +32,34 @@ public class MdGenerator {
     static String paramPath = "ftl/doc/param.md.ftl";
     static String outputPath = System.getProperty("user.dir") + "/src/test/{}.md";
     
-    public static void genEntity(Class<?> clazz) {
-        genMd(clazz, entityPath, outputPath);
-    }
-    
-    public static void genParam(Class<?> clazz) {
-        genMd(clazz, paramPath, outputPath);
+    /**
+     * 实体文档
+     *
+     * @param clazz clazz
+     */
+    public static void genMd(Class<?> clazz) {
+        genMd(clazz, entityPath);
     }
     
     /**
-     * 生成实体类文档
+     * 参数文档
+     *
+     * @param clazz clazz
      */
-    public static void genMd(Class<?> clazz, String templatePath, String outputPath) {
+    public static void genMd(Class<?> clazz, String templatePath) {
+        genMd(clazz, templatePath, outputPath);
+    }
+    
+    /**
+     * 生成文档
+     */
+    private static void genMd(Class<?> clazz, String templatePath, String outputPath) {
         try {
-            WLsProp wLsProp = AnnotationUtil.getAnnotation(clazz, WLsProp.class);
-            outputPath = StrUtil.format(outputPath, wLsProp.value());
+            WLsProperty wLsProperty = AnnotationUtil.getAnnotation(clazz, WLsProperty.class);
+            outputPath = StrUtil.format(outputPath, wLsProperty.value());
             Map<String, Object> objectMap = new LinkedHashMap<>();
-            objectMap.put("fields", getFields(ApiLog.class));
-            objectMap.put("entityName", wLsProp.value());
+            objectMap.put("fields", getFields(clazz));
+            objectMap.put("entityName", wLsProperty.value());
             Configuration config = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
             config.setDefaultEncoding(ConstVal.UTF8);
             config.setClassForTemplateLoading(FreemarkerTemplateEngine.class, StringPool.SLASH);
@@ -70,16 +79,18 @@ public class MdGenerator {
      * @param clazz clazz
      * @return {@link List<WlsField>}
      */
-    public static List<WlsField> getFields(Class<?> clazz) {
+    private static List<WlsField> getFields(Class<?> clazz) {
         List<WlsField> list = new LinkedList<>();
         BeanDesc beanDesc = BeanUtil.getBeanDesc(clazz);
         beanDesc.getProps().forEach(propDesc -> {
             Field field = propDesc.getField();
-            WlsField filed = new WlsField().setPropertyName(field.getName())
-                                           .setPropertyType(field.getType().getSimpleName());
-            WLsProp wLsProp = field.getAnnotation(WLsProp.class);
-            if (wLsProp != null) {
-                filed.setComment(wLsProp.value());
+            WLsProperty wLsProperty = field.getAnnotation(WLsProperty.class);
+            if (wLsProperty != null) {
+                WlsField filed = new WlsField()
+                        .setPropertyName(field.getName())
+                        .setPropertyType(field.getType().getSimpleName())
+                        .setComment(wLsProperty.value())
+                        .setRequired(wLsProperty.required() ? "是" : "否");
                 list.add(filed);
             }
         });
