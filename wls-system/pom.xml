@@ -67,6 +67,14 @@
         </dependency>
 
         <!--***************************************** 开发工具库 ****************************************************-->
+        <!--        &lt;!&ndash;jdk工具包&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.sun</groupId>-->
+        <!--            <artifactId>tools</artifactId>-->
+        <!--            <version>1.8</version>-->
+        <!--            <scope>system</scope>-->
+        <!--            <systemPath>${project.basedir}/lib/tools.jar</systemPath>-->
+        <!--        </dependency>-->
         <!--springboot配置注解处理-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -107,6 +115,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.4.1</version>
                 <configuration>
                     <excludes>
                         <exclude>

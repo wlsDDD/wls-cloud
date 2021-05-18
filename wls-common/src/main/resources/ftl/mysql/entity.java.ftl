@@ -60,6 +60,7 @@ public class ${entity} implements Serializable {
 <#if field.comment!?length gt 0>
     /**
      * ${field.comment}
+     * ${field.type}
      */
 <#if swagger2>
     @ApiModelProperty(value = "${field.comment}")
@@ -99,9 +100,7 @@ public class ${entity} implements Serializable {
 <#if (logicDeleteFieldName!"") == field.name>
     @TableLogic
 </#if>
-    // ${field.type}
     private ${field.propertyType} ${field.propertyName};
-
 </#list>
 <#------------  END 字段循环遍历  ---------->
 <#if !entityLombokModel>
