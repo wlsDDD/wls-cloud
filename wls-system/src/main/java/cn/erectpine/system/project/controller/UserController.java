@@ -1,5 +1,6 @@
 package cn.erectpine.system.project.controller;
 
+import cn.erectpine.common.pojo.ApiLog;
 import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.service.IUserService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -31,6 +32,8 @@ public class UserController {
      */
     @PostMapping("/list")
     public IPage<User> pageUser(@RequestBody Page<User> page, User user) {
+        ApiLog apiLog = new ApiLog();
+        System.out.println("apiLog = " + apiLog);
         if (user.getUserName() == null) {
             throw new RuntimeException("模拟一个异常");
         }

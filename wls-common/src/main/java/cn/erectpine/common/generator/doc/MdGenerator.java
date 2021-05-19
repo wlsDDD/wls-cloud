@@ -3,7 +3,6 @@ package cn.erectpine.common.generator.doc;
 import cn.hutool.core.annotation.AnnotationUtil;
 import cn.hutool.core.bean.BeanDesc;
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.config.ConstVal;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
@@ -11,6 +10,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Field;
@@ -30,7 +30,7 @@ public class MdGenerator {
     
     static String entityPath = "ftl/doc/entity.md.ftl";
     static String paramPath = "ftl/doc/param.md.ftl";
-    static String outputPath = System.getProperty("user.dir") + "/src/test/{}.md";
+    static String outputPath = System.getProperty("user.dir") + "/src/test/md";
     
     /**
      * 实体文档
@@ -55,16 +55,19 @@ public class MdGenerator {
      */
     private static void genMd(Class<?> clazz, String templatePath, String outputPath) {
         try {
-            WLsProperty wLsProperty = AnnotationUtil.getAnnotation(clazz, WLsProperty.class);
-            outputPath = StrUtil.format(outputPath, wLsProperty.value());
+            WlsProperty wlsProperty = AnnotationUtil.getAnnotation(clazz, WlsProperty.class);
             Map<String, Object> objectMap = new LinkedHashMap<>();
             objectMap.put("fields", getFields(clazz));
-            objectMap.put("entityName", wLsProperty.value());
+            objectMap.put("entityName", wlsProperty == null ? "emptyName" : wlsProperty.value());
             Configuration config = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
             config.setDefaultEncoding(ConstVal.UTF8);
             config.setClassForTemplateLoading(FreemarkerTemplateEngine.class, StringPool.SLASH);
             Template template = config.getTemplate(templatePath);
-            try (FileOutputStream fileOutputStream = new FileOutputStream(outputPath)) {
+            File file = new File(outputPath);
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+            try (FileOutputStream fileOutputStream = new FileOutputStream(outputPath + "/" + objectMap.get("entityName") + ".md")) {
                 template.process(objectMap, new OutputStreamWriter(fileOutputStream, ConstVal.UTF8));
             }
             log.debug("模板:" + templatePath + ";  文件:" + outputPath);
@@ -84,7 +87,7 @@ public class MdGenerator {
         BeanDesc beanDesc = BeanUtil.getBeanDesc(clazz);
         beanDesc.getProps().forEach(propDesc -> {
             Field field = propDesc.getField();
-            WLsProperty wLsProperty = field.getAnnotation(WLsProperty.class);
+            WlsProperty wLsProperty = field.getAnnotation(WlsProperty.class);
             if (wLsProperty != null) {
                 WlsField filed = new WlsField()
                         .setPropertyName(field.getName())
