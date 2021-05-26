@@ -52,9 +52,14 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
 
+        <!--        <dependency>-->
+        <!--            <groupId>cn.erectpine</groupId>-->
+        <!--            <artifactId>wls-common</artifactId>-->
+        <!--        </dependency>-->
+
         <dependency>
             <groupId>cn.erectpine</groupId>
-            <artifactId>wls-common</artifactId>
+            <artifactId>wls-common-web</artifactId>
         </dependency>
 
         <!--***************************************** 开发工具库 ****************************************************-->

@@ -10,6 +10,21 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>wls-common</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>wls-common-log</module>
+        <module>wls-common-core</module>
+        <module>wls-common-web</module>
+        <module>wls-common-redis</module>
+        <module>wls-common-gencode</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!--SpringBoot-web-->

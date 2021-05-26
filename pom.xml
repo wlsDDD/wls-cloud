@@ -27,6 +27,12 @@
 
         <wls.common.version>0.0.1-SNAPSHOT</wls.common.version>
         <wls.system.version>0.0.1-SNAPSHOT</wls.system.version>
+
+        <wls.common.core.version>0.0.1-SNAPSHOT</wls.common.core.version>
+        <wls.common.gencode.version>0.0.1-SNAPSHOT</wls.common.gencode.version>
+        <wls.common.log.version>0.0.1-SNAPSHOT</wls.common.log.version>
+        <wls.common.redis.version>0.0.1-SNAPSHOT</wls.common.redis.version>
+        <wls.common.web.version>0.0.1-SNAPSHOT</wls.common.web.version>
     </properties>
 
     <modules>
@@ -88,10 +94,31 @@
                 <artifactId>hibernate-validator</artifactId>
                 <version>${hibernate-validator.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>cn.erectpine</groupId>
-                <artifactId>wls-common</artifactId>
-                <version>${wls.common.version}</version>
+                <artifactId>wls-common-core</artifactId>
+                <version>${wls.common.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.erectpine</groupId>
+                <artifactId>wls-common-gencode</artifactId>
+                <version>${wls.common.gencode.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.erectpine</groupId>
+                <artifactId>wls-common-log</artifactId>
+                <version>${wls.common.log.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.erectpine</groupId>
+                <artifactId>wls-common-redis</artifactId>
+                <version>${wls.common.redis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.erectpine</groupId>
+                <artifactId>wls-common-web</artifactId>
+                <version>${wls.common.web.version}</version>
             </dependency>
 
         </dependencies>

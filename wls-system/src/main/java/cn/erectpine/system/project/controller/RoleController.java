@@ -1,6 +1,6 @@
 package cn.erectpine.system.project.controller;
 
-import cn.erectpine.common.web.BaseController;
+import cn.erectpine.common.web.pojo.BaseController;
 import cn.erectpine.system.project.entity.Role;
 import cn.erectpine.system.project.service.IRoleService;
 import com.baomidou.mybatisplus.core.metadata.IPage;

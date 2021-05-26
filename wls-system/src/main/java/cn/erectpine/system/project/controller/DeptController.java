@@ -1,6 +1,6 @@
 package cn.erectpine.system.project.controller;
 
-import cn.erectpine.common.web.HttpResult;
+import cn.erectpine.common.web.pojo.HttpResult;
 import cn.erectpine.system.project.entity.Dept;
 import cn.erectpine.system.project.service.IDeptService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;

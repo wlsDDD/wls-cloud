@@ -61,9 +61,19 @@
             <artifactId>hibernate-validator</artifactId>
         </dependency>
 
+        <!--        <dependency>-->
+        <!--            <groupId>cn.erectpine</groupId>-->
+        <!--            <artifactId>wls-common</artifactId>-->
+        <!--        </dependency>-->
+
         <dependency>
             <groupId>cn.erectpine</groupId>
-            <artifactId>wls-common</artifactId>
+            <artifactId>wls-common-gencode</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.erectpine</groupId>
+            <artifactId>wls-common-web</artifactId>
         </dependency>
 
         <!--***************************************** 开发工具库 ****************************************************-->

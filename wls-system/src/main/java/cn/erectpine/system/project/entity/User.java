@@ -1,7 +1,7 @@
 package cn.erectpine.system.project.entity;
 
-import cn.erectpine.common.generator.doc.WlsProperty;
-import cn.erectpine.common.web.BaseEntity;
+import cn.erectpine.common.gencode.md.WlsProperty;
+import cn.erectpine.common.web.pojo.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;

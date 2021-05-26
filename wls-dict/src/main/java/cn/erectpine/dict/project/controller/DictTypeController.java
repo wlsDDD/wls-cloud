@@ -1,6 +1,6 @@
 package cn.erectpine.dict.project.controller;
 
-import cn.erectpine.common.web.HttpResult;
+import cn.erectpine.common.web.pojo.HttpResult;
 import cn.erectpine.dict.project.entity.DictType;
 import cn.erectpine.dict.project.service.IDictTypeService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;

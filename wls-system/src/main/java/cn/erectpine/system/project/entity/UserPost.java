@@ -1,6 +1,6 @@
 package cn.erectpine.system.project.entity;
 
-import cn.erectpine.common.web.BaseEntity;
+import cn.erectpine.common.web.pojo.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
