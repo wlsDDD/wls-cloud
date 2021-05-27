@@ -1,6 +1,7 @@
 package cn.erectpine.common.web.exception;
 
-import cn.erectpine.common.web.enums.CodeMsgEnum;
+
+import cn.erectpine.common.core.enums.CodeMsgEnum;
 
 /**
  * 业务异常

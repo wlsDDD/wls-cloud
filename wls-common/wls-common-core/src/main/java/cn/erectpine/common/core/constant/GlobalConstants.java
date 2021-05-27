@@ -1,6 +1,6 @@
-package cn.erectpine.common.web.constant;
+package cn.erectpine.common.core.constant;
 
-import cn.erectpine.common.web.enums.ActiveEnum;
+import cn.erectpine.common.core.enums.ActiveEnum;
 
 /**
  * 全局常量信息

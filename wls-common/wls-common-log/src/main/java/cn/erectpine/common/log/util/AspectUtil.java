@@ -1,12 +1,12 @@
 package cn.erectpine.common.log.util;
 
+import cn.erectpine.common.core.constant.GlobalConstants;
+import cn.erectpine.common.core.enums.CodeMsgEnum;
 import cn.erectpine.common.core.util.CoreUtil;
 import cn.erectpine.common.core.util.IpUtils;
 import cn.erectpine.common.core.util.ServletUtil;
 import cn.erectpine.common.log.annotation.LogIgnore;
-import cn.erectpine.common.web.constant.GlobalConstants;
 import cn.erectpine.common.web.context.WlsContext;
-import cn.erectpine.common.web.enums.CodeMsgEnum;
 import cn.erectpine.common.web.pojo.ApiLog;
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -72,7 +72,6 @@ public class AspectUtil {
         } catch (Exception e) {
             log.error("日志切面前置异常", e);
         }
-        
         Object proceed = null;
         // 调用方法
         try {

@@ -1,8 +1,8 @@
 package cn.erectpine.common.web.handler;
 
+import cn.erectpine.common.core.enums.CodeMsgEnum;
+import cn.erectpine.common.core.enums.LogTypeEnum;
 import cn.erectpine.common.web.context.WlsContext;
-import cn.erectpine.common.web.enums.CodeMsgEnum;
-import cn.erectpine.common.web.enums.LogTypeEnum;
 import cn.erectpine.common.web.exception.BusinessException;
 import cn.erectpine.common.web.mail.MailServer;
 import cn.erectpine.common.web.pojo.ApiLog;

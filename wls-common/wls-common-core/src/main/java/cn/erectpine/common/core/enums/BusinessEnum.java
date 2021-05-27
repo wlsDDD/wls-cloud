@@ -1,4 +1,4 @@
-package cn.erectpine.common.web.enums;
+package cn.erectpine.common.core.enums;
 
 /**
  * 业务操作类型

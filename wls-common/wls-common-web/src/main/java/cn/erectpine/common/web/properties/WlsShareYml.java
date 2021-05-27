@@ -1,6 +1,6 @@
 package cn.erectpine.common.web.properties;
 
-import cn.erectpine.common.web.enums.ActiveEnum;
+import cn.erectpine.common.core.enums.ActiveEnum;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

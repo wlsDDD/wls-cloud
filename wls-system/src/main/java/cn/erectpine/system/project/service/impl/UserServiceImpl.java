@@ -1,7 +1,7 @@
 package cn.erectpine.system.project.service.impl;
 
+import cn.erectpine.common.core.enums.CodeMsgEnum;
 import cn.erectpine.common.core.util.Assert;
-import cn.erectpine.common.web.enums.CodeMsgEnum;
 import cn.erectpine.common.web.exception.BusinessException;
 import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.mapper.UserMapper;

@@ -28,8 +28,8 @@ import java.util.Map;
 @Slf4j
 public class MdGenerator {
     
-    static String entityPath = "ftl/doc/entity.md.ftl";
-    static String paramPath = "ftl/doc/param.md.ftl";
+    static String entityPath = "ftl/md/entity.md.ftl";
+    static String paramPath = "ftl/md/param.md.ftl";
     static String outputPath = System.getProperty("user.dir") + "/src/test/md";
     
     /**

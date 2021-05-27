@@ -1,8 +1,8 @@
 package cn.erectpine.common.web.runner;
 
-import cn.erectpine.common.web.constant.GlobalConstants;
-import cn.erectpine.common.web.enums.ActiveEnum;
-import cn.erectpine.common.web.enums.CodeMsgEnum;
+import cn.erectpine.common.core.constant.GlobalConstants;
+import cn.erectpine.common.core.enums.ActiveEnum;
+import cn.erectpine.common.core.enums.CodeMsgEnum;
 import cn.erectpine.common.web.properties.WlsShareYml;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

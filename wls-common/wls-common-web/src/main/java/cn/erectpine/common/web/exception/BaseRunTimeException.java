@@ -1,9 +1,9 @@
 package cn.erectpine.common.web.exception;
 
+import cn.erectpine.common.core.constant.GlobalConstants;
+import cn.erectpine.common.core.enums.ActiveEnum;
+import cn.erectpine.common.core.enums.CodeMsgEnum;
 import cn.erectpine.common.core.util.CoreUtil;
-import cn.erectpine.common.web.constant.GlobalConstants;
-import cn.erectpine.common.web.enums.ActiveEnum;
-import cn.erectpine.common.web.enums.CodeMsgEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

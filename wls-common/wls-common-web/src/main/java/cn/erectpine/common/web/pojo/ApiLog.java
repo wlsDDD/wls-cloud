@@ -1,6 +1,6 @@
 package cn.erectpine.common.web.pojo;
 
-import cn.erectpine.common.web.enums.CodeMsgEnum;
+import cn.erectpine.common.core.enums.CodeMsgEnum;
 import cn.hutool.json.JSON;
 import lombok.Data;
 import lombok.experimental.Accessors;

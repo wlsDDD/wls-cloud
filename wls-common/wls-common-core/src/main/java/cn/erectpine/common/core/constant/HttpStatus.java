@@ -1,4 +1,4 @@
-package cn.erectpine.common.web.constant;
+package cn.erectpine.common.core.constant;
 
 /**
  * 返回状态码

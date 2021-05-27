@@ -1,7 +1,7 @@
 package cn.erectpine.common.log.annotation;
 
 
-import cn.erectpine.common.web.enums.BusinessEnum;
+import cn.erectpine.common.core.enums.BusinessEnum;
 
 import java.lang.annotation.*;
 

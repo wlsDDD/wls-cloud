@@ -1,6 +1,6 @@
 package cn.erectpine.common.web.mail;
 
-import cn.erectpine.common.web.constant.GlobalConstants;
+import cn.erectpine.common.core.constant.GlobalConstants;
 import cn.erectpine.common.web.pojo.ApiLog;
 import cn.erectpine.common.web.properties.WlsShareYml;
 import cn.hutool.core.date.DatePattern;
