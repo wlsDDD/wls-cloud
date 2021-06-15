@@ -29,7 +29,7 @@ import ${superControllerClassPackage};
  * @since ${date}
  */
 <#if swagger2>
-@ApiModelProperty(value = "${field.comment}")
+    @ApiModelProperty(value = "${table.comment?substring(0,table.comment?length-1)}")
 <#else>
 </#if>
 <#if restControllerStyle>

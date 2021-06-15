@@ -58,18 +58,17 @@ public class MysqlGenerator {
      */
     public static String dataSourceDriverName = "com.mysql.cj.jdbc.Driver";
     
-    /**
-     * 代码生成
-     *
-     * @param tableName 表名称，多个逗号隔开 支持正则表达式
-     */
-    public static void generatorCode(String[] tableName) {
-        // 代码生成器
-        AutoGenerator mpg = new AutoGenerator();
-        
-        // 全局配置
-        GlobalConfig gc = new GlobalConfig();
-        String projectPath = System.getProperty("user.dir");
+    static GlobalConfig gc = new GlobalConfig();
+    static DataSourceConfig dsc = new DataSourceConfig();
+    static PackageConfig pc = new PackageConfig();
+    static String projectPath = System.getProperty("user.dir");
+    
+    static {
+        pc.setModuleName(moduleName);
+        pc.setParent(packagePath);
+    }
+    
+    static {
         gc.setOutputDir(projectPath + path + "/src/main/java");
         gc.setAuthor("wls");
         gc.setOpen(false);
@@ -78,23 +77,39 @@ public class MysqlGenerator {
         gc.setDateType(DateType.TIME_PACK);
         gc.setIdType(IdType.AUTO);
         gc.setFileOverride(false);
-        mpg.setGlobalConfig(gc);
-        
-        // 数据源配置
-        DataSourceConfig dsc = new DataSourceConfig();
+    }
+    
+    static {
         dsc.setUrl(dataSourceUrl);
         dsc.setDriverName(dataSourceDriverName);
         dsc.setDbType(DbType.MYSQL);
         dsc.setUsername(dataSourceUsername);
         dsc.setPassword(dataSourcePassword);
-        mpg.setDataSource(dsc);
         
+    }
+    
+    public static void generatorCode(String... tableName) {
+        generatorCode(gc, dsc, pc, tableName);
+    }
+    
+    public static void generatorCode(DataSourceConfig dataSourceConfig, PackageConfig packageConfig, String... tableName) {
+        generatorCode(gc, dataSourceConfig, packageConfig, tableName);
+    }
+    
+    /**
+     * 代码生成
+     *
+     * @param tableName 表名称，多个逗号隔开 支持正则表达式
+     */
+    public static void generatorCode(GlobalConfig config, DataSourceConfig dataSourceConfig, PackageConfig packageConfig, String... tableName) {
+        // 代码生成器
+        AutoGenerator mpg = new AutoGenerator();
+        // 全局配置
+        mpg.setGlobalConfig(config);
+        // 数据源配置
+        mpg.setDataSource(dataSourceConfig);
         // 包配置
-        PackageConfig pc = new PackageConfig();
-        pc.setModuleName(moduleName);
-        pc.setParent(packagePath);
-        mpg.setPackageInfo(pc);
-        
+        mpg.setPackageInfo(packageConfig);
         // 自定义配置
         InjectionConfig cfg = new InjectionConfig() {
             @Override
@@ -111,7 +126,6 @@ public class MysqlGenerator {
         String templatePath = "/templates/mapper.xml.ftl";
         // 如果模板引擎是 velocity
 //         String templatePath = "/templates/mapper.xml.vm";
-        
         // 自定义输出配置
         List<FileOutConfig> focList = new ArrayList<>();
         // 自定义配置会被优先输出
@@ -122,13 +136,10 @@ public class MysqlGenerator {
                 return projectPath + path + "/src/main/resources/mapper/" + moduleName + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
-        
         cfg.setFileOutConfigList(focList);
         mpg.setCfg(cfg);
-        
         // 配置模板
         TemplateConfig templateConfig = new TemplateConfig();
-        
         // 配置自定义输出模板
         // 指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别
         templateConfig.setEntity("ftl/mysql/entity.java");
@@ -136,10 +147,8 @@ public class MysqlGenerator {
         templateConfig.setService("ftl/mysql/service.java");
         templateConfig.setServiceImpl("ftl/mysql/serviceImpl.java");
         templateConfig.setMapper("ftl/mysql/mapper.java");
-        
         templateConfig.setXml(null);
         mpg.setTemplate(templateConfig);
-        
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
@@ -148,7 +157,6 @@ public class MysqlGenerator {
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         strategy.setEntityBooleanColumnRemoveIsPrefix(true);
-        
         // 是否生成实体时，生成字段注解
         // strategy.setEntityTableFieldAnnotationEnable(true)
         // 公共父类

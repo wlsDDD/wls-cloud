@@ -1,6 +1,5 @@
 package cn.erectpine.common.log.aspect;
 
-import cn.erectpine.common.log.util.AspectUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -20,7 +19,7 @@ public class LogAnnotationAspect {
     /**
      * 配置切入点
      */
-    @Pointcut("@annotation(cn.erectpine.common.annotation.Log)")
+    @Pointcut("@annotation(cn.erectpine.common.log.annotation.Log)")
     public void pointCut() {
     }
     
@@ -30,7 +29,7 @@ public class LogAnnotationAspect {
      */
     @Around("pointCut()")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
-        return AspectUtil.logAround(joinPoint);
+        return LogAspect.logAround(joinPoint);
     }
     
 }
