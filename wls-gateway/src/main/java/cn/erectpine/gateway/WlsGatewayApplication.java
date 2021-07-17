@@ -17,7 +17,7 @@ public class WlsGatewayApplication {
     
     public static void main(String[] args) {
         SpringApplication.run(WlsGatewayApplication.class, args);
-        System.err.println("(♥◠‿◠)ﾉﾞ  wls网关服务-启动完成   ლ(´ڡ`ლ)ﾞ ");
+        System.err.println("(♥◠‿◠)ﾉﾞ  wls-网关服务-启动完成   ლ(´ڡ`ლ)ﾞ ");
     }
     
 }

@@ -1,7 +1,7 @@
 spring:
   application:
     # 应用名称
-    name: wls-dict
+    name: wls-gateway
   profiles:
     # 环境配置
     active: dev
@@ -26,9 +26,9 @@ spring:
           - dataId: wls-base-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
             group: dev
             refresh: true
-          - dataId: wls-mail-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-            group: dev
-            refresh: true
+#          - dataId: wls-mail-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+#            group: dev
+#            refresh: true
 
 
 server:
