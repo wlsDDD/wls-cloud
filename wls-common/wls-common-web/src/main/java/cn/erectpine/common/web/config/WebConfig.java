@@ -1,6 +1,6 @@
 package cn.erectpine.common.web.config;
 
-import cn.erectpine.common.web.interceptor.WlsInterceptor;
+import cn.erectpine.common.web.interceptor.ContextInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -19,7 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new WlsInterceptor())
+        registry.addInterceptor(new ContextInterceptor())
                 .addPathPatterns("/**");
     }
     

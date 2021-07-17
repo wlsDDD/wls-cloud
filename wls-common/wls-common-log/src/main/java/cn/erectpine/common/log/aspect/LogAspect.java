@@ -35,7 +35,7 @@ public class LogAspect {
     /**
      * 配置切入点
      */
-    @Pointcut("execution(* cn.erectpine.*.project.controller..*.*(..))")
+    @Pointcut("execution(* cn.erectpine.*..controller..*.*(..))")
     public void logPointCut() {
     }
     

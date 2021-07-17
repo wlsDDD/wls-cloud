@@ -50,7 +50,8 @@ public class ApiLog {
      */
     private String url;
     /**
-     * 请求状态 200成功 -500失败未处理
+     * 请求状态 200成功
+     * 500失败未处理
      */
     private CodeMsgEnum status;
     /**

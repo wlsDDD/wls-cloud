@@ -73,10 +73,10 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
                 HttpResult.success() : body instanceof HttpResult ?
                 (HttpResult) body : HttpResult.success(body);
         apiLog.setResponseData(JSONUtil.parse(httpResult));
-        consoleLog(apiLog);
-        // 未知异常时发送邮件
-        if (CodeMsgEnum.UNKNOWN_ERROR.equals(apiLog.getStatus())) {
-            mailServer.sendApiLog(apiLog);
+        // 异常时发送邮件
+        if (!CodeMsgEnum.SUCCESS.equals(apiLog.getStatus())) {
+            mailServer.sendApiLog();
+            consoleLog();
         }
         return httpResult;
     }
@@ -95,7 +95,8 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
      *
      * @param apiLog {@link ApiLog}
      */
-    public static void consoleLog(ApiLog apiLog) {
+    public static void consoleLog() {
+        ApiLog apiLog = WlsContext.getApiLog();
         Map<String, Object> logMap = BeanUtil.beanToMap(apiLog, false, false);
         if (CodeMsgEnum.SUCCESS.equals(apiLog.getStatus())) {
             log.info(LogTypeEnum.SUCCESS.getDelimiter());

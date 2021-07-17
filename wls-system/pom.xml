@@ -73,7 +73,7 @@
 
         <dependency>
             <groupId>cn.erectpine</groupId>
-            <artifactId>wls-common-web</artifactId>
+            <artifactId>wls-common-log</artifactId>
         </dependency>
 
         <!--***************************************** 开发工具库 ****************************************************-->

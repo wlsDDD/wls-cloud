@@ -28,8 +28,8 @@ public class DeptController {
     /**
      * 部门-分页列表
      */
-    @PostMapping("/list")
-    public HttpResult pageDept(@RequestBody Page<Dept> page, Dept dept) {
+    @GetMapping("/list")
+    public HttpResult pageDept(Page<Dept> page, Dept dept) {
         return HttpResult.success(deptService.pageDept(page, dept));
     }
     

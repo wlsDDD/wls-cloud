@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 拦截器
+ * 上下文拦截器
  * 生成请求ID
  * 封装返回结果
  *
  * @Author wls
  * @Date 2021/3/16 10:31
  */
-public class WlsInterceptor implements HandlerInterceptor {
+public class ContextInterceptor implements HandlerInterceptor {
     
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
