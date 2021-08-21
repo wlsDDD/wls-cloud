@@ -1,7 +1,7 @@
 package cn.erectpine.common.core.util;
 
 import cn.erectpine.common.core.function.FunctionSerializable;
-import cn.erectpine.common.core.pojo.MyPage;
+import cn.erectpine.common.core.pojo.PinePage;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DatePattern;
@@ -9,9 +9,11 @@ import cn.hutool.core.date.LocalDateTimeUtil;
 import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
+import cn.hutool.core.util.ReflectUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
+import java.lang.annotation.Annotation;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -23,11 +25,8 @@ import java.util.stream.Collectors;
 
 /**
  * 核心工具类
- *
- * @Author wls
- * @Date 2021/1/12 11:58
  */
-public class CoreUtil {
+public class PineUtil {
     
     /**
      * 自定义树相关属性配置
@@ -41,7 +40,6 @@ public class CoreUtil {
         TREE_CONFIG.setParentIdKey("parentId");
         TREE_CONFIG.setWeightKey("createTime");
     }
-    
     
     /**
      * 列表转树
@@ -88,6 +86,65 @@ public class CoreUtil {
     }
     
     /**
+     * 去除对象中所有String类型的前后空白
+     *
+     * @param coll coll
+     */
+    public static void trimBean(Collection<?> coll) {
+        coll.forEach(PineUtil::trimBean);
+    }
+    
+    /**
+     * 去除对象中所有String类型的前后空白
+     *
+     * @param bean bean
+     */
+    public static void trimBean(Object bean) {
+        BeanUtil.getBeanDesc(bean.getClass()).getProps().forEach(propDesc -> {
+            if (String.class.getName().equals(propDesc.getFieldType().getTypeName())) {
+                Object str = ReflectUtil.invoke(bean, propDesc.getGetter());
+                if (str == null) {
+                    return;
+                }
+                ReflectUtil.invoke(bean, propDesc.getSetter(), str.toString().trim());
+            }
+        });
+    }
+    
+    /**
+     * 自定义进制转换
+     *
+     * @param seq    对应规则的值
+     * @param rexStr 规则
+     * @return {@link String}
+     */
+    public static String getSeq(Integer seq, String rexStr) {
+        int flag = seq;
+        StringBuilder result = new StringBuilder();
+        while (true) {
+            result.insert(0, rexStr.charAt(seq % rexStr.length()));
+            seq = seq / rexStr.length();
+            if (seq / rexStr.length() == 0) {
+                return flag < rexStr.length() ? result.toString() : rexStr.charAt(seq - 1) + result.toString();
+            }
+        }
+    }
+    
+    
+    /**
+     * 根据类获取指定所有注解
+     *
+     * @param clazz 类clazz
+     * @param ann   注解clazz
+     * @return {@link List<>}
+     */
+    public static <T extends Annotation> List<T> getFieldAnnotations(Class<?> clazz, Class<T> ann) {
+        return BeanUtil.getBeanDesc(clazz).getProps().stream()
+                       .map(propDesc -> propDesc.getField().getAnnotation(ann))
+                       .filter(Objects::nonNull).collect(Collectors.toList());
+    }
+    
+    /**
      * 分页
      */
     public static void pageStart() {
@@ -99,10 +156,10 @@ public class CoreUtil {
     /**
      * 分页
      *
-     * @param myPage 我的页面
+     * @param pinePage 我的页面
      */
-    public static void pageStart(MyPage myPage) {
-        pageStart(myPage.getPageNo(), myPage.getPageSize());
+    public static void pageStart(PinePage pinePage) {
+        pageStart(pinePage.getPageNum(), pinePage.getPageSize());
     }
     
     /**
@@ -126,7 +183,7 @@ public class CoreUtil {
      * @param list 列表
      * @return 自定义分页对象
      */
-    public static <T> MyPage page(List<T> list) {
+    public static <T> PinePage page(List<T> list) {
         PageInfo<T> pageInfo = new PageInfo<>(list);
         return page(pageInfo);
     }
@@ -137,10 +194,10 @@ public class CoreUtil {
      * @param pageInfo {@link PageInfo}
      * @return 自定义分页对象
      */
-    public static <T> MyPage page(PageInfo<T> pageInfo) {
-        MyPage page = new MyPage();
-        page.setTotal(pageInfo.getTotal())
-            .setPageNo(pageInfo.getPageNum())
+    public static <T> PinePage page(PageInfo<T> pageInfo) {
+        PinePage page = new PinePage();
+        page.setTotalNum(pageInfo.getTotal())
+            .setPageNum(pageInfo.getPageNum())
             .setPageSize(pageInfo.getPageSize())
             .setList(pageInfo.getList());
         return page;

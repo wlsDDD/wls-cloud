@@ -3,8 +3,8 @@ package cn.erectpine.common.log.aspect;
 import cn.erectpine.common.core.constant.GlobalConstants;
 import cn.erectpine.common.core.enums.CodeMsgEnum;
 import cn.erectpine.common.core.util.AspectUtil;
-import cn.erectpine.common.core.util.CoreUtil;
 import cn.erectpine.common.core.util.IpUtils;
+import cn.erectpine.common.core.util.PineUtil;
 import cn.erectpine.common.core.util.ServletUtil;
 import cn.erectpine.common.log.annotation.LogIgnore;
 import cn.erectpine.common.web.context.WlsContext;
@@ -77,7 +77,7 @@ public class LogAspect {
                 Assert.notNull(apiLog, "日志切面异常");
                 apiLog.setStatus(CodeMsgEnum.UNKNOWN_ERROR)
                       .setErrorMsg(e.toString())
-                      .setSimpleStacktrace(JSONUtil.parse(CoreUtil.getSimpleStackTrace(e, GlobalConstants.stackFilter)));
+                      .setSimpleStacktrace(JSONUtil.parse(PineUtil.getSimpleStackTrace(e, GlobalConstants.stackFilter)));
             } catch (Exception exception) {
                 log.error("日志切面catch块异常", e);
             }

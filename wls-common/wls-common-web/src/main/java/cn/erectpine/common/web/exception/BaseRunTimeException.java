@@ -3,7 +3,7 @@ package cn.erectpine.common.web.exception;
 import cn.erectpine.common.core.constant.GlobalConstants;
 import cn.erectpine.common.core.enums.ActiveEnum;
 import cn.erectpine.common.core.enums.CodeMsgEnum;
-import cn.erectpine.common.core.util.CoreUtil;
+import cn.erectpine.common.core.util.PineUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -52,7 +52,7 @@ public class BaseRunTimeException extends RuntimeException {
      * @return {@link StackTraceElement[]}
      */
     public StackTraceElement[] getSimpleStackTrace() {
-        return CoreUtil.getSimpleStackTrace(this, GlobalConstants.stackFilter);
+        return PineUtil.getSimpleStackTrace(this, GlobalConstants.stackFilter);
     }
     
     public BaseRunTimeException() {

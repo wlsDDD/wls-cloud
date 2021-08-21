@@ -1,4 +1,4 @@
-import cn.erectpine.common.core.util.CoreUtil;
+import cn.erectpine.common.core.util.PineUtil;
 import cn.erectpine.common.gencode.MysqlGenerator;
 import cn.erectpine.common.gencode.md.MdGenerator;
 import cn.erectpine.common.web.pojo.ApiLog;
@@ -86,7 +86,7 @@ public class Tests {
     
     @Test
     public void test03() {
-        Integer numeric = CoreUtil.getNumeric(str);
+        Integer numeric = PineUtil.getNumeric(str);
         System.out.println("numeric = " + numeric);
     }
     

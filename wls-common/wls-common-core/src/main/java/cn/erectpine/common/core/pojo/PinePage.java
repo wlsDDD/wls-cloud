@@ -8,24 +8,21 @@ import java.util.Collection;
 
 /**
  * 自定义分页对象
- *
- * @Author wls
- * @Date 2021/2/25 17:50
  */
 @Data
 @Accessors(chain = true)
-public class MyPage implements Serializable {
+public class PinePage implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     /**
      * 总计
      */
-    private Long total;
+    private Long totalNum;
     /**
      * 第几页
      */
-    private Integer pageNo;
+    private Integer pageNum;
     /**
      * 页面条数
      */

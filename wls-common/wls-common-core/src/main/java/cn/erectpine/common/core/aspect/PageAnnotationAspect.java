@@ -2,7 +2,7 @@ package cn.erectpine.common.core.aspect;
 
 import cn.erectpine.common.core.annotation.Page;
 import cn.erectpine.common.core.util.AspectUtil;
-import cn.erectpine.common.core.util.CoreUtil;
+import cn.erectpine.common.core.util.PineUtil;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjectUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -60,13 +60,13 @@ public class PageAnnotationAspect {
             pageSize = page.defaultPageSize();
         }
         // 开启分页
-        CoreUtil.pageStart(pageNum, pageSize);
+        PineUtil.pageStart(pageNum, pageSize);
         // 执行方法
         Object proceed = joinPoint.proceed();
         // 封装返回结果
         if (proceed instanceof List<?>) {
             List<?> list = (List<?>) proceed;
-            return CoreUtil.page(list);
+            return PineUtil.page(list);
         }
         return proceed;
     }
