@@ -3,7 +3,7 @@ package cn.erectpine.common.web.exception;
 import cn.erectpine.common.core.constant.GlobalConstants;
 import cn.erectpine.common.core.enums.ActiveEnum;
 import cn.erectpine.common.core.enums.CodeMsgEnum;
-import cn.erectpine.common.core.util.PineUtil;
+import cn.erectpine.common.core.util.pine.PineUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

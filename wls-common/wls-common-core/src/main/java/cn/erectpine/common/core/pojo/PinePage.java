@@ -7,7 +7,10 @@ import java.io.Serializable;
 import java.util.Collection;
 
 /**
- * 自定义分页对象
+ * 分页对象
+ *
+ * @author wls
+ * @date 2021/08/21 17:48:24
  */
 @Data
 @Accessors(chain = true)

@@ -1,4 +1,4 @@
-import cn.erectpine.common.core.util.PineUtil;
+import cn.erectpine.common.core.util.pine.PineUtil;
 import cn.erectpine.common.gencode.MysqlGenerator;
 import cn.erectpine.common.gencode.md.MdGenerator;
 import cn.erectpine.common.web.pojo.ApiLog;

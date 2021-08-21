@@ -3,7 +3,7 @@ package cn.erectpine.common.web.pojo;
 
 import cn.erectpine.common.core.constant.HttpStatus;
 import cn.erectpine.common.core.enums.CodeMsgEnum;
-import cn.erectpine.common.core.util.LamUtil;
+import cn.erectpine.common.core.util.pine.LamUtil;
 import cn.erectpine.common.web.context.WlsContext;
 import cn.erectpine.common.web.exception.BaseRunTimeException;
 

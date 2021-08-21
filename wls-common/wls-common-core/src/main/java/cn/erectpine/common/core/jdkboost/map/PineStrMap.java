@@ -1,7 +1,7 @@
 package cn.erectpine.common.core.jdkboost.map;
 
 import cn.erectpine.common.core.function.FunctionSerializable;
-import cn.erectpine.common.core.util.LamUtil;
+import cn.erectpine.common.core.util.pine.LamUtil;
 
 /**
  * 链式调用map

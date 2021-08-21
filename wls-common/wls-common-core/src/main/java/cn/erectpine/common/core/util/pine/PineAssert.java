@@ -1,4 +1,6 @@
-package cn.erectpine.common.core.util;
+package cn.erectpine.common.core.util.pine;
+
+import cn.hutool.core.lang.Assert;
 
 import java.util.function.Supplier;
 
@@ -8,7 +10,7 @@ import java.util.function.Supplier;
  * @Author wls
  * @Date 2020/9/23 13:51
  */
-public class Assert extends cn.hutool.core.lang.Assert {
+public class PineAssert extends Assert {
     
     /**
      * 断言count为0

@@ -1,4 +1,4 @@
-package cn.erectpine.common.core.util;
+package cn.erectpine.common.core.util.pine;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;

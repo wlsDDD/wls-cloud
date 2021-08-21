@@ -1,7 +1,7 @@
 package cn.erectpine.system.project.service.impl;
 
 import cn.erectpine.common.core.enums.CodeMsgEnum;
-import cn.erectpine.common.core.util.Assert;
+import cn.erectpine.common.core.util.pine.PineAssert;
 import cn.erectpine.common.web.exception.BusinessException;
 import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.mapper.UserMapper;
@@ -60,7 +60,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      */
     @Override
     public void insertUser(User user) {
-        Assert.isTrue(save(user), () -> new BusinessException(CodeMsgEnum.DATA_INSERT_ERROR));
+        PineAssert.isTrue(save(user), () -> new BusinessException(CodeMsgEnum.DATA_INSERT_ERROR));
     }
     
     /**
@@ -70,7 +70,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      */
     @Override
     public void updateUser(User user) {
-        Assert.isTrue(updateById(user), () -> new BusinessException(CodeMsgEnum.DATA_UPDATE_ERROR));
+        PineAssert.isTrue(updateById(user), () -> new BusinessException(CodeMsgEnum.DATA_UPDATE_ERROR));
     }
     
     /**
@@ -80,7 +80,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      */
     @Override
     public void deleteUser(Long id) {
-        Assert.isTrue(removeById(id), () -> new BusinessException(CodeMsgEnum.DATA_DELETE_ERROR));
+        PineAssert.isTrue(removeById(id), () -> new BusinessException(CodeMsgEnum.DATA_DELETE_ERROR));
     }
     
 }

@@ -1,4 +1,4 @@
-package cn.erectpine.common.core.util;
+package cn.erectpine.common.core.util.collect;
 
 import java.util.regex.Pattern;
 
