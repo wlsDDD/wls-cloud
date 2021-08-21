@@ -1,5 +1,6 @@
 package cn.erectpine.common.web.context;
 
+import cn.erectpine.common.core.thread.PineThreadPoolExecutor;
 import cn.erectpine.common.web.pojo.ApiLog;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -13,6 +14,11 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class Context {
+    
+    /**
+     * 线程池
+     */
+    public static PineThreadPoolExecutor threadPool;
     /**
      * 接口日志
      */

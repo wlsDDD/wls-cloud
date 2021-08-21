@@ -1,9 +1,11 @@
 package cn.erectpine.system.project.controller;
 
+import cn.erectpine.common.web.context.Context;
 import cn.erectpine.common.web.pojo.HttpResult;
 import cn.erectpine.system.project.entity.Dept;
 import cn.erectpine.system.project.service.IDeptService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/dept")
+@Slf4j
 public class DeptController {
     
     private final IDeptService deptService;
@@ -30,6 +33,14 @@ public class DeptController {
      */
     @GetMapping("/list")
     public HttpResult pageDept(Page<Dept> page, Dept dept) {
+        log.error("来了个请求");
+        System.out.println("pineThreadExecutor = " + Context.threadPool);
+        for (int i = 0; i < 500; i++) {
+            Context.threadPool.execute(() -> {
+                log.info("有个线程执行开始");
+            });
+        }
+        log.error("请求结束");
         return HttpResult.success(deptService.pageDept(page, dept));
     }
     

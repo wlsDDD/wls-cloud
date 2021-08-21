@@ -21,8 +21,14 @@ import java.util.concurrent.TimeUnit;
  * @Date 2021/4/4 14:39
  */
 public class Tests {
+    
     String str = "varchar(255)";
     boolean a;
+    
+    @Test
+    public void test10() {
+    
+    }
     
     @Test
     public void test09() {

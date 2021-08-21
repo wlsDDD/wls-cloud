@@ -3,6 +3,8 @@ package cn.erectpine.common.web.runner;
 import cn.erectpine.common.core.constant.GlobalConstants;
 import cn.erectpine.common.core.enums.ActiveEnum;
 import cn.erectpine.common.core.enums.CodeMsgEnum;
+import cn.erectpine.common.core.thread.PineThreadPoolExecutor;
+import cn.erectpine.common.web.context.Context;
 import cn.erectpine.common.web.properties.WlsShareYml;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Component;
 public class WlsRunner implements CommandLineRunner {
     
     @Autowired WlsShareYml wlsShareYml;
+    @Autowired PineThreadPoolExecutor pineThreadPoolExecutor;
     
     @Override
     public void run(String... args) {
@@ -26,7 +29,7 @@ public class WlsRunner implements CommandLineRunner {
         GlobalConstants.stackFilter = wlsShareYml.getStackFilter();
         boolean isProd = ActiveEnum.prod.equals(GlobalConstants.active);
         CodeMsgEnum.UNKNOWN_ERROR.setMsg(isProd ? "服务器繁忙! 请稍后重试!" : "服务错误! 请联系开发人员!");
-        
+        Context.threadPool = pineThreadPoolExecutor;
     }
     
 }
