@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.erectpine</groupId>
-    <artifactId>wls-cloud-demo</artifactId>
+    <artifactId>wls-cloud</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>wls-cloud-demo</name>
+    <name>wls-cloud</name>
     <description>微服务整合项目</description>
 
     <properties>

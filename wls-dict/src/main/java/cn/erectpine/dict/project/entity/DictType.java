@@ -18,7 +18,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
+@Accessors(chain = true, fluent = true)
 @TableName("sys_dict_type")
 public class DictType extends BaseEntity {
     

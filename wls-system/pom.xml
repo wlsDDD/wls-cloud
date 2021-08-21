@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.erectpine</groupId>
-        <artifactId>wls-cloud-demo</artifactId>
+        <artifactId>wls-cloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
