@@ -6,6 +6,7 @@ import java.util.LinkedHashSet;
  * 链式调用set
  *
  * @author wls
+ * @date 2021/08/21 16:20:44
  */
 public class PineSet<T> extends LinkedHashSet<T> {
     

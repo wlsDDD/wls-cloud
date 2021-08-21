@@ -4,6 +4,9 @@ import java.util.LinkedHashMap;
 
 /**
  * 链式调用map
+ *
+ * @author wls
+ * @date 2021/08/21 16:20:50
  */
 public class PineMap<K, V> extends LinkedHashMap<K, V> {
     

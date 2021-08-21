@@ -6,6 +6,7 @@ import java.util.LinkedList;
  * 链式调用list
  *
  * @author wls
+ * @date 2021/08/21 16:20:34
  */
 public class PineList<T> extends LinkedList<T> {
     
