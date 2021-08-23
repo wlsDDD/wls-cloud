@@ -178,8 +178,13 @@ public class PineThreadPoolExecutor extends ThreadPoolExecutor {
      */
     @Override
     protected void afterExecute(Runnable r, Throwable t) {
-        if (t != null) {
-            log.warn("捕获到线程池未处理异常", t);
+        try {
+            if (t != null) {
+                log.warn("捕获到线程池未处理异常", t);
+                throw t;
+            }
+        } catch (Throwable e) {
+            log.warn("异常被捕捉了");
         }
         super.afterExecute(r, t);
     }

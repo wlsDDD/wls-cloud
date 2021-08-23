@@ -8,6 +8,7 @@ import cn.erectpine.common.web.context.Context;
 import cn.erectpine.common.web.properties.WlsShareYml;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,6 +22,7 @@ public class WlsRunner implements CommandLineRunner {
     
     @Autowired WlsShareYml wlsShareYml;
     @Autowired PineThreadPoolExecutor pineThreadPoolExecutor;
+    @Autowired StringRedisTemplate redisTemplate;
     
     @Override
     public void run(String... args) {
@@ -30,6 +32,7 @@ public class WlsRunner implements CommandLineRunner {
         boolean isProd = ActiveEnum.prod.equals(GlobalConstants.active);
         CodeMsgEnum.UNKNOWN_ERROR.setMsg(isProd ? "服务器繁忙! 请稍后重试!" : "服务错误! 请联系开发人员!");
         Context.threadPool = pineThreadPoolExecutor;
+        Context.redis = redisTemplate;
     }
     
 }

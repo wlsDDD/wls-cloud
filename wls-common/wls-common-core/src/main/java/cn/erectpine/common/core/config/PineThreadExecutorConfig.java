@@ -21,10 +21,19 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class PineThreadExecutorConfig {
     
     /**
+     * 当前虚拟机可用cpu数
+     */
+    private static final int AVAILABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
+    /**
+     * 当前虚拟机可用最大内存MB
+     */
+    private static final int MAX_MEMORY = (int) Runtime.getRuntime().maxMemory() / 1024 / 1024;
+    
+    /**
      * 核心线程数
      * 此处取系统cpu数/16中的较大值
      */
-    private static final int CORE_POOL_SIZE = Math.max(Runtime.getRuntime().availableProcessors(), 16);
+    private static final int CORE_POOL_SIZE = Math.max(16, AVAILABLE_PROCESSORS);
     /**
      * 最大线程数
      */
@@ -32,15 +41,16 @@ public class PineThreadExecutorConfig {
     /**
      * 非核心线程生存时间
      */
-    private static final long KEEP_ALIVE_TIME = 32;
+    private static final long KEEP_ALIVE_TIME = 30;
     /**
      * 非核心线程生存时间单位：秒
      */
     private static final TimeUnit UNIT = TimeUnit.SECONDS;
     /**
      * 线程队列
+     * 此处用虚拟机可用最大内存MB 防止OOM
      */
-    private static final LinkedBlockingQueue<Runnable> WORK_QUEUE = new LinkedBlockingQueue<>();
+    private static final LinkedBlockingQueue<Runnable> WORK_QUEUE = new LinkedBlockingQueue<>(MAX_MEMORY);
     /**
      * 线程创建工厂
      */

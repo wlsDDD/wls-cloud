@@ -4,6 +4,7 @@ import cn.erectpine.common.gencode.md.MdGenerator;
 import cn.erectpine.common.web.pojo.ApiLog;
 import cn.erectpine.system.project.entity.User;
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.system.SystemUtil;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
@@ -26,8 +27,15 @@ public class Tests {
     boolean a;
     
     @Test
-    public void test10() {
+    public void test11() {
+        long l = Runtime.getRuntime().maxMemory() / 1024 / 1024;
+        System.out.println("l = " + l);
+    }
     
+    @Test
+    public void test10() {
+        long totalMemory = SystemUtil.getMaxMemory() / 1024 / 1024;
+        System.out.println("totalMemory = " + totalMemory);
     }
     
     @Test

@@ -34,10 +34,17 @@ public class DeptController {
     @GetMapping("/list")
     public HttpResult pageDept(Page<Dept> page, Dept dept) {
         log.error("来了个请求");
-        System.out.println("pineThreadExecutor = " + Context.threadPool);
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 10; i++) {
             Context.threadPool.execute(() -> {
+                for (int j = 0; j < 10; j++) {
+                    Context.threadPool.execute(() -> log.warn("sss"));
+                }
                 log.info("有个线程执行开始");
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             });
         }
         log.error("请求结束");
