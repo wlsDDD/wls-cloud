@@ -1,6 +1,5 @@
 package cn.erectpine.system.project.controller;
 
-import cn.erectpine.common.web.context.Context;
 import cn.erectpine.common.web.pojo.HttpResult;
 import cn.erectpine.system.project.entity.Dept;
 import cn.erectpine.system.project.service.IDeptService;
@@ -33,21 +32,6 @@ public class DeptController {
      */
     @GetMapping("/list")
     public HttpResult pageDept(Page<Dept> page, Dept dept) {
-        log.error("来了个请求");
-        for (int i = 0; i < 10; i++) {
-            Context.threadPool.execute(() -> {
-                for (int j = 0; j < 10; j++) {
-                    Context.threadPool.execute(() -> log.warn("sss"));
-                }
-                log.info("有个线程执行开始");
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
-        }
-        log.error("请求结束");
         return HttpResult.success(deptService.pageDept(page, dept));
     }
     
