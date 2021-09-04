@@ -6,7 +6,7 @@ import cn.erectpine.common.web.context.PineContext;
 import cn.erectpine.common.web.exception.BusinessException;
 import cn.erectpine.common.web.mail.MailServer;
 import cn.erectpine.common.web.pojo.ApiLog;
-import cn.erectpine.common.web.pojo.HttpResult;
+import cn.erectpine.common.web.pojo.Result;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -38,29 +38,29 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
     @Autowired private MailServer mailServer;
     
     @ExceptionHandler(Throwable.class)
-    public HttpResult<?> caughtException(HttpServletRequest request, HttpServletResponse response, Throwable e) {
+    public Result<?> caughtException(HttpServletRequest request, HttpServletResponse response, Throwable e) {
         if ((e instanceof HttpMessageConversionException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return HttpResult.error(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
+            return Result.error(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
         }
         if ((e instanceof MethodArgumentNotValidException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return HttpResult.error(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
+            return Result.error(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
         }
         
         if ((e instanceof IllegalArgumentException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return HttpResult.error(CodeMsgEnum.ARG_VERIFY_ERROR);
+            return Result.error(CodeMsgEnum.ARG_VERIFY_ERROR);
         }
     
         if ((e instanceof BusinessException)) {
             log.warn("【全局异常拦截】-[业务类异常]", e);
-            return HttpResult.error(CodeMsgEnum.BUSINESS_ERROR.setMsg(e.getMessage()));
+            return Result.error(CodeMsgEnum.BUSINESS_ERROR.setMsg(e.getMessage()));
         }
         
         // 处理未知异常-生产环境屏蔽错误信息
         log.error("【全局异常拦截】-[未定义异常类型]", e);
-        return HttpResult.error(CodeMsgEnum.UNKNOWN_ERROR);
+        return Result.error(CodeMsgEnum.UNKNOWN_ERROR);
     }
     
     /**
@@ -69,16 +69,16 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
         ApiLog apiLog = PineContext.getApiLog();
-        HttpResult<?> httpResult = null == body ?
-                HttpResult.success() : body instanceof HttpResult ?
-                (HttpResult<?>) body : HttpResult.success(body);
-        apiLog.setResponseData(JSONUtil.parse(httpResult));
+        Result<?> result = null == body ?
+                Result.success() : body instanceof Result ?
+                (Result<?>) body : Result.success(body);
+        apiLog.setResponseData(JSONUtil.parse(result));
         // 异常时发送邮件
         if (!CodeMsgEnum.SUCCESS.equals(apiLog.getStatus())) {
             mailServer.sendApiLog();
             consoleLog();
         }
-        return httpResult;
+        return result;
     }
     
     /**
