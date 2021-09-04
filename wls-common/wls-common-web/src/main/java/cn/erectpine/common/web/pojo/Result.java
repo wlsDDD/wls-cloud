@@ -43,7 +43,7 @@ public class Result<T> implements Serializable {
     /**
      * 扩展-对象
      */
-    private Expand expand;
+    private ExpandResult expand;
     
     
     /**
