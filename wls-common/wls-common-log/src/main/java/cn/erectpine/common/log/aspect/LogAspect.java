@@ -75,7 +75,7 @@ public class LogAspect {
             // 记录异常日志
             try {
                 Assert.notNull(apiLog, "日志切面异常");
-                apiLog.setStatus(CodeMsgEnum.UNKNOWN_ERROR)
+                apiLog.setStatus(CodeMsgEnum.FAIL_UNKNOWN_ERROR)
                       .setErrorMsg(e.toString())
                       .setSimpleStacktrace(JSONUtil.parse(PineUtil.getSimpleStackTrace(e, GlobalConstants.stackFilter)));
             } catch (Exception exception) {

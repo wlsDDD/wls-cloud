@@ -1,6 +1,7 @@
 package cn.erectpine.system.project.controller;
 
 import cn.erectpine.common.web.pojo.BaseController;
+import cn.erectpine.common.web.pojo.Result;
 import cn.erectpine.system.project.entity.Role;
 import cn.erectpine.system.project.service.IRoleService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -31,8 +32,8 @@ public class RoleController extends BaseController {
      * 角色信息-分页列表
      */
     @PostMapping("/list")
-    public IPage<Role> pageRole(@RequestBody @Validated Page<Role> page, Role role) {
-        return roleService.pageRole(page, role);
+    public Result<IPage<Role>> pageRole(@RequestBody @Validated Page<Role> page, Role role) {
+        return Result.ok(roleService.pageRole(page, role)).addField("tree", "这是一棵树");
     }
 
     /**

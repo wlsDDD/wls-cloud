@@ -49,7 +49,7 @@ public enum CodeMsgEnum {
      * 最终兜底方案
      * 其他状态码应避开此状态码
      */
-    UNKNOWN_ERROR("5000", ""),
+    FAIL_UNKNOWN_ERROR("5000", ""),
     ;
     
     private final String code;

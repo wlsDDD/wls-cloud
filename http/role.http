@@ -4,13 +4,7 @@ Content-Type: application/json
 
 {
   "current": "1",
-  "size": 2,
-  "orders": [
-    {
-      "column": "create_time",
-      "asc": true
-    }
-  ]
+  "size": 2
 }
 
 ### 根据ID获取角色

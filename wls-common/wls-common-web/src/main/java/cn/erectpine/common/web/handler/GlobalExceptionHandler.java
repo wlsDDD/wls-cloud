@@ -41,26 +41,26 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
     public Result<?> caughtException(HttpServletRequest request, HttpServletResponse response, Throwable e) {
         if ((e instanceof HttpMessageConversionException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return Result.error(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
+            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
         }
         if ((e instanceof MethodArgumentNotValidException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return Result.error(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
+            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
         }
         
         if ((e instanceof IllegalArgumentException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return Result.error(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
+            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
         }
     
         if ((e instanceof BusinessException)) {
             log.warn("【全局异常拦截】-[业务类异常]", e);
-            return Result.error(CodeMsgEnum.BUSINESS_ERROR.setMsg(e.getMessage()));
+            return Result.fail(CodeMsgEnum.BUSINESS_ERROR.setMsg(e.getMessage()));
         }
         
         // 处理未知异常-生产环境屏蔽错误信息
         log.error("【全局异常拦截】-[未定义异常类型]", e);
-        return Result.error(CodeMsgEnum.UNKNOWN_ERROR);
+        return Result.fail(CodeMsgEnum.FAIL_UNKNOWN_ERROR);
     }
     
     /**
@@ -70,8 +70,8 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
         ApiLog apiLog = PineContext.getApiLog();
         Result<?> result = null == body ?
-                Result.success() : body instanceof Result ?
-                (Result<?>) body : Result.success(body);
+                Result.ok() : body instanceof Result ?
+                (Result<?>) body : Result.ok(body);
         apiLog.setResponseData(JSONUtil.parse(result));
         // 异常时发送邮件
 //        if (!CodeMsgEnum.SUCCESS.equals(apiLog.getStatus())) {
