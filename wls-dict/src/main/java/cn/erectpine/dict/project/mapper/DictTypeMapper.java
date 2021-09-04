@@ -1,6 +1,6 @@
 package cn.erectpine.dict.project.mapper;
 
-import cn.erectpine.dict.project.entity.DictType;
+import cn.erectpine.dict.entity.DictType;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

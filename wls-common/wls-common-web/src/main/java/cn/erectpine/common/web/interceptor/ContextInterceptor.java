@@ -1,6 +1,6 @@
 package cn.erectpine.common.web.interceptor;
 
-import cn.erectpine.common.web.context.WlsContext;
+import cn.erectpine.common.web.context.PineContext;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,7 +21,7 @@ public class ContextInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Map<String, String[]> parameterMap = request.getParameterMap();
-        WlsContext.setContext();
+        PineContext.setContext();
         return true;
     }
     
@@ -32,7 +32,7 @@ public class ContextInterceptor implements HandlerInterceptor {
     
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        WlsContext.removeContext();
+        PineContext.removeContext();
         HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
 }

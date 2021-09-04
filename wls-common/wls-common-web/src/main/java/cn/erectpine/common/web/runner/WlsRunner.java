@@ -30,7 +30,7 @@ public class WlsRunner implements CommandLineRunner {
         GlobalConstants.active = wlsShareYml.getActive();
         GlobalConstants.stackFilter = wlsShareYml.getStackFilter();
         boolean isProd = ActiveEnum.prod.equals(GlobalConstants.active);
-        CodeMsgEnum.UNKNOWN_ERROR.setMsg(isProd ? "服务器繁忙! 请稍后重试!" : "服务错误! 请联系开发人员!");
+        CodeMsgEnum.UNKNOWN_ERROR.setMsg(isProd ? "网络异常! 请稍后再试!" : "内部服务错误! !");
         Context.threadPool = pineThreadPoolExecutor;
         Context.redis = redisTemplate;
     }

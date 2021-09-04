@@ -1,4 +1,4 @@
-package cn.erectpine.dict.project.entity;
+package cn.erectpine.dict.entity;
 
 import cn.erectpine.common.web.pojo.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 字典数据
+ * 字典类型
  * </p>
  *
  * @author wls
@@ -18,45 +18,25 @@ import lombok.experimental.Accessors;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
-@TableName("sys_dict_data")
-public class DictData extends BaseEntity {
+@Accessors(chain = true, fluent = true)
+@TableName("sys_dict_type")
+public class DictType extends BaseEntity {
     
     private static final long serialVersionUID = 1L;
     
     /**
-     * 字典编码
+     * 字典主键
      */
-    @TableId(value = "dict_code", type = IdType.AUTO)
-    private Long dictCode;
+    @TableId(value = "dict_id", type = IdType.AUTO)
+    private Long dictId;
     /**
-     * 字典排序
+     * 字典名称
      */
-    private Integer dictSort;
-    /**
-     * 字典标签
-     */
-    private String dictLabel;
-    /**
-     * 字典键值
-     */
-    private String dictValue;
+    private String dictName;
     /**
      * 字典类型
      */
     private String dictType;
-    /**
-     * 样式属性（其他样式扩展）
-     */
-    private String cssClass;
-    /**
-     * 表格回显样式
-     */
-    private String listClass;
-    /**
-     * 是否默认（Y是 N否）
-     */
-    private String isDefault;
     /**
      * 状态（0正常 1停用）
      */

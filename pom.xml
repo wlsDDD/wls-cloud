@@ -36,6 +36,8 @@
         <wls.common.log.version>0.0.1-SNAPSHOT</wls.common.log.version>
         <wls.common.redis.version>0.0.1-SNAPSHOT</wls.common.redis.version>
         <wls.common.web.version>0.0.1-SNAPSHOT</wls.common.web.version>
+        <!--api模块聚合-->
+        <wls.api.dict.version>0.0.1-SNAPSHOT</wls.api.dict.version>
     </properties>
 
     <modules>
@@ -43,6 +45,8 @@
         <module>wls-common</module>
         <module>wls-gateway</module>
         <module>wls-dict</module>
+        <module>wls-auth</module>
+        <module>wls-api</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -99,6 +103,7 @@
                 <version>${hibernate-validator.version}</version>
             </dependency>
 
+            <!--通用模块-->
             <dependency>
                 <groupId>cn.erectpine</groupId>
                 <artifactId>wls-common-core</artifactId>
@@ -123,6 +128,13 @@
                 <groupId>cn.erectpine</groupId>
                 <artifactId>wls-common-web</artifactId>
                 <version>${wls.common.web.version}</version>
+            </dependency>
+
+            <!--API模块-->
+            <dependency>
+                <groupId>cn.erectpine</groupId>
+                <artifactId>wls-api-dict</artifactId>
+                <version>${wls.api.dict.version}</version>
             </dependency>
 
         </dependencies>

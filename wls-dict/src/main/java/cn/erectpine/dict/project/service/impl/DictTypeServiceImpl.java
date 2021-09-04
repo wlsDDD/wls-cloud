@@ -1,6 +1,6 @@
 package cn.erectpine.dict.project.service.impl;
 
-import cn.erectpine.dict.project.entity.DictType;
+import cn.erectpine.dict.entity.DictType;
 import cn.erectpine.dict.project.mapper.DictTypeMapper;
 import cn.erectpine.dict.project.service.IDictTypeService;
 import com.baomidou.mybatisplus.core.metadata.IPage;

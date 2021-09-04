@@ -7,7 +7,7 @@ import cn.erectpine.common.core.util.collect.ServletUtil;
 import cn.erectpine.common.core.util.pine.AspectUtil;
 import cn.erectpine.common.core.util.pine.PineUtil;
 import cn.erectpine.common.log.annotation.LogIgnore;
-import cn.erectpine.common.web.context.WlsContext;
+import cn.erectpine.common.web.context.PineContext;
 import cn.erectpine.common.web.pojo.ApiLog;
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -57,7 +57,7 @@ public class LogAspect {
             logIgnore = AspectUtil.getAnnotation(joinPoint, LogIgnore.class);
             request = ServletUtil.getRequest();
             // 开始记录日志
-            apiLog = WlsContext.getContext().getApiLog();
+            apiLog = PineContext.getContext().getApiLog();
             apiLog.setHeaders(JSONUtil.parseObj(ServletUtil.getHeaders(request)))
                   .setStartTime(LocalDateTime.now())
                   .setStatus(CodeMsgEnum.SUCCESS);

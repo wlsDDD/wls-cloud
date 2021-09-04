@@ -30,7 +30,7 @@ public class BaseRunTimeException extends RuntimeException {
     /**
      * 错误码
      */
-    private Integer code;
+    private String code;
     
     
     /**

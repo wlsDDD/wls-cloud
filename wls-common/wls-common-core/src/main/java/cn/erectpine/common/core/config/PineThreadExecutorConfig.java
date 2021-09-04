@@ -50,7 +50,7 @@ public class PineThreadExecutorConfig {
      * 线程队列
      * 此处用虚拟机可用最大内存MB 防止OOM
      */
-    private static final LinkedBlockingQueue<Runnable> WORK_QUEUE = new LinkedBlockingQueue<>(MAX_MEMORY);
+    private static final LinkedBlockingQueue<Runnable> WORK_QUEUE = new LinkedBlockingQueue<>(1024);
     /**
      * 线程创建工厂
      */

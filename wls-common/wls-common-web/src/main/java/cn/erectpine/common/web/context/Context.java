@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 /**
- * 上下文实体
+ * 请求上下文实体
  *
  * @Author wls
  * @Date 2021/4/14 10:42

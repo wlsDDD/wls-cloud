@@ -59,8 +59,9 @@
 
         <dependency>
             <groupId>cn.erectpine</groupId>
-            <artifactId>wls-common-web</artifactId>
+            <artifactId>wls-api-dict</artifactId>
         </dependency>
+
 
         <!--***************************************** 开发工具库 ****************************************************-->
         <!--        &lt;!&ndash;热启动依赖&ndash;&gt;-->

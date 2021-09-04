@@ -3,6 +3,7 @@ package cn.erectpine.dict;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * wls-数据字典服务
@@ -10,6 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @author wls
  * @date 2021-03-18 16:29:10
  */
+@EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "cn.erectpine")
 public class WlsDictApplication {

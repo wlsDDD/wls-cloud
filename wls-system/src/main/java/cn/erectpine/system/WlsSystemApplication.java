@@ -3,6 +3,7 @@ package cn.erectpine.system;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @date 2021/01/20 14:28:02
  */
 @EnableAsync
+@EnableFeignClients("cn.erectpine")
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "cn.erectpine")
 public class WlsSystemApplication {

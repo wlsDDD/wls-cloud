@@ -10,7 +10,7 @@ import cn.hutool.core.util.IdUtil;
  * @Author wls
  * @Date 2021/4/14 10:41
  */
-public class WlsContext {
+public class PineContext {
     
     /**
      * 上下文可继承线程变量
