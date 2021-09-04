@@ -31,9 +31,6 @@ public class UserController {
      */
     @PostMapping("/list")
     public IPage<User> pageUser(@RequestBody Page<User> page, User user) {
-        if (user.getUserName() == null) {
-            throw new RuntimeException("模拟一个异常");
-        }
         return userService.pageUser(page, user);
     }
     

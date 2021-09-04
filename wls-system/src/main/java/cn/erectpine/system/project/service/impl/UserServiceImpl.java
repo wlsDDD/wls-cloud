@@ -3,14 +3,18 @@ package cn.erectpine.system.project.service.impl;
 import cn.erectpine.common.core.enums.CodeMsgEnum;
 import cn.erectpine.common.core.util.pine.PineAssert;
 import cn.erectpine.common.web.exception.BusinessException;
+import cn.erectpine.system.project.entity.Role;
 import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.mapper.UserMapper;
+import cn.erectpine.system.project.service.IRoleService;
 import cn.erectpine.system.project.service.IUserService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -53,14 +57,25 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return getById(id);
     }
     
+    @Autowired IRoleService roleService;
+    
     /**
      * 新增-用户信息
      *
      * @param user 用户信息
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void insertUser(User user) {
-        PineAssert.isTrue(save(user), () -> new BusinessException(CodeMsgEnum.DATA_INSERT_ERROR));
+        addUser(user);
+        roleService.insertRole(new Role().setRoleName("roleName").setRoleKey("role"));
+        addUser(user.setUserName("null"));
+//        PineAssert.isTrue(save(user), () -> new BusinessException(CodeMsgEnum.DATA_INSERT_ERROR));
+    }
+    
+    private void addUser(User user) {
+        PineAssert.notBlank(user.getUserName(), "姓名不可为空");
+        save(user);
     }
     
     /**

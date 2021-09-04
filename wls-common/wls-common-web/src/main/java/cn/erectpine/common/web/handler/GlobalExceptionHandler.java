@@ -50,7 +50,7 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
         
         if ((e instanceof IllegalArgumentException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return Result.error(CodeMsgEnum.ARG_VERIFY_ERROR);
+            return Result.error(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
         }
     
         if ((e instanceof BusinessException)) {
@@ -74,10 +74,10 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
                 (Result<?>) body : Result.success(body);
         apiLog.setResponseData(JSONUtil.parse(result));
         // 异常时发送邮件
-        if (!CodeMsgEnum.SUCCESS.equals(apiLog.getStatus())) {
-            mailServer.sendApiLog();
-            consoleLog();
-        }
+//        if (!CodeMsgEnum.SUCCESS.equals(apiLog.getStatus())) {
+//            mailServer.sendApiLog();
+//            consoleLog();
+//        }
         return result;
     }
     

@@ -23,7 +23,7 @@ POST http://{{host}}/user
 Content-Type: application/json
 
 {
-  "userName": "wls2",
+  "userName": "wls-121",
   "sex": 1,
   "nickName": "wls2"
 }
@@ -45,6 +45,8 @@ Content-Type: application/json
   "userName": "wlss",
   "userId": "50"
 }
+
+
 
 
 
