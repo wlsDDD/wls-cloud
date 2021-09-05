@@ -67,9 +67,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void insertUser(User user) {
-        addUser(user);
+//        addUser(user);
         roleService.insertRole(new Role().setRoleName("roleName").setRoleKey("role"));
-        addUser(user.setUserName("null"));
+//        addUser(user.setUserName("null"));
 //        PineAssert.isTrue(save(user), () -> new BusinessException(CodeMsgEnum.DATA_INSERT_ERROR));
     }
     

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * @Date 2021/9/3 14:47
  */
 @Component
-@FeignClient(value = ServiceNameConstants.WLS_DICT, path = "/dict-data")
+@FeignClient(value = ServiceNameConstants.WLS_DICT, path = "/dict-data", contextId = "dictDataApi")
 public interface DictDataApi {
     
     /**

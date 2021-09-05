@@ -1,18 +1,5 @@
 ### 分页列表
-POST http://{{host}}/user/list
-Content-Type: application/json
-
-{
-  "current": "1",
-  "size": 2,
-  "userName": "wls",
-  "orders": [
-    {
-      "column": "create_time",
-      "asc": true
-    }
-  ]
-}
+GET http://{{host}}/user/list
 
 ### 根据id获取用户信息详情
 GET http://{{host}}/user/1
@@ -23,7 +10,7 @@ POST http://{{host}}/user
 Content-Type: application/json
 
 {
-  "userName": "wls-121",
+  "userName": "",
   "sex": 1,
   "nickName": "wls2"
 }
@@ -33,8 +20,8 @@ PUT http://{{host}}/user
 Content-Type: application/json
 
 {
-  "userName": "wlss",
-  "userId": "50"
+  "userName": "",
+  "userId": ""
 }
 
 ### 删除-用户信息

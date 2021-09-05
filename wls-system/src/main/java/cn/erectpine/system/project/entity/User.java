@@ -10,8 +10,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 /**
@@ -48,12 +50,14 @@ public class User extends BaseEntity {
      */
     @TableField("user_name")
     @WlsProperty("用户账号")
+    @NotBlank
     private String userName;
     /**
      * 用户昵称
      */
     @TableField("nick_name")
     @WlsProperty("用户昵称")
+    @NotBlank(groups = Update.class)
     private String nickName;
     /**
      * 用户类型（00系统用户）
@@ -66,6 +70,7 @@ public class User extends BaseEntity {
      */
     @TableField("email")
     @WlsProperty("用户邮箱")
+    @NotBlank
     private String email;
     /**
      * 手机号码

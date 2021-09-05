@@ -2,6 +2,7 @@ package cn.erectpine.common.web.handler;
 
 import cn.erectpine.common.core.enums.CodeMsgEnum;
 import cn.erectpine.common.core.enums.LogTypeEnum;
+import cn.erectpine.common.core.jdkboost.map.PineStrMap;
 import cn.erectpine.common.web.context.PineContext;
 import cn.erectpine.common.web.exception.BusinessException;
 import cn.erectpine.common.web.mail.MailServer;
@@ -16,13 +17,14 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,11 +41,11 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
     
     @ExceptionHandler(Throwable.class)
     public Result<?> caughtException(HttpServletRequest request, HttpServletResponse response, Throwable e) {
-        if ((e instanceof HttpMessageConversionException)) {
+        if ((e instanceof BindException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
+            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR).setParam(getValidatedError((BindException) e));
         }
-        if ((e instanceof MethodArgumentNotValidException)) {
+        if ((e instanceof HttpMessageConversionException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
             return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
         }
@@ -57,10 +59,24 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
             log.warn("【全局异常拦截】-[业务类异常]", e);
             return Result.fail(CodeMsgEnum.BUSINESS_ERROR.setMsg(e.getMessage()));
         }
-        
+    
         // 处理未知异常-生产环境屏蔽错误信息
         log.error("【全局异常拦截】-[未定义异常类型]", e);
         return Result.fail(CodeMsgEnum.FAIL_UNKNOWN_ERROR);
+    }
+    
+    /**
+     * 解析BindException获取消息提示
+     *
+     * @param e e
+     * @return {@link List}<{@link PineStrMap}<{@link String}>>
+     */
+    public static PineStrMap<String> getValidatedError(BindException e) {
+        PineStrMap<String> map = new PineStrMap<>();
+        e.getFieldErrors().forEach(fieldError -> {
+            map.putItem(fieldError.getField(), fieldError.getDefaultMessage());
+        });
+        return map;
     }
     
     /**

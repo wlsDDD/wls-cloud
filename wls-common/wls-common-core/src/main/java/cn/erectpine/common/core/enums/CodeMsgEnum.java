@@ -33,7 +33,7 @@ public enum CodeMsgEnum {
     /**
      * 参数
      */
-    ARG_VERIFY_ERROR("3000", "统一验证参数不合法, 请检查参数后重试! 以下信息仅供参考: \r\n"),
+    ARG_VERIFY_ERROR("3000", "统一验证参数不合法, 请检查参数后重试! "),
     /**
      * 业务类异常，提示信息由抛异常时定义
      */
@@ -61,7 +61,7 @@ public enum CodeMsgEnum {
     }
     
     public CodeMsgEnum setMsg(Object... msg) {
-        this.msg = StrUtil.format(this.msg + StrUtil.repeat(" {}", msg.length), msg);
+        this.msg = StrUtil.format(this.msg + "[" + StrUtil.repeat(" {}", msg.length) + "]", msg);
         return this;
     }
     

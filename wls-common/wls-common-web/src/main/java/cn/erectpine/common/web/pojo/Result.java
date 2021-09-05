@@ -2,6 +2,7 @@ package cn.erectpine.common.web.pojo;
 
 
 import cn.erectpine.common.core.enums.CodeMsgEnum;
+import cn.erectpine.common.core.jdkboost.map.PineStrMap;
 import cn.erectpine.common.core.jdkboost.map.PineStrObjMap;
 import cn.erectpine.common.web.context.PineContext;
 import lombok.Data;
@@ -36,6 +37,10 @@ public class Result<T> implements Serializable {
      * 数据对象
      */
     private T data;
+    /**
+     * 参数错误消息
+     */
+    private PineStrMap<String> param;
     /**
      * 扩展-map
      */
