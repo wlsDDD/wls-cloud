@@ -1,9 +1,13 @@
 package cn.erectpine.system.project.controller;
 
+import cn.erectpine.common.web.pojo.Result;
+import cn.erectpine.dict.api.DictDataApi;
+import cn.erectpine.dict.entity.DictData;
 import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.service.IUserService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,11 +30,13 @@ public class UserController {
         this.userService = userService;
     }
     
+    @Autowired DictDataApi dictDataApi;
     /**
      * 用户信息-分页列表
      */
     @PostMapping("/list")
     public IPage<User> pageUser(@RequestBody Page<User> page, User user) {
+        Result result = dictDataApi.pageDictData(new DictData());
         return userService.pageUser(page, user);
     }
     

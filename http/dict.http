@@ -1,6 +1,6 @@
 
 ###
-POST http://{{host}}/dict-data/list
+POST http://{{host}}/dict-data/page
 Content-Type: application/json
 
 {

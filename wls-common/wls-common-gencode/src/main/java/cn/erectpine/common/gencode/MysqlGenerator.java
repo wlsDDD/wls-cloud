@@ -39,7 +39,7 @@ public class MysqlGenerator {
     /**
      * 包路径
      */
-    public static String packagePath = "cn.erectpine.system.project";
+    public static String packagePath = "cn.erectpine.dict.project";
     
     /**
      * 数据源-URL
@@ -114,9 +114,9 @@ public class MysqlGenerator {
         InjectionConfig cfg = new InjectionConfig() {
             @Override
             public void initMap() {
-                Map<String, Object> map = new HashMap<>();
-                map.put("ResponseTemplate", "cn.erectpine.common.web.ResponseTemplate");
-                map.put("Assert", "cn.erectpine.common.util.Assert");
+                Map<String, Object> map = new HashMap<>(16);
+                map.put("Result", "cn.erectpine.common.web.pojo");
+                map.put("PineAssert", "cn.erectpine.common.core.util.pine");
                 map.put("BusinessException", "cn.erectpine.common.web.exception.BusinessException");
                 map.put("CodeMsgEnum", "cn.erectpine.common.enums.CodeMsgEnum");
                 this.setMap(map);

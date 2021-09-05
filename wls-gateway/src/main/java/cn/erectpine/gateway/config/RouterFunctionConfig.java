@@ -1,4 +1,4 @@
-package cn.erectpine.gateway;
+package cn.erectpine.gateway.config;
 
 import org.springframework.context.annotation.Configuration;
 

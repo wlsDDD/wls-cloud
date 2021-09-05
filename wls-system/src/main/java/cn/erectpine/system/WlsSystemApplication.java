@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @date 2021/01/20 14:28:02
  */
 @EnableAsync
-@EnableFeignClients("cn.erectpine")
+@EnableFeignClients(basePackages = "cn.erectpine")
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "cn.erectpine")
 public class WlsSystemApplication {

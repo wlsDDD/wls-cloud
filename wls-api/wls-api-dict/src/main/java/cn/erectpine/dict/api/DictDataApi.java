@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  * @Date 2021/9/3 14:47
  */
 @Component
-@FeignClient(ServiceNameConstants.WLS_DICT)
+@FeignClient(value = ServiceNameConstants.WLS_DICT, path = "/dict-data")
 public interface DictDataApi {
     
     /**
@@ -24,7 +24,7 @@ public interface DictDataApi {
      * @param dictData dict类型数据
      * @return {@link Result}
      */
-    @PostMapping("/list")
+    @PostMapping("/page")
     Result pageDictData(DictData dictData);
     
     /**

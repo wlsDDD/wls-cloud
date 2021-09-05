@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author wls
  * @date 2021-03-18 16:29:10
  */
-@EnableFeignClients
+@EnableFeignClients(basePackages = "cn.erectpine")
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "cn.erectpine")
 public class WlsDictApplication {

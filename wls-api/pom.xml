@@ -21,11 +21,6 @@
     </properties>
 
     <dependencies>
-        <!--cloud-openfeign-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
         <dependency>
             <groupId>cn.erectpine</groupId>
             <artifactId>wls-common-web</artifactId>

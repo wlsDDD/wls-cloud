@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import ${package.Entity}.${entity};
 import ${package.Service}.${table.serviceName};
 <#if restControllerStyle>
-import org.springframework.web.bind.annotation.RestController;
+    import org.springframework.web.bind.annotation.RestController;
+    import org.springframework.beans.factory.annotation.Autowired;
 <#else>
 import org.springframework.stereotype.Controller;
 </#if>
@@ -41,25 +42,21 @@ import ${superControllerClassPackage};
 <#if kotlin>
 class ${table.controllerName}<#if superControllerClass??> : ${superControllerClass}()</#if>
 <#else>
-<#if superControllerClass??>
-public class ${table.controllerName} extends ${superControllerClass} {
-<#else>
-public class ${table.controllerName} {
-</#if>
+    <#if superControllerClass??>
+        public class ${table.controllerName} extends ${superControllerClass} {
+    <#else>
+        public class ${table.controllerName} {
+    </#if>
 
-    private final ${table.serviceName} ${table.entityPath}Service;
-
-    public ${table.controllerName}(${table.serviceName} ${table.entityPath}Service) {
-        this.${table.entityPath}Service = ${table.entityPath}Service;
-    }
+    @Autowired private ${table.serviceName} ${table.entityPath}Service;
 
 
     <#if !swagger2>
-    /**
-     * ${table.comment?substring(0,table.comment?length-1)}-分页列表
-     */
+        /**
+        * ${table.comment?substring(0,table.comment?length-1)}-分页列表
+        */
     <#else>
-    @ApiOperation("${table.comment?substring(0,table.comment?length-1)}-分页列表")
+        @ApiOperation("${table.comment?substring(0,table.comment?length-1)}-分页列表")
     </#if>
     @PostMapping("/page")
     public IPage<${entity}> page${entity}(@RequestBody <#if swagger2>@ApiIgnore </#if>Page<${entity}> page, ${entity} ${table.entityPath}) {
