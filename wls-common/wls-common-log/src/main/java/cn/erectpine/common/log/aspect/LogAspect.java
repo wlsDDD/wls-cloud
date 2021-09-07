@@ -14,7 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -32,18 +31,12 @@ import java.time.LocalDateTime;
 @Aspect
 @Component
 public class LogAspect {
-    /**
-     * 配置切入点
-     */
-    @Pointcut("execution(* cn.erectpine.*..controller..*.*(..))")
-    public void logPointCut() {
-    }
     
     /**
      * 日志切面
      * 记录日志
      */
-    @Around("logPointCut()")
+    @Around("execution(* cn.erectpine.*..controller..*.*(..))")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         return logAround(joinPoint);
     }

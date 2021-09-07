@@ -58,6 +58,7 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
+        <!--***************************************** 项目内部依赖 ****************************************************-->
         <dependency>
             <groupId>cn.erectpine</groupId>
             <artifactId>wls-api-dict</artifactId>

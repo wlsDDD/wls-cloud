@@ -17,6 +17,12 @@
     </properties>
 
     <dependencies>
+
+        <!-- Spring Context Support -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
         <!--分页插件-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
