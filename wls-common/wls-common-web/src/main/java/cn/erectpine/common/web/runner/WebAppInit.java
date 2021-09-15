@@ -52,7 +52,7 @@ public class WebAppInit {
      */
     @PostConstruct
     public void initCodeMsg() {
-        CodeMsgEnum.FAIL_UNKNOWN_ERROR.setMsg(ActiveEnum.prod.equals(GlobalConstants.active) ? "网络异常! 请稍后再试!" : "后端服务错误! ! 请携带<requestId>寻找相关开发人员!");
+        CodeMsgEnum.FAIL_UNKNOWN_ERROR.setInfo(ActiveEnum.prod.equals(GlobalConstants.active) ? "网络异常! 请稍后再试!" : "后端服务错误! ! 请携带<requestId>寻找相关开发人员!");
     }
     
 }

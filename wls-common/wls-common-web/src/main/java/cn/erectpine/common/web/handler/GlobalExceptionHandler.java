@@ -47,17 +47,17 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
         }
         if ((e instanceof HttpMessageConversionException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
+            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR.setInfo(e.getMessage()));
         }
         
         if ((e instanceof IllegalArgumentException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR.setMsg(e.getMessage()));
+            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR.setInfo(e.getMessage()));
         }
     
         if ((e instanceof BusinessException)) {
             log.warn("【全局异常拦截】-[业务类异常]", e);
-            return Result.fail(CodeMsgEnum.BUSINESS_ERROR.setMsg(e.getMessage()));
+            return Result.fail(CodeMsgEnum.BUSINESS_ERROR.setInfo(e.getMessage()));
         }
     
         // 处理未知异常-生产环境屏蔽错误信息

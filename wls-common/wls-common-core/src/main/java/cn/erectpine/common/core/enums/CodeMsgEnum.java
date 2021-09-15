@@ -29,39 +29,39 @@ public enum CodeMsgEnum {
     /**
      * 成功
      */
-    SUCCESS("2000", "操作成功"),
+    SUCCESS("2000", "SUCCESS"),
     /**
      * 参数
      */
-    ARG_VERIFY_ERROR("3000", "统一验证参数不合法, 请检查参数后重试! "),
+    ARG_VERIFY_ERROR("3000", "统一验证参数不合法, 请检查参数后重试! 以下信息仅供参考"),
     /**
      * 业务类异常，提示信息由抛异常时定义
      */
     BUSINESS_ERROR("4000", ""),
-    /**
-     * 数据库
-     */
-    DATA_INSERT_ERROR("5101", "新增数据失败，请联系数据库管理员"),
-    DATA_UPDATE_ERROR("5102", "修改数据失败，请联系数据库管理员"),
-    DATA_DELETE_ERROR("5103", "删除数据失败，请联系数据库管理员"),
     /**
      * 项目启动时根据环境设置提示信息
      * 最终兜底方案
      * 其他状态码应避开此状态码
      */
     FAIL_UNKNOWN_ERROR("5000", ""),
+    /**
+     * 数据库
+     */
+    DATA_INSERT_ERROR("5101", "新增数据失败，请联系数据库管理员"),
+    DATA_UPDATE_ERROR("5102", "修改数据失败，请联系数据库管理员"),
+    DATA_DELETE_ERROR("5103", "删除数据失败，请联系数据库管理员"),
     ;
     
     private final String code;
-    private String msg;
+    private String info;
     
-    CodeMsgEnum(String code, String msg) {
+    CodeMsgEnum(String code, String info) {
         this.code = code;
-        this.msg = msg;
+        this.info = info;
     }
     
-    public CodeMsgEnum setMsg(Object... msg) {
-        this.msg = StrUtil.format(this.msg + "[" + StrUtil.repeat(" {}", msg.length) + "]", msg);
+    public CodeMsgEnum setInfo(Object... info) {
+        this.info = StrUtil.format(this.info + "[" + StrUtil.repeat(" {}", info.length) + "]", info);
         return this;
     }
     

@@ -41,8 +41,8 @@ public class BaseRunTimeException extends RuntimeException {
      * @param params      参数个数
      */
     public BaseRunTimeException(CodeMsgEnum codeMsgEnum, Object... params) {
-        super(codeMsgEnum.getMsg());
-        codeMsgEnum.setMsg(params);
+        super(codeMsgEnum.getInfo());
+        codeMsgEnum.setInfo(params);
         this.code = codeMsgEnum.getCode();
     }
     

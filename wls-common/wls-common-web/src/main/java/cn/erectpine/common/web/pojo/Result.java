@@ -32,7 +32,7 @@ public class Result<T> implements Serializable {
     /**
      * 返回内容
      */
-    private String msg;
+    private String info;
     /**
      * 数据对象
      */
@@ -127,7 +127,7 @@ public class Result<T> implements Serializable {
      */
     public static <T> Result<T> build(T data, CodeMsgEnum codeMsgEnum) {
         codeMsgEnum = Optional.ofNullable(codeMsgEnum).orElse(CodeMsgEnum.FAIL_UNKNOWN_ERROR);
-        return new Result<T>().setCode(codeMsgEnum.getCode()).setMsg(codeMsgEnum.getMsg()).setData(data);
+        return new Result<T>().setCode(codeMsgEnum.getCode()).setInfo(codeMsgEnum.getInfo()).setData(data);
     }
     
 }
