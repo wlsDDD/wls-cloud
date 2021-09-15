@@ -11,6 +11,8 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  * 用户信息 前端控制器
@@ -34,9 +36,9 @@ public class UserController {
     /**
      * 用户信息-分页列表
      */
-    @GetMapping("/list")
-    public IPage<User> pageUser(Page<User> page, @Validated User user) {
-        return userService.pageUser(page, user);
+    @PostMapping("/list")
+    public IPage<User> pageUser(Page<User> page, @RequestBody @Validated List<User> user) {
+        return userService.pageUser(page, user.get(0));
     }
     
     /**

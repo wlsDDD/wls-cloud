@@ -1,5 +1,12 @@
 ### 分页列表
-GET http://{{host}}/user/list?userName=wls&email=1626
+POST http://{{host}}/user/list
+Content-Type: application/json
+
+[
+  {
+    "userName": ""
+  }
+]
 
 ### 根据id获取用户信息详情
 GET http://{{host}}/user/1
