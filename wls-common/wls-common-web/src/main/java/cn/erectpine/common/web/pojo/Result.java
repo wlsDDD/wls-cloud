@@ -40,7 +40,7 @@ public class Result<T> implements Serializable {
     /**
      * 参数错误消息
      */
-    private PineStrMap<String> param;
+    private PineStrMap<String> paramErrors;
     /**
      * 扩展-map
      */

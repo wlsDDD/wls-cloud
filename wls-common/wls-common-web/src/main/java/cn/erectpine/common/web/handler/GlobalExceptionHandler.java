@@ -43,7 +43,7 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
     public Result<?> caughtException(HttpServletRequest request, HttpServletResponse response, Throwable e) {
         if ((e instanceof BindException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR).setParam(getValidatedError((BindException) e));
+            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR).setParamErrors(getValidatedError((BindException) e));
         }
         if ((e instanceof HttpMessageConversionException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);

@@ -12,12 +12,10 @@ public enum ActiveEnum {
      * 开发环境
      */
     dev,
-    
     /**
      * 测试环境
      */
     beta,
-    
     /**
      * 正式环境
      */
