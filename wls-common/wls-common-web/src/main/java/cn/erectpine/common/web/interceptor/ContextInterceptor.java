@@ -1,6 +1,6 @@
 package cn.erectpine.common.web.interceptor;
 
-import cn.erectpine.common.web.context.PineContext;
+import cn.erectpine.common.core.context.PineContext;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 

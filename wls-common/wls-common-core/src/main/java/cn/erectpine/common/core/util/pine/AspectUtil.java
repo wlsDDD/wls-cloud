@@ -6,7 +6,6 @@ import org.aspectj.lang.Signature;
 import org.aspectj.lang.reflect.MethodSignature;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
 
 /**
  * 切面工具类
@@ -32,11 +31,7 @@ public class AspectUtil {
     public static <T extends Annotation> T getAnnotation(JoinPoint joinPoint, Class<T> clazz) {
         Signature signature = joinPoint.getSignature();
         MethodSignature methodSignature = (MethodSignature) signature;
-        Method method = methodSignature.getMethod();
-        if (method != null) {
-            return method.getAnnotation(clazz);
-        }
-        return null;
+        return methodSignature.getMethod().getAnnotation(clazz);
     }
     
 }

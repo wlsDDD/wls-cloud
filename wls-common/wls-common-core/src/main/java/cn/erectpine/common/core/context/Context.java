@@ -1,7 +1,7 @@
-package cn.erectpine.common.web.context;
+package cn.erectpine.common.core.context;
 
+import cn.erectpine.common.core.pojo.ApiLog;
 import cn.erectpine.common.core.thread.PineThreadPoolExecutor;
-import cn.erectpine.common.web.pojo.ApiLog;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -28,5 +28,12 @@ public class Context {
      * 接口日志
      */
     private ApiLog apiLog;
+    
+    /**
+     * 分布式锁-key
+     * 用于实现更细粒度的锁
+     * 如 用户锁
+     */
+    private String distributedLockKey;
     
 }

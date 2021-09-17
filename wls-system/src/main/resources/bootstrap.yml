@@ -29,6 +29,9 @@ spring:
           - dataId: wls-mail-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
             group: dev
             refresh: true
+          - dataId: wls-redisson-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+            group: dev
+            refresh: true
 
 
 server:

@@ -9,7 +9,10 @@ import cn.erectpine.common.core.enums.ActiveEnum;
  * @Date 2021/4/3 18:30
  */
 public class GlobalConstants {
-    
+    /**
+     * 项目名称
+     */
+    public static final String PROJECT_NAME = "wls-cloud";
     /**
      * 服务名称
      */

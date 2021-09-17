@@ -73,6 +73,10 @@
             <groupId>cn.erectpine</groupId>
             <artifactId>wls-common-log</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.erectpine</groupId>
+            <artifactId>wls-common-redis</artifactId>
+        </dependency>
 
         <!--***************************************** 开发工具库 ****************************************************-->
         <!--        &lt;!&ndash;jdk工具包&ndash;&gt;-->

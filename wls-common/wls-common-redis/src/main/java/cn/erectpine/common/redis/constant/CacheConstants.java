@@ -1,4 +1,4 @@
-package cn.erectpine.common.constant;
+package cn.erectpine.common.redis.constant;
 
 /**
  * Redis缓存前缀

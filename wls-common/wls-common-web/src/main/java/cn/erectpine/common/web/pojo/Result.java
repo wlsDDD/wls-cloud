@@ -1,10 +1,10 @@
 package cn.erectpine.common.web.pojo;
 
 
+import cn.erectpine.common.core.context.PineContext;
 import cn.erectpine.common.core.enums.CodeMsgEnum;
 import cn.erectpine.common.core.jdkboost.map.PineStrMap;
 import cn.erectpine.common.core.jdkboost.map.PineStrObjMap;
-import cn.erectpine.common.web.context.PineContext;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

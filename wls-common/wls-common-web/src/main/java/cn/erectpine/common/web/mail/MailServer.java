@@ -1,8 +1,8 @@
 package cn.erectpine.common.web.mail;
 
 import cn.erectpine.common.core.constant.GlobalConstants;
-import cn.erectpine.common.web.context.PineContext;
-import cn.erectpine.common.web.pojo.ApiLog;
+import cn.erectpine.common.core.context.PineContext;
+import cn.erectpine.common.core.pojo.ApiLog;
 import cn.erectpine.common.web.properties.WlsShareYml;
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.util.StrUtil;

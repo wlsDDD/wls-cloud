@@ -22,6 +22,7 @@
         <druid.version>1.2.4</druid.version>
         <!--工具类-->
         <hutool.version>5.5.7</hutool.version>
+        <redisson.version>3.16.2</redisson.version>
         <fastjson.version>1.2.74</fastjson.version>
         <validation.api.version>2.0.1.Final</validation.api.version>
         <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>

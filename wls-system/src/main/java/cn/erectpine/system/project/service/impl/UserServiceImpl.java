@@ -2,6 +2,7 @@ package cn.erectpine.system.project.service.impl;
 
 import cn.erectpine.common.core.enums.CodeMsgEnum;
 import cn.erectpine.common.core.util.pine.PineAssert;
+import cn.erectpine.common.redis.annotation.DistributedLock;
 import cn.erectpine.common.web.exception.BusinessException;
 import cn.erectpine.system.project.entity.Role;
 import cn.erectpine.system.project.entity.User;
@@ -42,6 +43,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      * @return 分页列表
      */
     @Override
+    @DistributedLock
     public IPage<User> pageUser(Page<User> page, User user) {
         return page(page, Wrappers.lambdaQuery(user));
     }

@@ -16,5 +16,17 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>${redisson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.erectpine</groupId>
+            <artifactId>wls-common-core</artifactId>
+        </dependency>
+
+    </dependencies>
 
 </project>

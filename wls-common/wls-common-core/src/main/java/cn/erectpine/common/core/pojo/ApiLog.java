@@ -1,4 +1,4 @@
-package cn.erectpine.common.web.pojo;
+package cn.erectpine.common.core.pojo;
 
 import cn.erectpine.common.core.enums.CodeMsgEnum;
 import cn.hutool.json.JSON;
