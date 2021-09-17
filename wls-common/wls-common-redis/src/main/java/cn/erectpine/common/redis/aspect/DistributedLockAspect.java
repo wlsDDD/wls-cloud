@@ -14,7 +14,7 @@ import org.redisson.api.RLock;
 import org.springframework.stereotype.Component;
 
 /**
- * 分布式锁注解是实现
+ * 分布式锁注解实现
  *
  * @author wls
  * @date 2021/9/17 9:38
@@ -32,23 +32,32 @@ public class DistributedLockAspect {
     @Around("@annotation(cn.erectpine.common.redis.annotation.DistributedLock)")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         Object proceed;
+        RLock lock = null;
         String methodName = AspectUtil.getMethodName(joinPoint);
-        String lockKey = LOCK_NAME + joinPoint.getSignature().getName() + ":" + DigestUtil.md5Hex(methodName);
-        String distributedLockKey = PineContext.getContext().getDistributedLockKey();
-        if (StrUtil.isNotBlank(distributedLockKey)) {
-            lockKey = lockKey + ":" + distributedLockKey;
-        }
-        RLock lock = RedisUtil.redissonClient.getLock(lockKey);
         try {
+            String lockKey = LOCK_NAME + joinPoint.getSignature().getName() + ":" + DigestUtil.md5Hex(methodName);
+            String distributedLockKey = PineContext.getContext().getDistributedLockKey();
+            if (StrUtil.isNotBlank(distributedLockKey)) {
+                lockKey = lockKey + ":" + distributedLockKey;
+            }
+            lock = RedisUtil.redissonClient.getLock(lockKey);
             lock.lock();
             log.info("[分布式锁 -> 加锁成功] - {} - {}", methodName, lock.getName());
             proceed = joinPoint.proceed();
         } catch (Throwable e) {
-            log.error("[分布式锁 -> 加锁方法执行异常] - {} - {}", methodName, lock.getName());
+            if (null != lock) {
+                log.error("[分布式锁 -> 加锁方法执行异常] - {} - {}", methodName, lock.getName(), e);
+            }
             throw e;
         } finally {
-            lock.unlock();
-            log.info("[分布式锁 -> 释放成功] - {} - {}", methodName, lock.getName());
+            try {
+                if (null != lock) {
+                    lock.unlock();
+                    log.info("[分布式锁 -> 释放正常] - {} - {}", methodName, lock.getName());
+                }
+            } catch (Throwable e) {
+                log.error("[分布式锁 -> 释放异常] - {} - {}", methodName, lock.getName(), e);
+            }
         }
         return proceed;
     }

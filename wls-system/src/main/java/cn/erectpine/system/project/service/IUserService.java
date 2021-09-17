@@ -22,7 +22,7 @@ public interface IUserService extends IService<User> {
      * @param user 查询条件
      * @return 分页列表
      */
-    IPage<User> pageUser(Page<User> page, User user);
+    IPage<User> pageUser(Page<User> page, User user) throws InterruptedException;
     
     /**
      * 根据id获取用户信息表详情

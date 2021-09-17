@@ -37,7 +37,7 @@ public class UserController {
      * 用户信息-分页列表
      */
     @PostMapping("/list")
-    public IPage<User> pageUser(Page<User> page, @RequestBody @Validated List<User> user) {
+    public IPage<User> pageUser(Page<User> page, @RequestBody @Validated List<User> user) throws Exception {
         return userService.pageUser(page, user.get(0));
     }
     

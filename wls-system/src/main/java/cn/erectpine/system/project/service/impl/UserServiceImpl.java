@@ -44,7 +44,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      */
     @Override
     @DistributedLock
-    public IPage<User> pageUser(Page<User> page, User user) {
+    public IPage<User> pageUser(Page<User> page, User user) throws InterruptedException {
+//        for (int i = 0; i < 120; i++) {
+//            Thread.sleep(1000);
+//        }
         return page(page, Wrappers.lambdaQuery(user));
     }
     
