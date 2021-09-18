@@ -8,7 +8,6 @@ import cn.erectpine.common.core.thread.PineThreadPoolExecutor;
 import cn.erectpine.common.web.properties.WlsShareYml;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -25,7 +24,6 @@ public class WebAppInit {
     
     @Autowired WlsShareYml wlsShareYml;
     @Autowired PineThreadPoolExecutor pineThreadPoolExecutor;
-    @Autowired StringRedisTemplate redisTemplate;
     
     
     /**
@@ -35,8 +33,6 @@ public class WebAppInit {
     public void initContext() {
         Context.threadPool = pineThreadPoolExecutor;
         log.info("[线程池 -> 初始化] - [{}]", Context.threadPool);
-        Context.redis = redisTemplate;
-        log.info("[redis -> 初始化] - [{}]", Context.redis);
     }
     
     /**

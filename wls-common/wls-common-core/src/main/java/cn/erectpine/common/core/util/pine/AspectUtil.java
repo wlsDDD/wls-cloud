@@ -26,7 +26,7 @@ public class AspectUtil {
     }
     
     /**
-     * 是否存在注解，如果存在就获取
+     * 获取指定注解
      */
     public static <T extends Annotation> T getAnnotation(JoinPoint joinPoint, Class<T> clazz) {
         Signature signature = joinPoint.getSignature();

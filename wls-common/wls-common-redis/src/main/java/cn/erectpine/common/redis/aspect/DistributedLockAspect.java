@@ -37,6 +37,7 @@ public class DistributedLockAspect {
         try {
             String lockKey = LOCK_NAME + joinPoint.getSignature().getName() + ":" + DigestUtil.md5Hex(methodName);
             String distributedLockKey = PineContext.getContext().getDistributedLockKey();
+            // 支持自定义扩展更细粒度的锁
             if (StrUtil.isNotBlank(distributedLockKey)) {
                 lockKey = lockKey + ":" + distributedLockKey;
             }

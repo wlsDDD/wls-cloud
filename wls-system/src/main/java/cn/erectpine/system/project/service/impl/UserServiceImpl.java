@@ -29,11 +29,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
     
     private final UserMapper userMapper;
+    @Autowired IRoleService roleService;
+    
     
     public UserServiceImpl(UserMapper userMapper) {
         this.userMapper = userMapper;
     }
-    
     
     /**
      * 用户信息-列表
@@ -62,8 +63,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return getById(id);
     }
     
-    @Autowired IRoleService roleService;
-    
     /**
      * 新增-用户信息
      *
@@ -76,11 +75,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         roleService.insertRole(new Role().setRoleName("roleName").setRoleKey("role"));
 //        addUser(user.setUserName("null"));
 //        PineAssert.isTrue(save(user), () -> new BusinessException(CodeMsgEnum.DATA_INSERT_ERROR));
-    }
-    
-    private void addUser(User user) {
-        PineAssert.notBlank(user.getUserName(), "姓名不可为空");
-        save(user);
     }
     
     /**
@@ -101,6 +95,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public void deleteUser(Long id) {
         PineAssert.isTrue(removeById(id), () -> new BusinessException(CodeMsgEnum.DATA_DELETE_ERROR));
+    }
+    
+    private void addUser(User user) {
+        PineAssert.notBlank(user.getUserName(), "姓名不可为空");
+        save(user);
     }
     
 }
