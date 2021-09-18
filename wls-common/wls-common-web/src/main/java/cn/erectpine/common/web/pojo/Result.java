@@ -2,7 +2,7 @@ package cn.erectpine.common.web.pojo;
 
 
 import cn.erectpine.common.core.context.PineContext;
-import cn.erectpine.common.core.enums.CodeMsgEnum;
+import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.jdkboost.map.PineStrMap;
 import cn.erectpine.common.core.jdkboost.map.PineStrObjMap;
 import lombok.Data;
@@ -86,7 +86,7 @@ public class Result<T> implements Serializable {
      * @return {@link Result}<{@link T}>
      */
     public static <T> Result<T> ok(T data) {
-        return build(data, CodeMsgEnum.SUCCESS);
+        return build(data, CodeInfoEnum.SUCCESS);
     }
     
     /**
@@ -105,29 +105,29 @@ public class Result<T> implements Serializable {
      * @return {@link Result}<{@link T}>
      */
     public static <T> Result<T> fail(T data) {
-        return build(data, CodeMsgEnum.FAIL_UNKNOWN_ERROR);
+        return build(data, CodeInfoEnum.FAIL_UNKNOWN_ERROR);
     }
     
     /**
      * 失败
      *
-     * @param codeMsgEnum codeMsgEnum
+     * @param codeInfoEnum codeMsgEnum
      * @return {@link Result}<{@link T}>
      */
-    public static <T> Result<T> fail(CodeMsgEnum codeMsgEnum) {
-        return build(null, codeMsgEnum);
+    public static <T> Result<T> fail(CodeInfoEnum codeInfoEnum) {
+        return build(null, codeInfoEnum);
     }
     
     /**
      * 构建返回体
      *
-     * @param data        数据
-     * @param codeMsgEnum codeMsgEnum
+     * @param data         数据
+     * @param codeInfoEnum codeMsgEnum
      * @return {@link Result}<{@link T}>
      */
-    public static <T> Result<T> build(T data, CodeMsgEnum codeMsgEnum) {
-        codeMsgEnum = Optional.ofNullable(codeMsgEnum).orElse(CodeMsgEnum.FAIL_UNKNOWN_ERROR);
-        return new Result<T>().setCode(codeMsgEnum.getCode()).setInfo(codeMsgEnum.getInfo()).setData(data);
+    public static <T> Result<T> build(T data, CodeInfoEnum codeInfoEnum) {
+        codeInfoEnum = Optional.ofNullable(codeInfoEnum).orElse(CodeInfoEnum.FAIL_UNKNOWN_ERROR);
+        return new Result<T>().setCode(codeInfoEnum.getCode()).setInfo(codeInfoEnum.getInfo()).setData(data);
     }
     
 }

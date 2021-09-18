@@ -1,7 +1,7 @@
 package cn.erectpine.common.web.handler;
 
 import cn.erectpine.common.core.context.PineContext;
-import cn.erectpine.common.core.enums.CodeMsgEnum;
+import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.enums.LogTypeEnum;
 import cn.erectpine.common.core.jdkboost.map.PineStrMap;
 import cn.erectpine.common.core.pojo.ApiLog;
@@ -43,26 +43,26 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
     public Result<?> caughtException(HttpServletRequest request, HttpServletResponse response, Throwable e) {
         if ((e instanceof BindException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR).setParamErrors(getValidatedError((BindException) e));
+            return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR).setParamErrors(getValidatedError((BindException) e));
         }
         if ((e instanceof HttpMessageConversionException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR.setInfo(e.getMessage()));
+            return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR.setInfo(e.getMessage()));
         }
         
         if ((e instanceof IllegalArgumentException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return Result.fail(CodeMsgEnum.ARG_VERIFY_ERROR.setInfo(e.getMessage()));
+            return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR.setInfo(e.getMessage()));
         }
     
         if ((e instanceof BusinessException)) {
             log.warn("【全局异常拦截】-[业务类异常]", e);
-            return Result.fail(CodeMsgEnum.BUSINESS_ERROR.setInfo(e.getMessage()));
+            return Result.fail(CodeInfoEnum.BUSINESS_ERROR.setInfo(e.getMessage()));
         }
     
         // 处理未知异常-生产环境屏蔽错误信息
         log.error("【全局异常拦截】-[未定义异常类型]", e);
-        return Result.fail(CodeMsgEnum.FAIL_UNKNOWN_ERROR);
+        return Result.fail(CodeInfoEnum.FAIL_UNKNOWN_ERROR);
     }
     
     /**
@@ -114,7 +114,7 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
     public static void consoleLog() {
         ApiLog apiLog = PineContext.getApiLog();
         Map<String, Object> logMap = BeanUtil.beanToMap(apiLog, false, false);
-        if (CodeMsgEnum.SUCCESS.equals(apiLog.getStatus())) {
+        if (CodeInfoEnum.SUCCESS.equals(apiLog.getStatus())) {
             log.info(LogTypeEnum.SUCCESS.getDelimiter());
             logMap.forEach((s, o) -> log.info(s + ": {}", o));
             log.info(LogTypeEnum.END.getDelimiter());

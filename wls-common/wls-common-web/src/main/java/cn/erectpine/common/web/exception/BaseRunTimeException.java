@@ -2,7 +2,7 @@ package cn.erectpine.common.web.exception;
 
 import cn.erectpine.common.core.constant.GlobalConstants;
 import cn.erectpine.common.core.enums.ActiveEnum;
-import cn.erectpine.common.core.enums.CodeMsgEnum;
+import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.util.pine.PineUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -37,13 +37,13 @@ public class BaseRunTimeException extends RuntimeException {
      * 基本运行时异常
      * 构造方法-带code
      *
-     * @param codeMsgEnum 代码味精枚举
-     * @param params      参数个数
+     * @param codeInfoEnum 代码味精枚举
+     * @param params       参数个数
      */
-    public BaseRunTimeException(CodeMsgEnum codeMsgEnum, Object... params) {
-        super(codeMsgEnum.getInfo());
-        codeMsgEnum.setInfo(params);
-        this.code = codeMsgEnum.getCode();
+    public BaseRunTimeException(CodeInfoEnum codeInfoEnum, Object... params) {
+        super(codeInfoEnum.getInfo());
+        codeInfoEnum.setInfo(params);
+        this.code = codeInfoEnum.getCode();
     }
     
     /**

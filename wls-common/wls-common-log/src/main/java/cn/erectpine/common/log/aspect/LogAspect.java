@@ -2,7 +2,7 @@ package cn.erectpine.common.log.aspect;
 
 import cn.erectpine.common.core.constant.GlobalConstants;
 import cn.erectpine.common.core.context.PineContext;
-import cn.erectpine.common.core.enums.CodeMsgEnum;
+import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.pojo.ApiLog;
 import cn.erectpine.common.core.util.collect.IpUtils;
 import cn.erectpine.common.core.util.collect.ServletUtil;
@@ -53,7 +53,7 @@ public class LogAspect {
             apiLog = PineContext.getContext().getApiLog();
             apiLog.setHeaders(JSONUtil.parseObj(ServletUtil.getHeaders(request)))
                   .setStartTime(LocalDateTime.now())
-                  .setStatus(CodeMsgEnum.SUCCESS);
+                  .setStatus(CodeInfoEnum.SUCCESS);
             if (logIgnore == null || logIgnore.ignoreRequestData()) {
                 apiLog.setRequestData(JSONUtil.parse(joinPoint.getArgs()));
             }
@@ -68,7 +68,7 @@ public class LogAspect {
             // 记录异常日志
             try {
                 Assert.notNull(apiLog, "日志切面异常");
-                apiLog.setStatus(CodeMsgEnum.FAIL_UNKNOWN_ERROR)
+                apiLog.setStatus(CodeInfoEnum.FAIL_UNKNOWN_ERROR)
                       .setErrorMsg(e.toString())
                       .setSimpleStacktrace(JSONUtil.parse(PineUtil.getSimpleStackTrace(e, GlobalConstants.stackFilter)));
             } catch (Exception exception) {

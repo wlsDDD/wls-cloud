@@ -1,6 +1,6 @@
 package cn.erectpine.common.core.pojo;
 
-import cn.erectpine.common.core.enums.CodeMsgEnum;
+import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.hutool.json.JSON;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -53,7 +53,7 @@ public class ApiLog {
      * 请求状态 200成功
      * 500失败未处理
      */
-    private CodeMsgEnum status;
+    private CodeInfoEnum status;
     /**
      * 接口耗时 单位毫秒
      */

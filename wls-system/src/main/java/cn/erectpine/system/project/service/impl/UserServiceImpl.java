@@ -1,6 +1,6 @@
 package cn.erectpine.system.project.service.impl;
 
-import cn.erectpine.common.core.enums.CodeMsgEnum;
+import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.util.pine.PineAssert;
 import cn.erectpine.common.redis.annotation.DistributedLock;
 import cn.erectpine.common.web.exception.BusinessException;
@@ -84,7 +84,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      */
     @Override
     public void updateUser(User user) {
-        PineAssert.isTrue(updateById(user), () -> new BusinessException(CodeMsgEnum.DATA_UPDATE_ERROR));
+        PineAssert.isTrue(updateById(user), () -> new BusinessException(CodeInfoEnum.DATA_UPDATE_ERROR));
     }
     
     /**
@@ -94,7 +94,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      */
     @Override
     public void deleteUser(Long id) {
-        PineAssert.isTrue(removeById(id), () -> new BusinessException(CodeMsgEnum.DATA_DELETE_ERROR));
+        PineAssert.isTrue(removeById(id), () -> new BusinessException(CodeInfoEnum.DATA_DELETE_ERROR));
     }
     
     private void addUser(User user) {

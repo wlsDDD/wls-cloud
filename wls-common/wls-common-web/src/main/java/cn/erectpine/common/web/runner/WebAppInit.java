@@ -3,7 +3,7 @@ package cn.erectpine.common.web.runner;
 import cn.erectpine.common.core.constant.GlobalConstants;
 import cn.erectpine.common.core.context.Context;
 import cn.erectpine.common.core.enums.ActiveEnum;
-import cn.erectpine.common.core.enums.CodeMsgEnum;
+import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.thread.PineThreadPoolExecutor;
 import cn.erectpine.common.web.properties.WlsShareYml;
 import lombok.extern.slf4j.Slf4j;
@@ -46,8 +46,8 @@ public class WebAppInit {
         log.info("[项目环境 -> 初始化] - [{}]", GlobalConstants.active);
         GlobalConstants.stackFilter = wlsShareYml.getStackFilter();
         log.info("[堆栈过滤配置 -> 初始化] - [{}]", GlobalConstants.stackFilter);
-        CodeMsgEnum.FAIL_UNKNOWN_ERROR.setInfo(ActiveEnum.prod.equals(GlobalConstants.active) ? "网络异常! 请稍后再试!" : "后端服务错误! ! 请携带<requestId>寻找相关开发人员!");
-        log.info("[{}环境兜底提示语 -> 初始化] - [{}]", GlobalConstants.active, CodeMsgEnum.FAIL_UNKNOWN_ERROR.getInfo());
+        CodeInfoEnum.FAIL_UNKNOWN_ERROR.setInfo(ActiveEnum.prod.equals(GlobalConstants.active) ? "网络异常! 请稍后再试!" : "后端服务错误! ! 请携带<requestId>寻找相关开发人员!");
+        log.info("[{}环境兜底提示语 -> 初始化] - [{}]", GlobalConstants.active, CodeInfoEnum.FAIL_UNKNOWN_ERROR.getInfo());
     }
     
 }

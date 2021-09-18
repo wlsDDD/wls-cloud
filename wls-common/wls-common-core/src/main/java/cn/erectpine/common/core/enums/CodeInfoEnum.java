@@ -24,7 +24,7 @@ import lombok.Getter;
  * @date 2021/01/13
  */
 @Getter
-public enum CodeMsgEnum {
+public enum CodeInfoEnum {
     
     /**
      * 成功
@@ -55,12 +55,12 @@ public enum CodeMsgEnum {
     private final String code;
     private String info;
     
-    CodeMsgEnum(String code, String info) {
+    CodeInfoEnum(String code, String info) {
         this.code = code;
         this.info = info;
     }
     
-    public CodeMsgEnum setInfo(Object... info) {
+    public CodeInfoEnum setInfo(Object... info) {
         this.info = StrUtil.format(this.info + "[" + StrUtil.repeat(" {}", info.length) + "]", info);
         return this;
     }

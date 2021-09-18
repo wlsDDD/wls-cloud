@@ -1,7 +1,7 @@
 package cn.erectpine.common.web.exception;
 
 
-import cn.erectpine.common.core.enums.CodeMsgEnum;
+import cn.erectpine.common.core.enums.CodeInfoEnum;
 
 /**
  * 业务异常
@@ -16,10 +16,10 @@ public class BusinessException extends BaseRunTimeException {
      * 业务异常
      * 构造方法-带code
      *
-     * @param codeMsgEnum 代码味精枚举
-     * @param params      参数个数
+     * @param codeInfoEnum 代码味精枚举
+     * @param params       参数个数
      */
-    public BusinessException(CodeMsgEnum codeMsgEnum, Object... params) {
-        super(codeMsgEnum, params);
+    public BusinessException(CodeInfoEnum codeInfoEnum, Object... params) {
+        super(codeInfoEnum, params);
     }
 }
