@@ -3,8 +3,8 @@ package cn.erectpine.common.redis.constant;
 /**
  * Redis缓存前缀
  *
- * @Author wls
- * @Date 2020/12/10 16:43
+ * @author wls
+ * @since 2020/12/10 16:43
  */
 public interface CacheConstants {
     

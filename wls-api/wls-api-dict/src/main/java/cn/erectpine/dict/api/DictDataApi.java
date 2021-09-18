@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 /**
  * 字典数据API
  *
- * @Author wls
- * @Date 2021/9/3 14:47
+ * @author wls
+ * @since 2021/9/3 14:47
  */
 @Component
 @FeignClient(value = ServiceNameConstants.WLS_DICT, path = "/dict-data", contextId = "dictDataApi")

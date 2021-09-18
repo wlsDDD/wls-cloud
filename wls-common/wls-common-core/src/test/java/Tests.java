@@ -2,8 +2,8 @@ import cn.hutool.system.SystemUtil;
 import org.junit.jupiter.api.Test;
 
 /**
- * @Author wls
- * @Date 2021/8/21 21:28
+ * @author wls
+ * @since 2021/8/21 21:28
  */
 public class Tests {
     

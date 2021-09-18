@@ -11,8 +11,8 @@ import java.util.concurrent.*;
 /**
  * 线程执行器配置
  *
- * @Author wls
- * @Date 2021/8/21 20:13
+ * @author wls
+ * @since 2021/8/21 20:13
  */
 @Data
 @Accessors(chain = true)

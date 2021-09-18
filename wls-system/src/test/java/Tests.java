@@ -12,8 +12,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Author wls
- * @Date 2021/4/4 14:39
+ * @author wls
+ * @since 2021/4/4 14:39
  */
 public class Tests {
     

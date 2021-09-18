@@ -10,8 +10,8 @@ import lombok.EqualsAndHashCode;
 /**
  * 自定义异常基类
  *
- * @Author wls
- * @Date 2021/1/13 14:08
+ * @author wls
+ * @since 2021/1/13 14:08
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

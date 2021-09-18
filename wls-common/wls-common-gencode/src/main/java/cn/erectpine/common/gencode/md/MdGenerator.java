@@ -22,8 +22,8 @@ import java.util.Map;
 /**
  * 实体类md文档生成器
  *
- * @Author wls
- * @Date 2021/5/17 15:47
+ * @author wls
+ * @since 2021/5/17 15:47
  */
 @Slf4j
 public class MdGenerator {

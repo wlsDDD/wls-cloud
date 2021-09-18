@@ -9,7 +9,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * wls系统应用
  *
  * @author wls
- * @date 2021/01/20 14:28:02
+ * @since 2021/01/20 14:28:02
  */
 @EnableDiscoveryClient
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})

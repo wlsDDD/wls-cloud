@@ -97,7 +97,7 @@ public class ${entity} implements Serializable {
 </#if>
 <#-- 配置日期格式 -->
 <#if ('Date') == field.propertyType>
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @sinceTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 </#if>
 <#-- 逻辑删除注解 -->

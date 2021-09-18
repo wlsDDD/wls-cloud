@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * lambda工具类
  *
  * @author wls
- * @date 2021/04/03
+ * @since 2021/04/03
  */
 @Slf4j
 public class LamUtil {

@@ -15,8 +15,8 @@ import javax.annotation.PostConstruct;
 /**
  * 项目启动时-初始化公共资源
  *
- * @Author wls
- * @Date 2021/4/3 18:11
+ * @author wls
+ * @since 2021/4/3 18:11
  */
 @Slf4j
 @Component

@@ -8,8 +8,8 @@ import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import org.junit.jupiter.api.Test;
 
 /**
- * @Author wls
- * @Date 2021/9/4 22:55
+ * @author wls
+ * @since 2021/9/4 22:55
  */
 public class GenCode {
     

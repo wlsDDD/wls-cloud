@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 /**
  * 接口日志
  *
- * @Author wls
- * @Date 2021/1/13 16:54
+ * @author wls
+ * @since 2021/1/13 16:54
  */
 @Accessors(chain = true)
 @Data

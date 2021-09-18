@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
  * 正则表达式工具类
  *
  * @author wls
- * @date 2021/01/18 11:26:40
+ * @since 2021/01/18 11:26:40
  */
 public final class PatternUtil {
     

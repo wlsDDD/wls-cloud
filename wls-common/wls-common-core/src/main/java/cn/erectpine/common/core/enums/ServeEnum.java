@@ -5,8 +5,8 @@ import lombok.Getter;
 /**
  * 服务enum
  *
- * @Author wls
- * @Date 2021/4/3 16:07
+ * @author wls
+ * @since 2021/4/3 16:07
  */
 @Getter
 public enum ServeEnum {

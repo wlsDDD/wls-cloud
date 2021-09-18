@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 /**
  * 项目相关配置
  *
- * @Author wls
- * @Date 2021/1/12 15:53
+ * @author wls
+ * @since 2021/1/12 15:53
  */
 @Data
 @Component

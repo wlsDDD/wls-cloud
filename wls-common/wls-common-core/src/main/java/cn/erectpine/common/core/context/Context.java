@@ -8,8 +8,8 @@ import lombok.experimental.Accessors;
 /**
  * 请求上下文实体
  *
- * @Author wls
- * @Date 2021/4/14 10:42
+ * @author wls
+ * @since 2021/4/14 10:42
  */
 @Data
 @Accessors(chain = true)

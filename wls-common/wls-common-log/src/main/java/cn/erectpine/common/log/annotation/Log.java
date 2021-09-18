@@ -9,7 +9,7 @@ import java.lang.annotation.*;
  * 自定义记录接口日志注解
  *
  * @author wls
- * @date 2021/01/15 17:41:58
+ * @since 2021/01/15 17:41:58
  */
 @Target({ElementType.PARAMETER, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

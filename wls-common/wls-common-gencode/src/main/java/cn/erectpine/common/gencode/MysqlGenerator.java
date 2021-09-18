@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * 自定义代码生成器
  *
- * @Author wls
+ * @author wls
  */
 public class MysqlGenerator {
     

@@ -3,8 +3,8 @@ package cn.erectpine.common.core.constant;
 /**
  * 数据操作失败返回提示
  *
- * @Author wls
- * @Date 2020/9/16 14:21
+ * @author wls
+ * @since 2020/9/16 14:21
  */
 public interface MsgConstants {
     

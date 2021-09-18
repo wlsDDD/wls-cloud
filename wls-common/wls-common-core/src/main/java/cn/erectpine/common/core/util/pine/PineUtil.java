@@ -47,7 +47,7 @@ public class PineUtil {
      *
      * @param list 列表
      * @return {@link List} 树列表
-     * @Author wls
+     * @author wls
      */
     public static <T> List<Tree<Long>> toTree(List<T> list) {
         return toTree(list, TREE_CONFIG);
@@ -59,7 +59,7 @@ public class PineUtil {
      * @param list           列表
      * @param treeNodeConfig 转换配置
      * @return {@link List} 树列表
-     * @Author wls
+     * @author wls
      */
     public static <T> List<Tree<Long>> toTree(List<T> list, TreeNodeConfig treeNodeConfig) {
         return TreeUtil.build(list, 0L, treeNodeConfig, (treeNode, tree) -> tree.putAll(BeanUtil.beanToMap(treeNode)));
@@ -71,7 +71,7 @@ public class PineUtil {
      * @param list           列表
      * @param treeNodeConfig 转换配置
      * @return 列表
-     * @Author wls
+     * @author wls
      */
     public static <T> List<T> convertRootNode(List<T> list, TreeNodeConfig treeNodeConfig) {
         return list.parallelStream().map(item -> {
@@ -213,7 +213,7 @@ public class PineUtil {
      * @param fresh   拷贝后的对象
      * @param ignores 忽略字段
      * @return fresh
-     * @Author wls
+     * @author wls
      */
     @SafeVarargs
     public static <T> T copyBean(Object old, T fresh, FunctionSerializable<T, ?>... ignores) {

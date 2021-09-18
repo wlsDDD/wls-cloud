@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 /**
  * Redis工具类
  *
- * @Author wls
- * @Date 2021/9/17 9:27
+ * @author wls
+ * @since 2021/9/17 9:27
  */
 @Slf4j
 @Component

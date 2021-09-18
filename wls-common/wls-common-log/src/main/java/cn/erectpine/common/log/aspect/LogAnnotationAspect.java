@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 /**
  * 日志切面-基于注解
  *
- * @Author wls
- * @Date 2021/4/5 11:34
+ * @author wls
+ * @since 2021/4/5 11:34
  */
 @Aspect
 @Component

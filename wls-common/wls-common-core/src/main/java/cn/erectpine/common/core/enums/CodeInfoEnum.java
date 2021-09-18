@@ -21,7 +21,7 @@ import lombok.Getter;
  * 6000-请求失败-外部
  *
  * @author wls
- * @date 2021/01/13
+ * @since 2021/01/13
  */
 @Getter
 public enum CodeInfoEnum {

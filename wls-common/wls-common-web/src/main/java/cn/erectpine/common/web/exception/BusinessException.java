@@ -6,8 +6,8 @@ import cn.erectpine.common.core.enums.CodeInfoEnum;
 /**
  * 业务异常
  *
- * @Author wls
- * @Date 2021/4/3 18:42
+ * @author wls
+ * @since 2021/4/3 18:42
  */
 public class BusinessException extends BaseRunTimeException {
     private static final long serialVersionUID = 1L;

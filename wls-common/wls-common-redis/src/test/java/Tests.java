@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 /**
  * 测试类
  *
- * @Author wls
- * @Date 2021/9/17 13:05
+ * @author wls
+ * @since 2021/9/17 13:05
  */
 public class Tests {
     @Test

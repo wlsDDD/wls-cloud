@@ -6,7 +6,7 @@ import lombok.Getter;
  * 日志类型枚举
  *
  * @author wls
- * @Date 2021/1/14 14:13
+ * @since 2021/1/14 14:13
  */
 @Getter
 public enum LogTypeEnum {

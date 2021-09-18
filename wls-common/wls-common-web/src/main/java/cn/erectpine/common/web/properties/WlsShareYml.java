@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 /**
  * 共享yml配置
  *
- * @Author wls
- * @Date 2021/3/15 17:31
+ * @author wls
+ * @since 2021/3/15 17:31
  */
 @Data
 @Component

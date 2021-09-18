@@ -5,8 +5,8 @@ import cn.erectpine.common.core.enums.ActiveEnum;
 /**
  * 全局常量信息
  *
- * @Author wls
- * @Date 2021/4/3 18:30
+ * @author wls
+ * @since 2021/4/3 18:30
  */
 public class GlobalConstants {
     /**

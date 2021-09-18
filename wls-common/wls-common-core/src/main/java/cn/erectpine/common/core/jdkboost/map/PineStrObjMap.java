@@ -6,7 +6,7 @@ import cn.erectpine.common.core.function.FunctionSerializable;
  * 链式调用map
  *
  * @author wls
- * @date 2021/08/21 16:20:58
+ * @since 2021/08/21 16:20:58
  */
 public class PineStrObjMap extends PineStrMap<Object> {
     

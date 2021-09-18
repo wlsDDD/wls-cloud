@@ -8,8 +8,8 @@ import java.util.concurrent.*;
  * 松线程执行程序
  * 线程执行程序
  *
- * @Author wls
- * @Date 2021/8/21 21:37
+ * @author wls
+ * @since 2021/8/21 21:37
  */
 @Slf4j
 public class PineThreadPoolExecutor extends ThreadPoolExecutor {

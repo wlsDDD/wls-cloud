@@ -25,8 +25,8 @@ import java.util.Date;
 /**
  * 电子邮件工具类
  *
- * @Author wls
- * @Date 2021/3/15 16:27
+ * @author wls
+ * @since 2021/3/15 16:27
  */
 @Slf4j
 @Component

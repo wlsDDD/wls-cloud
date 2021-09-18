@@ -6,8 +6,8 @@ import lombok.experimental.Accessors;
 /**
  * bean属性
  *
- * @Author wls
- * @Date 2021/5/18 10:34
+ * @author wls
+ * @since 2021/5/18 10:34
  */
 @Data
 @Accessors(chain = true)

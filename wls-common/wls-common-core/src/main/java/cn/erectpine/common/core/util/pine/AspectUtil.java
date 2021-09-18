@@ -10,8 +10,8 @@ import java.lang.annotation.Annotation;
 /**
  * 切面工具类
  *
- * @Author wls
- * @Date 2021/1/15 9:48
+ * @author wls
+ * @since 2021/1/15 9:48
  */
 @Slf4j
 public class AspectUtil {

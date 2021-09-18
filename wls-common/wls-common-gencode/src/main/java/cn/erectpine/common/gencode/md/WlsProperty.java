@@ -6,8 +6,8 @@ import java.lang.annotation.*;
  * 自定义注解
  * 用于获取bean属性注释
  *
- * @Author wls
- * @Date 2021/5/18 9:33
+ * @author wls
+ * @since 2021/5/18 9:33
  */
 @Target({ElementType.FIELD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

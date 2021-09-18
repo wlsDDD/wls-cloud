@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 /**
  * 实体类基类
  *
- * @Author wls
- * @Date 2021/1/13 9:32
+ * @author wls
+ * @since 2021/1/13 9:32
  */
 @Data
 public abstract class BaseEntity implements Serializable {

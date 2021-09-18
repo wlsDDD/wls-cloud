@@ -3,8 +3,8 @@ package cn.erectpine.common.core.constant;
 /**
  * 服务名称常量
  *
- * @Author wls
- * @Date 2021/9/3 14:54
+ * @author wls
+ * @since 2021/9/3 14:54
  */
 public interface ServiceNameConstants {
     

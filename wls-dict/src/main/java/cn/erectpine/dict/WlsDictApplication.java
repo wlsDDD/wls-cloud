@@ -9,7 +9,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * wls-数据字典服务
  *
  * @author wls
- * @date 2021-03-18 16:29:10
+ * @since 2021-03-18 16:29:10
  */
 @EnableFeignClients(basePackages = "cn.erectpine")
 @EnableDiscoveryClient
