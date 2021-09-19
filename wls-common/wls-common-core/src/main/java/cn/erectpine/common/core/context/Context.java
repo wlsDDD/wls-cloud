@@ -15,7 +15,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class Context {
     
-    
     /**
      * 接口日志
      */

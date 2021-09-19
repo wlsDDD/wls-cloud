@@ -1,6 +1,7 @@
 package cn.erectpine.common.redis.aspect;
 
 import cn.erectpine.common.core.constant.GlobalConstants;
+import cn.erectpine.common.core.context.Context;
 import cn.erectpine.common.core.context.PineContext;
 import cn.erectpine.common.core.util.pine.AspectUtil;
 import cn.erectpine.common.redis.RedisUtil;
@@ -13,6 +14,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.redisson.api.RLock;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 /**
  * 分布式锁注解实现
@@ -34,11 +37,18 @@ public class DistributedLockAspect {
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         DistributedLock distributedLock = AspectUtil.getAnnotation(joinPoint, DistributedLock.class);
         String methodName = AspectUtil.getMethodName(joinPoint);
+        String lockKey = LOCK_NAME + joinPoint.getSignature().getName() + ":" + DigestUtil.md5Hex(methodName);
+        String distributedLockKey = Optional.ofNullable(PineContext.getContext()).orElseGet(Context::new).getDistributedLockKey();
+        // 支持自定义扩展更细粒度的锁
+        if (StrUtil.isNotBlank(distributedLockKey)) {
+            lockKey = lockKey + ":" + distributedLockKey;
+        }
+        RLock lock = RedisUtil.redissonClient.getLock(lockKey);
         switch (distributedLock.value()) {
             case LOCK:
-                return lock(joinPoint, methodName);
+                return lock(joinPoint, lock);
             case TRY_LOCK:
-                return tryLock(joinPoint, methodName);
+                return tryLock(joinPoint, lock);
             default:
                 log.error("[分布式锁 <> -> 匹配锁失败, 放弃执行代理方法]");
                 return null;
@@ -51,27 +61,25 @@ public class DistributedLockAspect {
      * @param joinPoint 连接点
      * @return {@link Object}
      */
-    private Object tryLock(ProceedingJoinPoint joinPoint, String methodName) {
-        Object proceed = null;
-        RLock lock = getLock(joinPoint, methodName);
+    private Object tryLock(ProceedingJoinPoint joinPoint, RLock lock) throws Throwable {
         if (lock.tryLock()) {
             try {
-                log.info("[分布式锁 <tryLock> -> 加锁成功] - {} - {}", methodName, lock.getName());
-                proceed = joinPoint.proceed();
+                log.info("[分布式锁 <tryLock> -> 加锁成功] - {}", lock.getName());
+                return joinPoint.proceed();
             } catch (Throwable e) {
-                log.error("[分布式锁 <tryLock> -> 加锁方法执行异常] - {} - {}", methodName, lock.getName(), e);
+                log.error("[分布式锁 <tryLock> -> 加锁方法执行异常] - {} - {}", lock.getName(), e);
+                throw e;
             } finally {
                 try {
                     lock.unlock();
-                    log.info("[分布式锁 <tryLock> -> 释放正常] - {} - {}", methodName, lock.getName());
+                    log.info("[分布式锁 <tryLock> -> 释放正常] - {}", lock.getName());
                 } catch (Throwable e) {
-                    log.error("[分布式锁 <tryLock> -> 释放异常] - {} - {}", methodName, lock.getName(), e);
+                    log.error("[分布式锁 <tryLock> -> 释放异常] - {}", lock.getName(), e);
                 }
             }
-        } else {
-            log.info("[分布式锁 <tryLock> -> 未获取到锁 放弃执行代理方式] - {} - {}", methodName, lock.getName());
         }
-        return proceed;
+        log.info("[分布式锁 <tryLock> -> 未获取到锁 放弃执行代理方式] - {}", lock.getName());
+        return null;
     }
     
     /**
@@ -80,47 +88,26 @@ public class DistributedLockAspect {
      * @param joinPoint 连接点
      * @return {@link Object}
      */
-    private Object lock(ProceedingJoinPoint joinPoint, String methodName) throws Throwable {
-        Object proceed;
-        RLock lock = getLock(joinPoint, methodName);
-        ;
+    private Object lock(ProceedingJoinPoint joinPoint, RLock lock) throws Throwable {
         try {
             lock.lock();
-            log.info("[分布式锁 <lock> -> 加锁成功] - {} - {}", methodName, lock.getName());
-            proceed = joinPoint.proceed();
+            log.info("[分布式锁 <lock> -> 加锁成功] - {}", lock.getName());
+            return joinPoint.proceed();
         } catch (Throwable e) {
             if (null != lock) {
-                log.error("[分布式锁 <lock> -> 加锁方法执行异常] - {} - {}", methodName, lock.getName(), e);
+                log.error("[分布式锁 <lock> -> 加锁方法执行异常] - {} - {}", lock.getName(), e);
             }
             throw e;
         } finally {
             try {
                 if (null != lock) {
                     lock.unlock();
-                    log.info("[分布式锁 <lock> -> 释放正常] - {} - {}", methodName, lock.getName());
+                    log.info("[分布式锁 <lock> -> 释放正常] - {}", lock.getName());
                 }
             } catch (Throwable e) {
-                log.error("[分布式锁 <lock> -> 释放异常] - {} - {}", methodName, lock.getName(), e);
+                log.error("[分布式锁 <lock> -> 释放异常] - {} - {}", lock.getName(), e);
             }
         }
-        return proceed;
-    }
-    
-    /**
-     * 根据key获取锁锁
-     *
-     * @param joinPoint  连接点
-     * @param methodName 方法名称
-     * @return {@link RLock}
-     */
-    private RLock getLock(ProceedingJoinPoint joinPoint, String methodName) {
-        String lockKey = LOCK_NAME + joinPoint.getSignature().getName() + ":" + DigestUtil.md5Hex(methodName);
-        String distributedLockKey = PineContext.getContext().getDistributedLockKey();
-        // 支持自定义扩展更细粒度的锁
-        if (StrUtil.isNotBlank(distributedLockKey)) {
-            lockKey = lockKey + ":" + distributedLockKey;
-        }
-        return RedisUtil.redissonClient.getLock(lockKey);
     }
     
 }
