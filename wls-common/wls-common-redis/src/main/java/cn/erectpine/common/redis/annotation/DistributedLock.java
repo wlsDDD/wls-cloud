@@ -1,5 +1,7 @@
 package cn.erectpine.common.redis.annotation;
 
+import cn.erectpine.common.redis.constant.LookEnum;
+
 import java.lang.annotation.*;
 
 /**
@@ -13,5 +15,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface DistributedLock {
+    
+    LookEnum value() default LookEnum.LOCK;
     
 }

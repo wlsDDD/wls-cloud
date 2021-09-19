@@ -33,4 +33,5 @@ public class MybatisPlusConfig {
 //    public ConfigurationCustomizer configurationCustomizer() {
 //        return configuration -> configuration.setUseDeprecatedExecutor(false)
 //    }
+
 }
