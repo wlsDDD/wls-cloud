@@ -11,4 +11,5 @@ import java.util.function.Function;
  */
 @FunctionalInterface
 public interface FunctionSerializable<T, R> extends Function<T, R>, Serializable {
+
 }

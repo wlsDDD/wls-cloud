@@ -41,7 +41,7 @@ public class Role extends BaseEntity {
     /**
      * 角色权限字符串
      */
-//    @NotBlank(groups = Insert.class,message = "角色名称-不能为空")
+    @NotBlank(groups = Insert.class, message = "角色名称-不能为空")
     private String roleKey;
     
     /**

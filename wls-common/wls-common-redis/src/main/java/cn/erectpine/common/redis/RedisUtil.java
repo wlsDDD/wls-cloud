@@ -37,6 +37,7 @@ public class RedisUtil {
      * @param param    参数
      * @return {@link R}
      */
+    @Deprecated
     public static <T, R> R distributedLock(FunctionSerializable<T, R> function, T param) {
         R proceed;
         RLock lock = RedisUtil.redissonClient.getLock("PROJECT_NAME::SERVER_NAME::DISTRIBUTED_LOCK::" + IdUtil.simpleUUID());

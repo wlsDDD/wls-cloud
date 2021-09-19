@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/role")
 public class RoleController extends BaseController {
-
+    
     private final IRoleService roleService;
-
+    
     public RoleController(IRoleService roleService) {
         this.roleService = roleService;
     }
@@ -32,10 +32,10 @@ public class RoleController extends BaseController {
      * 角色信息-分页列表
      */
     @PostMapping("/list")
-    public Result<IPage<Role>> pageRole(@RequestBody @Validated Page<Role> page, Role role) {
+    public Result<IPage<Role>> pageRole(@RequestBody @Validated Role role, Page<Role> page) {
         return Result.ok(roleService.pageRole(page, role)).addField("tree", "这是一棵树");
     }
-
+    
     /**
      * 根据id获取角色信息详情
      */
@@ -43,7 +43,7 @@ public class RoleController extends BaseController {
     public Role getRoleById(@PathVariable Long id) {
         return roleService.getRoleById(id);
     }
-
+    
     /**
      * 新增-角色信息
      */
@@ -51,7 +51,7 @@ public class RoleController extends BaseController {
     public void insertRole(@RequestBody Role role) {
         roleService.insertRole(role);
     }
-
+    
     /**
      * 修改-角色信息
      */
@@ -59,7 +59,7 @@ public class RoleController extends BaseController {
     public void updateRole(@RequestBody Role role) {
         roleService.updateRole(role);
     }
-
+    
     /**
      * 删除-角色信息
      */
@@ -67,5 +67,5 @@ public class RoleController extends BaseController {
     public void deleteRole(@PathVariable("id") Long id) {
         roleService.deleteRole(id);
     }
-
+    
 }
