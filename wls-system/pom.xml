@@ -79,33 +79,12 @@
         </dependency>
 
         <!--***************************************** 开发工具库 ****************************************************-->
-        <!--        &lt;!&ndash;jdk工具包&ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.sun</groupId>-->
-        <!--            <artifactId>tools</artifactId>-->
-        <!--            <version>1.8</version>-->
-        <!--            <scope>system</scope>-->
-        <!--            <systemPath>${project.basedir}/lib/tools.jar</systemPath>-->
-        <!--        </dependency>-->
         <!--springboot配置注解处理-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--        &lt;!&ndash;热启动依赖&ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-devtools</artifactId>-->
-        <!--            <scope>runtime</scope>-->
-        <!--            <optional>true</optional>-->
-        <!--        </dependency>-->
-        <!--        &lt;!&ndash;lombok&ndash;&gt;-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.projectlombok</groupId>-->
-        <!--            <artifactId>lombok</artifactId>-->
-        <!--            <optional>true</optional>-->
-        <!--        </dependency>-->
         <!--SpringBoot-Junit5测试包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -127,7 +106,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <!--                <version>2.4.1</version>-->
                 <executions>
                     <execution>
                         <goals>

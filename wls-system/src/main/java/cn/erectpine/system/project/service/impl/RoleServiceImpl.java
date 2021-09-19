@@ -3,6 +3,9 @@ package cn.erectpine.system.project.service.impl;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.util.pine.PineAssert;
 import cn.erectpine.common.web.exception.BusinessException;
+import cn.erectpine.common.web.pojo.Result;
+import cn.erectpine.dict.api.DictDataApi;
+import cn.erectpine.dict.entity.DictData;
 import cn.erectpine.system.project.entity.Role;
 import cn.erectpine.system.project.mapper.RoleMapper;
 import cn.erectpine.system.project.service.IRoleService;
@@ -10,6 +13,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,8 +26,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
-
+    
     private final RoleMapper roleMapper;
+    @Autowired private DictDataApi dictDataApi;
 
     public RoleServiceImpl(RoleMapper roleMapper) {
         this.roleMapper = roleMapper;
@@ -39,6 +44,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
      */
     @Override
     public IPage<Role> pageRole(Page<Role> page, Role role) {
+        Result<?> result = dictDataApi.pageDictData(new DictData());
         return page(page, Wrappers.lambdaQuery(role));
     }
 

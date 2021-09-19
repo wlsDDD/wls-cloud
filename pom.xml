@@ -91,13 +91,6 @@
                 <version>${mybatis.plus.version}</version>
             </dependency>
 
-            <!--            &lt;!&ndash;参数验证&ndash;&gt;-->
-            <!--            <dependency>-->
-            <!--                <groupId>javax.validation</groupId>-->
-            <!--                <artifactId>validation-api</artifactId>-->
-            <!--                <version>${validation.api.version}</version>-->
-            <!--            </dependency>-->
-
             <!--通用模块-->
             <dependency>
                 <groupId>cn.erectpine</groupId>

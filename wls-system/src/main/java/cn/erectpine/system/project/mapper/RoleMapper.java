@@ -2,7 +2,6 @@ package cn.erectpine.system.project.mapper;
 
 import cn.erectpine.system.project.entity.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -12,7 +11,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @author wls
  * @since 2021-04-04
  */
-@Mapper
 public interface RoleMapper extends BaseMapper<Role> {
 
 }
