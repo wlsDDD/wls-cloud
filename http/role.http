@@ -1,6 +1,8 @@
 ### 角色列表
 POST http://{{host}}/role/list
 Content-Type: application/json
+Authorization: token
+single: qqqmmm
 
 {
   "current": "1",

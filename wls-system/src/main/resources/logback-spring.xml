@@ -10,16 +10,14 @@
     <!-- 日志级别 -->
     <property name="log.level" value="${logLevel}"/>
     <!-- 日志输出格式 -->
-    <property name="log.pattern"
-              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) [%thread] %cyan(%logger{50}:%line) : %highlight(%msg%n)"/>
-
-    <!--    <property name="log.pattern" value="%d{MM-dd HH:mm:ss.SSS}|%level|%logger{36}:%line|%thread|%msg%n"/>-->
-    <!--	<property name="log.pattern" value="%d{yyyy/MM/dd HH:mm:ss.SSS} %cyan(%-5level) [%thread] [%c{0}:%L] %magenta(%logger{36}): %msg%n" />-->
+    <property name="log.pattern.console"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15.15t)] %cyan(%-40.40logger{50}:%-3line) : %highlight(%m%n)"/>
+    <property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15t)] %cyan(%-40logger{50}:%-3line): %highlight(%m%n)"/>
 
     <!-- ConsoleAppender 控制台输出日志 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>${log.pattern}</pattern>
+            <pattern>${log.pattern.console}</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
