@@ -78,7 +78,7 @@ public class DistributedLockAspect {
                 }
             }
         }
-        log.info("[分布式锁 <tryLock> -> 未获取到锁 放弃执行代理方式] - {}", lock.getName());
+        log.info("[分布式锁 <tryLock> -> 未获取到锁 放弃执行代理方法] - {}", lock.getName());
         return null;
     }
     
