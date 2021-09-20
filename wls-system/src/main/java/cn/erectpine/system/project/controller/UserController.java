@@ -1,6 +1,8 @@
 package cn.erectpine.system.project.controller;
 
+import cn.erectpine.common.web.pojo.Result;
 import cn.erectpine.dict.api.DictDataApi;
+import cn.erectpine.dict.entity.DictData;
 import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.service.IUserService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -27,7 +29,7 @@ import java.util.List;
 public class UserController {
     
     private final IUserService userService;
-    @Autowired DictDataApi dictDataApi;
+    @Autowired private DictDataApi dictDataApi;
     
     public UserController(IUserService userService) {
         this.userService = userService;
@@ -38,6 +40,7 @@ public class UserController {
      */
     @PostMapping("/list")
     public IPage<User> pageUser(Page<User> page, @RequestBody @Validated List<User> user) throws Exception {
+        Result<?> result = dictDataApi.pageDictData(new DictData());
         return userService.pageUser(page, user.get(0));
     }
     

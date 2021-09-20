@@ -1,5 +1,6 @@
 package cn.erectpine.common.core.util.pine;
 
+import cn.erectpine.common.core.constant.SuppressWarningConstants;
 import cn.erectpine.common.core.function.FunctionSerializable;
 import cn.erectpine.common.core.pojo.PinePage;
 import cn.erectpine.common.core.util.collect.ServletUtil;
@@ -26,7 +27,11 @@ import java.util.stream.Collectors;
 
 /**
  * 核心工具类
+ *
+ * @author wls
+ * @since 2021/09/20 23:41:45
  */
+@SuppressWarnings({SuppressWarningConstants.UNUSED})
 public class PineUtil {
     
     /**
@@ -73,6 +78,7 @@ public class PineUtil {
      * @return 列表
      * @author wls
      */
+    @SuppressWarnings(SuppressWarningConstants.UNCHECKED)
     public static <T> List<T> convertRootNode(List<T> list, TreeNodeConfig treeNodeConfig) {
         return list.parallelStream().map(item -> {
             Map<String, Object> map = BeanUtil.beanToMap(item);

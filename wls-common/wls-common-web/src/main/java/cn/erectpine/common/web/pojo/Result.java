@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.Optional;
 
 /**
- * 响应模板
+ * 响应http请求模板
  *
  * @author wls
  * @since 2021/01/12

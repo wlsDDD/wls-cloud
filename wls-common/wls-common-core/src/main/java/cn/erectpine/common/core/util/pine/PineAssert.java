@@ -17,7 +17,7 @@ public class PineAssert extends Assert {
      *
      * @param count     count
      * @param exception 异常
-     * @throws RuntimeException 当count不为0时
+     * @throws T t
      */
     public static <T extends Throwable> void isZero(Integer count, Supplier<T> exception) throws T {
         if (count != 0) {
