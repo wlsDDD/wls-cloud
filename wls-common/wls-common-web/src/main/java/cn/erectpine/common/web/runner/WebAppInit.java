@@ -47,7 +47,7 @@ public class WebAppInit {
         GlobalConstants.stackFilter = wlsShareYml.getStackFilter();
         log.info("[堆栈过滤配置 -> 初始化] - [{}]", GlobalConstants.stackFilter);
         CodeInfoEnum.FAIL_UNKNOWN_ERROR.setInfo(ActiveEnum.prod.equals(GlobalConstants.active) ? "网络异常! 请稍后再试!" : "后端服务错误! ! 请携带<requestId>寻找相关开发人员!");
-        log.info("[{}环境兜底提示语 -> 初始化] - [{}]", GlobalConstants.active, CodeInfoEnum.FAIL_UNKNOWN_ERROR.getInfo());
+        log.info("[{}环境兜底提示语 -> 初始化] - {}", GlobalConstants.active, CodeInfoEnum.FAIL_UNKNOWN_ERROR.getInfo());
     }
     
 }

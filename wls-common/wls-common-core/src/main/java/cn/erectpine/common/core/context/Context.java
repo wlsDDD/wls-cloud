@@ -28,6 +28,6 @@ public class Context {
      * 用于实现更细粒度的锁
      * 如 用户锁
      */
-    private String distributedLockKey;
+    private String diyDistributedLockKey;
     
 }

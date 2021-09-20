@@ -16,11 +16,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface IUserService extends IService<User> {
     
     /**
+     * 页面的用户
      * 用户信息-列表
      *
      * @param page 分页参数
      * @param user 查询条件
      * @return 分页列表
+     * @throws InterruptedException 中断异常
      */
     IPage<User> pageUser(Page<User> page, User user) throws InterruptedException;
     

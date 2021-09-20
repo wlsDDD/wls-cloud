@@ -36,12 +36,11 @@ public class DistributedLockAspect {
     @Around("@annotation(cn.erectpine.common.redis.annotation.DistributedLock)")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         DistributedLock distributedLock = AspectUtil.getAnnotation(joinPoint, DistributedLock.class);
-        String methodName = AspectUtil.getMethodName(joinPoint);
-        String lockKey = LOCK_NAME + joinPoint.getSignature().getName() + ":" + DigestUtil.md5Hex(methodName);
-        String distributedLockKey = Optional.ofNullable(PineContext.getContext()).orElseGet(Context::new).getDistributedLockKey();
+        String lockKey = LOCK_NAME + joinPoint.getSignature().getName() + ":" + DigestUtil.md5Hex(AspectUtil.getMethodName(joinPoint));
+        String diyDistributedLockKey = Optional.ofNullable(PineContext.getContext()).orElseGet(Context::new).getDiyDistributedLockKey();
         // 支持自定义扩展更细粒度的锁
-        if (StrUtil.isNotBlank(distributedLockKey)) {
-            lockKey = lockKey + ":" + distributedLockKey;
+        if (StrUtil.isNotBlank(diyDistributedLockKey)) {
+            lockKey = lockKey + ":" + diyDistributedLockKey;
         }
         RLock lock = RedisUtil.redissonClient.getLock(lockKey);
         switch (distributedLock.value()) {

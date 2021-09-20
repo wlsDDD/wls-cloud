@@ -16,6 +16,11 @@ import java.lang.annotation.*;
 @Documented
 public @interface DistributedLock {
     
+    /**
+     * 锁类型
+     *
+     * @return {@link LookEnum}
+     */
     LookEnum value() default LookEnum.LOCK;
     
 }

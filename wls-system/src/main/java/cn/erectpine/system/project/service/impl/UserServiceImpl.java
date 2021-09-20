@@ -9,6 +9,7 @@ import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.mapper.UserMapper;
 import cn.erectpine.system.project.service.IRoleService;
 import cn.erectpine.system.project.service.IUserService;
+import cn.hutool.extra.spring.SpringUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -44,11 +45,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      * @return 分页列表
      */
     @Override
-    @DistributedLock
     public IPage<User> pageUser(Page<User> page, User user) throws InterruptedException {
 //        for (int i = 0; i < 120; i++) {
 //            Thread.sleep(1000);
 //        }
+        SpringUtil.getBean(this.getClass()).getUserById(user.getUserId());
         return page(page, Wrappers.lambdaQuery(user));
     }
     
@@ -59,6 +60,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      * @return {@link User}
      */
     @Override
+    @DistributedLock
     public User getUserById(Long id) {
         return getById(id);
     }
