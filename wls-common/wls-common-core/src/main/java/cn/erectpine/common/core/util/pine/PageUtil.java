@@ -23,9 +23,8 @@ public class PageUtil {
      * @return {@link Page}<{@link T}>
      */
     public static <T> Page<T> plusPage(T type) {
-        Integer pageNum = ServletUtil.getParameterToInt("pageNum", 1);
-        Integer pageSize = ServletUtil.getParameterToInt("pageSize", 20);
-        return new Page<T>().setCurrent(pageNum).setSize(pageSize);
+        return new Page<T>().setCurrent(ServletUtil.getParameterToInt("pageNum", 1))
+                            .setSize(ServletUtil.getParameterToInt("pageSize", 20));
     }
     
     /**

@@ -1,8 +1,7 @@
 package cn.erectpine.dict.project.mapper;
 
-import cn.erectpine.dict.entity.DictData;
+import cn.erectpine.dict.project.entity.DictData;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -10,9 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author wls
- * @since 2021-03-18
+ * @since 2021-09-22
  */
-@Mapper
 public interface DictDataMapper extends BaseMapper<DictData> {
 
 }

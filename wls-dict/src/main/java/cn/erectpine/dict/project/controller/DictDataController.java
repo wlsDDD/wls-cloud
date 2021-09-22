@@ -1,12 +1,17 @@
 package cn.erectpine.dict.project.controller;
 
 import cn.erectpine.common.web.pojo.BaseController;
-import cn.erectpine.dict.entity.DictData;
+import cn.erectpine.common.web.pojo.Result;
+import cn.erectpine.dict.project.entity.DictData;
 import cn.erectpine.dict.project.service.IDictDataService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,8 +19,9 @@ import org.springframework.web.bind.annotation.*;
  * </p>
  *
  * @author wls
- * @since 2021-09-05
+ * @since 2021-09-22
  */
+@Api(tags = "字典数据")
 @RestController
 @RequestMapping("/dict-data")
 public class DictDataController extends BaseController {
@@ -23,44 +29,37 @@ public class DictDataController extends BaseController {
     @Autowired private IDictDataService dictDataService;
     
     
-    /**
-     * 字典数据-分页列表
-     */
-    @PostMapping("/page")
-    public IPage<DictData> pageDictData(@RequestBody Page<DictData> page, DictData dictData) {
-        return dictDataService.pageDictData(page, dictData);
+    @ApiOperation("字典数据-分页列表")
+    @GetMapping("/page")
+    public Result<IPage<DictData>> pageDictData(DictData dictData) {
+        return Result.ok(dictDataService.pageDictData(dictData));
     }
     
-    /**
-     * 根据id获取字典数据详情
-     */
+    @ApiOperation("根据id获取字典数据详情")
     @GetMapping("/{id}")
-    public DictData getDictDataById(@PathVariable Long id) {
-        return dictDataService.getDictDataById(id);
+    public Result<DictData> getDictDataById(@PathVariable Long id) {
+        return Result.ok(dictDataService.getDictDataById(id));
     }
     
-    /**
-     * 新增-字典数据
-     */
+    @ApiOperation("新增-字典数据")
     @PostMapping
-    public void insertDictData(@RequestBody DictData dictData) {
+    public Result<?> insertDictData(@RequestBody @Validated DictData dictData) {
         dictDataService.insertDictData(dictData);
+        return Result.ok();
     }
     
-    /**
-     * 修改-字典数据
-     */
+    @ApiOperation("修改-字典数据")
     @PutMapping
-    public void updateDictData(@RequestBody DictData dictData) {
+    public Result<?> updateDictData(@RequestBody @Validated DictData dictData) {
         dictDataService.updateDictData(dictData);
+        return Result.ok();
     }
     
-    /**
-     * 删除-字典数据
-     */
-    @DeleteMapping("/{id}")
-    public void deleteDictData(@PathVariable("id") Long id) {
-        dictDataService.deleteDictData(id);
+    @ApiOperation("删除-字典数据")
+    @DeleteMapping("/{ids}")
+    public Result<?> deleteDictData(@PathVariable("ids") List<Long> ids) {
+        dictDataService.deleteDictData(ids);
+        return Result.ok();
     }
     
 }

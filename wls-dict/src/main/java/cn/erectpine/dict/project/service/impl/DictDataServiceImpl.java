@@ -1,14 +1,19 @@
 package cn.erectpine.dict.project.service.impl;
 
-import cn.erectpine.dict.entity.DictData;
+import cn.erectpine.common.core.enums.CodeInfoEnum;
+import cn.erectpine.common.core.util.pine.PageUtil;
+import cn.erectpine.common.core.util.pine.PineAssert;
+import cn.erectpine.common.web.exception.BusinessException;
+import cn.erectpine.dict.project.entity.DictData;
 import cn.erectpine.dict.project.mapper.DictDataMapper;
 import cn.erectpine.dict.project.service.IDictDataService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,26 +21,24 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author wls
- * @since 2021-03-18
+ * @since 2021-09-22
  */
 @Service
 public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> implements IDictDataService {
     
-    @Autowired DictDataMapper dictDataMapper;
-    
+    @Autowired private DictDataMapper dictDataMapper;
     
     /**
      * 字典数据-列表
      *
-     * @param page     分页参数
      * @param dictData 查询条件
      * @return 分页列表
      */
     @Override
-    public IPage<DictData> pageDictData(Page<DictData> page, DictData dictData) {
-        return page(page, Wrappers.lambdaQuery(dictData));
+    public IPage<DictData> pageDictData(DictData dictData) {
+        return page(PageUtil.plusPage(dictData), Wrappers.lambdaQuery(dictData));
     }
-    
+
     /**
      * 根据id获取字典数据表详情
      *
@@ -46,7 +49,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> i
     public DictData getDictDataById(Long id) {
         return getById(id);
     }
-    
+
     /**
      * 新增-字典数据
      *
@@ -54,7 +57,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> i
      */
     @Override
     public void insertDictData(DictData dictData) {
-        save(dictData);
+        PineAssert.isTrue(save(dictData), () -> new BusinessException(CodeInfoEnum.DATA_INSERT_ERROR));
     }
     
     /**
@@ -64,17 +67,17 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> i
      */
     @Override
     public void updateDictData(DictData dictData) {
-        updateById(dictData);
+        PineAssert.isTrue(updateById(dictData), () -> new BusinessException(CodeInfoEnum.DATA_UPDATE_ERROR));
     }
     
     /**
      * 删除-字典数据
      *
-     * @param id id
+     * @param ids ids
      */
     @Override
-    public void deleteDictData(Long id) {
-        removeById(id);
+    public void deleteDictData(List<Long> ids) {
+        PineAssert.isTrue(removeByIds(ids), () -> new BusinessException(CodeInfoEnum.DATA_DELETE_ERROR));
     }
     
 }

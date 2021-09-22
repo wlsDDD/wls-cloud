@@ -39,7 +39,7 @@ public class MysqlGenerator {
     /**
      * 包路径
      */
-    public static String packagePath = "cn.erectpine.system.project.demo";
+    public static String packagePath = "cn.erectpine.dict.project";
     
     /**
      * 数据源-URL
@@ -88,7 +88,8 @@ public class MysqlGenerator {
         
     }
     
-    public static void generatorCode(String... tableName) {
+    public static void generatorCode(String path, String... tableName) {
+        MysqlGenerator.packagePath = path;
         generatorCode(gc, dsc, pc, tableName);
     }
     
@@ -119,7 +120,7 @@ public class MysqlGenerator {
                 map.put("PageUtil", "cn.erectpine.common.core.util.pine.PageUtil");
                 map.put("PineAssert", "cn.erectpine.common.core.util.pine.PineAssert");
                 map.put("BusinessException", "cn.erectpine.common.web.exception.BusinessException");
-                map.put("CodeMsgEnum", "cn.erectpine.common.core.enums.CodeInfoEnum;");
+                map.put("CodeMsgEnum", "cn.erectpine.common.core.enums.CodeInfoEnum");
                 this.setMap(map);
             }
         };

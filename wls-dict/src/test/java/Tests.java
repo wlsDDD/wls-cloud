@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class Tests {
     @Test
     public void test01() {
-        MysqlGenerator.generatorCode("sys_dict_data");
+        MysqlGenerator.generatorCode("cn.erectpine.dict.project", "sys_dict_data");
     }
     
 }
