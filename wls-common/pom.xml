@@ -18,6 +18,7 @@
         <module>wls-common-web</module>
         <module>wls-common-redis</module>
         <module>wls-common-gencode</module>
+        <module>wls-common-swagger</module>
     </modules>
 
     <dependencyManagement>
@@ -95,6 +96,12 @@
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>

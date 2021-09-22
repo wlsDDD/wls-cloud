@@ -1,4 +1,6 @@
+import cn.erectpine.common.core.util.pine.PageUtil;
 import cn.hutool.system.SystemUtil;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -11,7 +13,7 @@ public class Tests {
     
     @Test
     public void test02() {
-    
+        Page<Tests> testsPage = PageUtil.plusPage(new Tests());
     }
     
     @Test

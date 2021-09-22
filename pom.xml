@@ -24,10 +24,9 @@
         <hutool.version>5.5.7</hutool.version>
         <redisson.version>3.16.2</redisson.version>
         <fastjson.version>1.2.74</fastjson.version>
-        <validation.api.version>2.0.1.Final</validation.api.version>
-        <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
         <freemarker.version>2.3.30</freemarker.version>
         <pagehelper.version>1.2.5</pagehelper.version>
+        <knife4j.version>3.0.3</knife4j.version>
         <!--微服务聚合-->
         <wls.system.version>0.0.1-SNAPSHOT</wls.system.version>
         <!--通用模块聚合-->
@@ -37,6 +36,7 @@
         <wls.common.log.version>0.0.1-SNAPSHOT</wls.common.log.version>
         <wls.common.redis.version>0.0.1-SNAPSHOT</wls.common.redis.version>
         <wls.common.web.version>0.0.1-SNAPSHOT</wls.common.web.version>
+        <wls.common.swagger.version>0.0.1-SNAPSHOT</wls.common.swagger.version>
         <!--api模块聚合-->
         <wls.api.dict.version>0.0.1-SNAPSHOT</wls.api.dict.version>
     </properties>
@@ -118,6 +118,11 @@
                 <version>${wls.common.web.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>cn.erectpine</groupId>
+                <artifactId>wls-common-swagger</artifactId>
+                <version>${wls.common.swagger.version}</version>
+            </dependency>
             <!--API模块-->
             <dependency>
                 <groupId>cn.erectpine</groupId>
@@ -141,6 +146,12 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

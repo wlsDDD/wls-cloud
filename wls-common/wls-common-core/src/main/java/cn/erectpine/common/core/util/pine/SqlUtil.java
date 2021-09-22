@@ -22,9 +22,8 @@ public class SqlUtil {
      * @return {@link String}
      */
     public static String sqlFill(String sql, String param) {
-        sql = sql.replace("?", "{}");
         Object[] params = Arrays.stream(param.split(",")).map(s -> StrUtil.subBefore(s, "(", false)).toArray();
-        return StrUtil.format(sql, params);
+        return StrUtil.format(sql.replace("?", "{}"), params);
     }
     
 }

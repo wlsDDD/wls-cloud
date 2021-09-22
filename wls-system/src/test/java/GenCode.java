@@ -14,6 +14,11 @@ import org.junit.jupiter.api.Test;
 public class GenCode {
     
     @Test
+    public void test01() {
+        MysqlGenerator.generatorCode("sys_menu");
+    }
+    
+    @Test
     public void test08() {
         GlobalConfig gc = new GlobalConfig();
         gc.setOutputDir(System.getProperty("user.dir") + "/src/main/java");

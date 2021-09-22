@@ -39,7 +39,7 @@ public class MysqlGenerator {
     /**
      * 包路径
      */
-    public static String packagePath = "cn.erectpine.dict.project";
+    public static String packagePath = "cn.erectpine.system.project.demo";
     
     /**
      * 数据源-URL
@@ -73,7 +73,7 @@ public class MysqlGenerator {
         gc.setAuthor("wls");
         gc.setOpen(false);
         // 实体属性 Swagger2 注解
-        // gc.setSwagger2(true)
+        gc.setSwagger2(true);
         gc.setDateType(DateType.TIME_PACK);
         gc.setIdType(IdType.AUTO);
         gc.setFileOverride(false);
@@ -115,10 +115,11 @@ public class MysqlGenerator {
             @Override
             public void initMap() {
                 Map<String, Object> map = new HashMap<>(16);
-                map.put("Result", "cn.erectpine.common.web.pojo");
-                map.put("PineAssert", "cn.erectpine.common.core.util.pine");
+                map.put("Result", "cn.erectpine.common.web.pojo.Result");
+                map.put("PageUtil", "cn.erectpine.common.core.util.pine.PageUtil");
+                map.put("PineAssert", "cn.erectpine.common.core.util.pine.PineAssert");
                 map.put("BusinessException", "cn.erectpine.common.web.exception.BusinessException");
-                map.put("CodeMsgEnum", "cn.erectpine.common.enums.CodeMsgEnum");
+                map.put("CodeMsgEnum", "cn.erectpine.common.core.enums.CodeInfoEnum;");
                 this.setMap(map);
             }
         };
@@ -160,8 +161,8 @@ public class MysqlGenerator {
         // 是否生成实体时，生成字段注解
         // strategy.setEntityTableFieldAnnotationEnable(true)
         // 公共父类
-        strategy.setSuperControllerClass("cn.erectpine.common.web.BaseController");
-        strategy.setSuperEntityClass("cn.erectpine.common.web.BaseEntity");
+        strategy.setSuperControllerClass("cn.erectpine.common.web.pojo.BaseController");
+        strategy.setSuperEntityClass("cn.erectpine.common.web.pojo.BaseEntity");
         // 写于父类中的公共字段
         strategy.setSuperEntityColumns("create_time", "update_time", "create_by", "update_by");
         strategy.setInclude(tableName);

@@ -32,6 +32,9 @@ spring:
           - dataId: wls-redis-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
             group: dev
             refresh: true
+          - dataId: wls-system-swagger-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+            group: dev
+            refresh: true
 
 
 server:

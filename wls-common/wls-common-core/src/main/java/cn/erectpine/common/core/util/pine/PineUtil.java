@@ -2,8 +2,6 @@ package cn.erectpine.common.core.util.pine;
 
 import cn.erectpine.common.core.constant.SuppressWarningConstants;
 import cn.erectpine.common.core.function.FunctionSerializable;
-import cn.erectpine.common.core.pojo.PinePage;
-import cn.erectpine.common.core.util.collect.ServletUtil;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DatePattern;
@@ -12,8 +10,6 @@ import cn.hutool.core.lang.tree.Tree;
 import cn.hutool.core.lang.tree.TreeNodeConfig;
 import cn.hutool.core.lang.tree.TreeUtil;
 import cn.hutool.core.util.ReflectUtil;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 
 import java.lang.annotation.Annotation;
 import java.time.LocalDate;
@@ -149,65 +145,6 @@ public class PineUtil {
         return BeanUtil.getBeanDesc(clazz).getProps().stream()
                        .map(propDesc -> propDesc.getField().getAnnotation(ann))
                        .filter(Objects::nonNull).collect(Collectors.toList());
-    }
-    
-    /**
-     * 分页
-     */
-    public static void pageStart() {
-        Integer pageNum = ServletUtil.getParameterToInt("pageNo", 1);
-        Integer pageSize = ServletUtil.getParameterToInt("pageSize", 20);
-        pageStart(pageNum, pageSize);
-    }
-    
-    /**
-     * 分页
-     *
-     * @param pinePage 我的页面
-     */
-    public static void pageStart(PinePage pinePage) {
-        pageStart(pinePage.getPageNum(), pinePage.getPageSize());
-    }
-    
-    /**
-     * 封装PageHelper分页
-     * 使其支持 pageSize=0 时返回全部数据
-     *
-     * @param pageNum  页面num
-     * @param pageSize 页面大小
-     */
-    public static void pageStart(int pageNum, int pageSize) {
-        // 为了兼容以前的-1查询全部
-        if (pageNum == -1) {
-            pageNum = 0;
-        }
-        PageHelper.startPage(pageNum, pageSize, true, null, true);
-    }
-    
-    /**
-     * 构建自定义分页对象
-     *
-     * @param list 列表
-     * @return 自定义分页对象
-     */
-    public static <T> PinePage page(List<T> list) {
-        PageInfo<T> pageInfo = new PageInfo<>(list);
-        return page(pageInfo);
-    }
-    
-    /**
-     * 构建自定义分页对象
-     *
-     * @param pageInfo {@link PageInfo}
-     * @return 自定义分页对象
-     */
-    public static <T> PinePage page(PageInfo<T> pageInfo) {
-        PinePage page = new PinePage();
-        page.setTotalNum(pageInfo.getTotal())
-            .setPageNum(pageInfo.getPageNum())
-            .setPageSize(pageInfo.getPageSize())
-            .setList(pageInfo.getList());
-        return page;
     }
     
     /**
