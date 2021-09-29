@@ -1,16 +1,19 @@
 package cn.erectpine.common.web.pojo;
 
 
+import cn.erectpine.common.core.constant.SuppressWarningConstants;
 import cn.erectpine.common.core.context.PineContext;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.jdkboost.map.PineStrMap;
-import cn.erectpine.common.core.jdkboost.map.PineStrObjMap;
 import cn.erectpine.common.core.pojo.PinePage;
+import cn.erectpine.common.core.util.pine.PageUtil;
+import cn.erectpine.common.core.util.pine.TreeUtil;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -52,10 +55,6 @@ public class Result<T> implements Serializable {
      */
     private PineStrMap<String> paramErrors;
     /**
-     * 扩展-map
-     */
-    private PineStrObjMap expandMap;
-    /**
      * 扩展-对象
      */
     private ExpandResult expand;
@@ -69,14 +68,28 @@ public class Result<T> implements Serializable {
     }
     
     /**
-     * 添加扩展字段
+     * 列表->树
      *
-     * @param name name
-     * @param val  val
-     * @return {@link PineStrObjMap}
+     * @return {@link Result}<{@link T}>
      */
-    public Result<T> addField(String name, Object val) {
-        expandMap = Optional.ofNullable(expandMap).orElseGet(PineStrObjMap::new).putItem(name, val);
+    @SuppressWarnings({SuppressWarningConstants.UNCHECKED})
+    public Result<T> tree() {
+        if (data instanceof List) {
+            this.tree = TreeUtil.toTree((List<T>) data);
+        }
+        return this;
+    }
+    
+    /**
+     * 列表->分页
+     *
+     * @return {@link Result}<{@link T}>
+     */
+    @SuppressWarnings({SuppressWarningConstants.UNCHECKED})
+    public Result<T> page() {
+        if (data instanceof List) {
+            this.page = PageUtil.page((List<T>) data);
+        }
         return this;
     }
     

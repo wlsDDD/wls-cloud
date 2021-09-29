@@ -32,7 +32,7 @@ public class DictDataController extends BaseController {
     @ApiOperation("字典数据-分页列表")
     @GetMapping("/page")
     public Result<IPage<DictData>> pageDictData(DictData dictData) {
-        return Result.ok(dictDataService.pageDictData(dictData));
+        return Result.ok(dictDataService.pageDictData(dictData)).page().tree();
     }
     
     @ApiOperation("根据id获取字典数据详情")

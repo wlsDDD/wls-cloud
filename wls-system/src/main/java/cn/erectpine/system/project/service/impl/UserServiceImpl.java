@@ -1,7 +1,7 @@
 package cn.erectpine.system.project.service.impl;
 
 import cn.erectpine.common.core.enums.CodeInfoEnum;
-import cn.erectpine.common.core.util.pine.PineAssert;
+import cn.erectpine.common.core.util.pine.Asserts;
 import cn.erectpine.common.redis.annotation.DistributedLock;
 import cn.erectpine.common.web.exception.BusinessException;
 import cn.erectpine.system.project.entity.Role;
@@ -76,7 +76,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 //        addUser(user);
         roleService.insertRole(new Role().setRoleName("roleName").setRoleKey("role"));
 //        addUser(user.setUserName("null"));
-//        PineAssert.isTrue(save(user), () -> new BusinessException(CodeMsgEnum.DATA_INSERT_ERROR));
+//        Asserts.isTrue(save(user), () -> new BusinessException(CodeMsgEnum.DATA_INSERT_ERROR));
     }
     
     /**
@@ -86,7 +86,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      */
     @Override
     public void updateUser(User user) {
-        PineAssert.isTrue(updateById(user), () -> new BusinessException(CodeInfoEnum.DATA_UPDATE_ERROR));
+        Asserts.isTrue(updateById(user), () -> new BusinessException(CodeInfoEnum.DATA_UPDATE_ERROR));
     }
     
     /**
@@ -96,11 +96,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
      */
     @Override
     public void deleteUser(Long id) {
-        PineAssert.isTrue(removeById(id), () -> new BusinessException(CodeInfoEnum.DATA_DELETE_ERROR));
+        Asserts.isTrue(removeById(id), () -> new BusinessException(CodeInfoEnum.DATA_DELETE_ERROR));
     }
     
     private void addUser(User user) {
-        PineAssert.notBlank(user.getUserName(), "姓名不可为空");
+        Asserts.notBlank(user.getUserName(), "姓名不可为空");
         save(user);
     }
     

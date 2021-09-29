@@ -1,7 +1,7 @@
 package cn.erectpine.system.project.service.impl;
 
 import cn.erectpine.common.core.enums.CodeInfoEnum;
-import cn.erectpine.common.core.util.pine.PineAssert;
+import cn.erectpine.common.core.util.pine.Asserts;
 import cn.erectpine.common.web.exception.BusinessException;
 import cn.erectpine.system.project.entity.UserPost;
 import cn.erectpine.system.project.mapper.UserPostMapper;
@@ -60,7 +60,7 @@ public class UserPostServiceImpl extends ServiceImpl<UserPostMapper, UserPost> i
      */
     @Override
     public void insertUserPost(UserPost userPost) {
-        PineAssert.isTrue(save(userPost), () -> new BusinessException(CodeInfoEnum.DATA_INSERT_ERROR));
+        Asserts.isTrue(save(userPost), () -> new BusinessException(CodeInfoEnum.DATA_INSERT_ERROR));
     }
     
     /**
@@ -70,7 +70,7 @@ public class UserPostServiceImpl extends ServiceImpl<UserPostMapper, UserPost> i
      */
     @Override
     public void updateUserPost(UserPost userPost) {
-        PineAssert.isTrue(updateById(userPost), () -> new BusinessException(CodeInfoEnum.DATA_UPDATE_ERROR));
+        Asserts.isTrue(updateById(userPost), () -> new BusinessException(CodeInfoEnum.DATA_UPDATE_ERROR));
     }
     
     /**
@@ -80,7 +80,7 @@ public class UserPostServiceImpl extends ServiceImpl<UserPostMapper, UserPost> i
      */
     @Override
     public void deleteUserPost(Long id) {
-        PineAssert.isTrue(removeById(id), () -> new BusinessException(CodeInfoEnum.DATA_DELETE_ERROR));
+        Asserts.isTrue(removeById(id), () -> new BusinessException(CodeInfoEnum.DATA_DELETE_ERROR));
     }
     
 }

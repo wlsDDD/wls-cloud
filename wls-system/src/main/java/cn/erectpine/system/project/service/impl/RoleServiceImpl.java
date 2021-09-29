@@ -1,7 +1,7 @@
 package cn.erectpine.system.project.service.impl;
 
 import cn.erectpine.common.core.enums.CodeInfoEnum;
-import cn.erectpine.common.core.util.pine.PineAssert;
+import cn.erectpine.common.core.util.pine.Asserts;
 import cn.erectpine.common.web.exception.BusinessException;
 import cn.erectpine.common.web.pojo.Result;
 import cn.erectpine.dict.api.DictDataApi;
@@ -66,7 +66,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
      */
     @Override
     public void insertRole(Role role) {
-        PineAssert.isTrue(save(role), () -> new BusinessException(CodeInfoEnum.DATA_INSERT_ERROR));
+        Asserts.isTrue(save(role), () -> new BusinessException(CodeInfoEnum.DATA_INSERT_ERROR));
     }
 
     /**
@@ -76,7 +76,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
      */
     @Override
     public void updateRole(Role role) {
-        PineAssert.isTrue(updateById(role), () -> new BusinessException(CodeInfoEnum.DATA_UPDATE_ERROR));
+        Asserts.isTrue(updateById(role), () -> new BusinessException(CodeInfoEnum.DATA_UPDATE_ERROR));
     }
 
     /**
@@ -86,7 +86,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
      */
     @Override
     public void deleteRole(Long id) {
-        PineAssert.isTrue(removeById(id), () -> new BusinessException(CodeInfoEnum.DATA_DELETE_ERROR));
+        Asserts.isTrue(removeById(id), () -> new BusinessException(CodeInfoEnum.DATA_DELETE_ERROR));
     }
 
 }

@@ -22,7 +22,7 @@ public class PageUtil {
      * @param type 定义Page泛型
      * @return {@link Page}<{@link T}>
      */
-    public static <T> Page<T> plusPage(T type) {
+    public static <T> Page<T> getPlusPage(T type) {
         return new Page<T>().setCurrent(ServletUtil.getParameterToInt("pageNum", 1))
                             .setSize(ServletUtil.getParameterToInt("pageSize", 20));
     }

@@ -10,7 +10,7 @@ import java.util.function.Supplier;
  * @author wls
  * @since 2020/9/23 13:51
  */
-public class PineAssert extends Assert {
+public class Asserts extends Assert {
     
     /**
      * 断言count为0

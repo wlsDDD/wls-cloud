@@ -7,7 +7,7 @@ import cn.erectpine.common.core.pojo.ApiLog;
 import cn.erectpine.common.core.util.collect.IpUtils;
 import cn.erectpine.common.core.util.collect.ServletUtil;
 import cn.erectpine.common.core.util.pine.AspectUtil;
-import cn.erectpine.common.core.util.pine.PineUtil;
+import cn.erectpine.common.core.util.pine.Pines;
 import cn.erectpine.common.log.annotation.LogIgnore;
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -70,7 +70,7 @@ public class LogAspect {
                 Assert.notNull(apiLog, "日志切面异常");
                 apiLog.setStatus(CodeInfoEnum.FAIL_UNKNOWN_ERROR)
                       .setErrorMsg(e.toString())
-                      .setSimpleStacktrace(JSONUtil.parse(PineUtil.getSimpleStackTrace(e, GlobalConstants.stackFilter)));
+                      .setSimpleStacktrace(JSONUtil.parse(Pines.getSimpleStackTrace(e, GlobalConstants.stackFilter)));
             } catch (Exception exception) {
                 log.error("日志切面catch块异常", e);
             }

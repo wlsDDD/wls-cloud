@@ -1,8 +1,8 @@
 package cn.erectpine.dict.project.service.impl;
 
 import cn.erectpine.common.core.enums.CodeInfoEnum;
+import cn.erectpine.common.core.util.pine.Asserts;
 import cn.erectpine.common.core.util.pine.PageUtil;
-import cn.erectpine.common.core.util.pine.PineAssert;
 import cn.erectpine.common.web.exception.BusinessException;
 import cn.erectpine.dict.project.entity.DictData;
 import cn.erectpine.dict.project.mapper.DictDataMapper;
@@ -36,7 +36,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> i
      */
     @Override
     public IPage<DictData> pageDictData(DictData dictData) {
-        return page(PageUtil.plusPage(dictData), Wrappers.lambdaQuery(dictData));
+        return page(PageUtil.getPlusPage(dictData), Wrappers.lambdaQuery(dictData));
     }
 
     /**
@@ -57,7 +57,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> i
      */
     @Override
     public void insertDictData(DictData dictData) {
-        PineAssert.isTrue(save(dictData), () -> new BusinessException(CodeInfoEnum.DATA_INSERT_ERROR));
+        Asserts.isTrue(save(dictData), () -> new BusinessException(CodeInfoEnum.DATA_INSERT_ERROR));
     }
     
     /**
@@ -67,7 +67,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> i
      */
     @Override
     public void updateDictData(DictData dictData) {
-        PineAssert.isTrue(updateById(dictData), () -> new BusinessException(CodeInfoEnum.DATA_UPDATE_ERROR));
+        Asserts.isTrue(updateById(dictData), () -> new BusinessException(CodeInfoEnum.DATA_UPDATE_ERROR));
     }
     
     /**
@@ -77,7 +77,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> i
      */
     @Override
     public void deleteDictData(List<Long> ids) {
-        PineAssert.isTrue(removeByIds(ids), () -> new BusinessException(CodeInfoEnum.DATA_DELETE_ERROR));
+        Asserts.isTrue(removeByIds(ids), () -> new BusinessException(CodeInfoEnum.DATA_DELETE_ERROR));
     }
     
 }

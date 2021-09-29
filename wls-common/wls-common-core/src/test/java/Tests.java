@@ -13,7 +13,7 @@ public class Tests {
     
     @Test
     public void test02() {
-        Page<Tests> testsPage = PageUtil.plusPage(new Tests());
+        Page<Tests> testsPage = PageUtil.getPlusPage(new Tests());
     }
     
     @Test
