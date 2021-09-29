@@ -41,7 +41,7 @@ public class PageUtil {
      *
      * @param pinePage 我的页面
      */
-    public static void pageStart(PinePage pinePage) {
+    public static void pageStart(PinePage<?> pinePage) {
         pageStart(pinePage.getPageNum(), pinePage.getPageSize());
     }
     
@@ -66,7 +66,7 @@ public class PageUtil {
      * @param list 列表
      * @return 自定义分页对象
      */
-    public static <T> PinePage page(List<T> list) {
+    public static <T> PinePage<T> page(List<T> list) {
         return page(new PageInfo<>(list));
     }
     
@@ -76,11 +76,11 @@ public class PageUtil {
      * @param pageInfo {@link PageInfo}
      * @return 自定义分页对象
      */
-    public static <T> PinePage page(PageInfo<T> pageInfo) {
-        return new PinePage().setPageNum(pageInfo.getPageNum())
-                             .setPageSize(pageInfo.getPageSize())
-                             .setTotalNum(pageInfo.getTotal())
-                             .setList(pageInfo.getList());
+    public static <T> PinePage<T> page(PageInfo<T> pageInfo) {
+        return new PinePage<T>().setPageNum(pageInfo.getPageNum())
+                                .setPageSize(pageInfo.getPageSize())
+                                .setTotalNum(pageInfo.getTotal())
+                                .setList(pageInfo.getList());
     }
     
     

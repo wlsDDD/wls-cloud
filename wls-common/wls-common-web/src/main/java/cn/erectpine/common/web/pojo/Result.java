@@ -5,10 +5,12 @@ import cn.erectpine.common.core.context.PineContext;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.jdkboost.map.PineStrMap;
 import cn.erectpine.common.core.jdkboost.map.PineStrObjMap;
+import cn.erectpine.common.core.pojo.PinePage;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -37,6 +39,14 @@ public class Result<T> implements Serializable {
      * 数据对象
      */
     private T data;
+    /**
+     * 数据对象
+     */
+    private Collection<?> tree;
+    /**
+     * 数据对象
+     */
+    private PinePage<T> page;
     /**
      * 参数错误消息
      */

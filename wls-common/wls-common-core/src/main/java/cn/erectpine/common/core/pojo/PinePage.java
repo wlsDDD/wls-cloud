@@ -14,7 +14,7 @@ import java.util.Collection;
  */
 @Data
 @Accessors(chain = true)
-public class PinePage implements Serializable {
+public class PinePage<T> implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
@@ -33,6 +33,6 @@ public class PinePage implements Serializable {
     /**
      * 数据列表
      */
-    private Collection<?> list;
+    private Collection<T> list;
     
 }
