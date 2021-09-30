@@ -1,4 +1,4 @@
-package cn.erectpine.common.core.annotation;
+package cn.erectpine.common.web.annotation;
 
 import java.lang.annotation.*;
 

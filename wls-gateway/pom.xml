@@ -38,11 +38,10 @@
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>3.0.0</version>
-            <scope>compile</scope>
+            <groupId>cn.erectpine</groupId>
+            <artifactId>wls-common-core</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>

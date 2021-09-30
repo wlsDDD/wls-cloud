@@ -1,4 +1,4 @@
-package cn.erectpine.common.core.config;
+package cn.erectpine.common.web.config;
 
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author wls
  * @since 2021/08/21 21:10:41
  */
-class PineThreadFactory implements ThreadFactory {
+public class PineThreadFactory implements ThreadFactory {
     
     private final AtomicInteger count = new AtomicInteger(0);
     

@@ -1,4 +1,4 @@
-package cn.erectpine.common.core.config;
+package cn.erectpine.common.web.config;
 
 import cn.erectpine.common.core.thread.PineThreadPoolExecutor;
 import lombok.Data;

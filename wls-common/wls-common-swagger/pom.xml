@@ -18,6 +18,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>cn.erectpine</groupId>
+            <artifactId>wls-common-core</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
             <version>${knife4j.version}</version>

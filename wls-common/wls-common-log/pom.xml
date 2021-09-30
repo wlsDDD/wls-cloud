@@ -22,12 +22,6 @@
             <groupId>cn.erectpine</groupId>
             <artifactId>wls-common-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>3.0.0</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 
 
