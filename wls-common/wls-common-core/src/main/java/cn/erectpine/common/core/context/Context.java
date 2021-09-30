@@ -5,6 +5,9 @@ import cn.erectpine.common.core.thread.PineThreadPoolExecutor;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 请求上下文实体
  *
@@ -14,6 +17,15 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class Context {
+    
+    /**
+     * http 请求对象
+     */
+    private HttpServletRequest request;
+    /**
+     * http 响应对象
+     */
+    private HttpServletResponse response;
     
     /**
      * 接口日志

@@ -1,7 +1,7 @@
 package cn.erectpine.common.log.aspect;
 
 import cn.erectpine.common.core.constant.GlobalConstants;
-import cn.erectpine.common.core.context.PineContext;
+import cn.erectpine.common.core.context.HttpContext;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.pojo.ApiLog;
 import cn.erectpine.common.core.util.collect.IpUtils;
@@ -50,7 +50,7 @@ public class LogAspect {
             logIgnore = AspectUtil.getAnnotation(joinPoint, LogIgnore.class);
             request = ServletUtil.getRequest();
             // 开始记录日志
-            apiLog = PineContext.getContext().getApiLog();
+            apiLog = HttpContext.getContext().getApiLog();
             apiLog.setHeaders(JSONUtil.parseObj(ServletUtil.getHeaders(request)))
                   .setStartTime(LocalDateTime.now())
                   .setStatus(CodeInfoEnum.SUCCESS);

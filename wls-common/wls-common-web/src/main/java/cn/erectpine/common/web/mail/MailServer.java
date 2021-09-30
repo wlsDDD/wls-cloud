@@ -1,7 +1,7 @@
 package cn.erectpine.common.web.mail;
 
 import cn.erectpine.common.core.constant.GlobalConstants;
-import cn.erectpine.common.core.context.PineContext;
+import cn.erectpine.common.core.context.HttpContext;
 import cn.erectpine.common.core.pojo.ApiLog;
 import cn.erectpine.common.web.properties.WlsShareYml;
 import cn.hutool.core.date.DatePattern;
@@ -100,7 +100,7 @@ public class MailServer {
     
     @Async
     public void sendApiLog() {
-        ApiLog apiLog = PineContext.getApiLog();
+        ApiLog apiLog = HttpContext.getApiLog();
         // 排序
         JSONConfig jsonConfig = new JSONConfig()
                 .setOrder(true)

@@ -2,7 +2,6 @@ package cn.erectpine.common.core.context;
 
 
 import cn.erectpine.common.core.pojo.ApiLog;
-import cn.hutool.core.util.IdUtil;
 
 /**
  * 请求上下文环境
@@ -10,7 +9,7 @@ import cn.hutool.core.util.IdUtil;
  * @author wls
  * @since 2021/4/14 10:41
  */
-public class PineContext {
+public class HttpContext {
     
     /**
      * 上下文可继承线程变量
@@ -47,8 +46,8 @@ public class PineContext {
     /**
      * 设置上下文
      */
-    public static void setContext() {
-        INHERITABLE_THREAD_LOCAL.set(new Context().setApiLog(new ApiLog().setRequestId(IdUtil.simpleUUID())));
+    public static void setContext(Context context) {
+        INHERITABLE_THREAD_LOCAL.set(context);
     }
     
     /**

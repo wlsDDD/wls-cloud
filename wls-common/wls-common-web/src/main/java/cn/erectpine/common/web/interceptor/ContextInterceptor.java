@@ -1,6 +1,10 @@
 package cn.erectpine.common.web.interceptor;
 
-import cn.erectpine.common.core.context.PineContext;
+import cn.erectpine.common.core.context.Context;
+import cn.erectpine.common.core.context.HttpContext;
+import cn.erectpine.common.core.pojo.ApiLog;
+import cn.hutool.core.util.IdUtil;
+import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,11 +19,12 @@ import javax.servlet.http.HttpServletResponse;
  * @author wls
  * @since 2021/3/16 10:31
  */
+@Order(-100)
 public class ContextInterceptor implements HandlerInterceptor {
     
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        PineContext.setContext();
+        HttpContext.setContext(new Context().setRequest(request).setResponse(response).setApiLog(new ApiLog().setRequestId(IdUtil.simpleUUID())));
         return true;
     }
     
@@ -30,7 +35,8 @@ public class ContextInterceptor implements HandlerInterceptor {
     
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        PineContext.removeContext();
+        HttpContext.removeContext();
         HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
+    
 }

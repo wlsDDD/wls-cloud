@@ -2,7 +2,7 @@ package cn.erectpine.common.web.pojo;
 
 
 import cn.erectpine.common.core.constant.SuppressWarningConstants;
-import cn.erectpine.common.core.context.PineContext;
+import cn.erectpine.common.core.context.HttpContext;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.jdkboost.map.PineStrMap;
 import cn.erectpine.common.core.pojo.PinePage;
@@ -64,7 +64,7 @@ public class Result<T> implements Serializable {
      * 初始化一个新创建的 Result 对象，使其表示一个空消息。
      */
     public Result() {
-        this.requestId = PineContext.getRequestId();
+        this.requestId = HttpContext.getRequestId();
     }
     
     /**

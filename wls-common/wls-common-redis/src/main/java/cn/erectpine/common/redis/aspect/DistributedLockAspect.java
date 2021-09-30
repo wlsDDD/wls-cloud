@@ -2,7 +2,7 @@ package cn.erectpine.common.redis.aspect;
 
 import cn.erectpine.common.core.constant.GlobalConstants;
 import cn.erectpine.common.core.context.Context;
-import cn.erectpine.common.core.context.PineContext;
+import cn.erectpine.common.core.context.HttpContext;
 import cn.erectpine.common.core.util.pine.AspectUtil;
 import cn.erectpine.common.redis.RedisUtil;
 import cn.erectpine.common.redis.annotation.DistributedLock;
@@ -37,7 +37,7 @@ public class DistributedLockAspect {
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         DistributedLock distributedLock = AspectUtil.getAnnotation(joinPoint, DistributedLock.class);
         String lockKey = LOCK_NAME + joinPoint.getSignature().getName() + ":" + DigestUtil.md5Hex(AspectUtil.getMethodName(joinPoint));
-        String diyDistributedLockKey = Optional.ofNullable(PineContext.getContext()).orElseGet(Context::new).getDiyDistributedLockKey();
+        String diyDistributedLockKey = Optional.ofNullable(HttpContext.getContext()).orElseGet(Context::new).getDiyDistributedLockKey();
         // 支持自定义扩展更细粒度的锁
         if (StrUtil.isNotBlank(diyDistributedLockKey)) {
             lockKey = lockKey + ":" + diyDistributedLockKey;

@@ -1,6 +1,6 @@
 package cn.erectpine.common.web.handler;
 
-import cn.erectpine.common.core.context.PineContext;
+import cn.erectpine.common.core.context.HttpContext;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.enums.LogTypeEnum;
 import cn.erectpine.common.core.jdkboost.map.PineStrMap;
@@ -82,7 +82,7 @@ public class GlobalExceptionHandler {
 //        if (StrUtil.contains(request.getURI().getPath(), "swagger")) {
 //            return body;
 //        }
-//        ApiLog apiLog = PineContext.getApiLog();
+//        ApiLog apiLog = HttpContext.getApiLog();
 //        Result<?> result = null == body ?
 //                Result.ok() : body instanceof Result ?
 //                (Result<?>) body : Result.ok(body);
@@ -110,7 +110,7 @@ public class GlobalExceptionHandler {
      * @param apiLog {@link ApiLog}
      */
     public static void consoleLog() {
-        ApiLog apiLog = PineContext.getApiLog();
+        ApiLog apiLog = HttpContext.getApiLog();
         Map<String, Object> logMap = BeanUtil.beanToMap(apiLog, false, false);
         if (CodeInfoEnum.SUCCESS.equals(apiLog.getStatus())) {
             log.info(LogTypeEnum.SUCCESS.getDelimiter());
