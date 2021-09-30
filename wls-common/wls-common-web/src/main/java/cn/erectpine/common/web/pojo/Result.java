@@ -43,11 +43,11 @@ public class Result<T> implements Serializable {
      */
     private T data;
     /**
-     * 数据对象
+     * 树列表
      */
     private Collection<?> tree;
     /**
-     * 数据对象
+     * 分页列表
      */
     private PinePage<T> page;
     /**

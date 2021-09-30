@@ -19,9 +19,9 @@ public class PinePage<T> implements Serializable {
     private static final long serialVersionUID = 1L;
     
     /**
-     * 总计
+     * 数据列表
      */
-    private Long totalNum;
+    private Collection<T> list;
     /**
      * 第几页
      */
@@ -31,8 +31,8 @@ public class PinePage<T> implements Serializable {
      */
     private Integer pageSize;
     /**
-     * 数据列表
+     * 总计
      */
-    private Collection<T> list;
+    private Long totalNum;
     
 }

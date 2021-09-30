@@ -33,7 +33,7 @@ public class RoleController extends BaseController {
      */
     @PostMapping("/list")
     public Result<IPage<Role>> pageRole(@RequestBody @Validated Role role, Page<Role> page) {
-        return Result.ok(roleService.pageRole(page, role)).addField("tree", "这是一棵树");
+        return Result.ok(roleService.pageRole(page, role)).tree().page();
     }
     
     /**

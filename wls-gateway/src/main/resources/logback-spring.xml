@@ -2,17 +2,20 @@
 <configuration>
 
     <!-- 配置文件名必须为logback-spring.xml，否则env在一开始会找不到，会生成一个env_IS_UNDEFINED.log的空文件 -->
-    <springProperty scope="context" name="logsPath" source="share.logsPath" defaultValue="/opt/logs/"/>
-    <springProperty scope="context" name="logLevel" source="share.logLevel" defaultValue="info"/>
+    <springProperty scope="context" name="logsPath" source="wls.log.logsPath" defaultValue="/opt/logs/"/>
+    <springProperty scope="context" name="logLevel" source="wls.log.logLevel" defaultValue="info"/>
+    <springProperty scope="context" name="logFormat" source="wls.log.logDevFormat"
+                    defaultValue="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15.15t)] %cyan(%-40.40logger{50}:%-3line) : %highlight(%m%n)"/>
+    <springProperty scope="context" name="logProdFormat" source="wls.log.logProdFormat"
+                    defaultValue="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15t)] %cyan(%-40logger{50}:%-3line): %highlight(%m%n)"/>
 
     <!-- 定义日志文件 输出位置 -->
     <property name="log.dir" value="${logsPath}"/>
     <!-- 日志级别 -->
     <property name="log.level" value="${logLevel}"/>
     <!-- 日志输出格式 -->
-    <property name="log.pattern.console"
-              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15.15t)] %cyan(%-40.40logger{50}:%-3line) : %highlight(%m%n)"/>
-    <property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15t)] %cyan(%-40logger{50}:%-3line): %highlight(%m%n)"/>
+    <property name="log.pattern.console" value="${logFormat}"/>
+    <property name="log.pattern" value="${logProdFormat}"/>
 
     <!-- ConsoleAppender 控制台输出日志 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
