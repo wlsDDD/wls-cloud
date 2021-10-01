@@ -14,7 +14,7 @@ import java.util.Collection;
  */
 @Data
 @Accessors(chain = true)
-public class PinePage<T> implements Serializable {
+public class Page<T> implements Serializable {
     
     private static final long serialVersionUID = 1L;
     

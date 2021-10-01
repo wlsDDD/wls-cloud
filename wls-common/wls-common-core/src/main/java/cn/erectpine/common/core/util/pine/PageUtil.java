@@ -1,8 +1,7 @@
 package cn.erectpine.common.core.util.pine;
 
-import cn.erectpine.common.core.pojo.PinePage;
+import cn.erectpine.common.core.pojo.Page;
 import cn.erectpine.common.core.util.collect.ServletUtil;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -20,11 +19,11 @@ public class PageUtil {
      * 获取mybatisPlus分页对象
      *
      * @param type 定义Page泛型
-     * @return {@link Page}<{@link T}>
+     * @return {@link com.baomidou.mybatisplus.extension.plugins.pagination.Page}<{@link T}>
      */
-    public static <T> Page<T> getPlusPage(T type) {
-        return new Page<T>().setCurrent(ServletUtil.getParameterToInt("pageNum", 1))
-                            .setSize(ServletUtil.getParameterToInt("pageSize", 20));
+    public static <T> com.baomidou.mybatisplus.extension.plugins.pagination.Page getPlusPage(T type) {
+        return new com.baomidou.mybatisplus.extension.plugins.pagination.Page().setCurrent(ServletUtil.getParameterToInt("pageNum", 1))
+                                                                               .setSize(ServletUtil.getParameterToInt("pageSize", 20));
     }
     
     /**
@@ -39,10 +38,10 @@ public class PageUtil {
     /**
      * 分页
      *
-     * @param pinePage 我的页面
+     * @param page 我的页面
      */
-    public static void pageStart(PinePage<?> pinePage) {
-        pageStart(pinePage.getPageNum(), pinePage.getPageSize());
+    public static void pageStart(Page<?> page) {
+        pageStart(page.getPageNum(), page.getPageSize());
     }
     
     /**
@@ -66,7 +65,7 @@ public class PageUtil {
      * @param list 列表
      * @return 自定义分页对象
      */
-    public static <T> PinePage<T> page(List<T> list) {
+    public static <T> Page<T> page(List<T> list) {
         return page(new PageInfo<>(list));
     }
     
@@ -76,11 +75,11 @@ public class PageUtil {
      * @param pageInfo {@link PageInfo}
      * @return 自定义分页对象
      */
-    public static <T> PinePage<T> page(PageInfo<T> pageInfo) {
-        return new PinePage<T>().setPageNum(pageInfo.getPageNum())
-                                .setPageSize(pageInfo.getPageSize())
-                                .setTotalNum(pageInfo.getTotal())
-                                .setList(pageInfo.getList());
+    public static <T> Page<T> page(PageInfo<T> pageInfo) {
+        return new Page<T>().setPageNum(pageInfo.getPageNum())
+                            .setPageSize(pageInfo.getPageSize())
+                            .setTotalNum(pageInfo.getTotal())
+                            .setList(pageInfo.getList());
     }
     
     
