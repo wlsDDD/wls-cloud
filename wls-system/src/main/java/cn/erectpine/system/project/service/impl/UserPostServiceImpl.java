@@ -1,8 +1,8 @@
 package cn.erectpine.system.project.service.impl;
 
 import cn.erectpine.common.core.enums.CodeInfoEnum;
+import cn.erectpine.common.core.exception.BusinessException;
 import cn.erectpine.common.core.util.pine.Asserts;
-import cn.erectpine.common.web.exception.BusinessException;
 import cn.erectpine.system.project.entity.UserPost;
 import cn.erectpine.system.project.mapper.UserPostMapper;
 import cn.erectpine.system.project.service.IUserPostService;

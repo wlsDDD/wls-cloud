@@ -1,6 +1,8 @@
 ### 分页列表
-POST http://{{host}}/user/list
+POST http://{{host}}/user/list?name=王&size=20&ids=1,2,3&age=&hex=
 Content-Type: application/json
+appKey: 5646213
+appSecret: 4656231
 
 [
   {

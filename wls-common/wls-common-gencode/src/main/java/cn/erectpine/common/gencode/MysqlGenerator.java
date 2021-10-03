@@ -117,9 +117,9 @@ public class MysqlGenerator {
             public void initMap() {
                 Map<String, Object> map = new HashMap<>(16);
                 map.put("Result", "cn.erectpine.common.web.pojo.Result");
-                map.put("PageUtil", "cn.erectpine.common.core.util.pine.PageUtil");
+                map.put("PageUtil", "cn.erectpine.common.web.util.PageUtil");
                 map.put("PineAssert", "cn.erectpine.common.core.util.pine.PineAssert");
-                map.put("BusinessException", "cn.erectpine.common.web.exception.BusinessException");
+                map.put("BusinessException", "cn.erectpine.common.core.exception.BusinessException");
                 map.put("CodeMsgEnum", "cn.erectpine.common.core.enums.CodeInfoEnum");
                 this.setMap(map);
             }

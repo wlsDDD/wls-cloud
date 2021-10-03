@@ -22,7 +22,7 @@ public class Signature {
      * 签名开关
      * 默认false 不验证签名 反之则验证签名
      */
-    private Boolean signatureFlag = true;
+    private Boolean enable = false;
     /**
      * key
      */

@@ -1,4 +1,4 @@
-package cn.erectpine.common.web.exception;
+package cn.erectpine.common.core.exception;
 
 
 import cn.erectpine.common.core.enums.CodeInfoEnum;

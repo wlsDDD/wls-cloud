@@ -35,7 +35,7 @@
         </dependency>
         <dependency>
             <groupId>cn.erectpine</groupId>
-            <artifactId>wls-common-core</artifactId>
+            <artifactId>wls-common-web</artifactId>
         </dependency>
 
     </dependencies>

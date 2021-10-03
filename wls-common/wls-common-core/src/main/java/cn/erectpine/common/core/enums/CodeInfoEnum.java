@@ -34,6 +34,7 @@ public enum CodeInfoEnum {
      * 参数
      */
     ARG_VERIFY_ERROR("3000", "统一验证参数不合法, 请检查参数后重试! 以下信息仅供参考"),
+    SIGNATURE_VERIFY_ERROR("3001", "签名验证不通过, 请排查后重试!"),
     /**
      * 业务类异常，提示信息由抛异常时定义
      */

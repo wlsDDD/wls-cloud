@@ -1,14 +1,12 @@
 package cn.erectpine.common.core.util.pine;
 
+import cn.erectpine.common.core.exception.RequestHeaderException;
 import cn.erectpine.common.core.function.FunctionSerializable;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ReflectUtil;
 
 import java.lang.annotation.Annotation;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -66,6 +64,28 @@ public class Pines {
         }
     }
     
+    /**
+     * 在map中获取指定key 获取不到抛出异常
+     *
+     * @param map 地图
+     * @param key 关键
+     * @return {@link V}
+     */
+    public static <K, V> V getOrException(Map<K, V> map, K key) {
+        return Optional.ofNullable(map.get(key)).orElseThrow(() -> new RequestHeaderException(key.toString()));
+    }
+    
+    /**
+     * 在map中获取指定key 获取不到抛出异常
+     *
+     * @param map  地图
+     * @param func 函数
+     * @return {@link V}
+     */
+    public static <V, T, R> V getOrException(Map<String, V> map, FunctionSerializable<T, R> func) {
+        String key = LamUtil.getFieldName(func);
+        return Optional.ofNullable(map.get(key)).orElseThrow(() -> new RequestHeaderException(key));
+    }
     
     /**
      * 根据类获取指定所有注解

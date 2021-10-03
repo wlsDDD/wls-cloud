@@ -1,4 +1,4 @@
-package cn.erectpine.common.core.util.collect;
+package cn.erectpine.common.web.util;
 
 import cn.hutool.core.convert.Convert;
 import org.springframework.web.context.request.RequestAttributes;

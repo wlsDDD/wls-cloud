@@ -1,7 +1,6 @@
-package cn.erectpine.common.core.util.pine;
+package cn.erectpine.common.web.util;
 
 import cn.erectpine.common.core.pojo.Page;
-import cn.erectpine.common.core.util.collect.ServletUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -21,9 +20,9 @@ public class PageUtil {
      * @param type 定义Page泛型
      * @return {@link com.baomidou.mybatisplus.extension.plugins.pagination.Page}<{@link T}>
      */
-    public static <T> com.baomidou.mybatisplus.extension.plugins.pagination.Page getPlusPage(T type) {
-        return new com.baomidou.mybatisplus.extension.plugins.pagination.Page().setCurrent(ServletUtil.getParameterToInt("pageNum", 1))
-                                                                               .setSize(ServletUtil.getParameterToInt("pageSize", 20));
+    public static <T> com.baomidou.mybatisplus.extension.plugins.pagination.Page<T> getPlusPage(T type) {
+        return new com.baomidou.mybatisplus.extension.plugins.pagination.Page<T>().setCurrent(ServletUtil.getParameterToInt("pageNum", 1))
+                                                                                  .setSize(ServletUtil.getParameterToInt("pageSize", 20));
     }
     
     /**

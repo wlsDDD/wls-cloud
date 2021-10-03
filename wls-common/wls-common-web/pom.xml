@@ -27,6 +27,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
+        <!--SpringBoot-aop-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
         <!--springBoot监控-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
