@@ -29,6 +29,10 @@ spring:
           - dataId: wls-log-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
             group: dev
             refresh: true
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
 
 
 server:
