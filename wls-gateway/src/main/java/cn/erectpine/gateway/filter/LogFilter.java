@@ -21,10 +21,12 @@ public class LogFilter implements GlobalFilter, Ordered {
     
     /**
      * 生成requestId
+     * TODO
      */
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpResponse response = exchange.getResponse();
+
 //        response.bufferFactory().allocateBuffer().
         return chain.filter(exchange);
     }
