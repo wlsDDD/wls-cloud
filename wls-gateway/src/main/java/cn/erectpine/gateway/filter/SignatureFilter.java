@@ -55,23 +55,23 @@ public class SignatureFilter implements GlobalFilter, Ordered {
         ServerHttpRequest request = exchange.getRequest();
         Map<String, String> headerMap = request.getHeaders().toSingleValueMap();
         // 获取签名参数
-        TreeMap<String, String> map = new TreeMap<>();
+        TreeMap<String, String> signatureMap = new TreeMap<>();
         String appKey = LamUtil.getFieldName(Signature::getAppKey);
         String appSecret = LamUtil.getFieldName(Signature::getAppSecret);
         String timestamp = LamUtil.getFieldName(Signature::getTimestamp);
         String version = LamUtil.getFieldName(Signature::getVersion);
         String randomStr = LamUtil.getFieldName(Signature::getRandomStr);
         String signatureKey = LamUtil.getFieldName(Signature::getSignature);
-        map.put(appKey, Pines.getOrException(headerMap, appKey));
-        map.put(appSecret, Pines.getOrException(headerMap, appSecret));
-        map.put(timestamp, Pines.getOrException(headerMap, timestamp));
-        map.put(version, Pines.getOrException(headerMap, version));
-        map.put(randomStr, Pines.getOrException(headerMap, randomStr));
+        signatureMap.put(appKey, Pines.getOrException(headerMap, appKey));
+        signatureMap.put(appSecret, Pines.getOrException(headerMap, appSecret));
+        signatureMap.put(timestamp, Pines.getOrException(headerMap, timestamp));
+        signatureMap.put(version, Pines.getOrException(headerMap, version));
+        signatureMap.put(randomStr, Pines.getOrException(headerMap, randomStr));
         // 加入URL参数
-        request.getQueryParams().forEach((k, v) -> map.put(k, v.toString().replaceAll("[\\[\\]]", "")));
+        request.getQueryParams().forEach((k, v) -> signatureMap.put(k, v.toString().replaceAll("[\\[\\]]", "")));
         // 拼接参数
         StringBuilder signatureBuilder = new StringBuilder();
-        map.forEach((s, s2) -> signatureBuilder.append(s).append("=").append(s2).append(";"));
+        signatureMap.forEach((s, s2) -> signatureBuilder.append(s).append("=").append(s2).append(";"));
         /// 放弃URL编码
 //        try {
 //            signature = URLEncoder.encode(signature, "UTF-8");

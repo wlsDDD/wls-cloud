@@ -37,7 +37,7 @@ public class WebFluxUtil {
         response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         DataBuffer dataBuffer = response.bufferFactory()
                                         .wrap(JSONObject.toJSONString(new PineStrObjMap()
-                                                .putItem(ApiLog::getRequestId, request.getHeaders().toSingleValueMap().get(LamUtil.getFieldName(ApiLog::getRequestId)))
+                                                .putItem(ApiLog::getRequestId, request.getHeaders().get(LamUtil.getFieldName(ApiLog::getRequestId)))
                                                 .putItem(CodeInfoEnum::getCode, codeInfoEnum.getCode())
                                                 .putItem(CodeInfoEnum::getInfo, codeInfoEnum.getInfo())).getBytes());
         return response.writeWith(Mono.just(dataBuffer));

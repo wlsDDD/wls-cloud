@@ -45,7 +45,7 @@ public enum CodeInfoEnum {
      * 其他状态码应避开此状态码
      */
     UNKNOWN_ERROR("5000", ""),
-    UNKNOWN_GATEWAY_ERROR("5001", "网关未知异常! "),
+    UNKNOWN_GATEWAY_ERROR("5001", "网关服务出现了未知异常 给您带来了不便敬请谅解 "),
     GATEWAY_HEADER_NOT_FOUND_ERROR("5002", "请求头缺失! "),
     GATEWAY_SERVER_NOT_FOUND_ERROR("5004", "网关未找到服务! "),
     /**
