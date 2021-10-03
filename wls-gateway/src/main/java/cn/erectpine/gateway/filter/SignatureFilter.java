@@ -1,12 +1,10 @@
 package cn.erectpine.gateway.filter;
 
 import cn.erectpine.common.core.enums.CodeInfoEnum;
-import cn.erectpine.common.core.pojo.ApiLog;
 import cn.erectpine.common.core.pojo.Signature;
 import cn.erectpine.common.core.util.pine.LamUtil;
 import cn.erectpine.common.core.util.pine.Pines;
 import cn.erectpine.gateway.util.WebFluxUtil;
-import cn.hutool.core.util.IdUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +13,9 @@ import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Map;
 import java.util.TreeMap;
@@ -52,14 +48,11 @@ public class SignatureFilter implements GlobalFilter, Ordered {
      */
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        String requestId = LamUtil.getFieldName(ApiLog::getRequestId);
-        signature.setEnable(true);
         // 未开启签名验证则直接进入下一个调用链
         if (!signature.getEnable()) {
             return chain.filter(exchange);
         }
-        ServerHttpRequest request = exchange.getRequest().mutate().header(requestId, IdUtil.simpleUUID()).build();
-        MultiValueMap<String, String> paramMap = request.getQueryParams();
+        ServerHttpRequest request = exchange.getRequest();
         Map<String, String> headerMap = request.getHeaders().toSingleValueMap();
         // 获取签名参数
         TreeMap<String, String> map = new TreeMap<>();
@@ -74,26 +67,25 @@ public class SignatureFilter implements GlobalFilter, Ordered {
         map.put(timestamp, Pines.getOrException(headerMap, timestamp));
         map.put(version, Pines.getOrException(headerMap, version));
         map.put(randomStr, Pines.getOrException(headerMap, randomStr));
-        // 拼接URL参数
-        paramMap.forEach((k, v) -> map.put(k, v.toString().replaceAll("[\\[\\]]", "")));
+        // 加入URL参数
+        request.getQueryParams().forEach((k, v) -> map.put(k, v.toString().replaceAll("[\\[\\]]", "")));
         // 拼接参数
-        StringBuilder str = new StringBuilder();
-        map.forEach((s, s2) -> str.append(s).append("=").append(s2).append(";"));
-        // URL编码
-        String signature = str.toString();
-        try {
-            signature = URLEncoder.encode(signature, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            log.error("字符转码失败 URLEncoder 降级使用原编码", e);
-        }
+        StringBuilder signatureBuilder = new StringBuilder();
+        map.forEach((s, s2) -> signatureBuilder.append(s).append("=").append(s2).append(";"));
+        /// 放弃URL编码
+//        try {
+//            signature = URLEncoder.encode(signature, "UTF-8");
+//        } catch (UnsupportedEncodingException e) {
+//            log.error("字符转码失败 URLEncoder 降级使用原编码", e);
+//        }
         // sha256计算摘要
-        signature = DigestUtil.sha256Hex(signature);
+        String signature = DigestUtil.sha256Hex(signatureBuilder.toString());
         // 验证签名 失败直接返回结果
         if (!signature.equals(Pines.getOrException(headerMap, signatureKey))) {
             return WebFluxUtil.webFluxResponseWriter(exchange, CodeInfoEnum.SIGNATURE_VERIFY_ERROR);
         }
-        // 验证成功 继续向后调用
-        return chain.filter(exchange.mutate().request(request).build());
+        // 成功 继续向后调用
+        return chain.filter(exchange);
     }
     
     @Override
