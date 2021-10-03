@@ -1,5 +1,6 @@
 package cn.erectpine.common.core.util.pine;
 
+import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.exception.RequestHeaderException;
 import cn.erectpine.common.core.function.FunctionSerializable;
 import cn.hutool.core.bean.BeanUtil;
@@ -72,7 +73,7 @@ public class Pines {
      * @return {@link V}
      */
     public static <K, V> V getOrException(Map<K, V> map, K key) {
-        return Optional.ofNullable(map.get(key)).orElseThrow(() -> new RequestHeaderException(key.toString()));
+        return Optional.ofNullable(map.get(key)).orElseThrow(() -> new RequestHeaderException(CodeInfoEnum.GATEWAY_HEADER_NOT_FOUND_ERROR));
     }
     
     /**
@@ -83,8 +84,7 @@ public class Pines {
      * @return {@link V}
      */
     public static <V, T, R> V getOrException(Map<String, V> map, FunctionSerializable<T, R> func) {
-        String key = LamUtil.getFieldName(func);
-        return Optional.ofNullable(map.get(key)).orElseThrow(() -> new RequestHeaderException(key));
+        return Optional.ofNullable(map.get(LamUtil.getFieldName(func))).orElseThrow(() -> new RequestHeaderException(CodeInfoEnum.GATEWAY_HEADER_NOT_FOUND_ERROR));
     }
     
     /**

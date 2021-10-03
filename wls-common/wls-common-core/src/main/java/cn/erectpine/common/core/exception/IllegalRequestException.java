@@ -3,12 +3,12 @@ package cn.erectpine.common.core.exception;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
 
 /**
- * 请求头异常
+ * 非法请求异常
  *
  * @author wls
- * @since 2021/10/03 14:53:05
+ * @since 2021/10/03 21:01:37
  */
-public class RequestHeaderException extends BaseRunTimeException {
+public class IllegalRequestException extends BaseRunTimeException {
     private static final long serialVersionUID = 1L;
     
     /**
@@ -18,27 +18,27 @@ public class RequestHeaderException extends BaseRunTimeException {
      * @param codeInfoEnum 代码味精枚举
      * @param params       参数个数
      */
-    public RequestHeaderException(CodeInfoEnum codeInfoEnum, Object... params) {
+    public IllegalRequestException(CodeInfoEnum codeInfoEnum, Object... params) {
         super(codeInfoEnum, params);
     }
     
-    public RequestHeaderException() {
+    public IllegalRequestException() {
         super();
     }
     
-    public RequestHeaderException(String message) {
+    public IllegalRequestException(String message) {
         super(message);
     }
     
-    public RequestHeaderException(String message, Throwable cause) {
+    public IllegalRequestException(String message, Throwable cause) {
         super(message, cause);
     }
     
-    public RequestHeaderException(Throwable cause) {
+    public IllegalRequestException(Throwable cause) {
         super(cause);
     }
     
-    protected RequestHeaderException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    protected IllegalRequestException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
     

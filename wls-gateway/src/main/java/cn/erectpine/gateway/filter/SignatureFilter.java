@@ -1,10 +1,10 @@
 package cn.erectpine.gateway.filter;
 
 import cn.erectpine.common.core.enums.CodeInfoEnum;
+import cn.erectpine.common.core.exception.IllegalRequestException;
 import cn.erectpine.common.core.pojo.Signature;
 import cn.erectpine.common.core.util.pine.LamUtil;
 import cn.erectpine.common.core.util.pine.Pines;
-import cn.erectpine.gateway.util.WebFluxUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,9 +80,9 @@ public class SignatureFilter implements GlobalFilter, Ordered {
 //        }
         // sha256计算摘要
         String signature = DigestUtil.sha256Hex(signatureBuilder.toString());
-        // 验证签名 失败直接返回结果
+        // 验证签名 失败直接返回
         if (!signature.equals(Pines.getOrException(headerMap, signatureKey))) {
-            return WebFluxUtil.webFluxResponseWriter(exchange, CodeInfoEnum.SIGNATURE_VERIFY_ERROR);
+            throw new IllegalRequestException(CodeInfoEnum.SIGNATURE_VERIFY_ERROR);
         }
         // 成功 继续向后调用
         return chain.filter(exchange);

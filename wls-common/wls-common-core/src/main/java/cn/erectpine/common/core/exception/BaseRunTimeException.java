@@ -32,6 +32,8 @@ public class BaseRunTimeException extends RuntimeException {
      */
     private String code;
     
+    private CodeInfoEnum codeInfoEnum = CodeInfoEnum.UNKNOWN_ERROR;
+    
     
     /**
      * 基本运行时异常
@@ -44,15 +46,7 @@ public class BaseRunTimeException extends RuntimeException {
         super(codeInfoEnum.getInfo());
         codeInfoEnum.setInfo(params);
         this.code = codeInfoEnum.getCode();
-    }
-    
-    /**
-     * 获取过滤后的堆栈日志
-     *
-     * @return {@link StackTraceElement[]}
-     */
-    public StackTraceElement[] getSimpleStackTrace() {
-        return Pines.getSimpleStackTrace(this, GlobalConstants.stackFilter);
+        this.codeInfoEnum = codeInfoEnum;
     }
     
     public BaseRunTimeException() {
@@ -74,4 +68,14 @@ public class BaseRunTimeException extends RuntimeException {
     protected BaseRunTimeException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
+    
+    /**
+     * 获取过滤后的堆栈日志
+     *
+     * @return {@link StackTraceElement[]}
+     */
+    public StackTraceElement[] getSimpleStackTrace() {
+        return Pines.getSimpleStackTrace(this, GlobalConstants.stackFilter);
+    }
+    
 }

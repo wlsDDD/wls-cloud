@@ -1,6 +1,7 @@
 package cn.erectpine.gateway.handler;
 
 import cn.erectpine.common.core.enums.CodeInfoEnum;
+import cn.erectpine.common.core.exception.IllegalRequestException;
 import cn.erectpine.common.core.exception.RequestHeaderException;
 import cn.erectpine.gateway.util.WebFluxUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +31,11 @@ public class GatewayExceptionHandler implements ErrorWebExceptionHandler {
         }
         if (e instanceof RequestHeaderException) {
             log.error("[网关异常统一处理] <请求头缺失> 请求路径:{} 异常信息:{}", exchange.getRequest().getPath(), e.getMessage(), e);
-            return WebFluxUtil.webFluxResponseWriter(exchange, CodeInfoEnum.GATEWAY_HEADER_NOT_FOUND_ERROR.setInfo(e.getMessage()));
+            return WebFluxUtil.webFluxResponseWriter(exchange, ((RequestHeaderException) e).getCodeInfoEnum());
+        }
+        if (e instanceof IllegalRequestException) {
+            log.error("[网关异常统一处理] <非法请求> 请求路径:{} 异常信息:{}", exchange.getRequest().getPath(), e.getMessage(), e);
+            return WebFluxUtil.webFluxResponseWriter(exchange, ((IllegalRequestException) e).getCodeInfoEnum());
         }
         if (e instanceof NotFoundException) {
             log.error("[网关异常统一处理] <服务未找到> 请求路径:{} 异常信息:{}", exchange.getRequest().getPath(), e.getMessage(), e);
