@@ -1,39 +1,37 @@
 package cn.erectpine.gateway.filter;
 
-import cn.erectpine.common.core.pojo.ApiLog;
-import cn.erectpine.common.core.util.pine.LamUtil;
-import cn.hutool.core.util.IdUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
-import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
- * 生成requestId
+ * 日志过滤器
  *
  * @author wls
- * @since 2021/10/1 9:12
+ * @since 2021/10/03 21:30:19
  */
 @Slf4j
 @Component
-public class RequestIdFilter implements GlobalFilter, Ordered {
+public class LogFilter implements GlobalFilter, Ordered {
     
     /**
      * 生成requestId
      */
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        ServerHttpRequest request = exchange.getRequest().mutate().header(LamUtil.getFieldName(ApiLog::getRequestId), IdUtil.simpleUUID()).build();
-        return chain.filter(exchange.mutate().request(request).build());
+        ServerHttpResponse response = exchange.getResponse();
+//        response.bufferFactory().allocateBuffer().
+        return chain.filter(exchange);
     }
     
     @Override
     public int getOrder() {
-        return -5000;
+        return -4000;
     }
     
 }
