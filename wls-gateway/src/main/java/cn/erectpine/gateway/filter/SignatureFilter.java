@@ -1,7 +1,6 @@
 package cn.erectpine.gateway.filter;
 
 import cn.erectpine.common.core.enums.CodeInfoEnum;
-import cn.erectpine.common.core.jdkboost.map.PineStrMap;
 import cn.erectpine.common.core.pojo.ApiLog;
 import cn.erectpine.common.core.pojo.Signature;
 import cn.erectpine.common.core.util.pine.LamUtil;
@@ -15,7 +14,6 @@ import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.http.server.reactive.ServerHttpRequest;
-import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.server.ServerWebExchange;
@@ -61,7 +59,6 @@ public class SignatureFilter implements GlobalFilter, Ordered {
             return chain.filter(exchange);
         }
         ServerHttpRequest request = exchange.getRequest().mutate().header(requestId, IdUtil.simpleUUID()).build();
-        ServerHttpResponse response = exchange.getResponse();
         MultiValueMap<String, String> paramMap = request.getQueryParams();
         Map<String, String> headerMap = request.getHeaders().toSingleValueMap();
         // 获取签名参数
@@ -93,9 +90,7 @@ public class SignatureFilter implements GlobalFilter, Ordered {
         signature = DigestUtil.sha256Hex(signature);
         // 验证签名 失败直接返回结果
         if (!signature.equals(Pines.getOrException(headerMap, signatureKey))) {
-            return WebFluxUtil.webFluxResponseWriter(response, new PineStrMap<String>().putItem(CodeInfoEnum::getCode, CodeInfoEnum.SIGNATURE_VERIFY_ERROR.getCode())
-                                                                                       .putItem(CodeInfoEnum::getInfo, CodeInfoEnum.SIGNATURE_VERIFY_ERROR.getInfo())
-                                                                                       .putItem(requestId, headerMap.get(requestId)));
+            return WebFluxUtil.webFluxResponseWriter(exchange, CodeInfoEnum.SIGNATURE_VERIFY_ERROR);
         }
         // 验证成功 继续向后调用
         return chain.filter(exchange.mutate().request(request).build());

@@ -3,12 +3,15 @@ package cn.erectpine.gateway.util;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.jdkboost.map.PineStrObjMap;
 import cn.erectpine.common.core.pojo.ApiLog;
+import cn.erectpine.common.core.util.pine.LamUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
@@ -20,28 +23,25 @@ import reactor.core.publisher.Mono;
 public class WebFluxUtil {
     
     /**
+     * web流量响应作家
      * 写入响应信息
      *
-     * @param response 响应
-     * @param value    价值
+     * @param exchange     交换
+     * @param codeInfoEnum 枚举代码信息
      * @return {@link Mono}<{@link Void}>
      */
-    public static Mono<Void> webFluxResponseWriter(ServerHttpResponse response, Object value) {
+    public static Mono<Void> webFluxResponseWriter(ServerWebExchange exchange, CodeInfoEnum codeInfoEnum) {
+        ServerHttpRequest request = exchange.getRequest();
+        ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(HttpStatus.OK);
         response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-        DataBuffer dataBuffer = response.bufferFactory().wrap(JSONObject.toJSONString(value).getBytes());
+        DataBuffer dataBuffer = response.bufferFactory()
+                                        .wrap(JSONObject.toJSONString(new PineStrObjMap()
+                                                .putItem(ApiLog::getRequestId, request.getHeaders().toSingleValueMap().get(LamUtil.getFieldName(ApiLog::getRequestId)))
+                                                .putItem(CodeInfoEnum::getCode, codeInfoEnum.getCode())
+                                                .putItem(CodeInfoEnum::getInfo, codeInfoEnum.getInfo())).getBytes());
         return response.writeWith(Mono.just(dataBuffer));
     }
     
-    /**
-     * 获取响应结果
-     *
-     * @param code 代码
-     * @param info 信息
-     * @return {@link PineStrObjMap}
-     */
-    public static PineStrObjMap getResult(String requestId, String code, String info) {
-        return new PineStrObjMap().putItem(ApiLog::getRequestId, requestId).putItem(CodeInfoEnum::getCode, code).putItem(CodeInfoEnum::getInfo, info);
-    }
     
 }

@@ -56,7 +56,7 @@ public class GlobalExceptionHandler {
     
         // 处理未知异常-生产环境屏蔽错误信息
         log.error("【全局异常拦截】-[未定义异常类型]", e);
-        return Result.fail(CodeInfoEnum.FAIL_UNKNOWN_ERROR);
+        return Result.fail(CodeInfoEnum.UNKNOWN_ERROR);
     }
     
     /**

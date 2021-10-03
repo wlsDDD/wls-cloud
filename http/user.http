@@ -3,6 +3,11 @@ POST http://{{host}}/user/list?name=王&size=20&ids=1,2,3&age=&hex=
 Content-Type: application/json
 appKey: 5646213
 appSecret: 4656231
+timestamp: 1633250129
+version: 1.0.0
+randomStr: randomStr
+signature: e3ec0557e013d55cd1b6753f429f73cec87eb9715058e3c4c2c5e9322cebd3b7
+
 
 [
   {

@@ -128,7 +128,7 @@ public class Result<T> implements Serializable {
      * @return {@link Result}<{@link T}>
      */
     public static <T> Result<T> fail(T data) {
-        return build(data, CodeInfoEnum.FAIL_UNKNOWN_ERROR);
+        return build(data, CodeInfoEnum.UNKNOWN_ERROR);
     }
     
     /**
@@ -149,7 +149,7 @@ public class Result<T> implements Serializable {
      * @return {@link Result}<{@link T}>
      */
     public static <T> Result<T> build(T data, CodeInfoEnum codeInfoEnum) {
-        codeInfoEnum = Optional.ofNullable(codeInfoEnum).orElse(CodeInfoEnum.FAIL_UNKNOWN_ERROR);
+        codeInfoEnum = Optional.ofNullable(codeInfoEnum).orElse(CodeInfoEnum.UNKNOWN_ERROR);
         return new Result<T>().setCode(codeInfoEnum.getCode()).setInfo(codeInfoEnum.getInfo()).setData(data);
     }
     
