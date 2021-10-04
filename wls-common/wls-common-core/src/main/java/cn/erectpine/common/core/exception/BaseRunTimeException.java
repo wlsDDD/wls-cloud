@@ -30,7 +30,7 @@ public class BaseRunTimeException extends RuntimeException {
     /**
      * 错误码
      */
-    private String code;
+    private Integer code;
     
     private CodeInfoEnum codeInfoEnum = CodeInfoEnum.UNKNOWN_ERROR;
     

@@ -33,7 +33,7 @@ public class Result<T> implements Serializable {
     /**
      * 状态码
      */
-    private String code;
+    private Integer code;
     /**
      * 返回内容
      */
@@ -43,13 +43,13 @@ public class Result<T> implements Serializable {
      */
     private T data;
     /**
-     * 树列表
-     */
-    private Collection<?> tree;
-    /**
      * 分页列表
      */
     private Page<T> page;
+    /**
+     * 树列表
+     */
+    private Collection<?> tree;
     /**
      * 参数错误消息
      */
