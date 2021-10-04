@@ -15,7 +15,7 @@ public class RequestHeaderException extends BaseRunTimeException {
      * 基本运行时异常
      * 构造方法-带code
      *
-     * @param codeInfoEnum 代码味精枚举
+     * @param codeInfoEnum 返回状态枚举
      * @param params       参数个数
      */
     public RequestHeaderException(CodeInfoEnum codeInfoEnum, Object... params) {

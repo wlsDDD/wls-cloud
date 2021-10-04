@@ -16,7 +16,7 @@ public class BusinessException extends BaseRunTimeException {
      * 业务异常
      * 构造方法-带code
      *
-     * @param codeInfoEnum 代码味精枚举
+     * @param codeInfoEnum 返回状态枚举
      * @param params       参数个数
      */
     public BusinessException(CodeInfoEnum codeInfoEnum, Object... params) {

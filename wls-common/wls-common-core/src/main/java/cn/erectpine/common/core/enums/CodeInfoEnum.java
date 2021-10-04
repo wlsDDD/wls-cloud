@@ -5,7 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 
 /**
- * 异常枚举
+ * 返回状态枚举
  * 2000-请求成功
  * <p>
  * 3000-请求失败-参数
