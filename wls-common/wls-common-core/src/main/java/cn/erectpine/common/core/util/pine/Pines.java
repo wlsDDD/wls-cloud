@@ -150,7 +150,7 @@ public class Pines {
      * @param str str
      * @return {@link Integer}
      */
-    public static Integer getNumeric(String str) {
+    public static Integer toInt(String str) {
         String regEx = "[^0-9]";
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(str);

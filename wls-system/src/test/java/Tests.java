@@ -72,7 +72,7 @@ public class Tests {
     
     @Test
     public void test03() {
-        Integer numeric = Pines.getNumeric(str);
+        Integer numeric = Pines.toInt(str);
         System.out.println("numeric = " + numeric);
     }
     

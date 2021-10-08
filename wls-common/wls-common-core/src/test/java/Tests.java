@@ -1,3 +1,5 @@
+import cn.erectpine.common.core.util.pine.Pines;
+import cn.hutool.core.convert.Convert;
 import cn.hutool.system.SystemUtil;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +13,9 @@ public class Tests {
     
     @Test
     public void test02() {
-    
+        String str = "askd465465kajsdlk";
+        Integer toInt = Convert.toInt(str);
+        Integer numeric = Pines.toInt(str);
     }
     
     

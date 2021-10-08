@@ -27,7 +27,9 @@ public class RequestIdFilter implements GlobalFilter, Ordered {
      */
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        ServerHttpRequest request = exchange.getRequest().mutate().header(LamUtil.getFieldName(ApiLog::getRequestId), IdUtil.simpleUUID()).build();
+        String requestId = IdUtil.simpleUUID();
+        ServerHttpRequest request = exchange.getRequest().mutate().header(LamUtil.getFieldName(ApiLog::getRequestId), requestId).build();
+        log.debug("[requestId生成] <{}>", requestId);
         return chain.filter(exchange.mutate().request(request).build());
     }
     

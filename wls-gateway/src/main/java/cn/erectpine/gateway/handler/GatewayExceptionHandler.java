@@ -1,5 +1,6 @@
 package cn.erectpine.gateway.handler;
 
+import cn.erectpine.common.core.constant.SuppressWarningConstants;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.exception.IllegalRequestException;
 import cn.erectpine.common.core.exception.RequestHeaderException;
@@ -25,6 +26,7 @@ import reactor.core.publisher.Mono;
 public class GatewayExceptionHandler implements ErrorWebExceptionHandler {
     
     @Override
+    @SuppressWarnings(SuppressWarningConstants.HIDING)
     public Mono<Void> handle(ServerWebExchange exchange, Throwable e) {
         if (exchange.getResponse().isCommitted()) {
             return Mono.error(e);

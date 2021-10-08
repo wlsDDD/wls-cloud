@@ -84,6 +84,7 @@ public class SignatureFilter implements GlobalFilter, Ordered {
         if (!signature.equals(Pines.getOrException(headerMap, signatureKey))) {
             throw new IllegalRequestException(CodeInfoEnum.SIGNATURE_VERIFY_ERROR);
         }
+        log.debug("[签名验证成功] <{}>", signature);
         // 成功 继续向后调用
         return chain.filter(exchange);
     }
