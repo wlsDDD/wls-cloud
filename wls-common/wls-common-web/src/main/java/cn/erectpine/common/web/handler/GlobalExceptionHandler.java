@@ -9,19 +9,12 @@ import cn.erectpine.common.web.context.HttpContext;
 import cn.erectpine.common.web.mail.MailServer;
 import cn.erectpine.common.web.pojo.Result;
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.util.StrUtil;
-import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.MethodParameter;
-import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConversionException;
-import org.springframework.http.server.ServerHttpRequest;
-import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,7 +29,7 @@ import java.util.Map;
  */
 @Slf4j
 @RestControllerAdvice
-public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
+public class GlobalExceptionHandler {
     
     @Autowired private MailServer mailServer;
     
@@ -67,36 +60,6 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
     }
     
     /**
-     * 对返回类型支持
-     */
-    @Override
-    public boolean supports(MethodParameter returnType, Class converterType) {
-        return true;
-    }
-    
-    /**
-     * 重写返回结果
-     */
-    @Override
-    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        // swagger不做统一拦截处理
-        if (StrUtil.contains(request.getURI().getPath(), "swagger")) {
-            return body;
-        }
-        ApiLog apiLog = HttpContext.getApiLog();
-        Result<?> result = null == body ?
-                Result.ok() : body instanceof Result ?
-                (Result<?>) body : Result.ok(body);
-        apiLog.setResponseData(JSONUtil.parse(result));
-        // 异常时发送邮件
-///        if (!CodeMsgEnum.SUCCESS.equals(apiLog.getStatus())) {
-//            mailServer.sendApiLog();
-//            consoleLog();
-//        }
-        return result;
-    }
-    
-    /**
      * 解析BindException获取消息提示
      *
      * @param e e
@@ -109,6 +72,36 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
         });
         return map;
     }
+    
+    /**
+     * 重写返回结果
+     */
+///    @Override
+///    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
+//        // swagger不做统一拦截处理
+//        if (StrUtil.contains(request.getURI().getPath(), "swagger")) {
+//            return body;
+//        }
+//        ApiLog apiLog = HttpContext.getApiLog();
+//        Result<?> result = null == body ?
+//                Result.ok() : body instanceof Result ?
+//                (Result<?>) body : Result.ok(body);
+//        apiLog.setResponseData(JSONUtil.parse(result));
+//        // 异常时发送邮件
+/////        if (!CodeMsgEnum.SUCCESS.equals(apiLog.getStatus())) {
+////            mailServer.sendApiLog();
+////            consoleLog();
+////        }
+//        return result;
+//    }
+//
+//    /**
+//     * 对返回类型支持
+//     */
+//    @Override
+//    public boolean supports(MethodParameter returnType, Class converterType) {
+//        return true;
+//    }
     
     /**
      * 将日志输出到控制台
