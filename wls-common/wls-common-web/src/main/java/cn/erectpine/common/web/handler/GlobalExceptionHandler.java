@@ -43,17 +43,14 @@ public class GlobalExceptionHandler {
             log.warn("【全局异常拦截】-[参数不合法]", e);
             return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR.setInfo(e.getMessage()));
         }
-        
         if ((e instanceof IllegalArgumentException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
             return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR.setInfo(e.getMessage()));
         }
-        
         if ((e instanceof BusinessException)) {
             log.warn("【全局异常拦截】-[业务类异常]", e);
             return Result.fail(CodeInfoEnum.BUSINESS_ERROR.setInfo(e.getMessage()));
         }
-        
         // 处理未知异常-生产环境屏蔽错误信息
         log.error("【全局异常拦截】-[未知异常]", e);
         return Result.fail(CodeInfoEnum.UNKNOWN_ERROR);
