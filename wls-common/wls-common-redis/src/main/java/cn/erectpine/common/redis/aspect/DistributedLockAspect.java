@@ -36,7 +36,7 @@ public class DistributedLockAspect {
     @Around("@annotation(cn.erectpine.common.redis.annotation.DistributedLock)")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         DistributedLock distributedLock = AspectUtil.getAnnotation(joinPoint, DistributedLock.class);
-        String lockKey = LOCK_NAME + joinPoint.getSignature().getName() + ":" + DigestUtil.md5Hex(AspectUtil.getMethodName(joinPoint));
+        String lockKey = LOCK_NAME + joinPoint.getSignature().getName() + ":" + DigestUtil.sha256Hex(AspectUtil.getMethodName(joinPoint));
         String diyDistributedLockKey = Optional.ofNullable(HttpContext.getContext()).orElseGet(Context::new).getDiyDistributedLockKey();
         // 支持自定义扩展更细粒度的锁
         if (StrUtil.isNotBlank(diyDistributedLockKey)) {

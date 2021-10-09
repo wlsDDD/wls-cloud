@@ -27,8 +27,8 @@ public class RedisInit {
      */
     @PostConstruct
     public void initContext() {
-        RedisUtil.redisTemplate = redisTemplate;
-        log.info("[StringRedisTemplate -> 初始化] - [{}]", RedisUtil.redisTemplate);
+        RedisUtil.stringRedisTemplate = redisTemplate;
+        log.info("[StringRedisTemplate -> 初始化] - [{}]", RedisUtil.stringRedisTemplate);
         RedisUtil.redissonClient = redissonClient;
         log.info("[RedissonClient -> 初始化] - [{}]", RedisUtil.redissonClient);
     }

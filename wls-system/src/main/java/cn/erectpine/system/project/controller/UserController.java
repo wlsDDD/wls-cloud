@@ -1,8 +1,7 @@
 package cn.erectpine.system.project.controller;
 
-import cn.erectpine.common.web.pojo.Result;
+import cn.erectpine.common.redis.annotation.Cache;
 import cn.erectpine.dict.api.DictDataApi;
-import cn.erectpine.dict.entity.DictData;
 import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.service.IUserService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -39,8 +38,8 @@ public class UserController {
      * 用户信息-分页列表
      */
     @PostMapping("/list")
+    @Cache
     public IPage<User> pageUser(Page<User> page, @RequestBody @Validated List<User> user) throws Exception {
-        Result<?> result = dictDataApi.pageDictData(new DictData());
         return userService.pageUser(page, user.get(0));
     }
     

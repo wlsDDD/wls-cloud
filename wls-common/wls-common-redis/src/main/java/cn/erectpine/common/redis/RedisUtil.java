@@ -19,10 +19,10 @@ import org.springframework.stereotype.Component;
 public class RedisUtil {
     
     /**
-     * 自带序列化的热客户端
+     * 自带序列化的客户端
      * 启动时自动初始化
      */
-    public static StringRedisTemplate redisTemplate;
+    public static StringRedisTemplate stringRedisTemplate;
     
     /**
      * redisson客户端
