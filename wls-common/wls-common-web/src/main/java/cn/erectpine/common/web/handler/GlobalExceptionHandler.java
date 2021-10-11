@@ -62,7 +62,7 @@ public class GlobalExceptionHandler {
      * @param e e
      * @return {@link List}<{@link PineStrMap}<{@link String}>>
      */
-    public static PineStrMap<String> getValidatedError(BindException e) {
+    public static Map<String, String> getValidatedError(BindException e) {
         PineStrMap<String> map = new PineStrMap<>();
         e.getFieldErrors().forEach(fieldError -> {
             map.putItem(fieldError.getField(), fieldError.getDefaultMessage());

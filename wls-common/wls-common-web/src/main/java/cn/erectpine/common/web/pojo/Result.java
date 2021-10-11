@@ -3,7 +3,6 @@ package cn.erectpine.common.web.pojo;
 
 import cn.erectpine.common.core.constant.SuppressWarningConstants;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
-import cn.erectpine.common.core.jdkboost.map.PineStrMap;
 import cn.erectpine.common.core.pojo.Page;
 import cn.erectpine.common.core.util.pine.TreeUtil;
 import cn.erectpine.common.web.context.HttpContext;
@@ -14,6 +13,7 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -53,11 +53,11 @@ public class Result<T> implements Serializable {
     /**
      * 参数错误消息
      */
-    private PineStrMap<String> paramErrors;
+    private Map<String, String> paramErrors;
     /**
      * 扩展-对象
      */
-    private ResultExtra expand;
+    private ResultExtra extra;
     
     
     /**
