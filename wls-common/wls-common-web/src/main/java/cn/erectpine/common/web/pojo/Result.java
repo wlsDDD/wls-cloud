@@ -3,7 +3,6 @@ package cn.erectpine.common.web.pojo;
 
 import cn.erectpine.common.core.constant.SuppressWarningConstants;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
-import cn.erectpine.common.core.pojo.Page;
 import cn.erectpine.common.core.util.pine.TreeUtil;
 import cn.erectpine.common.web.context.HttpContext;
 import cn.erectpine.common.web.util.PageUtil;
@@ -11,7 +10,6 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -26,10 +24,12 @@ import java.util.Optional;
 @Accessors(chain = true)
 public class Result<T> implements Serializable {
     private static final long serialVersionUID = 1L;
+    
     /**
      * 请求唯一ID
      */
     public String requestId;
+    
     /**
      * 状态码
      */
@@ -42,20 +42,9 @@ public class Result<T> implements Serializable {
      * 数据对象
      */
     private T data;
+    
     /**
-     * 分页列表
-     */
-    private Page<T> page;
-    /**
-     * 树列表
-     */
-    private Collection<?> tree;
-    /**
-     * 参数错误消息
-     */
-    private Map<String, String> paramErrors;
-    /**
-     * 扩展-对象
+     * 返回结果扩展
      */
     private ResultExtra extra;
     
@@ -75,7 +64,7 @@ public class Result<T> implements Serializable {
     @SuppressWarnings({SuppressWarningConstants.UNCHECKED})
     public Result<T> tree() {
         if (data instanceof List) {
-            this.tree = TreeUtil.toTree((List<T>) data);
+            Optional.ofNullable(extra).orElseGet(ResultExtra::new).setTree(TreeUtil.toTree((List<T>) data));
         }
         return this;
     }
@@ -88,8 +77,19 @@ public class Result<T> implements Serializable {
     @SuppressWarnings({SuppressWarningConstants.UNCHECKED})
     public Result<T> page() {
         if (data instanceof List) {
-            this.page = PageUtil.page((List<T>) data);
+            Optional.ofNullable(extra).orElseGet(ResultExtra::new).setPage(PageUtil.page((List<T>) data));
         }
+        return this;
+    }
+    
+    /**
+     * 参数错误提示信息
+     *
+     * @param paramErrors 参数错误
+     * @return {@link Result}<{@link T}>
+     */
+    public Result<T> paramErrors(Map<String, String> paramErrors) {
+        Optional.ofNullable(extra).orElseGet(ResultExtra::new).setParamErrors(paramErrors);
         return this;
     }
     

@@ -1,10 +1,12 @@
 package cn.erectpine.common.web.pojo;
 
+import cn.erectpine.common.core.pojo.Page;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
+import java.util.Map;
 
 /**
  * 扩展返回结果对象
@@ -17,9 +19,18 @@ import java.util.List;
 public class ResultExtra implements Serializable {
     private static final long serialVersionUID = 1L;
     
+    
     /**
-     * 树
+     * 分页列表
      */
-    private List<?> tree;
+    private Page<?> page;
+    /**
+     * 树列表
+     */
+    private Collection<?> tree;
+    /**
+     * 参数错误消息
+     */
+    private Map<String, String> paramErrors;
     
 }

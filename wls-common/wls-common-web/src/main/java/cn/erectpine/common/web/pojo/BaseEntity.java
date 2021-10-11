@@ -1,5 +1,6 @@
 package cn.erectpine.common.web.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -49,6 +50,7 @@ public abstract class BaseEntity implements Serializable {
      * true 已删除
      */
     @JsonIgnore
-    private Boolean delete;
+    @TableField("is_deleted")
+    private Boolean deleted;
     
 }
