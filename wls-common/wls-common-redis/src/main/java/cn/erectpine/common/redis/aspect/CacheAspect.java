@@ -36,14 +36,15 @@ public class CacheAspect {
     
     @Around("@annotation(cn.erectpine.common.redis.annotation.Cache)")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
-        String cacheKey = CACHE_KEY + joinPoint.getSignature().getName() + ":" +
+        Cache cache = AspectUtil.getAnnotation(joinPoint, Cache.class);
+        String cacheKey = CACHE_KEY + cache.value() + ":" +
                 DigestUtil.sha256Hex(AspectUtil.getMethodName(joinPoint) + JSONArray.toJSONString(joinPoint.getArgs(), SerializerFeature.SortField));
         Object result = redisTemplate.opsForValue().get(cacheKey);
         if (result != null) {
             return result;
         }
         Object proceed = joinPoint.proceed();
-        redisTemplate.opsForValue().set(cacheKey, proceed, 4, TimeUnit.HOURS);
+        redisTemplate.opsForValue().set(cacheKey, proceed, cache.duration(), TimeUnit.MINUTES);
         return proceed;
     }
     

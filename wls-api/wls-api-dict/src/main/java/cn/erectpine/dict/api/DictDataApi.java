@@ -37,7 +37,7 @@ public interface DictDataApi {
      * @return {@link Result}<{@link DictData}>
      */
     @GetMapping("/{id}")
-    Result<DictData> getDictDataById(@PathVariable Long id);
+    Result<DictData> getDictDataById(@PathVariable("id") Long id);
     
     /**
      * 新增-字典数据

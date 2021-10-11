@@ -5,12 +5,21 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+
+import java.util.Set;
 
 @Slf4j
 @SpringBootTest
 class WlsSystemApplicationTest {
     
     @Autowired PineThreadPoolExecutor pineThreadPoolExecutor;
+    @Autowired RedisTemplate<Object, Object> redisTemplate;
+    
+    @Test
+    public void test02() {
+        Set<Object> keys = redisTemplate.keys("wls-cloud:wls-system:dev:method-cache*");
+    }
     
     @Test
     public void test01() {

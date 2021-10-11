@@ -2,6 +2,7 @@ import cn.erectpine.common.core.pojo.ApiLog;
 import cn.erectpine.common.core.util.pine.Pines;
 import cn.erectpine.common.gencode.MysqlGenerator;
 import cn.erectpine.common.gencode.md.MdGenerator;
+import cn.erectpine.common.redis.annotation.Cache;
 import cn.erectpine.system.project.entity.User;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.system.SystemUtil;
@@ -19,6 +20,11 @@ public class Tests {
     
     String str = "varchar(255)";
     boolean a;
+    
+    @Test
+    public void test12() {
+        String s = Cache.class.toString();
+    }
     
     @Test
     public void test11() {

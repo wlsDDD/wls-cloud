@@ -11,8 +11,6 @@ signature: e3ec0557e013d55cd1b6753f429f73cec87eb9715058e3c4c2c5e9322cebd3b7
 
 [
   {
-    "userName": "",
-    "id": 1
   }
 ]
 
@@ -25,9 +23,8 @@ POST http://{{host}}/user
 Content-Type: application/json
 
 {
-  "userName": "",
-  "sex": 1,
-  "nickName": "wls2"
+  "userName": "wls-name",
+  "email": "1626961806@qq.com"
 }
 
 ### 修改-用户信息

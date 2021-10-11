@@ -1,6 +1,7 @@
 package cn.erectpine.system.project.controller;
 
 import cn.erectpine.common.redis.annotation.Cache;
+import cn.erectpine.common.redis.annotation.CacheClear;
 import cn.erectpine.dict.api.DictDataApi;
 import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.service.IUserService;
@@ -38,7 +39,7 @@ public class UserController {
      * 用户信息-分页列表
      */
     @PostMapping("/list")
-    @Cache
+    @Cache(UserController.class)
     public IPage<User> pageUser(Page<User> page, @RequestBody @Validated List<User> user) throws Exception {
         return userService.pageUser(page, user.get(0));
     }
@@ -55,6 +56,7 @@ public class UserController {
      * 新增-用户信息
      */
     @PostMapping
+    @CacheClear(UserController.class)
     public void insertUser(@RequestBody @Validated User user) {
         userService.insertUser(user);
     }

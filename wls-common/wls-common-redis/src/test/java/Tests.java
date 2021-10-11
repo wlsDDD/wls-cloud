@@ -8,6 +8,12 @@ import org.junit.jupiter.api.Test;
  * @since 2021/9/17 13:05
  */
 public class Tests {
+    
+    @Test
+    public void test02() {
+    
+    }
+    
     @Test
     public void test01() {
         String md5Hex1 = DigestUtil.md5Hex("testStr");

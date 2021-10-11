@@ -64,7 +64,7 @@ public class Result<T> implements Serializable {
     @SuppressWarnings({SuppressWarningConstants.UNCHECKED})
     public Result<T> tree() {
         if (data instanceof List) {
-            Optional.ofNullable(extra).orElseGet(ResultExtra::new).setTree(TreeUtil.toTree((List<T>) data));
+            extra = Optional.ofNullable(extra).orElseGet(ResultExtra::new).setTree(TreeUtil.toTree((List<T>) data));
         }
         return this;
     }
@@ -77,7 +77,7 @@ public class Result<T> implements Serializable {
     @SuppressWarnings({SuppressWarningConstants.UNCHECKED})
     public Result<T> page() {
         if (data instanceof List) {
-            Optional.ofNullable(extra).orElseGet(ResultExtra::new).setPage(PageUtil.page((List<T>) data));
+            extra = Optional.ofNullable(extra).orElseGet(ResultExtra::new).setPage(PageUtil.page((List<T>) data));
         }
         return this;
     }
@@ -89,7 +89,7 @@ public class Result<T> implements Serializable {
      * @return {@link Result}<{@link T}>
      */
     public Result<T> paramErrors(Map<String, String> paramErrors) {
-        Optional.ofNullable(extra).orElseGet(ResultExtra::new).setParamErrors(paramErrors);
+        extra = Optional.ofNullable(extra).orElseGet(ResultExtra::new).setParamErrors(paramErrors);
         return this;
     }
     
