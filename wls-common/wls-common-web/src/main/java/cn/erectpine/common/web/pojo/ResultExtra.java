@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Data
 @Accessors(chain = true)
-public class ExpandResult implements Serializable {
+public class ResultExtra implements Serializable {
     private static final long serialVersionUID = 1L;
     
     /**

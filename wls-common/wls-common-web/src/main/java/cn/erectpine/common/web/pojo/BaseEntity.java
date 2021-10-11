@@ -1,6 +1,7 @@
 package cn.erectpine.common.web.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -41,5 +42,14 @@ public abstract class BaseEntity implements Serializable {
      * 修改人
      */
     private String updateBy;
+    
+    /**
+     * 逻辑删除字段
+     * 0未删除 1已删除
+     * false 未删除
+     * true 已删除
+     */
+    @JsonIgnore
+    private Boolean delete;
     
 }
