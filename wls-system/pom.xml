@@ -77,14 +77,6 @@
             <artifactId>wls-common-redis</artifactId>
         </dependency>
 
-        <!--***************************************** 开发工具库 ****************************************************-->
-        <!--springboot配置注解处理-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-
     </dependencies>
 
     <build>

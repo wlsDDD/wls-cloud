@@ -61,14 +61,6 @@
             <artifactId>wls-common-gencode</artifactId>
         </dependency>
 
-
-        <!--***************************************** 开发工具库 ****************************************************-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-
     </dependencies>
 
     <build>
