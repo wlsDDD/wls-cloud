@@ -44,9 +44,9 @@ import ${superControllerClassPackage};
 class ${table.controllerName}<#if superControllerClass??> : ${superControllerClass}()</#if>
 <#else>
 <#if superControllerClass??>
-    public class ${table.controllerName} extends ${superControllerClass} {
+public class ${table.controllerName} extends ${superControllerClass} {
 <#else>
-    public class ${table.controllerName} {
+public class ${table.controllerName} {
 </#if>
 
     @Autowired private ${table.serviceName} ${table.entityPath}Service;

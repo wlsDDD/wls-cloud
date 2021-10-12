@@ -169,7 +169,7 @@ public class MysqlGenerator {
         strategy.setSuperControllerClass("cn.erectpine.common.web.pojo.BaseController");
         strategy.setSuperEntityClass("cn.erectpine.common.web.pojo.BaseEntity");
         // 写于父类中的公共字段
-        strategy.setSuperEntityColumns("create_time", "update_time", "create_by", "update_by");
+        strategy.setSuperEntityColumns("create_time", "update_time", "create_by", "update_by", "is_deleted");
         strategy.setInclude(tableName);
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(tablePrefix);
