@@ -72,7 +72,7 @@ class ${table.controllerName}<#if superControllerClass??> : ${superControllerCla
     @ApiOperation("根据id获取${table.comment?substring(0,table.comment?length-1)}详情")
 </#if>
     @GetMapping("/{id}")
-    public Result<${entity}> get${entity}ById(@PathVariable Long id) {
+    public Result<${entity}> get${entity}ById(@PathVariable("id") Long id) {
         return Result.ok(${table.entityPath}Service.get${entity}ById(id));
     }
 
