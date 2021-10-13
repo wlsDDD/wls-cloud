@@ -1,4 +1,4 @@
-package cn.erectpine.common.web.config;
+package cn.erectpine.common.core.thread;
 
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;

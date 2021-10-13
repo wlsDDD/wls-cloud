@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
  * @author wls
  * @since 2021/4/4 20:05
  */
-@ComponentScan(basePackages = {"cn.hutool.extra.spring"})
+@ComponentScan(basePackages = {"cn.erectpine", "cn.hutool.extra.spring"})
 @EnableAsync
 @EnableFeignClients(basePackages = "cn.erectpine")
 @EnableDiscoveryClient

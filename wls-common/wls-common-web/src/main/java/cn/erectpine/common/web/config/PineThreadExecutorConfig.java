@@ -1,5 +1,6 @@
 package cn.erectpine.common.web.config;
 
+import cn.erectpine.common.core.thread.PineThreadFactory;
 import cn.erectpine.common.core.thread.PineThreadPoolExecutor;
 import lombok.Data;
 import lombok.experimental.Accessors;

@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author wls
  * @since 2021/01/20 14:28:02
  */
-@SpringBootApplication(scanBasePackages = "cn.erectpine")
+@SpringBootApplication
 public class WlsSystemApplication {
 
 	public static void main(String[] args) {

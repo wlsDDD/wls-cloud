@@ -5,6 +5,7 @@ import cn.hutool.core.util.IdUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class RedisUtil {
     
+    /**
+     * redis客户端
+     * 启动时自动初始化
+     */
+    public static RedisTemplate<Object, Object> redisTemplate;
     /**
      * 自带序列化的客户端
      * 启动时自动初始化
