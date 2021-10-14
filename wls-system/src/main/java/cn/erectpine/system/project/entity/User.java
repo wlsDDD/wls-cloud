@@ -1,19 +1,17 @@
 package cn.erectpine.system.project.entity;
 
-import cn.erectpine.common.gencode.md.WlsProperty;
 import cn.erectpine.common.web.pojo.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import org.apache.ibatis.annotations.Update;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 /**
@@ -22,111 +20,108 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author wls
- * @since 2021-01-20
+ * @since 2021-10-14
  */
 @Data
-@WlsProperty("用户信息")
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("sys_user")
+@ApiModel(value = "User对象", description = "用户信息")
 public class User extends BaseEntity {
-    
     private static final long serialVersionUID = 1L;
-    
+
     /**
      * 用户ID
+     * bigint
      */
+    @ApiModelProperty(value = "用户ID")
     @TableId(value = "user_id", type = IdType.AUTO)
-    @WlsProperty("用户ID")
     private Long userId;
     /**
      * 部门ID
+     * bigint
      */
-    @TableField("dept_id")
-    @WlsProperty("部门ID")
+    @ApiModelProperty(value = "部门ID")
     private Long deptId;
     /**
      * 用户账号
+     * varchar(30)
      */
-    @TableField("user_name")
-    @WlsProperty("用户账号")
-    @NotBlank
+    @ApiModelProperty(value = "用户账号")
     private String userName;
     /**
      * 用户昵称
+     * varchar(30)
      */
-    @TableField("nick_name")
-    @WlsProperty("用户昵称")
-    @NotBlank(groups = Update.class)
+    @ApiModelProperty(value = "用户昵称")
     private String nickName;
     /**
      * 用户类型（00系统用户）
+     * varchar(2)
      */
-    @TableField("user_type")
-    @WlsProperty("用户类型（00系统用户）")
+    @ApiModelProperty(value = "用户类型（00系统用户）")
     private String userType;
     /**
      * 用户邮箱
+     * varchar(50)
      */
-    @TableField("email")
-    @WlsProperty("用户邮箱")
-    @NotBlank
+    @ApiModelProperty(value = "用户邮箱")
     private String email;
     /**
      * 手机号码
+     * varchar(11)
      */
-    @TableField("phonenumber")
-    @WlsProperty("手机号码")
+    @ApiModelProperty(value = "手机号码")
     private String phonenumber;
     /**
      * 用户性别（0男 1女 2未知）
+     * char(1)
      */
-    @TableField("sex")
-    @WlsProperty("用户性别（0男 1女 2未知）")
+    @ApiModelProperty(value = "用户性别（0男 1女 2未知）")
     private String sex;
     /**
      * 头像地址
+     * varchar(100)
      */
-    @TableField("avatar")
-    @WlsProperty("头像地址")
+    @ApiModelProperty(value = "头像地址")
     private String avatar;
     /**
      * 密码
+     * varchar(100)
      */
-    @TableField("password")
-    @WlsProperty("密码")
+    @ApiModelProperty(value = "密码")
     private String password;
     /**
      * 帐号状态（0正常 1停用）
+     * char(1)
      */
-    @TableField("status")
-    @WlsProperty("帐号状态（0正常 1停用）")
+    @ApiModelProperty(value = "帐号状态（0正常 1停用）")
     private String status;
     /**
      * 删除标志（0代表存在 2代表删除）
+     * char(1)
      */
-    @TableField("del_flag")
-    @WlsProperty("删除标志（0代表存在 2代表删除")
+    @ApiModelProperty(value = "删除标志（0代表存在 2代表删除）")
     private String delFlag;
     /**
-     * 最后登陆IP
+     * 最后登录IP
+     * varchar(50)
      */
-    @TableField("login_ip")
-    @WlsProperty("最后登陆IP")
+    @ApiModelProperty(value = "最后登录IP")
     private String loginIp;
     /**
-     * 最后登陆时间
+     * 最后登录时间
+     * datetime
      */
-    @TableField("login_date")
+    @ApiModelProperty(value = "最后登录时间")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @WlsProperty("最后登陆时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime loginDate;
     /**
      * 备注
+     * varchar(500)
      */
-    @TableField("remark")
-    @WlsProperty("备注")
+    @ApiModelProperty(value = "备注")
     private String remark;
-    
+
 }

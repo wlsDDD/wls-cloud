@@ -1,80 +1,65 @@
 package cn.erectpine.system.project.controller;
 
-import cn.erectpine.common.redis.annotation.Cache;
-import cn.erectpine.common.redis.annotation.CacheClear;
-import cn.erectpine.dict.api.DictDataApi;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
 import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.service.IUserService;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.apache.ibatis.annotations.Update;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
+import cn.erectpine.common.web.pojo.Result;
 import java.util.List;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import cn.erectpine.common.web.pojo.BaseController;
 
 /**
  * <p>
- * 用户信息 前端控制器
+ * 用户信息 控制器
  * </p>
  *
  * @author wls
- * @since 2021-01-20
+ * @since 2021-10-14
  */
-@RefreshScope
+@Api(tags = "用户信息")
 @RestController
 @RequestMapping("/user")
-public class UserController {
-    
-    private final IUserService userService;
-    @Autowired private DictDataApi dictDataApi;
-    
-    public UserController(IUserService userService) {
-        this.userService = userService;
+public class UserController extends BaseController {
+
+    @Autowired private IUserService userService;
+
+
+    @ApiOperation("用户信息-分页列表")
+    @GetMapping("/page")
+    public Result<IPage<User>> pageUser(User user) {
+        return Result.ok(userService.pageUser(user));
     }
-    
-    /**
-     * 用户信息-分页列表
-     */
-    @PostMapping("/list")
-    @Cache(UserController.class)
-    public IPage<User> pageUser(Page<User> page, @RequestBody @Validated List<User> user) throws Exception {
-        return userService.pageUser(page, user.get(0));
-    }
-    
-    /**
-     * 根据id获取用户信息详情
-     */
+
+    @ApiOperation("根据id获取用户信息详情")
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userService.getUserById(id);
+    public Result<User> getUserById(@PathVariable("id") Long id) {
+        return Result.ok(userService.getUserById(id));
     }
-    
-    /**
-     * 新增-用户信息
-     */
+
+    @ApiOperation("新增-用户信息")
     @PostMapping
-    @CacheClear(UserController.class)
-    public void insertUser(@RequestBody @Validated User user) {
+    public Result<?> insertUser(@RequestBody @Validated User user) {
         userService.insertUser(user);
+        return Result.ok();
     }
-    
-    /**
-     * 修改-用户信息
-     */
+
+    @ApiOperation("修改-用户信息")
     @PutMapping
-    public void updateUser(@RequestBody @Validated(Update.class) User user) {
+    public Result<?> updateUser(@RequestBody @Validated User user) {
         userService.updateUser(user);
+        return Result.ok();
     }
-    
-    /**
-     * 删除-用户信息
-     */
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id") Long id) {
-        userService.deleteUser(id);
+
+    @ApiOperation("删除-用户信息")
+    @DeleteMapping("/{ids}")
+    public Result<?> deleteUser(@PathVariable("ids") List<Long> ids) {
+        userService.deleteUser(ids);
+        return Result.ok();
     }
-    
+
 }

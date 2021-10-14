@@ -36,11 +36,13 @@ public abstract class BaseEntity implements Serializable {
     /**
      * 创建人
      */
+    @JsonIgnore
     private String createBy;
     
     /**
      * 修改人
      */
+    @JsonIgnore
     private String updateBy;
     
     /**

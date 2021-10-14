@@ -60,7 +60,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      */
     @Override
     public void insert${entity}(${entity} ${table.entityPath}) {
-        PineAssert.isTrue(save(${table.entityPath}), () -> new BusinessException(CodeInfoEnum.DATA_INSERT_ERROR));
+        Asserts.isTrue(save(${table.entityPath}), () -> new BusinessException(CodeInfoEnum.DATA_INSERT_ERROR));
     }
 
     /**
@@ -70,7 +70,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      */
     @Override
     public void update${entity}(${entity} ${table.entityPath}) {
-        PineAssert.isTrue(updateById(${table.entityPath}), () -> new BusinessException(CodeInfoEnum.DATA_UPDATE_ERROR));
+        Asserts.isTrue(updateById(${table.entityPath}), () -> new BusinessException(CodeInfoEnum.DATA_UPDATE_ERROR));
     }
 
     /**
@@ -80,7 +80,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      */
     @Override
     public void delete${entity}(List<Long> ids) {
-        PineAssert.isTrue(removeByIds(ids), () -> new BusinessException(CodeInfoEnum.DATA_DELETE_ERROR));
+        Asserts.isTrue(removeByIds(ids), () -> new BusinessException(CodeInfoEnum.DATA_DELETE_ERROR));
     }
 
 }

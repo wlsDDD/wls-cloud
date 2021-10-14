@@ -1,9 +1,9 @@
 package cn.erectpine.system.project.service;
 
-import cn.erectpine.system.project.entity.User;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import cn.erectpine.system.project.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import java.util.List;
 
 /**
  * <p>
@@ -11,21 +11,18 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author wls
- * @since 2021-01-20
+ * @since 2021-10-14
  */
 public interface IUserService extends IService<User> {
-    
+
     /**
-     * 页面的用户
      * 用户信息-列表
      *
-     * @param page 分页参数
      * @param user 查询条件
      * @return 分页列表
-     * @throws InterruptedException 中断异常
      */
-    IPage<User> pageUser(Page<User> page, User user) throws InterruptedException;
-    
+    IPage<User> pageUser(User user);
+
     /**
      * 根据id获取用户信息表详情
      *
@@ -33,26 +30,26 @@ public interface IUserService extends IService<User> {
      * @return {@link User}
      */
     User getUserById(Long id);
-    
+
     /**
      * 新增-用户信息
      *
      * @param user 用户信息
      */
     void insertUser(User user);
-    
+
     /**
      * 修改-用户信息
      *
      * @param user 用户信息
      */
     void updateUser(User user);
-    
+
     /**
      * 删除-用户信息
      *
-     * @param id id
+     * @param ids ids
      */
-    void deleteUser(Long id);
-    
+    void deleteUser(List<Long> ids);
+
 }

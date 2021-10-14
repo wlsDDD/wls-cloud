@@ -3,7 +3,6 @@ package cn.erectpine.common.gencode;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.exception.BusinessException;
 import cn.erectpine.common.core.util.pine.Asserts;
-import cn.hutool.core.util.PageUtil;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
@@ -94,6 +93,7 @@ public class MysqlGenerator {
     
     public static void generatorCode(String path, String... tableName) {
         MysqlGenerator.packagePath = path;
+        pc.setParent(packagePath);
         generatorCode(gc, dsc, pc, tableName);
     }
     
@@ -121,7 +121,7 @@ public class MysqlGenerator {
             public void initMap() {
                 Map<String, Object> map = new HashMap<>(16);
                 map.put("Result", "cn.erectpine.common.web.pojo.Result");
-                map.put("PageUtil", PageUtil.class.getName());
+                map.put("PageUtil", "cn.erectpine.common.web.util.PageUtil");
                 map.put("PineAssert", Asserts.class.getName());
                 map.put("BusinessException", BusinessException.class.getName());
                 map.put("CodeMsgEnum", CodeInfoEnum.class.getName());
