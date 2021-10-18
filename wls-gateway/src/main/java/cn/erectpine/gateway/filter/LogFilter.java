@@ -20,7 +20,7 @@ import reactor.core.publisher.Mono;
 public class LogFilter implements GlobalFilter, Ordered {
     
     /**
-     * 生成requestId
+     * 记录日志
      * TODO
      */
     @Override
