@@ -58,11 +58,11 @@
             <groupId>cn.erectpine</groupId>
             <artifactId>wls-api-dict</artifactId>
         </dependency>
+
         <dependency>
             <groupId>cn.erectpine</groupId>
             <artifactId>wls-common-swagger</artifactId>
         </dependency>
-
         <dependency>
             <groupId>cn.erectpine</groupId>
             <artifactId>wls-common-gencode</artifactId>

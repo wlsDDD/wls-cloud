@@ -20,9 +20,10 @@
         <!--数据库连接框架-->
         <mybatis.plus.version>3.4.1</mybatis.plus.version>
         <druid.version>1.2.4</druid.version>
+        <redisson.version>3.16.2</redisson.version>
+        <elasticsearch.version>7.15.1</elasticsearch.version>
         <!--工具类-->
         <hutool.version>5.5.7</hutool.version>
-        <redisson.version>3.16.2</redisson.version>
         <fastjson.version>1.2.74</fastjson.version>
         <freemarker.version>2.3.30</freemarker.version>
         <pagehelper.version>1.2.5</pagehelper.version>
@@ -48,6 +49,7 @@
         <module>wls-dict</module>
         <module>wls-auth</module>
         <module>wls-api</module>
+        <module>wls-elasticsearch</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -97,6 +99,17 @@
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <!--elasticsearch-->
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${elasticsearch.version}</version>
             </dependency>
 
             <!--工具类-->
@@ -204,6 +217,14 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>es-snapshots</id>
+            <name>elasticsearch snapshot repo</name>
+            <url>https://snapshots.elastic.co/maven/</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>

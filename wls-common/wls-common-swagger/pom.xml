@@ -17,11 +17,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>cn.erectpine</groupId>
-            <artifactId>wls-common-core</artifactId>
-        </dependency>
-
         <!--新版swagger-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
