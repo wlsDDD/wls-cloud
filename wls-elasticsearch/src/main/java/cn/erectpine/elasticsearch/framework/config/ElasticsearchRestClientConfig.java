@@ -4,7 +4,6 @@ import cn.erectpine.elasticsearch.framework.properties.ElasticSearchProperties;
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
-import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,18 +23,14 @@ public class ElasticsearchRestClientConfig {
     
     @Bean
     public RestClientBuilder restClientBuilder() {
-        return RestClient.builder(makeHttpHost());
+        return RestClient.builder(new HttpHost(elasticSearchProperties.getHost(), elasticSearchProperties.getPort(), elasticSearchProperties.getScheme()));
     }
-    
-    @Bean
-    public RestHighLevelClient highLevelClient(RestClientBuilder restClientBuilder) {
-        restClientBuilder.setRequestConfigCallback(requestConfigBuilder -> requestConfigBuilder.setSocketTimeout(elasticSearchProperties.getTimeOut()));
-        // 此处可以进行其它操作
-        return new RestHighLevelClient(restClientBuilder);
-    }
-    
-    private HttpHost makeHttpHost() {
-        return new HttpHost(elasticSearchProperties.getHost(), elasticSearchProperties.getPort(), elasticSearchProperties.getScheme());
-    }
+
+//    @Bean
+//    public RestHighLevelClient highLevelClient(RestClientBuilder restClientBuilder) {
+//        restClientBuilder.setRequestConfigCallback(requestConfigBuilder -> requestConfigBuilder.setSocketTimeout(elasticSearchProperties.getTimeOut()));
+//        // 此处可以进行其它操作
+//        return new RestHighLevelClient(restClientBuilder);
+//    }
     
 }

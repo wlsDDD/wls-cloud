@@ -8,6 +8,7 @@ import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.support.master.AcknowledgedResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.GetIndexRequest;
@@ -138,9 +139,10 @@ public class EsUtil {
      * @author fanxb
      * @date 2019/7/26 11:30
      */
-    public void deleteIndex(String index) {
+    public boolean deleteIndex(String index) {
         try {
-            restHighLevelClient.indices().delete(new DeleteIndexRequest(index), RequestOptions.DEFAULT);
+            AcknowledgedResponse response = restHighLevelClient.indices().delete(new DeleteIndexRequest(index), RequestOptions.DEFAULT);
+            return response.isAcknowledged();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

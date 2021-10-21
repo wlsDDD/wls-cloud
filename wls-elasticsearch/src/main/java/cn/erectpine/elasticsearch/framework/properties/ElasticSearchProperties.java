@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@ConfigurationProperties(prefix = "wls.es")
+@ConfigurationProperties("wls.es")
 @Data
 @Accessors(chain = true)
 public class ElasticSearchProperties {

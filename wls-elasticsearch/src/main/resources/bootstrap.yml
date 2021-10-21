@@ -1,0 +1,106 @@
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 9009
+  servlet:
+    # 应用的访问路径
+    context-path: /wls-elasticsearch
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+
+spring:
+  application:
+    # 应用名称
+    name: wls-elasticsearch
+  thymeleaf:
+    cache: false
+  profiles:
+    # 环境配置
+    active: dev
+  #  cloud:
+  #    nacos:
+  #      discovery:
+  #        # 命名空间
+  #        namespace: 49393289ebdd4971866122c51a949bac
+  #        # 服务注册地址
+  #        server-addr: https://nacos.wls.plus
+  #        group: dev
+  #      config:
+  #        # 配置中心地址
+  #        server-addr: https://nacos.wls.plus
+  #        # 配置文件格式
+  #        file-extension: yml
+  #        # 命名空间
+  #        namespace: 49393289ebdd4971866122c51a949bac
+  #        group: dev
+  #        # 共享配置
+  #        shared-configs:
+  #          - dataId: wls-base-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  #            group: dev
+  #            refresh: true
+  #          - dataId: wls-mail-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  #            group: dev
+  #            refresh: true
+  #          - dataId: wls-redis-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  #            group: dev
+  #            refresh: true
+  #          - dataId: wls-system-swagger-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  #            group: dev
+  #            refresh: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ry-cloud?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: Wls-root
+    druid:
+      # 初始连接数
+      initialSize: 5
+      # 最小连接池数量
+      minIdle: 10
+      # 最大连接池数量
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 900000
+      # 配置检测连接是否有效
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      webStatFilter:
+        enabled: true
+      statViewServlet:
+        enabled: true
+        # 设置白名单，不填则允许所有访问
+        allow:
+        url-pattern: /druid/*
+        # 控制台管理用户名和密码
+        login-username:
+        login-password:
+      filter:
+        stat:
+          enabled: true
+          # 慢SQL记录
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+
+wls:
+  es:
+    host: localhost
+    port: 9200
+    scheme: http
+    # 超时时间1分钟 单位ms
+    time_out: 60000
+    index: ${spring.application.name}_${spring.profiles.active}_wlsindex
+
