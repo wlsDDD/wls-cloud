@@ -17,6 +17,7 @@ import lombok.Getter;
  * 5200-请求失败-内部-缓存
  * 5300-请求失败-内部-文件
  * 5400-请求失败-内部-IO
+ * 5410-请求失败-内部-IO-ES
  * <p>
  * 6000-请求失败-外部
  *
@@ -48,6 +49,7 @@ public enum CodeInfoEnum {
     UNKNOWN_GATEWAY_ERROR(5001, "网关服务出现了未知异常 给您带来了不便敬请谅解 "),
     GATEWAY_HEADER_NOT_FOUND_ERROR(5002, "请求头缺失! "),
     GATEWAY_SERVER_NOT_FOUND_ERROR(5004, "网关未找到服务! "),
+    ES_SERVER_IO_ERROR(5410, "ES IO 异常! "),
     /**
      * 数据库
      */
