@@ -37,7 +37,9 @@ public class GlobalExceptionHandler {
     public Result<?> caughtException(HttpServletRequest request, HttpServletResponse response, Throwable e) {
         if ((e instanceof BindException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);
-            return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR).paramErrors(getValidatedError((BindException) e));
+            PineStrMap<String> map = new PineStrMap<>();
+            ((BindException) e).getFieldErrors().forEach(fieldError -> map.putItem(fieldError.getField(), fieldError.getDefaultMessage()));
+            return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR).paramErrors(map);
         }
         if ((e instanceof HttpMessageConversionException)) {
             log.warn("【全局异常拦截】-[参数不合法]", e);

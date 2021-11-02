@@ -1,17 +1,18 @@
 package cn.erectpine.system.project.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.validation.annotation.Validated;
+import cn.erectpine.common.core.util.pine.Pines;
+import cn.erectpine.common.web.pojo.BaseController;
+import cn.erectpine.common.web.pojo.Result;
 import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.service.IUserService;
-import cn.erectpine.common.web.pojo.Result;
-import java.util.List;
-import org.springframework.web.bind.annotation.RestController;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import cn.erectpine.common.web.pojo.BaseController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -27,12 +28,12 @@ import cn.erectpine.common.web.pojo.BaseController;
 public class UserController extends BaseController {
 
     @Autowired private IUserService userService;
-
-
+    
+    
     @ApiOperation("用户信息-分页列表")
-    @GetMapping("/page")
-    public Result<IPage<User>> pageUser(User user) {
-        return Result.ok(userService.pageUser(user));
+    @PostMapping("/page")
+    public Result<IPage<User>> pageUser(@RequestBody @Validated User user) {
+        return Result.ok(userService.pageUser(Pines.copyBean(user, new User())));
     }
 
     @ApiOperation("根据id获取用户信息详情")

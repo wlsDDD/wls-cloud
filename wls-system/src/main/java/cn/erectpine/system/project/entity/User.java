@@ -1,5 +1,7 @@
 package cn.erectpine.system.project.entity;
 
+import cn.erectpine.common.core.enums.StatusEnum;
+import cn.erectpine.common.web.annotation.EnumValid;
 import cn.erectpine.common.web.pojo.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -12,6 +14,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 /**
@@ -36,6 +39,7 @@ public class User extends BaseEntity {
      */
     @ApiModelProperty(value = "用户ID")
     @TableId(value = "user_id", type = IdType.AUTO)
+    @EnumValid(StatusEnum.class)
     private Long userId;
     /**
      * 部门ID
@@ -47,6 +51,7 @@ public class User extends BaseEntity {
      * 用户账号
      * varchar(30)
      */
+    @NotBlank
     @ApiModelProperty(value = "用户账号")
     private String userName;
     /**

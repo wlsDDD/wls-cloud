@@ -46,12 +46,6 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
 
-        <!-- 验证框架 -->
-        <!-- Hibernate Validator -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
 
         <!--***************************************** 项目内部依赖 ****************************************************-->
         <dependency>
