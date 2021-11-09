@@ -22,9 +22,6 @@ import java.nio.charset.StandardCharsets;
  */
 public class FastJson2JsonRedisSerializer<T> implements RedisSerializer<T> {
     
-    @SuppressWarnings("unused")
-    private ObjectMapper objectMapper = new ObjectMapper();
-    
     
     public static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
     
@@ -59,7 +56,6 @@ public class FastJson2JsonRedisSerializer<T> implements RedisSerializer<T> {
     
     public void setObjectMapper(ObjectMapper objectMapper) {
         Assert.notNull(objectMapper, "'objectMapper' must not be null");
-        this.objectMapper = objectMapper;
     }
     
     protected JavaType getJavaType(Class<?> clazz) {

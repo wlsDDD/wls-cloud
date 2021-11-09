@@ -20,7 +20,8 @@ public class PageUtil {
      * @param type 定义Page泛型
      * @return {@link com.baomidou.mybatisplus.extension.plugins.pagination.Page}<{@link T}>
      */
-    public static <T> com.baomidou.mybatisplus.extension.plugins.pagination.Page<T> getPlusPage(T type) {
+    @SafeVarargs
+    public static <T> com.baomidou.mybatisplus.extension.plugins.pagination.Page<T> getPlusPage(T... type) {
         return new com.baomidou.mybatisplus.extension.plugins.pagination.Page<T>().setCurrent(ServletUtil.getParameterToInt("pageNum", 1))
                                                                                   .setSize(ServletUtil.getParameterToInt("pageSize", 20));
     }

@@ -24,6 +24,6 @@ public @interface Cache {
     /**
      * 缓存时长 单位分钟
      */
-    long duration() default 30;
+    long duration() default 20;
     
 }

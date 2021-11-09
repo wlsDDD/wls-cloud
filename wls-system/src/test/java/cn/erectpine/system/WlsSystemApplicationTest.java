@@ -1,6 +1,7 @@
 package cn.erectpine.system;
 
 import cn.erectpine.common.core.thread.PineThreadPoolExecutor;
+import cn.erectpine.common.redis.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,17 @@ import java.util.Set;
 class WlsSystemApplicationTest {
     
     @Autowired PineThreadPoolExecutor pineThreadPoolExecutor;
-    @Autowired RedisTemplate<Object, Object> redisTemplate;
+    @Autowired RedisTemplate<String, String> redisTemplate;
     
     @Test
     public void test02() {
-        Set<Object> keys = redisTemplate.keys("wls-cloud:wls-system:dev:method-cache*");
+        Set<String> keys = redisTemplate.keys("wls-cloud:wls-system:dev:method-cache*");
+    }
+    
+    @Test
+    public void test03() {
+        RedisUtil.redisTemplate.opsForValue().set("helloKey", "helloValue");
+        Object helloKey = RedisUtil.redisTemplate.opsForValue().get("helloKey");
     }
     
     @Test

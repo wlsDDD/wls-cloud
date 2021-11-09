@@ -23,7 +23,7 @@ public class RedisUtil {
      * redis客户端
      * 启动时自动初始化
      */
-    public static RedisTemplate<Object, Object> redisTemplate;
+    public static RedisTemplate<String, Object> redisTemplate;
     /**
      * 自带序列化的客户端
      * 启动时自动初始化

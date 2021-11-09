@@ -20,7 +20,7 @@ import javax.annotation.PostConstruct;
 @Component
 public class RedisInit {
     
-    @Autowired RedisTemplate<Object, Object> redisTemplate;
+    @Autowired RedisTemplate<String, Object> redisTemplate;
     @Autowired StringRedisTemplate stringRedisTemplate;
     @Autowired RedissonClient redissonClient;
     

@@ -34,7 +34,7 @@ public class CacheClearAspect {
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         CacheClear cacheClear = AspectUtil.getAnnotation(joinPoint, CacheClear.class);
         String cacheKey = CACHE_KEY + cacheClear.value() + "*";
-        Set<Object> keys = RedisUtil.redisTemplate.keys(cacheKey);
+        Set<String> keys = RedisUtil.redisTemplate.keys(cacheKey);
         if (CollUtil.isNotEmpty(keys)) {
             RedisUtil.redisTemplate.delete(keys);
         }
