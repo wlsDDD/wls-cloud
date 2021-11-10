@@ -1,6 +1,7 @@
 package cn.erectpine.common.redis.annotation;
 
 import java.lang.annotation.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * redis 缓存注解
@@ -22,8 +23,13 @@ public @interface Cache {
     Class<?> value() default Cache.class;
     
     /**
-     * 缓存时长 单位分钟
+     * 缓存时长
      */
     long duration() default 20;
+    
+    /**
+     * 时间单位
+     */
+    TimeUnit timeUnit() default TimeUnit.MINUTES;
     
 }

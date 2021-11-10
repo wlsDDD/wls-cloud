@@ -13,8 +13,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * 缓存切面
  * 实现 {@link Cache}
@@ -43,7 +41,7 @@ public class CacheAspect {
             return result;
         }
         Object proceed = joinPoint.proceed();
-        RedisUtil.redisTemplate.opsForValue().set(cacheKey, proceed, cache.duration(), TimeUnit.MINUTES);
+        RedisUtil.redisTemplate.opsForValue().set(cacheKey, proceed, cache.duration(), cache.timeUnit());
         return proceed;
     }
     
