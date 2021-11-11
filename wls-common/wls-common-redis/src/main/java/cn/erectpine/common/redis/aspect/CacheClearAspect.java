@@ -33,13 +33,12 @@ public class CacheClearAspect {
     @Around("@annotation(cn.erectpine.common.redis.annotation.CacheClear)")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         CacheClear cacheClear = AspectUtil.getAnnotation(joinPoint, CacheClear.class);
-        String cacheKey = CACHE_KEY + cacheClear.value() + "*";
+        String cacheKey = CACHE_KEY + cacheClear.value() + "{userId}" + "*";
         Set<String> keys = RedisUtil.redisTemplate.keys(cacheKey);
         if (CollUtil.isNotEmpty(keys)) {
             RedisUtil.redisTemplate.delete(keys);
         }
         return joinPoint.proceed();
     }
-    
     
 }

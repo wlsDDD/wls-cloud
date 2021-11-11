@@ -30,11 +30,10 @@ public class CacheAspect {
      */
     private static final String CACHE_KEY = GlobalConstants.PROJECT_NAME + ":" + GlobalConstants.serviceName + ":" + GlobalConstants.active + ":" + "method-cache:";
     
-    
     @Around("@annotation(cn.erectpine.common.redis.annotation.Cache)")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         Cache cache = AspectUtil.getAnnotation(joinPoint, Cache.class);
-        String cacheKey = CACHE_KEY + cache.value() + ":" + "用户唯一标识信息" + ":" +
+        String cacheKey = CACHE_KEY + cache.value() + ":" + "{userId}" + ":" +
                 DigestUtil.md5Hex16(JSONArray.toJSONString(joinPoint.getArgs(), SerializerFeature.SortField));
         Object result = RedisUtil.redisTemplate.opsForValue().get(cacheKey);
         if (result != null) {
