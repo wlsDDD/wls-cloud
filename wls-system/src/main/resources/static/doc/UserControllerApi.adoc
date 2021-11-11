@@ -1,0 +1,626 @@
+
+== &lt;p&gt;用户信息 控制器&lt;/p&gt;
+=== 
+*URL:* `/user/page`
+
+*Type:* `POST`
+
+*Author:* wls
+
+*Content-Type:* `application/json; charset=utf-8`
+
+*Description:* 
+
+
+
+
+
+*Request-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|createTime|string|No comments found.|false|-
+|updateTime|string|No comments found.|false|-
+|createBy|string|No comments found.|false|-
+|updateBy|string|No comments found.|false|-
+|deleted|boolean|No comments found.|false|-
+|userId|int64|用户ID<br>bigint|false|-
+|deptId|int64|部门ID<br>bigint|false|-
+|userName|string|用户账号<br>varchar(30)|true|-
+|nickName|string|用户昵称<br>varchar(30)|false|-
+|userType|string|用户类型（00系统用户）<br>varchar(2)|false|-
+|email|string|用户邮箱<br>varchar(50)|false|-
+|phonenumber|string|手机号码<br>varchar(11)|false|-
+|sex|string|用户性别（0男 1女 2未知）<br>char(1)|false|-
+|avatar|string|头像地址<br>varchar(100)|false|-
+|password|string|密码<br>varchar(100)|false|-
+|status|string|帐号状态（0正常 1停用）<br>char(1)|false|-
+|delFlag|string|删除标志（0代表存在 2代表删除）<br>char(1)|false|-
+|loginIp|string|最后登录IP<br>varchar(50)|false|-
+|loginDate|string|最后登录时间<br>datetime|false|-
+|remark|string|备注<br>varchar(500)|false|-
+|====================
+
+
+*Request-example:*
+----
+curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i /user/page --data '{
+  "createTime": "2021-11-11 11:26:35",
+  "updateTime": "2021-11-11 11:26:35",
+  "createBy": "8hkkiz",
+  "updateBy": "c3yv1r",
+  "deleted": true,
+  "userId": 94,
+  "deptId": 138,
+  "userName": "yulanda.schneider",
+  "nickName": "taisha.little",
+  "userType": "u9er21",
+  "email": "marisa.lowe@gmail.com",
+  "phonenumber": "fph7b0",
+  "sex": "ox3694",
+  "avatar": "1r6ehe",
+  "password": "ldfthf",
+  "status": "0uc2oh",
+  "delFlag": "4ij3tl",
+  "loginIp": "116.71.211.188",
+  "loginDate": "2021-11-11 11:26:35",
+  "remark": "dbkihe"
+}'
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|requestId|string|No comments found.|-
+|code|int32|No comments found.|-
+|info|string|No comments found.|-
+|data|object|No comments found.|-
+|└─hitCount|boolean|No comments found.|-
+|└─records|array|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─createTime|string|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─updateTime|string|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─createBy|string|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─updateBy|string|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─deleted|boolean|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─userId|int64|用户ID<br>bigint|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─deptId|int64|部门ID<br>bigint|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─userName|string|用户账号<br>varchar(30)|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─nickName|string|用户昵称<br>varchar(30)|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─userType|string|用户类型（00系统用户）<br>varchar(2)|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─email|string|用户邮箱<br>varchar(50)|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─phonenumber|string|手机号码<br>varchar(11)|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─sex|string|用户性别（0男 1女 2未知）<br>char(1)|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─avatar|string|头像地址<br>varchar(100)|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─password|string|密码<br>varchar(100)|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─status|string|帐号状态（0正常 1停用）<br>char(1)|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─delFlag|string|删除标志（0代表存在 2代表删除）<br>char(1)|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─loginIp|string|最后登录IP<br>varchar(50)|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─loginDate|string|最后登录时间<br>datetime|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─remark|string|备注<br>varchar(500)|-
+|└─searchCount|boolean|No comments found.|-
+|└─pages|int64|No comments found.|-
+|└─current|int64|No comments found.|-
+|└─size|int64|No comments found.|-
+|└─total|int64|No comments found.|-
+|extra|object|No comments found.|-
+|└─page|object|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─list|array|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─pageNum|int32|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─pageSize|int32|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─totalNum|int64|No comments found.|-
+|└─tree|array|No comments found.|-
+|└─paramErrors|map|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─any object|object|any object.|-
+|====================
+
+
+*Response-example:*
+----
+{
+  "requestId": "151",
+  "code": 20,
+  "info": "v9ydmj",
+  "data": {
+    "hitCount": true,
+    "records": [
+      {
+        "createTime": "2021-11-11 11:26:35",
+        "updateTime": "2021-11-11 11:26:35",
+        "createBy": "84473f",
+        "updateBy": "qxopsn",
+        "deleted": true,
+        "userId": 363,
+        "deptId": 447,
+        "userName": "yulanda.schneider",
+        "nickName": "taisha.little",
+        "userType": "zw2dhc",
+        "email": "marisa.lowe@gmail.com",
+        "phonenumber": "e9sgmd",
+        "sex": "ljwaxf",
+        "avatar": "pyrvno",
+        "password": "05tabm",
+        "status": "jbci11",
+        "delFlag": "ghsbbi",
+        "loginIp": "116.71.211.188",
+        "loginDate": "2021-11-11 11:26:35",
+        "remark": "xlb8zh"
+      }
+    ],
+    "searchCount": true,
+    "pages": 635,
+    "current": 809,
+    "size": 850,
+    "total": 460
+  },
+  "extra": {
+    "page": {
+      "list": [
+        {
+          "object": "any object"
+        }
+      ],
+      "pageNum": 153,
+      "pageSize": 10,
+      "totalNum": 100
+    },
+    "tree": [
+      {
+        "object": "any object"
+      }
+    ],
+    "paramErrors": {
+      "mapKey": {}
+    }
+  }
+}
+----
+
+=== 
+*URL:* `/user/{id}`
+
+*Type:* `GET`
+
+*Author:* wls
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=utf-8`
+
+*Description:* 
+
+
+
+*Path-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|id|int64|No comments found.|true|-
+|====================
+
+
+
+
+*Request-example:*
+----
+curl -X GET -i /user/110
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|requestId|string|No comments found.|-
+|code|int32|No comments found.|-
+|info|string|No comments found.|-
+|data|object|No comments found.|-
+|└─createTime|string|No comments found.|-
+|└─updateTime|string|No comments found.|-
+|└─createBy|string|No comments found.|-
+|└─updateBy|string|No comments found.|-
+|└─deleted|boolean|No comments found.|-
+|└─userId|int64|用户ID<br>bigint|-
+|└─deptId|int64|部门ID<br>bigint|-
+|└─userName|string|用户账号<br>varchar(30)|-
+|└─nickName|string|用户昵称<br>varchar(30)|-
+|└─userType|string|用户类型（00系统用户）<br>varchar(2)|-
+|└─email|string|用户邮箱<br>varchar(50)|-
+|└─phonenumber|string|手机号码<br>varchar(11)|-
+|└─sex|string|用户性别（0男 1女 2未知）<br>char(1)|-
+|└─avatar|string|头像地址<br>varchar(100)|-
+|└─password|string|密码<br>varchar(100)|-
+|└─status|string|帐号状态（0正常 1停用）<br>char(1)|-
+|└─delFlag|string|删除标志（0代表存在 2代表删除）<br>char(1)|-
+|└─loginIp|string|最后登录IP<br>varchar(50)|-
+|└─loginDate|string|最后登录时间<br>datetime|-
+|└─remark|string|备注<br>varchar(500)|-
+|extra|object|No comments found.|-
+|└─page|object|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─list|array|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─pageNum|int32|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─pageSize|int32|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─totalNum|int64|No comments found.|-
+|└─tree|array|No comments found.|-
+|└─paramErrors|map|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─any object|object|any object.|-
+|====================
+
+
+*Response-example:*
+----
+{
+  "requestId": "151",
+  "code": 925,
+  "info": "y96qov",
+  "data": {
+    "createTime": "2021-11-11 11:26:36",
+    "updateTime": "2021-11-11 11:26:36",
+    "createBy": "g0ratc",
+    "updateBy": "o9qbjx",
+    "deleted": true,
+    "userId": 936,
+    "deptId": 22,
+    "userName": "yulanda.schneider",
+    "nickName": "taisha.little",
+    "userType": "kyfxu4",
+    "email": "marisa.lowe@gmail.com",
+    "phonenumber": "heh3hk",
+    "sex": "0h3vod",
+    "avatar": "ots6bp",
+    "password": "5hj8i2",
+    "status": "6rmyde",
+    "delFlag": "aqtmnm",
+    "loginIp": "116.71.211.188",
+    "loginDate": "2021-11-11 11:26:36",
+    "remark": "y205bl"
+  },
+  "extra": {
+    "page": {
+      "list": [
+        {
+          "object": "any object"
+        }
+      ],
+      "pageNum": 703,
+      "pageSize": 10,
+      "totalNum": 339
+    },
+    "tree": [
+      {
+        "object": "any object"
+      }
+    ],
+    "paramErrors": {
+      "mapKey": {}
+    }
+  }
+}
+----
+
+=== 
+*URL:* `/user/`
+
+*Type:* `POST`
+
+*Author:* wls
+
+*Content-Type:* `application/json; charset=utf-8`
+
+*Description:* 
+
+
+
+
+
+*Request-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|createTime|string|No comments found.|false|-
+|updateTime|string|No comments found.|false|-
+|createBy|string|No comments found.|false|-
+|updateBy|string|No comments found.|false|-
+|deleted|boolean|No comments found.|false|-
+|userId|int64|用户ID<br>bigint|false|-
+|deptId|int64|部门ID<br>bigint|false|-
+|userName|string|用户账号<br>varchar(30)|true|-
+|nickName|string|用户昵称<br>varchar(30)|false|-
+|userType|string|用户类型（00系统用户）<br>varchar(2)|false|-
+|email|string|用户邮箱<br>varchar(50)|false|-
+|phonenumber|string|手机号码<br>varchar(11)|false|-
+|sex|string|用户性别（0男 1女 2未知）<br>char(1)|false|-
+|avatar|string|头像地址<br>varchar(100)|false|-
+|password|string|密码<br>varchar(100)|false|-
+|status|string|帐号状态（0正常 1停用）<br>char(1)|false|-
+|delFlag|string|删除标志（0代表存在 2代表删除）<br>char(1)|false|-
+|loginIp|string|最后登录IP<br>varchar(50)|false|-
+|loginDate|string|最后登录时间<br>datetime|false|-
+|remark|string|备注<br>varchar(500)|false|-
+|====================
+
+
+*Request-example:*
+----
+curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i /user/ --data '{
+  "createTime": "2021-11-11 11:26:36",
+  "updateTime": "2021-11-11 11:26:36",
+  "createBy": "awmdyh",
+  "updateBy": "isjiw3",
+  "deleted": true,
+  "userId": 7,
+  "deptId": 469,
+  "userName": "yulanda.schneider",
+  "nickName": "taisha.little",
+  "userType": "oz02oh",
+  "email": "marisa.lowe@gmail.com",
+  "phonenumber": "xm3air",
+  "sex": "r59015",
+  "avatar": "u6sv9f",
+  "password": "wqbrp5",
+  "status": "aw9tv5",
+  "delFlag": "m9xfts",
+  "loginIp": "116.71.211.188",
+  "loginDate": "2021-11-11 11:26:36",
+  "remark": "8rz736"
+}'
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|requestId|string|No comments found.|-
+|code|int32|No comments found.|-
+|info|string|No comments found.|-
+|data|object|No comments found.|-
+|extra|object|No comments found.|-
+|└─page|object|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─list|array|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─pageNum|int32|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─pageSize|int32|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─totalNum|int64|No comments found.|-
+|└─tree|array|No comments found.|-
+|└─paramErrors|map|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─any object|object|any object.|-
+|====================
+
+
+*Response-example:*
+----
+{
+  "requestId": "151",
+  "code": 708,
+  "info": "u8qh5e",
+  "data": {},
+  "extra": {
+    "page": {
+      "list": [
+        {
+          "object": "any object"
+        }
+      ],
+      "pageNum": 40,
+      "pageSize": 10,
+      "totalNum": 252
+    },
+    "tree": [
+      {
+        "object": "any object"
+      }
+    ],
+    "paramErrors": {
+      "mapKey": {}
+    }
+  }
+}
+----
+
+=== 
+*URL:* `/user/`
+
+*Type:* `PUT`
+
+*Author:* wls
+
+*Content-Type:* `application/json; charset=utf-8`
+
+*Description:* 
+
+
+
+
+
+*Request-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|createTime|string|No comments found.|false|-
+|updateTime|string|No comments found.|false|-
+|createBy|string|No comments found.|false|-
+|updateBy|string|No comments found.|false|-
+|deleted|boolean|No comments found.|false|-
+|userId|int64|用户ID<br>bigint|false|-
+|deptId|int64|部门ID<br>bigint|false|-
+|userName|string|用户账号<br>varchar(30)|true|-
+|nickName|string|用户昵称<br>varchar(30)|false|-
+|userType|string|用户类型（00系统用户）<br>varchar(2)|false|-
+|email|string|用户邮箱<br>varchar(50)|false|-
+|phonenumber|string|手机号码<br>varchar(11)|false|-
+|sex|string|用户性别（0男 1女 2未知）<br>char(1)|false|-
+|avatar|string|头像地址<br>varchar(100)|false|-
+|password|string|密码<br>varchar(100)|false|-
+|status|string|帐号状态（0正常 1停用）<br>char(1)|false|-
+|delFlag|string|删除标志（0代表存在 2代表删除）<br>char(1)|false|-
+|loginIp|string|最后登录IP<br>varchar(50)|false|-
+|loginDate|string|最后登录时间<br>datetime|false|-
+|remark|string|备注<br>varchar(500)|false|-
+|====================
+
+
+*Request-example:*
+----
+curl -X PUT -H 'Content-Type: application/json; charset=utf-8' -i /user/ --data '{
+  "createTime": "2021-11-11 11:26:36",
+  "updateTime": "2021-11-11 11:26:36",
+  "createBy": "jyn6ji",
+  "updateBy": "8s86st",
+  "deleted": true,
+  "userId": 229,
+  "deptId": 514,
+  "userName": "yulanda.schneider",
+  "nickName": "taisha.little",
+  "userType": "5rw2m4",
+  "email": "marisa.lowe@gmail.com",
+  "phonenumber": "br20u9",
+  "sex": "1qbeyo",
+  "avatar": "u4x9kn",
+  "password": "wnwnem",
+  "status": "j08ozn",
+  "delFlag": "odgyg6",
+  "loginIp": "116.71.211.188",
+  "loginDate": "2021-11-11 11:26:36",
+  "remark": "6b3r0x"
+}'
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|requestId|string|No comments found.|-
+|code|int32|No comments found.|-
+|info|string|No comments found.|-
+|data|object|No comments found.|-
+|extra|object|No comments found.|-
+|└─page|object|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─list|array|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─pageNum|int32|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─pageSize|int32|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─totalNum|int64|No comments found.|-
+|└─tree|array|No comments found.|-
+|└─paramErrors|map|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─any object|object|any object.|-
+|====================
+
+
+*Response-example:*
+----
+{
+  "requestId": "151",
+  "code": 597,
+  "info": "juc75n",
+  "data": {},
+  "extra": {
+    "page": {
+      "list": [
+        {
+          "object": "any object"
+        }
+      ],
+      "pageNum": 159,
+      "pageSize": 10,
+      "totalNum": 883
+    },
+    "tree": [
+      {
+        "object": "any object"
+      }
+    ],
+    "paramErrors": {
+      "mapKey": {}
+    }
+  }
+}
+----
+
+=== 
+*URL:* `/user/{ids}`
+
+*Type:* `DELETE`
+
+*Author:* wls
+
+*Content-Type:* `application/x-www-form-urlencoded;charset=utf-8`
+
+*Description:* 
+
+
+
+*Path-parameters:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Parameter | Type|Description|Required|Since
+|ids|array|No comments found.,[array of int64]|true|
+|====================
+
+
+
+
+*Request-example:*
+----
+curl -X DELETE -i /user/
+----
+*Response-fields:*
+
+[width="100%",options="header"]
+[stripes=even]
+|====================
+|Field | Type|Description|Since
+|requestId|string|No comments found.|-
+|code|int32|No comments found.|-
+|info|string|No comments found.|-
+|data|object|No comments found.|-
+|extra|object|No comments found.|-
+|└─page|object|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─list|array|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─pageNum|int32|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─pageSize|int32|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─totalNum|int64|No comments found.|-
+|└─tree|array|No comments found.|-
+|└─paramErrors|map|No comments found.|-
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─any object|object|any object.|-
+|====================
+
+
+*Response-example:*
+----
+{
+  "requestId": "151",
+  "code": 662,
+  "info": "r4cz4s",
+  "data": {},
+  "extra": {
+    "page": {
+      "list": [
+        {
+          "object": "any object"
+        }
+      ],
+      "pageNum": 248,
+      "pageSize": 10,
+      "totalNum": 800
+    },
+    "tree": [
+      {
+        "object": "any object"
+      }
+    ],
+    "paramErrors": {
+      "mapKey": {}
+    }
+  }
+}
+----
+

@@ -76,7 +76,7 @@ public class MysqlGenerator {
         gc.setAuthor("wls");
         gc.setOpen(false);
         // 实体属性 Swagger2 注解
-        gc.setSwagger2(true);
+        gc.setSwagger2(false);
         gc.setDateType(DateType.TIME_PACK);
         gc.setIdType(IdType.AUTO);
         gc.setFileOverride(false);
