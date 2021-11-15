@@ -16,6 +16,7 @@ import org.redisson.api.RLock;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 /**
  * 分布式锁注解实现
@@ -28,6 +29,8 @@ import java.util.Optional;
 @Component
 public class DistributedLockAspect {
     
+    static Supplier<String> diyLookFunc = () -> Optional.ofNullable(HttpContext.getContext()).orElseGet(Context::new).getDiyDistributedLockKey();
+    
     /**
      * 分布式锁前缀
      */
@@ -37,7 +40,7 @@ public class DistributedLockAspect {
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         DistributedLock distributedLock = AspectUtil.getAnnotation(joinPoint, DistributedLock.class);
         String lockKey = LOCK_NAME + joinPoint.getSignature().getName() + ":" + DigestUtil.sha256Hex(AspectUtil.getMethodName(joinPoint));
-        String diyDistributedLockKey = Optional.ofNullable(HttpContext.getContext()).orElseGet(Context::new).getDiyDistributedLockKey();
+        String diyDistributedLockKey = diyLookFunc.get();
         // 支持自定义扩展更细粒度的锁
         if (StrUtil.isNotBlank(diyDistributedLockKey)) {
             lockKey = lockKey + ":" + diyDistributedLockKey;
@@ -55,7 +58,7 @@ public class DistributedLockAspect {
     }
     
     /**
-     * 尝试锁实现
+     * tryLock 实现
      *
      * @param joinPoint 连接点
      * @return {@link Object}

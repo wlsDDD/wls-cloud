@@ -5,9 +5,11 @@ import cn.hutool.core.util.IdUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Component;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Redis工具类
@@ -58,6 +60,24 @@ public class RedisUtil {
             log.info("[分布式锁 -> 正常释放]");
         }
         return proceed;
+    }
+    
+    /**
+     * 获取指定前缀
+     * 替代keys
+     *
+     * @param matchKey 匹配前缀
+     * @return {@link Set}<{@link String}>
+     */
+    public static Set<String> scan(String matchKey) {
+        return redisTemplate.execute((RedisCallback<Set<String>>) connection -> {
+            Set<String> keysTmp = new HashSet<>();
+            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match("*" + matchKey + "*").count(1000).build());
+            while (cursor.hasNext()) {
+                keysTmp.add(new String(cursor.next()));
+            }
+            return keysTmp;
+        });
     }
     
 }
