@@ -39,7 +39,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      */
     @Override
     public IPage<${entity}> page${entity}(${entity} ${table.entityPath}) {
-        return page(PageUtil.plusPage(${table.entityPath}), Wrappers.lambdaQuery(${table.entityPath}));
+        return page(PageUtil.getPlusPage(${table.entityPath}), Wrappers.lambdaQuery(${table.entityPath}));
     }
 
     /**
