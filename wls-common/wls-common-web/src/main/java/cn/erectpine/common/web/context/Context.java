@@ -42,4 +42,13 @@ public class Context {
      */
     private String diyDistributedLockKey;
     
+    /**
+     * 年份
+     */
+    private String yearMonth;
+    /**
+     * 月份
+     */
+    private String month;
+    
 }

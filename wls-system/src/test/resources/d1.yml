@@ -1,0 +1,75 @@
+
+spring:
+  shardingsphere:
+    # 展示修改以后的sql语句
+    props:
+      sql-show: true
+    datasource:
+      common:
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+      names: db0,db1
+      db0:
+        url: jdbc:mysql://127.0.0.1:3306/db0?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2b8
+        username: root
+        password: '123456'
+      db1:
+        url: jdbc:mysql://127.0.0.1:3306/db1?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2b8
+        username: root
+        password: '123456'
+    rules:
+      sharding:
+        key-generators:
+          # 此处必须要配置，否则会导致报错，因为shardingsphere-jdbc-core-spring-boot-starter需要加载此项配置，官网的demo例子有错
+          snowflake:
+            type: SNOWFLAKE
+            props:
+              worker-id: 123
+        sharding-algorithms:
+          order-item-inline:
+            type: INLINE
+            props:
+              # 此处写法必须是t_order$->{order_id % 4}不能写为t_order${order_id % 4}，yml不认这种写法
+              algorithm-expression: t_order_item$->{order_id % 4}
+          # table-inline这个名称大家可以根据自己的表的名称来随便取，当前为分表的逻辑配置
+          table-inline:
+            # 使用了内置的分片算法-INLINE
+            type: INLINE
+            props:
+              # 此处写法必须是t_order$->{order_id % 4}不能写为t_order${order_id % 4}，yml不认这种写法
+              algorithm-expression: t_order$->{order_id % 4}
+          # database-inline这个名称一样大家可以根据自己的数据库来随便取，当前为分库的逻辑配置
+          database-inline:
+            type: INLINE
+            props:
+              # 此处根据order_id取余来实现指向相应的数据库，例如你的order_id为1则指向db1数据库，order_id为2则指向db0数据库
+              algorithm-expression: db$->{order_id % 2}
+        tables:
+          t_order_item:
+            # 配置t_order_item的分库分表的规则
+            actual-data-nodes: db$->{0..1}.t_order_item$->{0..3}
+            table-strategy:
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: order-item-inline
+              # 配置t_order_item的分库规则
+            database-strategy:
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: database-inline
+          # t_order表的分库分表的策略
+          t_order:
+            # 配置t_order的分表的规则
+            actual-data-nodes: db$->{0..1}.t_order$->{0..3}
+            table-strategy:
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: table-inline
+            # 配置t_order的分库规则
+            database-strategy:
+              standard:
+                sharding-column: order_id
+                # 此处使用的就是我们在sharding-algorithms里面定义的规则
+                sharding-algorithm-name: database-inline
+    enabled: true
+

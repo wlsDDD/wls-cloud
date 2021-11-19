@@ -27,7 +27,6 @@ api[0].list.push({
     desc: '',
 });
 document.onkeydown = keyDownSearch;
-
 function keyDownSearch(e) {
     const theEvent = e;
     const code = theEvent.keyCode || theEvent.which || theEvent.charCode;
@@ -73,12 +72,12 @@ function keyDownSearch(e) {
         if (searchValue == '') {
             const liClass = "";
             const display = "display: none";
-            html = buildAccordion(api, liClass, display);
+            html = buildAccordion(api,liClass,display);
             document.getElementById('accordion').innerHTML = html;
         } else {
             const liClass = "open";
             const display = "display: block";
-            html = buildAccordion(searchArr, liClass, display);
+            html = buildAccordion(searchArr,liClass,display);
             document.getElementById('accordion').innerHTML = html;
         }
         const Accordion = function (el, multiple) {
@@ -104,10 +103,10 @@ function buildAccordion(apiData, liClass, display) {
     let html = "";
     let doc;
     if (apiData.length > 0) {
-        for (let j = 0; j < apiData.length; j++) {
-            html += '<li class="' + liClass + '">';
+         for (let j = 0; j < apiData.length; j++) {
+            html += '<li class="'+liClass+'">';
             html += '<a class="dd" href="' + apiData[j].alias + '.html#header">' + apiData[j].order + '.&nbsp;' + apiData[j].desc + '</a>';
-            html += '<ul class="sectlevel2" style="' + display + '">';
+            html += '<ul class="sectlevel2" style="'+display+'">';
             doc = apiData[j].list;
             for (let m = 0; m < doc.length; m++) {
                 html += '<li><a href="' + apiData[j].alias + '.html#_' + apiData[j].order + '_' + doc[m].order + '_' + doc[m].desc + '">' + apiData[j].order + '.' + doc[m].order + '.&nbsp;' + doc[m].desc + '</a> </li>';

@@ -63,7 +63,7 @@ public class RedisUtil {
     }
     
     /**
-     * 获取指定前缀
+     * 获取指定前缀下的所有key
      * 替代keys
      *
      * @param matchKey 匹配前缀

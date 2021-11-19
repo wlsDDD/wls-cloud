@@ -3,7 +3,6 @@ import cn.erectpine.common.core.util.pine.Pines;
 import cn.erectpine.common.gencode.MysqlGenerator;
 import cn.erectpine.common.gencode.md.MdGenerator;
 import cn.erectpine.common.redis.annotation.Cache;
-import cn.erectpine.system.project.entity.User;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.system.SystemUtil;
 import org.junit.jupiter.api.Test;
@@ -44,12 +43,6 @@ public class Tests {
         System.out.println("s = " + s);
     }
     
-    
-    @Test
-    public void test07() {
-        MdGenerator.genMd(User.class);
-    }
-    
     @Test
     public void test06() {
         ApiLog apiLog = new ApiLog();
@@ -64,8 +57,7 @@ public class Tests {
     
     @Test
     public void test05() {
-        ThreadPoolExecutor threadPool = new ThreadPoolExecutor(
-                2, 4, 5, TimeUnit.MINUTES, new LinkedBlockingQueue<>());
+        ThreadPoolExecutor threadPool = new ThreadPoolExecutor(2, 4, 5, TimeUnit.MINUTES, new LinkedBlockingQueue<>());
         threadPool.execute(() -> System.out.println("子线程"));
         
     }

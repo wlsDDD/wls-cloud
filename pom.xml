@@ -19,9 +19,11 @@
         <spring.cloud.alibaba.version>2021.1</spring.cloud.alibaba.version>
         <!--数据库连接框架-->
         <mybatis.plus.version>3.4.1</mybatis.plus.version>
+        <mybatis.plus.generator.version>3.4.1</mybatis.plus.generator.version>
         <druid.version>1.2.4</druid.version>
         <redisson.version>3.16.2</redisson.version>
         <elasticsearch.version>7.15.1</elasticsearch.version>
+        <shardingsphere.version>5.0.0</shardingsphere.version>
         <!--工具类-->
         <hutool.version>5.5.7</hutool.version>
         <fastjson.version>1.2.74</fastjson.version>
@@ -111,6 +113,12 @@
                 <artifactId>elasticsearch-rest-high-level-client</artifactId>
                 <version>${elasticsearch.version}</version>
             </dependency>
+            <!--分库分表-->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
 
             <!--工具类-->
             <!--hu tool工具包-->
@@ -135,7 +143,7 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
-                <version>${mybatis.plus.version}</version>
+                <version>${mybatis.plus.generator.version}</version>
             </dependency>
             <!--mybatis-plus-代码生成器依赖freemarker模板-->
             <dependency>
