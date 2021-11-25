@@ -1,5 +1,6 @@
 package cn.erectpine.system.project.controller;
 
+import cn.erectpine.system.project.entity.valid.ValidationList;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
@@ -30,8 +31,8 @@ public class UserController extends BaseController {
      * 用户信息-分页列表
      */
     @GetMapping("/page")
-    public Result<IPage<User>> pageUser(User user) {
-        return Result.ok(userService.pageUser(user));
+    public Result<IPage<User>> pageUser(@RequestBody @Validated ValidationList<User> user) {
+        return Result.ok(userService.pageUser(user.get(0)));
     }
 
     /**
@@ -46,8 +47,8 @@ public class UserController extends BaseController {
      * 新增-用户信息
      */
     @PostMapping
-    public Result<?> insertUser(@RequestBody @Validated User user) {
-        userService.insertUser(user);
+    public Result<?> insertUser(@RequestBody @Validated ValidationList<User> user) {
+        userService.insertUser(user.get(0));
         return Result.ok();
     }
 

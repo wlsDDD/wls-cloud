@@ -22,10 +22,17 @@ GET http://{{host}}/user/1
 POST http://{{host}}/user
 Content-Type: application/json
 
-{
-  "userName": "wls-name",
-  "email": "1626961806@qq.com"
-}
+[
+  {
+    "email": "1626961806@qq.com"
+  },
+  {
+    "userName": "username"
+  },
+  {
+    "nickName": "xxx"
+  }
+]
 
 ### 修改-用户信息
 PUT http://{{host}}/user

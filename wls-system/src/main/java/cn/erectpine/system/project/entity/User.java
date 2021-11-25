@@ -12,6 +12,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * <p>
  * 用户信息
@@ -42,11 +44,13 @@ public class User extends BaseEntity {
      * 用户账号
      * varchar(30)
      */
+    @NotBlank
     private String userName;
     /**
      * 用户昵称
      * varchar(30)
      */
+    @NotBlank
     private String nickName;
     /**
      * 用户类型（00系统用户）

@@ -131,8 +131,7 @@ public class EsUtil {
      */
     public static <T> void insertBatch(String index, List<EsData<T>> list) {
         BulkRequest request = new BulkRequest();
-        list.forEach(item -> request.add(new IndexRequest(index).id(item.getId())
-                                                                .source(JSON.toJSONString(item.getData()), XContentType.JSON)));
+        list.forEach(item -> request.add(new IndexRequest(index).id(item.getId()).source(JSON.toJSONString(item.getData()), XContentType.JSON)));
         try {
             esClient.bulk(request, RequestOptions.DEFAULT);
         } catch (Exception e) {
