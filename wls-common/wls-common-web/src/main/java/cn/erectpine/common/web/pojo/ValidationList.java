@@ -1,9 +1,8 @@
-package cn.erectpine.system.project.entity.valid;
+package cn.erectpine.common.web.pojo;
 
 import lombok.Data;
 import lombok.experimental.Delegate;
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
