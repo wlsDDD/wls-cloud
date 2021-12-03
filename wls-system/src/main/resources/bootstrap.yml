@@ -5,47 +5,6 @@ spring:
   profiles:
     # 环境配置
     active: dev
-  shardingsphere:
-    datasource:
-      common:
-        driver-class-name: com.mysql.jdbc.Driver
-        type: com.alibaba.druid.pool.DruidDataSource
-#      names: db0
-#      db0:
-        url: jdbc:mysql://localhost:3306/ry-cloud?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-        username: root
-        password: Wls-root
-    rules:
-      sharding:
-#        key-generators:
-#          # 此处必须要配置，否则会导致报错，因为shardingsphere-jdbc-core-spring-boot-starter需要加载此项配置 官网的demo例子有错
-#          snowflake:
-#            type: SNOWFLAKE
-#            props:
-#              worker-id: 123
-        # 分片算法配置
-        sharding-algorithms:
-          table-date:
-            # 分片算法类型
-            type: INLINE
-            props:
-              # 分片算法的行表达式
-              algorithm-expression: tax_deduct_info_2021$->{09..10}
-        tables:
-          # 逻辑表名称
-          tax_deduct_info:
-            # 分表策略
-            table-strategy:
-              standard:
-                # 分片列名称
-                sharding-column: time
-                # 分片算法名称
-                sharding-algorithm-name: table-date
-    # 属性配置
-    props:
-      # 展示修改以后的sql语句
-      sql-show: true
-
   cloud:
     nacos:
       discovery:

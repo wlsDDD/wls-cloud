@@ -27,7 +27,7 @@ public class Page<T> implements Serializable {
      */
     private Integer pageNum;
     /**
-     * 页面条数
+     * 每页条数
      */
     private Integer pageSize;
     /**
