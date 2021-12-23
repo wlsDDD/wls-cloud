@@ -13,11 +13,17 @@ public class PineThreadFactory implements ThreadFactory {
     
     private final AtomicInteger count = new AtomicInteger(0);
     
+    private final String threadName;
+    
+    public PineThreadFactory(String threadName) {
+        this.threadName = threadName;
+    }
+    
     @Override
     @SuppressWarnings("NullableProblems")
     public Thread newThread(Runnable runnable) {
         Thread thread = new Thread(runnable);
-        thread.setName("pine-thread-" + count.addAndGet(1));
+        thread.setName(threadName + "-" + count.addAndGet(1));
         return thread;
     }
     

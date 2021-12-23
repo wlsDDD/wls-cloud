@@ -54,7 +54,7 @@ public class PineThreadExecutorConfig {
     /**
      * 线程创建工厂
      */
-    private static final ThreadFactory THREAD_FACTORY = new PineThreadFactory();
+    private static final ThreadFactory THREAD_FACTORY = new PineThreadFactory("pine-thread");
     /**
      * 线程池任务队列超过最大值之后的拒绝策略
      * 此处用既不抛弃任务也不抛出异常，直接使用主线程来执行此任务
@@ -65,6 +65,18 @@ public class PineThreadExecutorConfig {
     @Bean
     public PineThreadPoolExecutor threadPoolExecutor() {
         return new PineThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE_TIME, UNIT, WORK_QUEUE, THREAD_FACTORY, HANDLER);
+    }
+    
+    @Bean
+    public Executor taskExecutor() {
+        return new PineThreadPoolExecutor(
+                Runtime.getRuntime().availableProcessors(),
+                Runtime.getRuntime().availableProcessors(),
+                KEEP_ALIVE_TIME,
+                UNIT,
+                new LinkedBlockingQueue<>(10240),
+                new PineThreadFactory("pine-async"),
+                new ThreadPoolExecutor.CallerRunsPolicy());
     }
     
 }

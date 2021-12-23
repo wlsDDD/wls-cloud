@@ -1,13 +1,5 @@
 ### 角色列表
-POST http://{{host}}/role/list
-Content-Type: application/json
-Authorization: token
-single: qqqmmm
-
-{
-  "current": "1",
-  "size": 2
-}
+GET http://{{host}}/role/page
 
 ### 根据ID获取角色
 GET http://{{host}}/role/3
