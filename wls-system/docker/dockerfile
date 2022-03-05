@@ -1,0 +1,15 @@
+# 基础镜像
+FROM  openjdk:8-jre
+# author
+MAINTAINER wls
+
+# 挂载目录
+VOLUME /home/wls
+# 创建目录
+RUN mkdir -p /home/wls
+# 指定路径
+WORKDIR /home/wls
+# 复制jar文件到路径
+COPY ./wls-system-0.0.1-SNAPSHOT.jar /home/wls/wls-system-0.0.1-SNAPSHOT.jar
+# 启动系统服务
+ENTRYPOINT ["java","-jar","wls-system-0.0.1-SNAPSHOT.jar"]

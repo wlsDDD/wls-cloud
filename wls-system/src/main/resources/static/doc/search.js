@@ -2,31 +2,59 @@ let api = [];
 api.push({
     alias: 'api',
     order: '1',
-    desc: '&lt;p&gt;用户信息控制器&lt;/p&gt;',
-    link: '&lt;p&gt;用户信息_控制器&lt;/p&gt;',
+    desc: '&lt;p&gt;角色信息控制器&lt;/p&gt;',
+    link: '&lt;p&gt;角色信息_控制器&lt;/p&gt;',
     list: []
 })
 api[0].list.push({
     order: '1',
-    desc: '',
+    desc: '角色信息-分页列表',
 });
 api[0].list.push({
     order: '2',
-    desc: '',
+    desc: '根据id获取角色信息详情',
 });
 api[0].list.push({
     order: '3',
-    desc: '',
+    desc: '新增-角色信息',
 });
 api[0].list.push({
     order: '4',
-    desc: '',
+    desc: '修改-角色信息',
 });
 api[0].list.push({
     order: '5',
-    desc: '',
+    desc: '删除-角色信息',
+});
+api.push({
+    alias: 'UserController',
+    order: '2',
+    desc: '&lt;p&gt;用户信息控制器&lt;/p&gt;',
+    link: '&lt;p&gt;用户信息_控制器&lt;/p&gt;',
+    list: []
+})
+api[1].list.push({
+    order: '1',
+    desc: '用户信息-分页列表',
+});
+api[1].list.push({
+    order: '2',
+    desc: '根据id获取用户信息详情',
+});
+api[1].list.push({
+    order: '3',
+    desc: '新增-用户信息',
+});
+api[1].list.push({
+    order: '4',
+    desc: '修改-用户信息',
+});
+api[1].list.push({
+    order: '5',
+    desc: '删除-用户信息',
 });
 document.onkeydown = keyDownSearch;
+
 function keyDownSearch(e) {
     const theEvent = e;
     const code = theEvent.keyCode || theEvent.which || theEvent.charCode;
