@@ -54,7 +54,6 @@ api[1].list.push({
     desc: '删除-用户信息',
 });
 document.onkeydown = keyDownSearch;
-
 function keyDownSearch(e) {
     const theEvent = e;
     const code = theEvent.keyCode || theEvent.which || theEvent.charCode;

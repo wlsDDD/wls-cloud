@@ -49,7 +49,6 @@
         <module>wls-common</module>
         <module>wls-gateway</module>
         <module>wls-dict</module>
-        <module>wls-auth</module>
         <module>wls-api</module>
         <module>wls-elasticsearch</module>
     </modules>
@@ -114,11 +113,11 @@
                 <version>${elasticsearch.version}</version>
             </dependency>
             <!--分库分表-->
-            <dependency>
-                <groupId>org.apache.shardingsphere</groupId>
-                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
-                <version>${shardingsphere.version}</version>
-            </dependency>
+            <!--            <dependency>-->
+            <!--                <groupId>org.apache.shardingsphere</groupId>-->
+            <!--                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>-->
+            <!--                <version>${shardingsphere.version}</version>-->
+            <!--            </dependency>-->
 
             <!--工具类-->
             <!--hu tool工具包-->

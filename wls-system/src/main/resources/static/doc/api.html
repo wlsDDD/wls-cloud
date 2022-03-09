@@ -6,7 +6,7 @@
     <meta name="generator" content="smart-doc">
     <title>wls-cloud</title>
     <link rel="stylesheet" href="font.css">
-    <link rel="stylesheet" href="AllInOne.css?v=1646462448017"/>
+    <link rel="stylesheet" href="AllInOne.css?v=1646802928206"/>
     
     <style>.literalblock pre, .listingblock pre:not(.highlight), .listingblock pre[class="highlight"], .listingblock pre[class^="highlight "], .listingblock pre.CodeRay, .listingblock pre.prettyprint {
         background: #f7f7f8;
@@ -232,7 +232,7 @@
                 <div class="paragraph"><p><strong>Request-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content">
-                        <pre><code class="bash">curl -X GET -i /role/page?menuCheckStrictly=true&createTime=2022-03-05 14:40:49&updateBy=5y2kts&roleSort=193&roleName=nu.torp&deptCheckStrictly=true&updateTime=2022-03-05 14:40:49&status=kd7iyv&roleKey=eptn24&createBy=sjsfeu&roleId=771&dataScope=6ovsma&delFlag=anovh8&deleted=true&remark=n6t9ym</code></pre>
+                        <pre><code class="bash">curl -X GET -i /role/page?updateTime=2022-03-09 13:15:29&roleName=bert.predovic&remark=c42ylz&roleKey=sz2d2q&deleted=true&dataScope=o95vnt&createTime=2022-03-09 13:15:29&roleSort=432&menuCheckStrictly=true&deptCheckStrictly=true&status=xhcs8u&delFlag=tvxs6p&roleId=578&createBy=2saqmu&updateBy=jy4vtb</code></pre>
                     </div>
                 </div>
                 <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
@@ -290,6 +290,13 @@
                     <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">└─total</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">int64</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">No comments found.</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">└─searchCount</p></td>
+                        <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">No comments found.</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
                     </tr>
@@ -428,13 +435,6 @@
                     </tr>
 
                     <tr>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock">└─searchCount</p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock">No comments found.</p></td>
-                        <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-                    </tr>
-
-                    <tr>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">extra</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">object</p></td>
                         <td class="tableblock halign-left valign-top"><p class="tableblock">No comments found.</p></td>
@@ -502,35 +502,35 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="json">{
-  "requestId": "83",
-  "code": 219,
-  "info": "09vsle",
+  "requestId": "73",
+  "code": 595,
+  "info": "meb6ka",
   "data": {
-    "size": 655,
-    "total": 201,
-    "current": 629,
-    "pages": 663,
+    "size": 461,
+    "total": 447,
+    "searchCount": true,
+    "current": 980,
+    "pages": 718,
     "hitCount": true,
     "records": [
       {
-        "createTime": "2022-03-05 14:40:49",
-        "updateTime": "2022-03-05 14:40:49",
-        "createBy": "bnqpbf",
-        "updateBy": "l4or44",
+        "createTime": "2022-03-09 13:15:29",
+        "updateTime": "2022-03-09 13:15:29",
+        "createBy": "9e3lt2",
+        "updateBy": "gnre2k",
         "deleted": true,
-        "roleId": 959,
-        "roleName": "nu.torp",
-        "roleKey": "p4pc7w",
-        "roleSort": 967,
-        "dataScope": "vacy8i",
+        "roleId": 852,
+        "roleName": "bert.predovic",
+        "roleKey": "6xr7yh",
+        "roleSort": 92,
+        "dataScope": "l597ub",
         "menuCheckStrictly": true,
         "deptCheckStrictly": true,
-        "status": "2r8k0o",
-        "delFlag": "5pp3dc",
-        "remark": "g5nj22"
+        "status": "4xnltg",
+        "delFlag": "jp41yn",
+        "remark": "441xsj"
       }
-    ],
-    "searchCount": true
+    ]
   },
   "extra": {
     "page": {
@@ -539,9 +539,9 @@
           "object": "any object"
         }
       ],
-      "pageNum": 304,
+      "pageNum": 775,
       "pageSize": 10,
-      "totalNum": 972
+      "totalNum": 128
     },
     "tree": [
       {
@@ -598,7 +598,7 @@
                 <div class="paragraph"><p><strong>Request-example:</strong></p></div>
                 <div class="listingblock">
                     <div class="content">
-                        <pre><code class="bash">curl -X GET -i /role/990</code></pre>
+                        <pre><code class="bash">curl -X GET -i /role/249</code></pre>
                     </div>
                 </div>
                 <div class="paragraph"><p><strong>Response-fields:</strong></p></div>
@@ -819,25 +819,25 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="json">{
-  "requestId": "83",
-  "code": 798,
-  "info": "hicem2",
+  "requestId": "73",
+  "code": 982,
+  "info": "wqa4p4",
   "data": {
-    "createTime": "2022-03-05 14:40:49",
-    "updateTime": "2022-03-05 14:40:49",
-    "createBy": "h3goyi",
-    "updateBy": "gqhx2g",
+    "createTime": "2022-03-09 13:15:29",
+    "updateTime": "2022-03-09 13:15:29",
+    "createBy": "bp4gvi",
+    "updateBy": "6vcvvd",
     "deleted": true,
-    "roleId": 42,
-    "roleName": "nu.torp",
-    "roleKey": "9ds5by",
-    "roleSort": 352,
-    "dataScope": "mfns3o",
+    "roleId": 168,
+    "roleName": "bert.predovic",
+    "roleKey": "ec3ptc",
+    "roleSort": 667,
+    "dataScope": "owden4",
     "menuCheckStrictly": true,
     "deptCheckStrictly": true,
-    "status": "dnq0b6",
-    "delFlag": "hm6vj1",
-    "remark": "954neq"
+    "status": "qp9ph6",
+    "delFlag": "4taul7",
+    "remark": "a3176s"
   },
   "extra": {
     "page": {
@@ -846,9 +846,9 @@
           "object": "any object"
         }
       ],
-      "pageNum": 481,
+      "pageNum": 741,
       "pageSize": 10,
-      "totalNum": 73
+      "totalNum": 742
     },
     "tree": [
       {
@@ -1018,21 +1018,21 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="bash">curl -X POST -H 'Content-Type: application/json; charset=utf-8' -i /role/ --data '{
-  "createTime": "2022-03-05 14:40:49",
-  "updateTime": "2022-03-05 14:40:49",
-  "createBy": "bs6zoe",
-  "updateBy": "6yvbzi",
+  "createTime": "2022-03-09 13:15:29",
+  "updateTime": "2022-03-09 13:15:29",
+  "createBy": "tdeinv",
+  "updateBy": "8vjnpc",
   "deleted": true,
-  "roleId": 495,
-  "roleName": "nu.torp",
-  "roleKey": "8dnin2",
-  "roleSort": 726,
-  "dataScope": "87qbrd",
+  "roleId": 275,
+  "roleName": "bert.predovic",
+  "roleKey": "ocn39e",
+  "roleSort": 634,
+  "dataScope": "gi4pqo",
   "menuCheckStrictly": true,
   "deptCheckStrictly": true,
-  "status": "mnvbhk",
-  "delFlag": "3nj5rx",
-  "remark": "5jlqmi"
+  "status": "y9my9c",
+  "delFlag": "m3o2z3",
+  "remark": "ll1pfc"
 }'</code></pre>
                     </div>
                 </div>
@@ -1149,9 +1149,9 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="json">{
-  "requestId": "83",
-  "code": 834,
-  "info": "dm2p0c",
+  "requestId": "73",
+  "code": 299,
+  "info": "on9aec",
   "data": {},
   "extra": {
     "page": {
@@ -1160,9 +1160,9 @@
           "object": "any object"
         }
       ],
-      "pageNum": 546,
+      "pageNum": 408,
       "pageSize": 10,
-      "totalNum": 513
+      "totalNum": 953
     },
     "tree": [
       {
@@ -1332,21 +1332,21 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="bash">curl -X PUT -H 'Content-Type: application/json; charset=utf-8' -i /role/ --data '{
-  "createTime": "2022-03-05 14:40:49",
-  "updateTime": "2022-03-05 14:40:49",
-  "createBy": "h5qog8",
-  "updateBy": "edsjr2",
+  "createTime": "2022-03-09 13:15:29",
+  "updateTime": "2022-03-09 13:15:29",
+  "createBy": "816agm",
+  "updateBy": "892xi9",
   "deleted": true,
-  "roleId": 773,
-  "roleName": "nu.torp",
-  "roleKey": "h2zqy9",
-  "roleSort": 506,
-  "dataScope": "t073b0",
+  "roleId": 406,
+  "roleName": "bert.predovic",
+  "roleKey": "5pivni",
+  "roleSort": 936,
+  "dataScope": "oe6lyt",
   "menuCheckStrictly": true,
   "deptCheckStrictly": true,
-  "status": "5nqlgj",
-  "delFlag": "58dal3",
-  "remark": "ktx3k8"
+  "status": "ny3d7n",
+  "delFlag": "81fc4d",
+  "remark": "r3xepc"
 }'</code></pre>
                     </div>
                 </div>
@@ -1463,9 +1463,9 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="json">{
-  "requestId": "83",
-  "code": 312,
-  "info": "l7uv0s",
+  "requestId": "73",
+  "code": 174,
+  "info": "zz4zhq",
   "data": {},
   "extra": {
     "page": {
@@ -1474,9 +1474,9 @@
           "object": "any object"
         }
       ],
-      "pageNum": 601,
+      "pageNum": 204,
       "pageSize": 10,
-      "totalNum": 268
+      "totalNum": 806
     },
     "tree": [
       {
@@ -1649,9 +1649,9 @@
                 <div class="listingblock">
                     <div class="content">
                         <pre><code class="json">{
-  "requestId": "83",
-  "code": 594,
-  "info": "cz8njj",
+  "requestId": "73",
+  "code": 210,
+  "info": "6ts82w",
   "data": {},
   "extra": {
     "page": {
@@ -1660,9 +1660,9 @@
           "object": "any object"
         }
       ],
-      "pageNum": 8,
+      "pageNum": 234,
       "pageSize": 10,
-      "totalNum": 630
+      "totalNum": 36
     },
     "tree": [
       {
@@ -1679,12 +1679,12 @@
             </div>
         </div>
     </div>
-    <footer class="page-footer"><span class="copyright">Generated by smart-doc at 2022-03-05 14:40:48</span><span
+    <footer class="page-footer"><span class="copyright">Generated by smart-doc at 2022-03-09 13:15:28</span><span
             class="footer-modification">Suggestions,contact,support and error reporting on<a
             href="https://gitee.com/smart-doc-team/smart-doc" target="_blank">&nbsp;Gitee</a>&nbsp;or<a
             href="https://github.com/smart-doc-group/smart-doc.git" target="_blank">&nbsp;Github</a></span></footer>
 </div>
-<script src="search.js?v=1646462448017"></script>
+<script src="search.js?v=1646802928206"></script>
 <script>
     $(function () {
         const Accordion = function (el, multiple) {
