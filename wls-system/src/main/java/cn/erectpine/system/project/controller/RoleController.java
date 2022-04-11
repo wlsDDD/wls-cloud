@@ -5,6 +5,7 @@ import cn.erectpine.common.web.pojo.Result;
 import cn.erectpine.system.project.entity.Role;
 import cn.erectpine.system.project.service.impl.RoleServiceImpl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/role")
+@Slf4j
 public class RoleController extends BaseController {
 
     @Autowired private RoleServiceImpl roleService;
@@ -31,6 +33,7 @@ public class RoleController extends BaseController {
      */
     @GetMapping("/page")
     public Result<IPage<Role>> pageRole(Role role) throws Exception {
+        log.info("日志-{}", role);
         for (int i = 0; i < 100; i++) {
             roleService.ssx();
         }

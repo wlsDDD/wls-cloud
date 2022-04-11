@@ -157,7 +157,7 @@
                 <version>${knife4j.version}</version>
             </dependency>
 
-            <!--通用模块-->
+            <!--服务内模块模块-->
             <dependency>
                 <groupId>cn.erectpine</groupId>
                 <artifactId>wls-common-core</artifactId>
