@@ -41,8 +41,7 @@ public class GlobalExceptionHandler {
         if ((e instanceof BindException)) {
             log.warn(MSG_PREFIX, "请求参数不合法 参数校验未通过", e);
             return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR).paramErrors(((BindException) e)
-                    .getFieldErrors()
-                    .stream()
+                    .getFieldErrors().stream()
                     .collect(Collectors.toMap(FieldError::getField, fieldError -> Optional.ofNullable(fieldError.getDefaultMessage()).orElse(""))));
         }
         if ((e instanceof HttpMessageConversionException)) {
