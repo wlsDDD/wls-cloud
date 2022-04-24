@@ -3,7 +3,6 @@ package cn.erectpine.common.web.handler;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.enums.LogTypeEnum;
 import cn.erectpine.common.core.exception.BusinessException;
-import cn.erectpine.common.core.jdkboost.map.PineStrMap;
 import cn.erectpine.common.core.pojo.ApiLog;
 import cn.erectpine.common.web.context.HttpContext;
 import cn.erectpine.common.web.mail.MailServer;
@@ -13,13 +12,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.validation.BindException;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * 全局异常处理程序
@@ -33,43 +34,32 @@ public class GlobalExceptionHandler {
     
     @Autowired private MailServer mailServer;
     
+    private static final String MSG_PREFIX = "【全局异常拦截】-[{}]";
+    
     @ExceptionHandler(Throwable.class)
     public Result<?> caughtException(HttpServletRequest request, HttpServletResponse response, Throwable e) {
         if ((e instanceof BindException)) {
-            log.warn("【全局异常拦截】-[参数不合法]", e);
-            PineStrMap<String> map = new PineStrMap<>();
-            ((BindException) e).getFieldErrors().forEach(fieldError -> map.putItem(fieldError.getField(), fieldError.getDefaultMessage()));
-            return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR).paramErrors(map);
+            log.warn(MSG_PREFIX, "请求参数不合法 参数校验未通过", e);
+            return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR).paramErrors(((BindException) e)
+                    .getFieldErrors()
+                    .stream()
+                    .collect(Collectors.toMap(FieldError::getField, fieldError -> Optional.ofNullable(fieldError.getDefaultMessage()).orElse(""))));
         }
         if ((e instanceof HttpMessageConversionException)) {
-            log.warn("【全局异常拦截】-[参数不合法]", e);
+            log.warn(MSG_PREFIX, "请求参数不合法 body必传", e);
             return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR.setInfo(e.getMessage()));
         }
         if ((e instanceof IllegalArgumentException)) {
-            log.warn("【全局异常拦截】-[参数不合法]", e);
+            log.warn(MSG_PREFIX, "请求参数不合法 body必传", e);
             return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR.setInfo(e.getMessage()));
         }
         if ((e instanceof BusinessException)) {
-            log.warn("【全局异常拦截】-[业务类异常]", e);
+            log.warn(MSG_PREFIX, "业务类异常", e);
             return Result.fail(CodeInfoEnum.BUSINESS_ERROR.setInfo(e.getMessage()));
         }
         // 处理未知异常-生产环境屏蔽错误信息
-        log.error("【全局异常拦截】-[未知异常]", e);
+        log.warn(MSG_PREFIX, "未知异常", e);
         return Result.fail(CodeInfoEnum.UNKNOWN_ERROR);
-    }
-    
-    /**
-     * 解析BindException获取消息提示
-     *
-     * @param e e
-     * @return {@link List}<{@link PineStrMap}<{@link String}>>
-     */
-    public static Map<String, String> getValidatedError(BindException e) {
-        PineStrMap<String> map = new PineStrMap<>();
-        e.getFieldErrors().forEach(fieldError -> {
-            map.putItem(fieldError.getField(), fieldError.getDefaultMessage());
-        });
-        return map;
     }
     
     /**
@@ -106,7 +96,9 @@ public class GlobalExceptionHandler {
      * 将日志输出到控制台
      * TODO 将日志保存到数据库
      *
-     * @param apiLog {@link ApiLog}
+     * @author wls
+     * @date 2022-04-24 10:17:04
+     * @since 1.0.0
      */
     public static void consoleLog() {
         ApiLog apiLog = HttpContext.getApiLog();

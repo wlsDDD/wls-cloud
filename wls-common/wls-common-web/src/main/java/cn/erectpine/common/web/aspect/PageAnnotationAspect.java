@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -28,16 +27,9 @@ import java.util.Map;
 public class PageAnnotationAspect {
     
     /**
-     * 配置切入点
-     */
-    @Pointcut("@annotation(cn.erectpine.common.web.annotation.Page)")
-    public void pointCut() {
-    }
-    
-    /**
      * 分页
      */
-    @Around("pointCut()")
+    @Around("@annotation(cn.erectpine.common.web.annotation.Page)")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         int pageNum = 0;
         int pageSize = 0;
