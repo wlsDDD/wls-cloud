@@ -74,7 +74,7 @@ public class RedisUtil {
     public static Set<String> scan(String matchKey) {
         return redisTemplate.execute((RedisCallback<Set<String>>) connection -> {
             Set<String> keysTmp = new HashSet<>();
-            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match("*" + matchKey + "*").count(1000).build());
+            Cursor<byte[]> cursor = connection.scan(ScanOptions.scanOptions().match("*" + matchKey + "*").count(1000).build());
             while (cursor.hasNext()) {
                 keysTmp.add(new String(cursor.next()));
             }

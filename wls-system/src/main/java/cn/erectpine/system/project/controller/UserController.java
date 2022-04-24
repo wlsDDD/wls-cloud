@@ -26,7 +26,7 @@ import java.util.List;
 public class UserController extends BaseController {
     
     @Autowired private IUserService userService;
-    @Autowired private DictDataApi userService;
+    @Autowired private DictDataApi dictDataApi;
     
     
     /**
@@ -51,6 +51,7 @@ public class UserController extends BaseController {
     @PostMapping
     public Result<?> insertUser(@RequestBody @Validated ValidationList<User> user) {
         userService.insertUser(user.get(0));
+    
         return Result.ok();
     }
     

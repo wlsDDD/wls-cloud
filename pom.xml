@@ -11,13 +11,13 @@
     
     <properties>
         <!--项目版本-->
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <!--主要框架-->
-        <spring.boot.version>2.4.6</spring.boot.version>
-        <spring.cloud.version>2020.0.3</spring.cloud.version>
+        <spring.boot.version>2.6.3</spring.boot.version>
+        <spring.cloud.version>2021.0.1</spring.cloud.version>
         <spring.cloud.alibaba.version>2021.1</spring.cloud.alibaba.version>
         <!--数据库连接框架-->
         <mybatis.plus.version>3.4.1</mybatis.plus.version>
@@ -30,7 +30,7 @@
         <hutool.version>5.5.7</hutool.version>
         <fastjson.version>1.2.74</fastjson.version>
         <freemarker.version>2.3.30</freemarker.version>
-        <pagehelper.version>1.2.5</pagehelper.version>
+        <pagehelper.version>1.4.2</pagehelper.version>
         <knife4j.version>3.0.3</knife4j.version>
         <!--微服务聚合-->
         <wls.system.version>1.0.0</wls.system.version>
@@ -115,11 +115,11 @@
                 <version>${elasticsearch.version}</version>
             </dependency>
             <!--分库分表-->
-            <!--            <dependency>-->
-            <!--                <groupId>org.apache.shardingsphere</groupId>-->
-            <!--                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>-->
-            <!--                <version>${shardingsphere.version}</version>-->
-            <!--            </dependency>-->
+            <!-- <dependency> -->
+            <!--     <groupId>org.apache.shardingsphere</groupId> -->
+            <!--     <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId> -->
+            <!--     <version>${shardingsphere.version}</version> -->
+            <!-- </dependency> -->
     
             <!--工具类-->
             <!--hu tool工具包-->
