@@ -22,6 +22,7 @@ public class FixUtil {
      * 转换 "yyyy-MM" 为 LocalDate
      *
      * @param yearMonth 年月 yyyy-MM
+     *
      * @return {@link LocalDate}
      */
     public static LocalDate convertLocalDate(String yearMonth) {
@@ -33,6 +34,7 @@ public class FixUtil {
      *
      * @param start 起始时间 格式 yyyy-MM
      * @param end   结束时间 格式 yyyy-MM
+     *
      * @return 月份集合
      */
     public static List<String> getDates(String start, String end) {
@@ -44,6 +46,7 @@ public class FixUtil {
      *
      * @param startDate 起始时间
      * @param endDate   结束时间
+     *
      * @return 月份集合
      */
     public static List<String> getDates(LocalDate startDate, LocalDate endDate) {
@@ -59,6 +62,7 @@ public class FixUtil {
      * 获取日期echarts
      *
      * @param days 时间段
+     *
      * @return {@link Map}
      */
     public static Map<String, Long> getDateEchartsMap(Integer days) {
@@ -70,6 +74,7 @@ public class FixUtil {
      *
      * @param now  当前时间
      * @param days 时间段
+     *
      * @return {@link Map}
      */
     public static Map<String, Long> getDateEchartsMap(LocalDateTime now, Integer days) {
@@ -86,6 +91,7 @@ public class FixUtil {
      * 判断是否存在空集合
      *
      * @param collections 集合
+     *
      * @return true-存在空集合 false-不存在空集合，即全部集合为非空
      */
     public static boolean isNotAllEmpty(Collection<?>... collections) {

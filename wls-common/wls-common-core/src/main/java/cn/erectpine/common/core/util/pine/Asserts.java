@@ -17,6 +17,7 @@ public class Asserts extends Assert {
      *
      * @param count     count
      * @param exception 异常
+     *
      * @throws T t
      */
     public static <T extends Throwable> void isZero(Integer count, Supplier<T> exception) throws T {

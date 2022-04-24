@@ -33,7 +33,9 @@ public class TreeUtil {
      * 列表转树
      *
      * @param list 列表
+     *
      * @return {@link List} 树列表
+     *
      * @author wls
      */
     public static <T> List<Tree<Long>> toTree(List<T> list) {
@@ -45,7 +47,9 @@ public class TreeUtil {
      *
      * @param list           列表
      * @param treeNodeConfig 转换配置
+     *
      * @return {@link List} 树列表
+     *
      * @author wls
      */
     public static <T> List<Tree<Long>> toTree(List<T> list, TreeNodeConfig treeNodeConfig) {
@@ -57,7 +61,9 @@ public class TreeUtil {
      *
      * @param list           列表
      * @param treeNodeConfig 转换配置
+     *
      * @return 列表
+     *
      * @author wls
      */
     @SuppressWarnings(SuppressWarningConstants.UNCHECKED)

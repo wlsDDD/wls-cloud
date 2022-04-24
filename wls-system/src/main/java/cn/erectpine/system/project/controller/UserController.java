@@ -3,6 +3,7 @@ package cn.erectpine.system.project.controller;
 import cn.erectpine.common.web.pojo.BaseController;
 import cn.erectpine.common.web.pojo.Result;
 import cn.erectpine.common.web.pojo.ValidationList;
+import cn.erectpine.dict.api.DictDataApi;
 import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.service.IUserService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -25,6 +26,7 @@ import java.util.List;
 public class UserController extends BaseController {
     
     @Autowired private IUserService userService;
+    @Autowired private DictDataApi userService;
     
     
     /**

@@ -15,7 +15,7 @@ public class GenCode {
     
     @Test
     public void test01() {
-        MysqlGenerator.generatorCode("cn.erectpine.system.project","sys_user","sys_role");
+        MysqlGenerator.generatorCode("cn.erectpine.system.project", "sys_user", "sys_role");
     }
     
     @Test

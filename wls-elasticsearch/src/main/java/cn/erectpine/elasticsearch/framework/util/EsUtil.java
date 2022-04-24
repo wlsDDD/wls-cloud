@@ -44,6 +44,7 @@ public class EsUtil {
      * 仅当索引不存在时创建
      *
      * @param index 索引
+     *
      * @return true 创建成功
      */
     public static boolean indexCreate(String index) {
@@ -63,7 +64,9 @@ public class EsUtil {
      * 仅当索引存在时删除
      *
      * @param index index
+     *
      * @return true 删除成功
+     *
      * @author wls
      */
     public static boolean indexDelete(String index) {
@@ -82,6 +85,7 @@ public class EsUtil {
      * 判断某个index是否存在
      *
      * @param index index
+     *
      * @return true 存在
      */
     public static boolean indexExist(String index) {
@@ -104,6 +108,7 @@ public class EsUtil {
      *
      * @param index index
      * @param data  对象
+     *
      * @author fanxb
      * @date 2019/7/24 15:02
      */
@@ -126,6 +131,7 @@ public class EsUtil {
      *
      * @param index index
      * @param list  带插入列表
+     *
      * @author fanxb
      * @date 2019/7/24 17:38
      */
@@ -144,6 +150,7 @@ public class EsUtil {
      *
      * @param index  index
      * @param idList 待删除列表
+     *
      * @author fanxb
      * @date 2019/7/25 14:24
      */
@@ -163,7 +170,9 @@ public class EsUtil {
      * @param index   index
      * @param builder 查询参数
      * @param c       结果类对象
+     *
      * @return java.util.ArrayList
+     *
      * @author fanxb
      * @date 2019/7/25 13:46
      */
@@ -188,6 +197,7 @@ public class EsUtil {
      *
      * @param index   index
      * @param builder builder
+     *
      * @author fanxb
      * @date 2019/7/26 15:16
      */

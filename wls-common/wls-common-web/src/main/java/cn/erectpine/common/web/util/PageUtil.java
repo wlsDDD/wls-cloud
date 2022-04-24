@@ -18,6 +18,7 @@ public class PageUtil {
      * 获取mybatisPlus分页对象
      *
      * @param type 定义Page泛型
+     *
      * @return {@link com.baomidou.mybatisplus.extension.plugins.pagination.Page}<{@link T}>
      */
     @SafeVarargs
@@ -63,6 +64,7 @@ public class PageUtil {
      * 构建自定义分页对象
      *
      * @param list 列表
+     *
      * @return 自定义分页对象
      */
     public static <T> Page<T> page(List<T> list) {
@@ -73,6 +75,7 @@ public class PageUtil {
      * 构建自定义分页对象
      *
      * @param pageInfo {@link PageInfo}
+     *
      * @return 自定义分页对象
      */
     public static <T> Page<T> page(PageInfo<T> pageInfo) {

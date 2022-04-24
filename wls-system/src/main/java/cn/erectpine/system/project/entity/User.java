@@ -1,18 +1,17 @@
 package cn.erectpine.system.project.entity;
 
 import cn.erectpine.common.web.pojo.BaseEntity;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -28,7 +27,7 @@ import javax.validation.constraints.NotBlank;
 @TableName("sys_user")
 public class User extends BaseEntity {
     private static final long serialVersionUID = 1L;
-
+    
     /**
      * 用户ID
      * bigint
@@ -109,5 +108,5 @@ public class User extends BaseEntity {
      * varchar(500)
      */
     private String remark;
-
+    
 }

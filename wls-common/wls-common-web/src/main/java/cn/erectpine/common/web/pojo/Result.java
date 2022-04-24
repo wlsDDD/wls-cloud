@@ -86,6 +86,7 @@ public class Result<T> implements Serializable {
      * 参数错误提示信息
      *
      * @param paramErrors 参数错误
+     *
      * @return {@link Result}<{@link T}>
      */
     public Result<T> paramErrors(Map<String, String> paramErrors) {
@@ -106,6 +107,7 @@ public class Result<T> implements Serializable {
      * 成功消息
      *
      * @param data 数据
+     *
      * @return {@link Result}<{@link T}>
      */
     public static <T> Result<T> ok(T data) {
@@ -125,6 +127,7 @@ public class Result<T> implements Serializable {
      * 失败
      *
      * @param data 数据
+     *
      * @return {@link Result}<{@link T}>
      */
     public static <T> Result<T> fail(T data) {
@@ -135,6 +138,7 @@ public class Result<T> implements Serializable {
      * 失败
      *
      * @param codeInfoEnum codeMsgEnum
+     *
      * @return {@link Result}<{@link T}>
      */
     public static <T> Result<T> fail(CodeInfoEnum codeInfoEnum) {
@@ -146,6 +150,7 @@ public class Result<T> implements Serializable {
      *
      * @param data         数据
      * @param codeInfoEnum codeMsgEnum
+     *
      * @return {@link Result}<{@link T}>
      */
     public static <T> Result<T> build(T data, CodeInfoEnum codeInfoEnum) {

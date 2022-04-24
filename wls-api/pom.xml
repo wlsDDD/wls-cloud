@@ -8,13 +8,13 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    
     <artifactId>wls-api</artifactId>
     <packaging>pom</packaging>
     <modules>
         <module>wls-api-dict</module>
     </modules>
-
+    
     <dependencies>
         <dependency>
             <groupId>cn.erectpine</groupId>

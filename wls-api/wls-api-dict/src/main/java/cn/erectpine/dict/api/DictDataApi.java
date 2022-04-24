@@ -25,6 +25,7 @@ public interface DictDataApi {
      * 字典数据-分页列表
      *
      * @param dictData dict类型数据
+     *
      * @return {@link Result}<{@link IPage}<{@link DictData}>>
      */
     @GetMapping("/page")
@@ -34,6 +35,7 @@ public interface DictDataApi {
      * 根据id获取字典数据详情
      *
      * @param id id
+     *
      * @return {@link Result}<{@link DictData}>
      */
     @GetMapping("/{id}")
@@ -43,6 +45,7 @@ public interface DictDataApi {
      * 新增-字典数据
      *
      * @param dictData dict类型数据
+     *
      * @return {@link Result}<{@link ?}>
      */
     @PostMapping
@@ -52,6 +55,7 @@ public interface DictDataApi {
      * 修改-字典数据
      *
      * @param dictData dict类型数据
+     *
      * @return {@link Result}<{@link ?}>
      */
     @PutMapping
@@ -61,6 +65,7 @@ public interface DictDataApi {
      * 删除-字典数据
      *
      * @param ids id
+     *
      * @return {@link Result}<{@link ?}>
      */
     @DeleteMapping("/{ids}")

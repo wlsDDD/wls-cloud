@@ -28,6 +28,7 @@ public class LamUtil {
      * 获取方法引用型函数FieldNames
      *
      * @param func 方法引用型函数
+     *
      * @return {@link String[]}
      */
     public static String[] getFieldNames(FunctionSerializable<?, ?>... func) {
@@ -38,6 +39,7 @@ public class LamUtil {
      * 获取字段名
      *
      * @param function 函数
+     *
      * @return {@link String}
      */
     public static <T, R> String getFieldName(FunctionSerializable<T, R> function) {
@@ -49,6 +51,7 @@ public class LamUtil {
      * 获取字段
      *
      * @param function 函数
+     *
      * @return {@link Field}
      */
     private static Field getField(FunctionSerializable<?, ?> function) {
@@ -88,4 +91,5 @@ public class LamUtil {
         }
         throw new NoSuchFieldError(fieldName);
     }
+    
 }

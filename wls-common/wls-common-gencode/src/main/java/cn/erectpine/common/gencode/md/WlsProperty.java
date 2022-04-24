@@ -26,4 +26,5 @@ public @interface WlsProperty {
      * @return boolean
      */
     boolean required() default false;
+    
 }

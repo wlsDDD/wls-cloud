@@ -13,10 +13,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 @SpringBootApplication
 public class WlsSystemApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(WlsSystemApplication.class, args);
-		log.info("   (♥◠‿◠)ﾉﾞ  wls系统服务-启动完成   ლ(´ڡ`ლ)ﾞ  ");
-	}
-
+    
+    public static void main(String[] args) {
+        SpringApplication.run(WlsSystemApplication.class, args);
+        log.info("   (♥◠‿◠)ﾉﾞ  wls系统服务-启动完成   ლ(´ڡ`ლ)ﾞ  ");
+    }
+    
 }

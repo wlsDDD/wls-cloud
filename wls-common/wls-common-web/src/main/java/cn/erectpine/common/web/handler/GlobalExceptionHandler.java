@@ -32,9 +32,8 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     
-    @Autowired private MailServer mailServer;
-    
     private static final String MSG_PREFIX = "【全局异常拦截】-[{}]";
+    @Autowired private MailServer mailServer;
     
     @ExceptionHandler(Throwable.class)
     public Result<?> caughtException(HttpServletRequest request, HttpServletResponse response, Throwable e) {
@@ -44,11 +43,7 @@ public class GlobalExceptionHandler {
                     .getFieldErrors().stream()
                     .collect(Collectors.toMap(FieldError::getField, fieldError -> Optional.ofNullable(fieldError.getDefaultMessage()).orElse(""))));
         }
-        if ((e instanceof HttpMessageConversionException)) {
-            log.warn(MSG_PREFIX, "请求参数不合法 body必传", e);
-            return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR.setInfo(e.getMessage()));
-        }
-        if ((e instanceof IllegalArgumentException)) {
+        if ((e instanceof HttpMessageConversionException || e instanceof IllegalArgumentException)) {
             log.warn(MSG_PREFIX, "请求参数不合法 body必传", e);
             return Result.fail(CodeInfoEnum.ARG_VERIFY_ERROR.setInfo(e.getMessage()));
         }

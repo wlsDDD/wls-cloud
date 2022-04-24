@@ -19,6 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 public class Context {
     
     /**
+     * 线程池
+     */
+    public static PineThreadPoolExecutor threadPool;
+    /**
      * http 请求对象
      */
     private HttpServletRequest request;
@@ -26,15 +30,10 @@ public class Context {
      * http 响应对象
      */
     private HttpServletResponse response;
-    
     /**
      * 接口日志
      */
     private ApiLog apiLog;
-    /**
-     * 线程池
-     */
-    public static PineThreadPoolExecutor threadPool;
     /**
      * 分布式锁-key
      * 用于实现更细粒度的锁

@@ -1,12 +1,9 @@
 package cn.erectpine.system.project.entity;
 
 import cn.erectpine.common.web.pojo.BaseEntity;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.*;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -25,7 +22,7 @@ import lombok.experimental.Accessors;
 @TableName("sys_role")
 public class Role extends BaseEntity {
     private static final long serialVersionUID = 1L;
-
+    
     /**
      * 角色ID
      * bigint
@@ -77,5 +74,5 @@ public class Role extends BaseEntity {
      * varchar(500)
      */
     private String remark;
-
+    
 }

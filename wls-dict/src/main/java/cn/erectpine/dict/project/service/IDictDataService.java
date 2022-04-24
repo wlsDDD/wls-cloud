@@ -20,6 +20,7 @@ public interface IDictDataService extends IService<DictData> {
      * 字典数据-列表
      *
      * @param dictData 查询条件
+     *
      * @return 分页列表
      */
     IPage<DictData> pageDictData(DictData dictData);
@@ -28,6 +29,7 @@ public interface IDictDataService extends IService<DictData> {
      * 根据id获取字典数据表详情
      *
      * @param id id
+     *
      * @return {@link DictData}
      */
     DictData getDictDataById(Long id);

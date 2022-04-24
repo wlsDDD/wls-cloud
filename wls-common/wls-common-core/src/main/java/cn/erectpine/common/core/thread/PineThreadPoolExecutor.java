@@ -31,6 +31,7 @@ public class PineThreadPoolExecutor extends ThreadPoolExecutor {
      * @param workQueue       the queue to use for holding tasks before they are
      *                        executed.  This queue will hold only the {@code Runnable}
      *                        tasks submitted by the {@code execute} method.
+     *
      * @throws IllegalArgumentException if one of the following holds:<br>
      *                                  {@code corePoolSize < 0}<br>
      *                                  {@code keepAliveTime < 0}<br>
@@ -59,6 +60,7 @@ public class PineThreadPoolExecutor extends ThreadPoolExecutor {
      *                        tasks submitted by the {@code execute} method.
      * @param threadFactory   the factory to use when the executor
      *                        creates a new thread
+     *
      * @throws IllegalArgumentException if one of the following holds:<br>
      *                                  {@code corePoolSize < 0}<br>
      *                                  {@code keepAliveTime < 0}<br>
@@ -88,6 +90,7 @@ public class PineThreadPoolExecutor extends ThreadPoolExecutor {
      *                        tasks submitted by the {@code execute} method.
      * @param handler         the handler to use when execution is blocked
      *                        because the thread bounds and queue capacities are reached
+     *
      * @throws IllegalArgumentException if one of the following holds:<br>
      *                                  {@code corePoolSize < 0}<br>
      *                                  {@code keepAliveTime < 0}<br>
@@ -119,6 +122,7 @@ public class PineThreadPoolExecutor extends ThreadPoolExecutor {
      *                        creates a new thread
      * @param handler         the handler to use when execution is blocked
      *                        because the thread bounds and queue capacities are reached
+     *
      * @throws IllegalArgumentException if one of the following holds:<br>
      *                                  {@code corePoolSize < 0}<br>
      *                                  {@code keepAliveTime < 0}<br>
@@ -136,12 +140,10 @@ public class PineThreadPoolExecutor extends ThreadPoolExecutor {
      * This method is invoked by the thread that executed the task. If
      * non-null, the Throwable is the uncaught {@code RuntimeException}
      * or {@code Error} that caused execution to terminate abruptly.
-     *
      * <p>This implementation does nothing, but may be customized in
      * subclasses. Note: To properly nest multiple overridings, subclasses
      * should generally invoke {@code super.afterExecute} at the
      * beginning of this method.
-     *
      * <p><b>Note:</b> When actions are enclosed in tasks (such as
      * {@link FutureTask}) either explicitly or via methods such as
      * {@code submit}, these task objects catch and maintain
@@ -151,7 +153,6 @@ public class PineThreadPoolExecutor extends ThreadPoolExecutor {
      * failures in this method, you can further probe for such cases,
      * as in this sample subclass that prints either the direct cause
      * or the underlying exception if a task has been aborted:
-     *
      * <pre> {@code
      * class ExtendedExecutor extends ThreadPoolExecutor {
      *   // ...

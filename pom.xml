@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    
     <groupId>cn.erectpine</groupId>
     <artifactId>wls-cloud</artifactId>
     <version>1.0.0</version>
     <name>wls-cloud</name>
     <description>wls起步 -- 微服务聚合工程</description>
-
+    
     <properties>
         <!--项目版本-->
         <java.version>1.8</java.version>
@@ -45,7 +45,7 @@
         <!--api模块聚合-->
         <wls.api.dict.version>1.0.0</wls.api.dict.version>
     </properties>
-
+    
     <modules>
         <module>wls-system</module>
         <module>wls-common</module>
@@ -54,9 +54,9 @@
         <module>wls-api</module>
         <module>wls-elasticsearch</module>
     </modules>
-
+    
     <packaging>pom</packaging>
-
+    
     <dependencyManagement>
         <dependencies>
             <!-- spring-boot的依赖配置-->
@@ -83,7 +83,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+    
             <!--主要框架-->
             <!--阿里数据库连接池 -->
             <dependency>
@@ -120,7 +120,7 @@
             <!--                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>-->
             <!--                <version>${shardingsphere.version}</version>-->
             <!--            </dependency>-->
-
+    
             <!--工具类-->
             <!--hu tool工具包-->
             <dependency>
@@ -158,7 +158,7 @@
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
-
+    
             <!--服务内模块模块-->
             <dependency>
                 <groupId>cn.erectpine</groupId>
@@ -199,7 +199,7 @@
 
         </dependencies>
     </dependencyManagement>
-
+    
     <dependencies>
         <!--lombok-->
         <dependency>
@@ -219,7 +219,7 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
-
+    
     <repositories>
         <repository>
             <id>es-snapshots</id>
@@ -227,7 +227,7 @@
             <url>https://snapshots.elastic.co/maven/</url>
         </repository>
     </repositories>
-
+    
     <build>
         <plugins>
             <plugin>

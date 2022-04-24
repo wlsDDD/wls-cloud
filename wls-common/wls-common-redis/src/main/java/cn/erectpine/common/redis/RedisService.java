@@ -28,6 +28,7 @@ public class RedisService {
      * @param value    缓存的值
      * @param timeout  时间
      * @param timeUnit 时间单位
+     *
      * @return 缓存的对象
      */
     public <T> ValueOperations<String, T> set(String key, T value, Integer timeout, TimeUnit timeUnit) {
@@ -42,6 +43,7 @@ public class RedisService {
      * @param key      缓存的键值
      * @param value    缓存的值
      * @param duration 时间差
+     *
      * @return 缓存的对象
      */
     public <T> ValueOperations<String, T> set(String key, T value, Duration duration) {
@@ -54,6 +56,7 @@ public class RedisService {
      * 获得缓存的基本对象。
      *
      * @param key 缓存键值
+     *
      * @return 缓存键值对应的数据
      */
     public <T> T get(String key) {
@@ -67,6 +70,7 @@ public class RedisService {
      * @param key     Redis键
      * @param timeout 超时时间
      * @param unit    时间单位
+     *
      * @return true=设置成功；false=设置失败
      */
     public boolean expire(final String key, final long timeout, final TimeUnit unit) {

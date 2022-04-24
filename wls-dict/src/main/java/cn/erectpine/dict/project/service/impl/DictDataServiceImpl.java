@@ -32,24 +32,26 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> i
      * 字典数据-列表
      *
      * @param dictData 查询条件
+     *
      * @return 分页列表
      */
     @Override
     public IPage<DictData> pageDictData(DictData dictData) {
         return page(PageUtil.getPlusPage(dictData), Wrappers.lambdaQuery(dictData));
     }
-
+    
     /**
      * 根据id获取字典数据表详情
      *
      * @param id id
+     *
      * @return {@link DictData}
      */
     @Override
     public DictData getDictDataById(Long id) {
         return getById(id);
     }
-
+    
     /**
      * 新增-字典数据
      *

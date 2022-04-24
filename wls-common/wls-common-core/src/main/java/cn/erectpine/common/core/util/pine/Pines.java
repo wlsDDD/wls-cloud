@@ -51,6 +51,7 @@ public class Pines {
      *
      * @param seq    对应规则的值
      * @param rexStr 规则
+     *
      * @return {@link String}
      */
     public static String getSeq(Integer seq, String rexStr) {
@@ -70,6 +71,7 @@ public class Pines {
      *
      * @param map 地图
      * @param key 关键
+     *
      * @return {@link V}
      */
     public static <K, V> V getOrException(Map<K, V> map, K key) {
@@ -81,6 +83,7 @@ public class Pines {
      *
      * @param map  地图
      * @param func 函数
+     *
      * @return {@link V}
      */
     public static <V, T, R> V getOrException(Map<String, V> map, FunctionSerializable<T, R> func) {
@@ -92,6 +95,7 @@ public class Pines {
      *
      * @param clazz 类clazz
      * @param ann   注解clazz
+     *
      * @return {@link List<>}
      */
     public static <T extends Annotation> List<T> getFieldAnnotations(Class<?> clazz, Class<T> ann) {
@@ -108,7 +112,9 @@ public class Pines {
      * @param old     源对象
      * @param fresh   拷贝后的对象
      * @param ignores 忽略字段
+     *
      * @return fresh
+     *
      * @author wls
      */
     @SafeVarargs
@@ -122,6 +128,7 @@ public class Pines {
      *
      * @param e       e
      * @param contain 包含字符串
+     *
      * @return {@link StackTraceElement[]}
      */
     public static StackTraceElement[] getSimpleStackTrace(Throwable e, String contain) {
@@ -134,6 +141,7 @@ public class Pines {
      * json 去除json文本中的转义字符
      *
      * @param text 文本
+     *
      * @return {@link String}
      */
     public static String jsonDelEscape(String text) {
@@ -148,6 +156,7 @@ public class Pines {
      * 从字符串中获取数字数字
      *
      * @param str str
+     *
      * @return {@link Integer}
      */
     public static Integer toInt(String str) {

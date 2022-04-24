@@ -1,7 +1,6 @@
 import cn.erectpine.common.core.pojo.ApiLog;
 import cn.erectpine.common.core.util.pine.Pines;
 import cn.erectpine.common.gencode.MysqlGenerator;
-import cn.erectpine.common.gencode.md.MdGenerator;
 import cn.erectpine.common.redis.annotation.Cache;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.system.SystemUtil;

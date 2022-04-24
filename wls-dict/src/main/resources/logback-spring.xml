@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
+    
     <!-- 配置文件名必须为logback-spring.xml，否则env在一开始会找不到，会生成一个env_IS_UNDEFINED.log的空文件 -->
     <springProperty scope="context" name="logsPath" source="share.logsPath" defaultValue="/opt/logs/"/>
     <springProperty scope="context" name="logLevel" source="share.logLevel" defaultValue="info"/>
-
+    
     <!-- 定义日志文件 输出位置 -->
     <property name="log.dir" value="${logsPath}"/>
     <!-- 日志级别 -->
@@ -12,8 +12,9 @@
     <!-- 日志输出格式 -->
     <property name="log.pattern.console"
               value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15.15t)] %cyan(%-40.40logger{50}:%-3line) : %highlight(%m%n)"/>
-    <property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15t)] %cyan(%-40logger{50}:%-3line): %highlight(%m%n)"/>
-
+    <property name="log.pattern"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15t)] %cyan(%-40logger{50}:%-3line): %highlight(%m%n)"/>
+    
     <!-- ConsoleAppender 控制台输出日志 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -21,7 +22,7 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-
+    
     <!-- ERROR级别日志 -->
     <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 RollingFileAppender -->
     <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -51,8 +52,8 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-
-
+    
+    
     <!-- WARN级别日志 appender -->
     <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 RollingFileAppender -->
     <appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -82,8 +83,8 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-
-
+    
+    
     <!-- INFO级别日志 appender -->
     <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 RollingFileAppender -->
     <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -113,8 +114,8 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-
-
+    
+    
     <!-- DEBUG级别日志 appender -->
     <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 RollingFileAppender -->
     <appender name="DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -144,7 +145,7 @@
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-
+    
     <springProfile name="dev">
         <root level="${log.level}">
             <!-- 控制台输出 -->

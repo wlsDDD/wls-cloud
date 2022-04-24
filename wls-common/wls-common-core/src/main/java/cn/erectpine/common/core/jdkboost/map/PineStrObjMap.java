@@ -20,6 +20,7 @@ public class PineStrObjMap extends PineStrMap<Object> {
      *
      * @param key   关键
      * @param value 价值
+     *
      * @return {@link PineStrMap<>}
      */
     @Override
@@ -36,6 +37,7 @@ public class PineStrObjMap extends PineStrMap<Object> {
      *
      * @param func  函数
      * @param value 价值
+     *
      * @return {@link PineStrMap<>}
      */
     @Override

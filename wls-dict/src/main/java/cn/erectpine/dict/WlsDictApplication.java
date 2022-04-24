@@ -15,10 +15,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "cn.erectpine")
 public class WlsDictApplication {
-	
-	public static void main(String[] args) {
-		SpringApplication.run(WlsDictApplication.class, args);
-		System.err.println("(♥◠‿◠)ﾉﾞ  wls数据字典服务-启动完成   ლ(´ڡ`ლ)ﾞ  ");
-	}
-	
+    
+    public static void main(String[] args) {
+        SpringApplication.run(WlsDictApplication.class, args);
+        System.err.println("(♥◠‿◠)ﾉﾞ  wls数据字典服务-启动完成   ლ(´ڡ`ლ)ﾞ  ");
+    }
+    
 }

@@ -43,6 +43,7 @@ public class RedisUtil {
      *
      * @param function 函数
      * @param param    参数
+     *
      * @return {@link R}
      */
     @Deprecated
@@ -67,6 +68,7 @@ public class RedisUtil {
      * 替代keys
      *
      * @param matchKey 匹配前缀
+     *
      * @return {@link Set}<{@link String}>
      */
     public static Set<String> scan(String matchKey) {

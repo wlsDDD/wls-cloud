@@ -13,10 +13,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "cn.erectpine")
 public class WlsElasticsearchApplication {
-	
-	public static void main(String[] args) {
-		SpringApplication.run(WlsElasticsearchApplication.class, args);
-		System.err.println("(♥◠‿◠)ﾉﾞ  wls-es搜索-服务-启动完成   ლ(´ڡ`ლ)ﾞ  ");
-	}
-	
+    
+    public static void main(String[] args) {
+        SpringApplication.run(WlsElasticsearchApplication.class, args);
+        System.err.println("(♥◠‿◠)ﾉﾞ  wls-es搜索-服务-启动完成   ლ(´ڡ`ლ)ﾞ  ");
+    }
+    
 }

@@ -80,6 +80,7 @@ public class MdGenerator {
      * 获取字段列表
      *
      * @param clazz clazz
+     *
      * @return {@link List<WlsField>}
      */
     private static List<WlsField> getFields(Class<?> clazz) {

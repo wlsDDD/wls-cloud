@@ -24,10 +24,10 @@ import java.util.List;
 @RequestMapping("/role")
 @Slf4j
 public class RoleController extends BaseController {
-
+    
     @Autowired private RoleServiceImpl roleService;
-
-
+    
+    
     /**
      * 角色信息-分页列表
      */
@@ -39,7 +39,7 @@ public class RoleController extends BaseController {
         }
         return Result.ok(roleService.pageRole(role));
     }
-
+    
     /**
      * 根据id获取角色信息详情
      */
@@ -47,7 +47,7 @@ public class RoleController extends BaseController {
     public Result<Role> getRoleById(@PathVariable("id") Long id) {
         return Result.ok(roleService.getRoleById(id));
     }
-
+    
     /**
      * 新增-角色信息
      */
@@ -56,7 +56,7 @@ public class RoleController extends BaseController {
         roleService.insertRole(role);
         return Result.ok();
     }
-
+    
     /**
      * 修改-角色信息
      */
@@ -65,7 +65,7 @@ public class RoleController extends BaseController {
         roleService.updateRole(role);
         return Result.ok();
     }
-
+    
     /**
      * 删除-角色信息
      */
@@ -74,5 +74,5 @@ public class RoleController extends BaseController {
         roleService.deleteRole(ids);
         return Result.ok();
     }
-
+    
 }

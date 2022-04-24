@@ -29,12 +29,11 @@ import java.util.function.Supplier;
 @Component
 public class DistributedLockAspect {
     
-    static Supplier<String> diyLookFunc = () -> Optional.ofNullable(HttpContext.getContext()).orElseGet(Context::new).getDiyDistributedLockKey();
-    
     /**
      * 分布式锁前缀
      */
     private static final String LOCK_NAME = GlobalConstants.PROJECT_NAME + ":" + GlobalConstants.serviceName + ":" + GlobalConstants.active + ":" + "distributed-lock:";
+    static Supplier<String> diyLookFunc = () -> Optional.ofNullable(HttpContext.getContext()).orElseGet(Context::new).getDiyDistributedLockKey();
     
     @Around("@annotation(cn.erectpine.common.redis.annotation.DistributedLock)")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
@@ -61,6 +60,7 @@ public class DistributedLockAspect {
      * tryLock 实现
      *
      * @param joinPoint 连接点
+     *
      * @return {@link Object}
      */
     private Object tryLock(ProceedingJoinPoint joinPoint, RLock lock) throws Throwable {
@@ -88,6 +88,7 @@ public class DistributedLockAspect {
      * 阻塞锁实现
      *
      * @param joinPoint 连接点
+     *
      * @return {@link Object}
      */
     private Object lock(ProceedingJoinPoint joinPoint, RLock lock) throws Throwable {

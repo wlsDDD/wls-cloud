@@ -2,6 +2,7 @@ package cn.erectpine.common.web.pojo;
 
 import lombok.Data;
 import lombok.experimental.Delegate;
+
 import javax.validation.Valid;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,14 +18,14 @@ import java.util.List;
  */
 @Data
 public class ValidationList<E> implements List<E> {
-
+    
     @Delegate
     @Valid
     public List<E> list = new LinkedList<>();
-
+    
     @Override
     public String toString() {
         return list.toString();
     }
-
+    
 }

@@ -21,6 +21,7 @@ public class PineStrMap<V> extends PineMap<String, V> {
      *
      * @param key   关键
      * @param value 价值
+     *
      * @return {@link PineStrMap<V>}
      */
     @Override
@@ -37,6 +38,7 @@ public class PineStrMap<V> extends PineMap<String, V> {
      *
      * @param func  函数
      * @param value 价值
+     *
      * @return {@link PineStrMap<V>}
      */
     public <T, R> PineStrMap<V> putItem(FunctionSerializable<T, R> func, V value) {

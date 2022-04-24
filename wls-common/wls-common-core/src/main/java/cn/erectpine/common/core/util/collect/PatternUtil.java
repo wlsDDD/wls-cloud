@@ -10,28 +10,28 @@ import java.util.regex.Pattern;
  */
 public final class PatternUtil {
     
-    private static final String UUID_PATTERN           = "^[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}$";
-    private static final String MOBILE_PATTERN         = "^1[3-9]\\d{9}$";
-    private static final String IPV4_PATTERN           = "^(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(\\.(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}$";
-    private static final String IPV6_PATTERN           = "^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^:((:[0-9a-fA-F]{1,4}){1,6}|:)$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,5}|:)$|^([0-9a-fA-F]{1,4}:){2}((:[0-9a-fA-F]{1,4}){1,4}|:)$|^([0-9a-fA-F]{1,4}:){3}((:[0-9a-fA-F]{1,4}){1,3}|:)$|^([0-9a-fA-F]{1,4}:){4}((:[0-9a-fA-F]{1,4}){1,2}|:)$|^([0-9a-fA-F]{1,4}:){5}:([0-9a-fA-F]{1,4})?$|^([0-9a-fA-F]{1,4}:){6}:$";
-    private static final String QQ_PATTERN             = "^[1-9][0-9]{4,10}$";
-    private static final String HTTP_PATTERN           = "http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?";
-    private static final String ID_CARD_PATTERN        = "^[1-9]\\d{5}(18|19|([23]\\d))\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$";
-    private static final String CHINESE_PATTERN        = "^[\u4e00-\u9fa5],{0,}$";
-    private static final String EMAIL_PATTERN          = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
-    private static final String LANGUAGE_PATTERN       = "^(en_us|zh_cn)$";
+    private static final String UUID_PATTERN = "^[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}$";
+    private static final String MOBILE_PATTERN = "^1[3-9]\\d{9}$";
+    private static final String IPV4_PATTERN = "^(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(\\.(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}$";
+    private static final String IPV6_PATTERN = "^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^:((:[0-9a-fA-F]{1,4}){1,6}|:)$|^[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,5}|:)$|^([0-9a-fA-F]{1,4}:){2}((:[0-9a-fA-F]{1,4}){1,4}|:)$|^([0-9a-fA-F]{1,4}:){3}((:[0-9a-fA-F]{1,4}){1,3}|:)$|^([0-9a-fA-F]{1,4}:){4}((:[0-9a-fA-F]{1,4}){1,2}|:)$|^([0-9a-fA-F]{1,4}:){5}:([0-9a-fA-F]{1,4})?$|^([0-9a-fA-F]{1,4}:){6}:$";
+    private static final String QQ_PATTERN = "^[1-9][0-9]{4,10}$";
+    private static final String HTTP_PATTERN = "http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?";
+    private static final String ID_CARD_PATTERN = "^[1-9]\\d{5}(18|19|([23]\\d))\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$";
+    private static final String CHINESE_PATTERN = "^[\u4e00-\u9fa5],{0,}$";
+    private static final String EMAIL_PATTERN = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+    private static final String LANGUAGE_PATTERN = "^(en_us|zh_cn)$";
     private static final String DOT_SPLIT_CODE_PATTERN = "^([a-zZ-Z]+\\.)+[a-zA-Z]+$";
-    private static final String EN_STR_PATTERN         = "^[a-zA-Z]+$";
-    private static final String WX_NO_PATTERN          = "^[a-zA-Z0-9_-]{5,19}$";
-    private static final String SPECIAL_PATTERN        = "[`~!@#$%^&*()_\\-+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
+    private static final String EN_STR_PATTERN = "^[a-zA-Z]+$";
+    private static final String WX_NO_PATTERN = "^[a-zA-Z0-9_-]{5,19}$";
+    private static final String SPECIAL_PATTERN = "[`~!@#$%^&*()_\\-+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
     /**
      * 验证	带区号的座机号码
      */
-    private static final String LANDLINE_PTN           = "^[0][1-9]{2,3}-[0-9]{5,10}$";
+    private static final String LANDLINE_PTN = "^[0][1-9]{2,3}-[0-9]{5,10}$";
     /**
      * 验证不带区号的座机号码
      */
-    private static final String LANDLINE_PTN_N         = "^[1-9]{1}[0-9]{5,8}$";
+    private static final String LANDLINE_PTN_N = "^[1-9]{1}[0-9]{5,8}$";
     
     
     /**
@@ -74,6 +74,7 @@ public final class PatternUtil {
      * 校验UUID格式
      *
      * @param src c284c52f-613a-427c-ad0e-78fdb4cd4af8
+     *
      * @author wls
      */
     public static boolean isUuId(String src) {
@@ -84,6 +85,7 @@ public final class PatternUtil {
      * 校验手机号
      *
      * @param src 13999999999
+     *
      * @author wls
      */
     public static boolean isMobile(String src) {
@@ -94,6 +96,7 @@ public final class PatternUtil {
      * 校验IPV4地址
      *
      * @param src 10.0.1.10
+     *
      * @author wls
      */
     public static boolean isIpV4Address(String src) {
@@ -104,6 +107,7 @@ public final class PatternUtil {
      * 校验IPV6地址
      *
      * @param src fe80::80fe:8c96:fd44:5e72%3
+     *
      * @author wls
      */
     public static boolean isIpV6Address(String src) {
@@ -114,6 +118,7 @@ public final class PatternUtil {
      * 校验QQ号（5-11位数字，以非0开头）
      *
      * @param src 1020444044
+     *
      * @author wls
      */
     public static boolean isQq(String src) {
@@ -126,6 +131,7 @@ public final class PatternUtil {
      * @param src    aSdf5we
      * @param minLen 最小长度
      * @param maxLen 最大长度
+     *
      * @author wls
      */
     public static boolean isSimpleString(String src, int minLen, int maxLen) {
@@ -136,6 +142,7 @@ public final class PatternUtil {
      * 校验HTTP(S) URL
      *
      * @param src http://m.emeik.cn
+     *
      * @author wls
      */
     public static boolean isUrl(String src) {
@@ -146,6 +153,7 @@ public final class PatternUtil {
      * 校验身份证
      *
      * @param src 51102319900806003x
+     *
      * @author wls
      */
     public static boolean isIdCard(String src) {
@@ -156,6 +164,7 @@ public final class PatternUtil {
      * 校验汉字
      *
      * @param src 这是汉字
+     *
      * @author wls
      */
     public static boolean isChineseString(String src) {
@@ -166,6 +175,7 @@ public final class PatternUtil {
      * 校验邮箱
      *
      * @param src ac1242@sina.com
+     *
      * @author wls
      */
     public static boolean isEmail(String src) {
@@ -178,6 +188,7 @@ public final class PatternUtil {
      * @param src    521545
      * @param minLen 最小长度
      * @param maxLen 最大长度
+     *
      * @author wls
      */
     public static boolean isLenNumber(String src, int minLen, int maxLen) {
