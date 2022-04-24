@@ -6,52 +6,50 @@ import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
+import springfox.documentation.service.ApiKey;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * @author wls
- * @since 2021/9/21 15:28
+ * Swagger配置
+ *
+ * @author Mark sunlightcs@gmail.com
  */
-@EnableOpenApi
 @Configuration
+@EnableSwagger2WebMvc
 public class SwaggerConfig {
     
     @Bean
-    public Docket createRestApi(SwaggerProperties swaggerProperties) {
-        return new Docket(DocumentationType.OAS_30)
-                // 是否启用Swagger
-                .enable(swaggerProperties.getEnabled())
-                // 分组名称
-                .groupName(swaggerProperties.getGroupName())
-                // 用来创建该API的基本信息，展示在文档的页面中（自定义展示的信息）
-                .apiInfo(apiInfo(swaggerProperties))
-                // 设置哪些接口暴露给Swagger展示
+    public Docket createRestApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
                 .select()
-                // 扫描所有有注解的api，用这种方式更灵活
+                //加了ApiOperation注解的类，才生成接口文档
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
-                // 扫描所有
                 .paths(PathSelectors.any())
                 .build()
-                // 设置安全模式，swagger可以设置访问token
-//                .securitySchemes(securitySchemes())
-//                .securityContexts(securityContexts())
-                ;
+                .directModelSubstitute(java.util.Date.class, String.class)
+                .securitySchemes(security());
     }
     
-    private ApiInfo apiInfo(SwaggerProperties swaggerProperties) {
+    private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title(swaggerProperties.getTitle())
-                .description(swaggerProperties.getDescription())
-                .license(swaggerProperties.getLicense())
-                .licenseUrl(swaggerProperties.getLicenseUrl())
-                .termsOfServiceUrl(swaggerProperties.getTermsOfServiceUrl())
-                .contact(new Contact(swaggerProperties.getContact().getName(), swaggerProperties.getContact().getUrl(), swaggerProperties.getContact().getEmail()))
-                .version(swaggerProperties.getVersion())
+                .title("wls-cloud")
+                .description("接口文档")
+                .termsOfServiceUrl("https://wls.plus/")
+                .version("V1.0.0")
                 .build();
+    }
+    
+    private List<ApiKey> security() {
+        ArrayList<ApiKey> list = new ArrayList<>();
+        list.add(new ApiKey("Authorization", "Authorization", "header"));
+        return list;
     }
     
 }

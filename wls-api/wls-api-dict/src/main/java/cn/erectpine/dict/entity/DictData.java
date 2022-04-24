@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.io.Serial;
+
 /**
  * <p>
  * 字典数据
@@ -22,7 +24,7 @@ import lombok.experimental.Accessors;
 @TableName("sys_dict_data")
 public class DictData extends BaseEntity {
     
-    private static final long serialVersionUID = 1L;
+    @Serial private static final long serialVersionUID = 1L;
     
     /**
      * 字典编码

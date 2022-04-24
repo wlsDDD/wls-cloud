@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 @ConfigurationProperties("share")
-public final class WlsShareYml {
+public class WlsShareYml {
     /**
      * 服务名
      */

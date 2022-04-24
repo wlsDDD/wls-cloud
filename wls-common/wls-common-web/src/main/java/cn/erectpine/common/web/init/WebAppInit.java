@@ -27,19 +27,15 @@ public class WebAppInit {
     
     
     /**
-     * 初始化上下文环境
+     * 项目启动时自动执行此方法
      */
     @PostConstruct
     public void initContext() {
+        // 初始化上下文环境
         Context.threadPool = pineThreadPoolExecutor;
         log.info("[线程池 -> 初始化] - [{}]", Context.threadPool);
-    }
     
-    /**
-     * 初始化全局变量
-     */
-    @PostConstruct
-    public void initGlobalConstants() {
+        // 初始化上下文环境
         GlobalConstants.serviceName = wlsShareYml.getServiceName();
         log.info("[服务名 -> 初始化] - [{}]", GlobalConstants.serviceName);
         GlobalConstants.active = wlsShareYml.getActive();

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 @ConfigurationProperties("wls")
-public final class WlsYml {
+public class WlsYml {
     
     /**
      * 服务名

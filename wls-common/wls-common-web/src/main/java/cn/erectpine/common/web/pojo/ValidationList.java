@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * 如果请求体直接传递了json数组给后台，并希望对数组中的每一项都进行参数校验。
  * 此时，如果我们直接使用java.util.Collection下的list或者set来接收数据，参数校验并不会生效！我们可以使用自定义list集合来接收参数：
- * <p>
  * 包装 List类型，并声明 @Valid 注解
  *
  * @author wls
