@@ -5,7 +5,7 @@
 
     <groupId>cn.erectpine</groupId>
     <artifactId>wls-cloud</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>wls-cloud</name>
     <description>wls起步 -- 微服务聚合工程</description>
 
@@ -13,6 +13,8 @@
         <!--项目版本-->
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <!--主要框架-->
         <spring.boot.version>2.4.6</spring.boot.version>
         <spring.cloud.version>2020.0.3</spring.cloud.version>
@@ -31,17 +33,17 @@
         <pagehelper.version>1.2.5</pagehelper.version>
         <knife4j.version>3.0.3</knife4j.version>
         <!--微服务聚合-->
-        <wls.system.version>0.0.1-SNAPSHOT</wls.system.version>
+        <wls.system.version>1.0.0</wls.system.version>
         <!--通用模块聚合-->
-        <wls.common.version>0.0.1-SNAPSHOT</wls.common.version>
-        <wls.common.core.version>0.0.1-SNAPSHOT</wls.common.core.version>
-        <wls.common.gencode.version>0.0.1-SNAPSHOT</wls.common.gencode.version>
-        <wls.common.log.version>0.0.1-SNAPSHOT</wls.common.log.version>
-        <wls.common.redis.version>0.0.1-SNAPSHOT</wls.common.redis.version>
-        <wls.common.web.version>0.0.1-SNAPSHOT</wls.common.web.version>
-        <wls.common.swagger.version>0.0.1-SNAPSHOT</wls.common.swagger.version>
+        <wls.common.version>1.0.0</wls.common.version>
+        <wls.common.core.version>1.0.0</wls.common.core.version>
+        <wls.common.gencode.version>1.0.0</wls.common.gencode.version>
+        <wls.common.log.version>1.0.0</wls.common.log.version>
+        <wls.common.redis.version>1.0.0</wls.common.redis.version>
+        <wls.common.web.version>1.0.0</wls.common.web.version>
+        <wls.common.swagger.version>1.0.0</wls.common.swagger.version>
         <!--api模块聚合-->
-        <wls.api.dict.version>0.0.1-SNAPSHOT</wls.api.dict.version>
+        <wls.api.dict.version>1.0.0</wls.api.dict.version>
     </properties>
 
     <modules>
@@ -205,13 +207,6 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--热启动依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
         <!-- bootstrap 启动器 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -240,8 +235,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>

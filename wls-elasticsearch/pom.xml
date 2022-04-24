@@ -5,17 +5,12 @@
     <parent>
         <artifactId>wls-cloud</artifactId>
         <groupId>cn.erectpine</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>wls-elasticsearch</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
+    <version>1.0.0</version>
 
     <dependencies>
         <!--SpringBoot-web-->
@@ -52,7 +47,7 @@
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId}-v${project.version}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
