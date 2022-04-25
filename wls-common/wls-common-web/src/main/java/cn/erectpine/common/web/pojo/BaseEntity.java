@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -18,7 +17,7 @@ import java.time.LocalDateTime;
  */
 @Data
 public abstract class BaseEntity implements Serializable {
-    @Serial private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     
     /**
      * 创建时间
