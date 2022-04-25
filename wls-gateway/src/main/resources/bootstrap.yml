@@ -22,13 +22,13 @@ spring:
         namespace: 49393289ebdd4971866122c51a949bac
         group: dev
         # 共享配置
-        shared-configs:
-          - dataId: wls-base-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-            group: dev
-            refresh: true
-          - dataId: wls-log-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-            group: dev
-            refresh: true
+#        shared-configs:
+#          - dataId: wls-base-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+#            group: dev
+#            refresh: true
+#          - dataId: wls-log-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+#            group: dev
+#            refresh: true
 #    gateway:
 #      discovery:
 #        locator:

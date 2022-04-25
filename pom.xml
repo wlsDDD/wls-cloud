@@ -16,8 +16,8 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <!--主要框架-->
-        <spring.boot.version>2.6.3</spring.boot.version>
-        <spring.cloud.version>2021.0.1</spring.cloud.version>
+        <spring.boot.version>2.4.8</spring.boot.version>
+        <spring.cloud.version>2020.0.3</spring.cloud.version>
         <spring.cloud.alibaba.version>2021.1</spring.cloud.alibaba.version>
         <!--数据库连接框架-->
         <mybatis.plus.version>3.4.1</mybatis.plus.version>

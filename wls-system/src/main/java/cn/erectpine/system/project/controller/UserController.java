@@ -51,7 +51,6 @@ public class UserController extends BaseController {
     @PostMapping
     public Result<?> insertUser(@RequestBody @Validated ValidationList<User> user) {
         userService.insertUser(user.get(0));
-    
         return Result.ok();
     }
     
