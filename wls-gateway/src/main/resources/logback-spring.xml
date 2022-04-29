@@ -1,27 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    
     <!-- 配置文件名必须为logback-spring.xml，否则env在一开始会找不到，会生成一个env_IS_UNDEFINED.log的空文件 -->
-    <springProperty scope="context" name="logsPath" source="wls.log.logsPath" defaultValue="/opt/logs/"/>
-    <springProperty scope="context" name="logLevel" source="wls.log.logLevel" defaultValue="info"/>
-    <springProperty scope="context" name="logFormat" source="wls.log.logDevFormat"
-                    defaultValue="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15.15t)] %cyan(%-40.40logger{50}:%-3line) : %highlight(%m%n)"/>
-    <springProperty scope="context" name="logProdFormat" source="wls.log.logProdFormat"
-                    defaultValue="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15t)] %cyan(%-40logger{50}:%-3line): %highlight(%m%n)"/>
+    <springProperty name="name" scope="context" source="spring.application.name" defaultValue="bluetax-server"/>
+    <springProperty name="active" scope="context" source="spring.profiles.active" defaultValue="dev"/>
+    <springProperty name="logsPath" scope="context" source="bluetax.log.logsPath" defaultValue="/data/bluetax/logs/${name}/${active}"/>
+    <springProperty name="logLevel" scope="context" source="bluetax.log.logLevel" defaultValue="info"/>
+    <springProperty name="logErrorDay" scope="context" source="bluetax.log.logErrorDay" defaultValue="400"/>
+    <springProperty name="logInfoDay" scope="context" source="bluetax.log.logInfoDay" defaultValue="400"/>
+    <springProperty name="logWarnDay" scope="context" source="bluetax.log.logWarnDay" defaultValue="60"/>
+    <springProperty name="logDebugDay" scope="context" source="bluetax.log.logDebugDay" defaultValue="30"/>
     
-    <!-- 定义日志文件 输出位置 -->
-    <property name="log.dir" value="${logsPath}"/>
-    <!-- 日志级别 -->
-    <property name="log.level" value="${logLevel}"/>
-    <!-- 日志输出格式 -->
-    <property name="log.pattern.console" value="${logFormat}"/>
-    <property name="log.pattern" value="${logProdFormat}"/>
+    <property name="logFormat" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%file:%line] [%thread] : %msg%n"/>
     
     <!-- ConsoleAppender 控制台输出日志 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>${log.pattern.console}</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15.15t)] %cyan(%-40.40logger{50}:%-3line) : %highlight(%m%n)</pattern>
             <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    
+    <!-- 配置HTML -->
+    <appender name="HTML" class="ch.qos.logback.core.FileAppender">
+        <!-- 过滤器，只记录WARN级别的日志 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <file>${logsPath}/error/warn.html</file>
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.classic.html.HTMLLayout">
+                <pattern>%p%d%msg%M%F{32}%L</pattern>
+            </layout>
+        </encoder>
+    </appender>
+    
+    <!-- 配置异步输出日志 -->
+    <appender name="ASYNC-HTML" class="ch.qos.logback.classic.AsyncAppender">
+        <!--默认情况下，当blockingQueue的容量高于阈值时（80%），会丢弃ERROR以下级别的日志。如果不希望丢弃日志（既每次都全量保存），那可以设置为0-->
+        <discardingThreshold>0</discardingThreshold>
+        <!--默认情况下，队列的深度为256，不过该值首次建议设置大一些，后续根据自己业务的特点去调优。注意：该值会影响性能-->
+        <queueSize>512</queueSize>
+        <!--添加需要异步输出appender，只能添加一个，这里指向原先配置的appender即可-->
+        <appender-ref ref="HTML"/>
+    </appender>
+    
+    <!-- 每天生成一个html格式的日志开始 -->
+    <appender name="FILE-HTML" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名 -->
+            <fileNamePattern>${logsPath}/error/warn.%d.%i.html</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.classic.html.HTMLLayout">
+                <pattern>%p%d%msg%M%F{32}%L</pattern>
+            </layout>
         </encoder>
     </appender>
     
@@ -38,54 +73,32 @@
             <!-- 用于配置不符合过滤条件的操作 -->
             <onMismatch>DENY</onMismatch>
         </filter>
-        <!-- 最常用的滚动策略，它根据时间来制定滚动策略.既负责滚动也负责出发滚动 -->
-        <File>${log.dir}/error/error.log</File>
+        <!-- 最常用滚动策略，它根据时间来制定滚动策略.既负责滚动也负责出发滚动 -->
+        <File>${logsPath}/error/error.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志输出位置 可相对、和绝对路径 -->
-            <fileNamePattern>${log.dir}/error/error.%d.%i.log</fileNamePattern>
+            <fileNamePattern>${logsPath}/error/error.%d.%i.log</fileNamePattern>
             <!-- 可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件假设设置每个月滚动，且<maxHistory>是6， 则只保存最近6个月的文件，删除之前的旧文件。注意，删除旧文件是，那些为了归档而创建的目录也会被删除 -->
-            <maxHistory>30</maxHistory>
+            <maxHistory>${logErrorDay}</maxHistory>
             <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <MaxFileSize>64MB</MaxFileSize>
             </TimeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder>
-            <pattern>${log.pattern}</pattern>
+            <pattern>${logFormat}</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
     
-    
-    <!-- WARN级别日志 appender -->
-    <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 RollingFileAppender -->
-    <appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!-- 过滤器，只记录WARN级别的日志 -->
-        <!-- 果日志级别等于配置级别，过滤器会根据onMath 和 onMismatch接收或拒绝日志。 -->
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <!-- 设置过滤级别 -->
-            <level>WARN</level>
-            <!-- 用于配置符合过滤条件的操作 -->
-            <onMatch>ACCEPT</onMatch>
-            <!-- 用于配置不符合过滤条件的操作 -->
-            <onMismatch>DENY</onMismatch>
-        </filter>
-        <!-- 最常用的滚动策略，它根据时间来制定滚动策略.既负责滚动也负责出发滚动 -->
-        <File>${log.dir}/warn/warn.log</File>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--日志输出位置 可相对、和绝对路径 -->
-            <fileNamePattern>${log.dir}/warn/warn.%d.%i.log</fileNamePattern>
-            <!-- 可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件假设设置每个月滚动，且<maxHistory>是6， 则只保存最近6个月的文件，删除之前的旧文件。注意，删除旧文件是，那些为了归档而创建的目录也会被删除 -->
-            <maxHistory>30</maxHistory>
-            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <MaxFileSize>64MB</MaxFileSize>
-            </TimeBasedFileNamingAndTriggeringPolicy>
-        </rollingPolicy>
-        <encoder>
-            <pattern>${log.pattern}</pattern>
-            <charset>UTF-8</charset>
-        </encoder>
+    <!-- 配置异步输出日志 -->
+    <appender name="ASYNC-ERROR" class="ch.qos.logback.classic.AsyncAppender">
+        <!--默认情况下，当blockingQueue的容量高于阈值时（80%），会丢弃ERROR以下级别的日志。如果不希望丢弃日志（既每次都全量保存），那可以设置为0-->
+        <discardingThreshold>0</discardingThreshold>
+        <!--默认情况下，队列的深度为256，不过该值首次建议设置大一些，后续根据自己业务的特点去调优。注意：该值会影响性能-->
+        <queueSize>512</queueSize>
+        <!--添加需要异步输出appender，只能添加一个，这里指向原先配置的appender即可-->
+        <appender-ref ref="ERROR"/>
     </appender>
-    
     
     <!-- INFO级别日志 appender -->
     <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 RollingFileAppender -->
@@ -100,21 +113,71 @@
             <!-- 用于配置不符合过滤条件的操作 -->
             <onMismatch>DENY</onMismatch>
         </filter>
-        <!-- 最常用的滚动策略，它根据时间来制定滚动策略.既负责滚动也负责出发滚动 -->
-        <File>${log.dir}/info/info.log</File>
+        <!-- 最常用滚动策略，它根据时间来制定滚动策略.既负责滚动也负责出发滚动 -->
+        <File>${logsPath}/info/info.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志输出位置 可相对、和绝对路径 -->
-            <fileNamePattern>${log.dir}/info/info.%d.%i.log</fileNamePattern>
+            <fileNamePattern>${logsPath}/info/info.%d.%i.log</fileNamePattern>
             <!-- 可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件假设设置每个月滚动，且<maxHistory>是6， 则只保存最近6个月的文件，删除之前的旧文件。注意，删除旧文件是，那些为了归档而创建的目录也会被删除 -->
-            <maxHistory>30</maxHistory>
+            <maxHistory>${logInfoDay}</maxHistory>
             <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <MaxFileSize>64MB</MaxFileSize>
             </TimeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder>
-            <pattern>${log.pattern}</pattern>
+            <pattern>${logFormat}</pattern>
             <charset>UTF-8</charset>
         </encoder>
+    </appender>
+    
+    <!-- 配置异步输出日志 -->
+    <appender name="ASYNC-INFO" class="ch.qos.logback.classic.AsyncAppender">
+        <!--默认情况下，当blockingQueue的容量高于阈值时（80%），会丢弃ERROR以下级别的日志。如果不希望丢弃日志（既每次都全量保存），那可以设置为0-->
+        <discardingThreshold>0</discardingThreshold>
+        <!--默认情况下，队列的深度为256，不过该值首次建议设置大一些，后续根据自己业务的特点去调优。注意：该值会影响性能-->
+        <queueSize>512</queueSize>
+        <!--添加需要异步输出appender，只能添加一个，这里指向原先配置的appender即可-->
+        <appender-ref ref="INFO"/>
+    </appender>
+    
+    <!-- WARN级别日志 appender -->
+    <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 RollingFileAppender -->
+    <appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 过滤器，只记录WARN级别的日志 -->
+        <!-- 果日志级别等于配置级别，过滤器会根据onMath 和 onMismatch接收或拒绝日志。 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!-- 设置过滤级别 -->
+            <level>WARN</level>
+            <!-- 用于配置符合过滤条件的操作 -->
+            <onMatch>ACCEPT</onMatch>
+            <!-- 用于配置不符合过滤条件的操作 -->
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <!-- 最常用滚动策略，它根据时间来制定滚动策略.既负责滚动也负责出发滚动 -->
+        <File>${logsPath}/warn/warn.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志输出位置 可相对、和绝对路径 -->
+            <fileNamePattern>${logsPath}/warn/warn.%d.%i.log</fileNamePattern>
+            <!-- 可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件假设设置每个月滚动，且<maxHistory>是6， 则只保存最近6个月的文件，删除之前的旧文件。注意，删除旧文件是，那些为了归档而创建的目录也会被删除 -->
+            <maxHistory>${logWarnDay}</maxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>64MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${logFormat}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    
+    <!-- 配置异步输出日志 -->
+    <appender name="ASYNC-WARN" class="ch.qos.logback.classic.AsyncAppender">
+        <!--默认情况下，当blockingQueue的容量高于阈值时（80%），会丢弃ERROR以下级别的日志。如果不希望丢弃日志（既每次都全量保存），那可以设置为0-->
+        <discardingThreshold>0</discardingThreshold>
+        <!--默认情况下，队列的深度为256，不过该值首次建议设置大一些，后续根据自己业务的特点去调优。注意：该值会影响性能-->
+        <queueSize>512</queueSize>
+        <!--添加需要异步输出appender，只能添加一个，这里指向原先配置的appender即可-->
+        <appender-ref ref="WARN"/>
     </appender>
     
     <!-- DEBUG级别日志 appender -->
@@ -130,54 +193,69 @@
             <!-- 用于配置不符合过滤条件的操作 -->
             <onMismatch>DENY</onMismatch>
         </filter>
-        <!-- 最常用的滚动策略，它根据时间来制定滚动策略.既负责滚动也负责出发滚动 -->
-        <File>${log.dir}/debug/debug.log</File>
+        <!-- 最常用滚动策略，它根据时间来制定滚动策略.既负责滚动也负责出发滚动 -->
+        <File>${logsPath}/debug/debug.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--日志输出位置 可相对、和绝对路径 -->
-            <fileNamePattern>${log.dir}/debug/debug.%d.%i.log</fileNamePattern>
+            <fileNamePattern>${logsPath}/debug/debug.%d.%i.log</fileNamePattern>
             <!-- 可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件假设设置每个月滚动，且<maxHistory>是6， 则只保存最近6个月的文件，删除之前的旧文件。注意，删除旧文件是，那些为了归档而创建的目录也会被删除 -->
-            <maxHistory>30</maxHistory>
+            <maxHistory>${logDebugDay}</maxHistory>
             <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <MaxFileSize>64MB</MaxFileSize>
             </TimeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder>
-            <pattern>${log.pattern}</pattern>
+            <pattern>${logFormat}</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
     
+    <!-- 配置异步输出日志 -->
+    <appender name="ASYNC-DEBUG" class="ch.qos.logback.classic.AsyncAppender">
+        <!--默认情况下，当blockingQueue的容量高于阈值时（80%），会丢弃ERROR以下级别的日志。如果不希望丢弃日志（既每次都全量保存），那可以设置为0-->
+        <discardingThreshold>0</discardingThreshold>
+        <!--默认情况下，队列的深度为256，不过该值首次建议设置大一些，后续根据自己业务的特点去调优。注意：该值会影响性能-->
+        <queueSize>512</queueSize>
+        <!--添加需要异步输出appender，只能添加一个，这里指向原先配置的appender即可-->
+        <appender-ref ref="DEBUG"/>
+    </appender>
+    
     <springProfile name="dev">
-        <root level="${log.level}">
+        <root level="${logLevel}">
             <!-- 控制台输出 -->
             <appender-ref ref="CONSOLE"/>
             <!-- 文件输出 -->
-            <appender-ref ref="ERROR"/>
-            <appender-ref ref="INFO"/>
-            <appender-ref ref="WARN"/>
-            <appender-ref ref="DEBUG"/>
+            <appender-ref ref="ASYNC-ERROR"/>
+            <appender-ref ref="ASYNC-INFO"/>
+            <appender-ref ref="ASYNC-WARN"/>
+            <appender-ref ref="ASYNC-DEBUG"/>
+            <appender-ref ref="ASYNC-HTML"/>
         </root>
     </springProfile>
+    
     <springProfile name="beta">
-        <root level="${log.level}">
+        <root level="${logLevel}">
             <!-- 控制台输出 -->
-            <appender-ref ref="CONSOLE"/>
+            <!-- <appender-ref ref="CONSOLE"/> -->
             <!-- 文件输出 -->
-            <appender-ref ref="ERROR"/>
-            <appender-ref ref="INFO"/>
-            <appender-ref ref="WARN"/>
-            <appender-ref ref="DEBUG"/>
+            <appender-ref ref="ASYNC-ERROR"/>
+            <appender-ref ref="ASYNC-INFO"/>
+            <appender-ref ref="ASYNC-WARN"/>
+            <appender-ref ref="ASYNC-DEBUG"/>
+            <appender-ref ref="ASYNC-HTML"/>
         </root>
     </springProfile>
+    
     <springProfile name="prod">
-        <root level="${log.level}">
+        <root level="${logLevel}">
             <!-- 控制台输出 -->
-            <appender-ref ref="CONSOLE"/>
+            <!-- <appender-ref ref="CONSOLE"/> -->
             <!-- 文件输出 -->
-            <appender-ref ref="ERROR"/>
-            <appender-ref ref="INFO"/>
-            <appender-ref ref="WARN"/>
-            <appender-ref ref="DEBUG"/>
+            <appender-ref ref="ASYNC-ERROR"/>
+            <appender-ref ref="ASYNC-INFO"/>
+            <appender-ref ref="ASYNC-WARN"/>
+            <appender-ref ref="ASYNC-DEBUG"/>
+            <appender-ref ref="ASYNC-HTML"/>
         </root>
     </springProfile>
 
