@@ -1,12 +1,12 @@
-package cn.erectpine.dict.project.service.impl;
+package cn.erectpine.dict.api.project.service.impl;
 
 import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.exception.BusinessException;
 import cn.erectpine.common.core.util.pine.Asserts;
 import cn.erectpine.common.web.util.PageUtil;
-import cn.erectpine.dict.project.entity.DictData;
-import cn.erectpine.dict.project.mapper.DictDataMapper;
-import cn.erectpine.dict.project.service.IDictDataService;
+import cn.erectpine.dict.api.entity.DictData;
+import cn.erectpine.dict.api.project.mapper.DictDataMapper;
+import cn.erectpine.dict.api.project.service.IDictDataService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

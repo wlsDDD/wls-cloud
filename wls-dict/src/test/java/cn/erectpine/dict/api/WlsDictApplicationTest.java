@@ -1,4 +1,4 @@
-package cn.erectpine.dict;
+package cn.erectpine.dict.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

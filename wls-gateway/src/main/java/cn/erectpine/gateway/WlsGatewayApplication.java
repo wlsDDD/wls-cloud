@@ -1,5 +1,8 @@
 package cn.erectpine.gateway;
 
+import cn.erectpine.common.core.constant.GlobalConstants;
+import cn.hutool.core.util.StrUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -13,11 +16,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @EnableDiscoveryClient
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class}, scanBasePackages = "cn.erectpine")
+@Slf4j
 public class WlsGatewayApplication {
     
     public static void main(String[] args) {
         SpringApplication.run(WlsGatewayApplication.class, args);
-        System.err.println("(♥◠‿◠)ﾉﾞ  wls-网关服务-启动完成   ლ(´ڡ`ლ)ﾞ ");
+        log.info(StrUtil.format("微服务: {}-{} 启动完成", GlobalConstants.serviceName, GlobalConstants.active));
     }
     
 }

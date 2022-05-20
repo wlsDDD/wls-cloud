@@ -6,43 +6,46 @@
     <groupId>cn.erectpine</groupId>
     <artifactId>wls-cloud</artifactId>
     <version>1.0.0</version>
+    
     <name>wls-cloud</name>
+    <url>https://wls.plus</url>
     <description>wls起步 -- 微服务聚合工程</description>
     
     <properties>
-        <!--项目版本-->
+        <!-- 项目版本 -->
         <java.version>8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <!--主要框架-->
+        <!-- 主要框架 -->
         <spring.boot.version>2.4.8</spring.boot.version>
         <spring.cloud.version>2020.0.3</spring.cloud.version>
         <spring.cloud.alibaba.version>2021.1</spring.cloud.alibaba.version>
-        <!--数据库连接框架-->
-        <mybatis.plus.version>3.4.1</mybatis.plus.version>
-        <mybatis.plus.generator.version>3.4.1</mybatis.plus.generator.version>
+        <!-- 数据库连接框架 -->
+        <mybatis.plus.version>3.5.1</mybatis.plus.version>
+        <mybatis.plus.generator.version>3.5.1</mybatis.plus.generator.version>
         <druid.version>1.2.4</druid.version>
         <redisson.version>3.16.2</redisson.version>
         <elasticsearch.version>7.9.3</elasticsearch.version>
         <shardingsphere.version>5.0.0</shardingsphere.version>
-        <!--工具类-->
+        <!-- 工具类 -->
         <hutool.version>5.5.7</hutool.version>
         <fastjson.version>1.2.74</fastjson.version>
         <freemarker.version>2.3.30</freemarker.version>
+        <velocity.version>1.7</velocity.version>
         <pagehelper.version>1.4.2</pagehelper.version>
         <knife4j.version>2.0.8</knife4j.version>
-        <!--微服务聚合-->
+        <!-- 微服务聚合 -->
         <wls.system.version>1.0.0</wls.system.version>
-        <!--通用模块聚合-->
-        <wls.common.version>1.0.0</wls.common.version>
+        <!-- 通用模块聚合 -->
         <wls.common.core.version>1.0.0</wls.common.core.version>
         <wls.common.gencode.version>1.0.0</wls.common.gencode.version>
         <wls.common.log.version>1.0.0</wls.common.log.version>
         <wls.common.redis.version>1.0.0</wls.common.redis.version>
         <wls.common.web.version>1.0.0</wls.common.web.version>
         <wls.common.swagger.version>1.0.0</wls.common.swagger.version>
-        <!--api模块聚合-->
+        <!-- api模块聚合 -->
         <wls.api.dict.version>1.0.0</wls.api.dict.version>
     </properties>
     
@@ -151,6 +154,12 @@
                 <groupId>org.freemarker</groupId>
                 <artifactId>freemarker</artifactId>
                 <version>${freemarker.version}</version>
+            </dependency>
+            <!-- 代码生成模版 -->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity</artifactId>
+                <version>${velocity.version}</version>
             </dependency>
             <!--新版swagger-->
             <dependency>

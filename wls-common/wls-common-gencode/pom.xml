@@ -23,10 +23,14 @@
             <artifactId>freemarker</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+        </dependency>
+        <dependency>
             <groupId>cn.erectpine</groupId>
             <artifactId>wls-common-core</artifactId>
         </dependency>
-    
+
     </dependencies>
 
 </project>

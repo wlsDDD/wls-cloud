@@ -28,7 +28,7 @@ public class Result<T> implements Serializable {
     /**
      * 请求唯一ID
      */
-    public String requestId;
+    private String requestId;
     
     /**
      * 状态码

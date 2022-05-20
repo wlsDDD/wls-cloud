@@ -12,7 +12,7 @@
     <artifactId>wls-api</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>wls-api-dict</module>
+        <module>wls-dict-api</module>
     </modules>
     
     <dependencies>

@@ -1,8 +1,8 @@
-package cn.erectpine.dict.api;
+package cn.erectpine.dict.api.api;
 
 import cn.erectpine.common.core.constant.ServiceNameConstants;
 import cn.erectpine.common.web.pojo.Result;
-import cn.erectpine.dict.entity.DictData;
+import cn.erectpine.dict.api.entity.DictData;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;

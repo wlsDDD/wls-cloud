@@ -1,5 +1,7 @@
 package cn.erectpine.system;
 
+import cn.erectpine.common.core.constant.GlobalConstants;
+import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +26,7 @@ public class WlsSystemApplication {
     
     public static void main(String[] args) {
         SpringApplication.run(WlsSystemApplication.class, args);
-        log.info("   (♥◠‿◠)ﾉﾞ  wls系统服务-启动完成   ლ(´ڡ`ლ)ﾞ  ");
+        log.info(StrUtil.format("微服务: {}-{} 启动完成", GlobalConstants.serviceName, GlobalConstants.active));
     }
     
 }

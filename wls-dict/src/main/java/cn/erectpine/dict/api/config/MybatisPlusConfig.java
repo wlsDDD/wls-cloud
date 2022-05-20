@@ -1,4 +1,4 @@
-package cn.erectpine.dict.config;
+package cn.erectpine.dict.api.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
