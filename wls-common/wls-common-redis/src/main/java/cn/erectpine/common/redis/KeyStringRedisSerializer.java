@@ -1,12 +1,12 @@
 package cn.erectpine.common.redis;
 
-import cn.erectpine.common.core.constant.GlobalConstants;
-import cn.hutool.core.util.StrUtil;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.lang.Nullable;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+
+import static cn.erectpine.common.redis.constant.CachePrefixEnum.CACHE_PREFIX;
 
 /**
  * 自定义Redis key 缓存序列化
@@ -18,10 +18,6 @@ public class KeyStringRedisSerializer implements RedisSerializer<String> {
     
     
     public static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
-    /**
-     * 服务统一前缀缓存
-     */
-    private static final String CACHE_PREFIX = StrUtil.format("{}:{}:{}:", GlobalConstants.PROJECT_NAME, GlobalConstants.serviceName, GlobalConstants.active);
     
     /**
      * 序列化
@@ -30,7 +26,7 @@ public class KeyStringRedisSerializer implements RedisSerializer<String> {
      */
     @Override
     public byte[] serialize(@Nullable String string) {
-        return string == null ? null : (CACHE_PREFIX + string).getBytes(DEFAULT_CHARSET);
+        return string == null ? null : (CACHE_PREFIX.getPrefix() + string).getBytes(DEFAULT_CHARSET);
     }
     
     /**
@@ -40,7 +36,7 @@ public class KeyStringRedisSerializer implements RedisSerializer<String> {
      */
     @Override
     public String deserialize(@Nullable byte[] bytes) {
-        return bytes == null ? null : new String(bytes, DEFAULT_CHARSET).replaceFirst(CACHE_PREFIX, "");
+        return bytes == null ? null : new String(bytes, DEFAULT_CHARSET).replaceFirst(CACHE_PREFIX.getPrefix(), "");
     }
     
 }

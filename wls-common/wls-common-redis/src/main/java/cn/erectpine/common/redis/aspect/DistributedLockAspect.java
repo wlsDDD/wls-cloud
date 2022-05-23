@@ -57,6 +57,31 @@ public class DistributedLockAspect {
     }
     
     /**
+     * 阻塞锁实现
+     *
+     * @param joinPoint 连接点
+     *
+     * @return {@link Object}
+     */
+    private Object lock(ProceedingJoinPoint joinPoint, RLock lock) throws Throwable {
+        try {
+            lock.lock();
+            log.info("[分布式锁 <lock> -> 加锁成功] - {}", lock.getName());
+            return joinPoint.proceed();
+        } catch (Throwable e) {
+            log.error("[分布式锁 <lock> -> 加锁方法执行异常] - {} - {}", lock.getName(), e);
+            throw e;
+        } finally {
+            try {
+                lock.unlock();
+                log.info("[分布式锁 <lock> -> 释放正常] - {}", lock.getName());
+            } catch (Throwable e) {
+                log.error("[分布式锁 <lock> -> 释放异常] - {} - {}", lock.getName(), e);
+            }
+        }
+    }
+    
+    /**
      * tryLock 实现
      *
      * @param joinPoint 连接点
@@ -82,35 +107,6 @@ public class DistributedLockAspect {
         }
         log.info("[分布式锁 <tryLock> -> 未获取到锁 放弃执行代理方法] - {}", lock.getName());
         return null;
-    }
-    
-    /**
-     * 阻塞锁实现
-     *
-     * @param joinPoint 连接点
-     *
-     * @return {@link Object}
-     */
-    private Object lock(ProceedingJoinPoint joinPoint, RLock lock) throws Throwable {
-        try {
-            lock.lock();
-            log.info("[分布式锁 <lock> -> 加锁成功] - {}", lock.getName());
-            return joinPoint.proceed();
-        } catch (Throwable e) {
-            if (null != lock) {
-                log.error("[分布式锁 <lock> -> 加锁方法执行异常] - {} - {}", lock.getName(), e);
-            }
-            throw e;
-        } finally {
-            try {
-                if (null != lock) {
-                    lock.unlock();
-                    log.info("[分布式锁 <lock> -> 释放正常] - {}", lock.getName());
-                }
-            } catch (Throwable e) {
-                log.error("[分布式锁 <lock> -> 释放异常] - {} - {}", lock.getName(), e);
-            }
-        }
     }
     
 }

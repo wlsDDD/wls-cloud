@@ -23,7 +23,7 @@
         <!--***************************************** 项目内部依赖 ****************************************************-->
         <dependency>
             <groupId>cn.erectpine</groupId>
-            <artifactId>wls-api-dict</artifactId>
+            <artifactId>wls-dict-api</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.erectpine</groupId>

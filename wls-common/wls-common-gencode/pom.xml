@@ -17,6 +17,11 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+    
         <!--mybatis-plus-代码生成器依赖freemarker模板-->
         <dependency>
             <groupId>org.freemarker</groupId>
@@ -24,7 +29,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity</artifactId>
+            <artifactId>velocity-engine-core</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.erectpine</groupId>

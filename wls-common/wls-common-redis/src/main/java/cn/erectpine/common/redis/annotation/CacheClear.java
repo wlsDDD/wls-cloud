@@ -1,5 +1,7 @@
 package cn.erectpine.common.redis.annotation;
 
+import cn.erectpine.common.redis.constant.CacheLevelEnum;
+
 import java.lang.annotation.*;
 
 /**
@@ -19,5 +21,10 @@ public @interface CacheClear {
      * {@link Cache}
      */
     Class<?> value() default Cache.class;
+    
+    /**
+     * 缓存级别
+     */
+    CacheLevelEnum cacheLevel() default CacheLevelEnum.GLOBAL;
     
 }

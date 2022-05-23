@@ -2,6 +2,7 @@ package cn.erectpine.common.web.context;
 
 import cn.erectpine.common.core.pojo.ApiLog;
 import cn.erectpine.common.core.thread.PineThreadPoolExecutor;
+import cn.hutool.system.UserInfo;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -40,14 +41,7 @@ public class Context {
      * 如 用户锁
      */
     private String diyDistributedLockKey;
-    
-    /**
-     * 年份
-     */
-    private String yearMonth;
-    /**
-     * 月份
-     */
-    private String month;
+    /** 用户信息 */
+    private UserInfo userInfo;
     
 }

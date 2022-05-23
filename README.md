@@ -21,8 +21,12 @@
   - mybatis-plus 3.4.x
   - alibaba-druid 1.2.x
 
+### 数据库
 
+#### 建库规范
 
+- 统一字符集 `utf8mb4`
+- 统一排序 `utf8mb4_general_ci`
 
 
 

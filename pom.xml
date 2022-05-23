@@ -24,7 +24,7 @@
         <spring.cloud.alibaba.version>2021.1</spring.cloud.alibaba.version>
         <!-- 数据库连接框架 -->
         <mybatis.plus.version>3.5.1</mybatis.plus.version>
-        <mybatis.plus.generator.version>3.5.1</mybatis.plus.generator.version>
+        <mybatis.plus.generator.version>3.5.2</mybatis.plus.generator.version>
         <druid.version>1.2.4</druid.version>
         <redisson.version>3.16.2</redisson.version>
         <elasticsearch.version>7.9.3</elasticsearch.version>
@@ -33,7 +33,7 @@
         <hutool.version>5.5.7</hutool.version>
         <fastjson.version>1.2.74</fastjson.version>
         <freemarker.version>2.3.30</freemarker.version>
-        <velocity.version>1.7</velocity.version>
+        <velocity.version>2.3</velocity.version>
         <pagehelper.version>1.4.2</pagehelper.version>
         <knife4j.version>2.0.8</knife4j.version>
         <!-- 微服务聚合 -->
@@ -46,7 +46,7 @@
         <wls.common.web.version>1.0.0</wls.common.web.version>
         <wls.common.swagger.version>1.0.0</wls.common.swagger.version>
         <!-- api模块聚合 -->
-        <wls.api.dict.version>1.0.0</wls.api.dict.version>
+        <wls.dict.api.version>1.0.0</wls.dict.api.version>
     </properties>
     
     <modules>
@@ -158,7 +158,7 @@
             <!-- 代码生成模版 -->
             <dependency>
                 <groupId>org.apache.velocity</groupId>
-                <artifactId>velocity</artifactId>
+                <artifactId>velocity-engine-core</artifactId>
                 <version>${velocity.version}</version>
             </dependency>
             <!--新版swagger-->
@@ -212,8 +212,8 @@
             <!--API模块-->
             <dependency>
                 <groupId>cn.erectpine</groupId>
-                <artifactId>wls-api-dict</artifactId>
-                <version>${wls.api.dict.version}</version>
+                <artifactId>wls-dict-api</artifactId>
+                <version>${wls.dict.api.version}</version>
             </dependency>
 
         </dependencies>

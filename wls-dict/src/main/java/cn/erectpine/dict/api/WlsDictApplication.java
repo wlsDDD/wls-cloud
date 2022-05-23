@@ -2,6 +2,7 @@ package cn.erectpine.dict.api;
 
 import cn.erectpine.common.core.constant.GlobalConstants;
 import cn.hutool.core.util.StrUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -15,6 +16,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @EnableFeignClients(basePackages = "cn.erectpine")
 @EnableDiscoveryClient
+@Slf4j
 @SpringBootApplication(scanBasePackages = "cn.erectpine")
 public class WlsDictApplication {
     

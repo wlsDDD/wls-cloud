@@ -2,7 +2,7 @@ package cn.erectpine.dict.api.project.controller;
 
 import cn.erectpine.common.web.pojo.BaseController;
 import cn.erectpine.common.web.pojo.Result;
-import cn.erectpine.dict.api.api.DictDataApi;
+import cn.erectpine.dict.api.DictDataApi;
 import cn.erectpine.dict.api.entity.DictData;
 import cn.erectpine.dict.api.project.service.IDictDataService;
 import com.baomidou.mybatisplus.core.metadata.IPage;

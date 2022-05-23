@@ -1,5 +1,7 @@
 package cn.erectpine.common.redis.annotation;
 
+import cn.erectpine.common.redis.constant.CacheLevelEnum;
+
 import java.lang.annotation.*;
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +23,11 @@ public @interface Cache {
      * {@link CacheClear}
      */
     Class<?> value() default Cache.class;
+    
+    /**
+     * 缓存级别
+     */
+    CacheLevelEnum cacheLevel() default CacheLevelEnum.GLOBAL;
     
     /**
      * 缓存时长

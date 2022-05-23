@@ -1,4 +1,4 @@
-package cn.erectpine.dict.api.api;
+package cn.erectpine.dict.api;
 
 import cn.erectpine.common.core.constant.ServiceNameConstants;
 import cn.erectpine.common.web.pojo.Result;

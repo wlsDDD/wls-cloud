@@ -2,14 +2,9 @@ package cn.erectpine.common.redis.aspect;
 
 import cn.erectpine.common.redis.RedisUtil;
 import cn.erectpine.common.redis.annotation.CacheClear;
-import cn.erectpine.common.web.context.HttpContext;
+import cn.erectpine.common.redis.constant.CachePrefixEnum;
 import cn.erectpine.common.web.util.AspectUtil;
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.util.StrUtil;
-import cn.hutool.crypto.digest.DigestUtil;
-import cn.hutool.extra.servlet.ServletUtil;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -17,6 +12,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
+
+import static cn.erectpine.common.redis.constant.CachePrefixEnum.format;
 
 /**
  * 缓存清理切面
@@ -35,8 +32,7 @@ public class CacheClearAspect {
         Object proceed;
         try {
             CacheClear cacheClear = AspectUtil.getAnnotation(joinPoint, CacheClear.class);
-            String headerStr = JSONArray.toJSONString(ServletUtil.getHeaderMap(HttpContext.getContext().getRequest()), SerializerFeature.SortField);
-            Set<String> keys = RedisUtil.scan(StrUtil.format("{}:{}:{}", CacheAspect.CACHE_PREFIX, cacheClear.value(), DigestUtil.md5Hex16(headerStr)));
+            Set<String> keys = RedisUtil.scan(format(CachePrefixEnum.METHOD_CACHE.getPrefix(), cacheClear.cacheLevel().getLevelFunc().get(), cacheClear.value()));
             if (CollUtil.isNotEmpty(keys)) {
                 RedisUtil.redisTemplate.delete(keys);
             }

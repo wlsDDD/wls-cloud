@@ -13,3 +13,6 @@ WORKDIR /home/wls
 COPY ./wls-system-1.0.0.jar /home/wls/wls-system-1.0.0.jar
 # 启动系统服务
 ENTRYPOINT ["java","-jar","wls-system-1.0.0.jar"]
+
+
+
