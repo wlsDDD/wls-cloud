@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Map;
 import java.util.TreeMap;
@@ -35,21 +36,21 @@ public class SignatureFilter implements GlobalFilter, Ordered {
     /**
      * 1.生成 requestId 此唯一id将会传递到每一个服务
      * 2.验证签名 以下参数参与签名 排序方式为字典排序
-     * 2.1.apKey
+     * 2.1.appKey
      * 2.2.appSecret
      * 2.3.timestamp
      * 2.4.version
      * 2.5.url参数...
-     * 2.6.拼接参数 拼接方式为 key=value;key=value;...
-     * 2.7.拼接完后用 {@link URLEncoder} 中的 encode 方法进行编码
-     * 2.8.编码完成后用sha256计算摘要
+     * 3.拼接参数 拼接方式为 key=value;key=value;...
+     * 4.拼接完后用 {@link URLEncoder} 中的 encode 方法进行编码
+     * 5.编码完成后用sha256计算摘要
      *
      * @return {@link Mono}<{@link Void}>
      */
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         // 未开启签名验证则直接进入下一个调用链
-        if (!signature.getEnable()) {
+        if (Boolean.FALSE.equals(signature.getEnable())) {
             return chain.filter(exchange);
         }
         ServerHttpRequest request = exchange.getRequest();
@@ -72,19 +73,21 @@ public class SignatureFilter implements GlobalFilter, Ordered {
         // 拼接参数
         StringBuilder signatureBuilder = new StringBuilder();
         signatureMap.forEach((s, s2) -> signatureBuilder.append(s).append("=").append(s2).append(";"));
-        /// 放弃URL编码
-//        try {
-//            signature = URLEncoder.encode(signature, "UTF-8");
-//        } catch (UnsupportedEncodingException e) {
-//            log.error("字符转码失败 URLEncoder 降级使用原编码", e);
-//        }
+        String signatureStr;
+        // 放弃URL编码
+        try {
+            signatureStr = URLEncoder.encode(signatureBuilder.toString(), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            signatureStr = signatureBuilder.toString();
+            log.error("字符转码失败 URLEncoder 降级使用原编码", e);
+        }
         // sha256计算摘要
-        String signature = DigestUtil.sha256Hex(signatureBuilder.toString());
+        signatureStr = DigestUtil.sha256Hex(signatureStr);
         // 验证签名 失败直接返回
-        if (!signature.equals(Pines.getOrException(headerMap, signatureKey))) {
+        if (!signatureStr.equals(Pines.getOrException(headerMap, signatureKey))) {
             throw new IllegalRequestException(CodeInfoEnum.SIGNATURE_VERIFY_ERROR);
         }
-        log.debug("[签名验证成功] <{}>", signature);
+        log.debug("[签名验证成功] <{}>", signatureStr);
         // 成功 继续向后调用
         return chain.filter(exchange);
     }
