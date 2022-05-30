@@ -1,8 +1,8 @@
 <template>
-<div>
-  <HelloWorld msg="hhh"/>
-  <h1>{{ msg }}</h1>
-</div>
+  <div>
+    <HelloWorld msg="hhh" />
+    <h1>{{ msg }}</h1>
+  </div>
 </template>
 
 <script>

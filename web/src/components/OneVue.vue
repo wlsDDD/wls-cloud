@@ -1,6 +1,6 @@
 <template>
   <div>
-    <first-vue msg="xls"></first-vue>
+    <first-vue msg="xls" />
   </div>
 </template>
 
