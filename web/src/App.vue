@@ -1,14 +1,22 @@
 <template>
   <div id="app">
-
-
+    <HeaderView/>
+    <ListView></ListView>
+    <FooterView/>
   </div>
 </template>
 
 <script>
+import HeaderView from "@/components/HeaderView";
+import ListView from "@/components/ListView";
+import FooterView from "@/components/FooterView";
+
 export default {
   name: 'App',
   components: {
+    FooterView,
+    ListView,
+    HeaderView,
   }
 }
 </script>

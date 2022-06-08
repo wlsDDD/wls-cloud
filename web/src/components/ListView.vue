@@ -1,17 +1,18 @@
 <template>
-  <ul>
-
-  </ul>
-
+  <div>
+    <ItemView/>
+  </div>
 </template>
 
 <script>
-export default {
-  name: 'ListView',
+import ItemView from "@/components/ItemView";
 
+export default {
+  name: "ListView",
+  components: {ItemView}
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

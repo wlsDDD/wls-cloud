@@ -1,14 +1,13 @@
 <template>
-
+<div></div>
 </template>
 
 <script>
 export default {
-  name: 'ItemView',
-
+  name: "ItemView"
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
