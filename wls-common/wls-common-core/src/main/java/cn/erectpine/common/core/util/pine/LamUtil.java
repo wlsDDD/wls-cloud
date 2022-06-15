@@ -58,13 +58,23 @@ public class LamUtil {
         return CACHE.computeIfAbsent(function, LamUtil::findField);
     }
     
+    /**
+     * 获取字段
+     *
+     * @param function 函数
+     *
+     * @return {@link Field }
+     *
+     * @author wls
+     * @date 2022-06-09 14:03:58
+     * @since 1.0.0
+     */
     private static Field findField(FunctionSerializable<?, ?> function) {
         Field field = null;
         String fieldName = null;
         try {
             // 第1步 获取SerializedLambda
             Method method = function.getClass().getDeclaredMethod("writeReplace");
-            method.setAccessible(Boolean.TRUE);
             SerializedLambda serializedLambda = (SerializedLambda) method.invoke(function);
             // 第2步 implMethodName 即为Field对应的Getter方法名
             String implMethodName = serializedLambda.getImplMethodName();

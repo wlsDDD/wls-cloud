@@ -43,7 +43,7 @@ public class AsyncAspect {
             asyncLog.setStatus(1)
                     .setErrorMsg(e.getMessage())
                     .setSimpleStacktrace(new JSONArray(Pines.getSimpleStackTrace(e, GlobalConstants.stackFilter)))
-                    .setError(new JSONArray(e.getStackTrace()));
+                    .setStacktrace(new JSONArray(e.getStackTrace()));
             log.error("异步任务执行异常", e);
             throw e;
         } finally {
@@ -51,7 +51,6 @@ public class AsyncAspect {
             asyncLog.setEndTime(endTime)
                     .setConsumeTime(LocalDateTimeUtil.between(startTime, endTime, ChronoUnit.MILLIS));
             // TODO 保存日志
-            //
         }
     }
     

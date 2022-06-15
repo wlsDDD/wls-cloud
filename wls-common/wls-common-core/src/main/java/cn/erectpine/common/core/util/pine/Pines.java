@@ -5,9 +5,11 @@ import cn.erectpine.common.core.exception.RequestHeaderException;
 import cn.erectpine.common.core.function.FunctionSerializable;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ReflectUtil;
+import lombok.extern.slf4j.Slf4j;
 
 import java.lang.annotation.Annotation;
 import java.util.*;
+import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -18,7 +20,29 @@ import java.util.stream.Collectors;
  * @author wls
  * @since 2021/09/20 23:41:45
  */
+@Slf4j
 public class Pines {
+    
+    /**
+     * 代码执行异常时返回默认值
+     *
+     * @param function   函数
+     * @param defaultVal 默认值
+     *
+     * @return {@link T }
+     *
+     * @author wls
+     * @date 2022-06-09 16:12:07
+     * @since 1.0.0
+     */
+    public static <T> T exceptionOfDefault(Supplier<T> function, T defaultVal) {
+        try {
+            return function.get();
+        } catch (Exception e) {
+            log.warn("方法执行异常", e);
+            return defaultVal;
+        }
+    }
     
     /**
      * 去除对象中所有String类型的前后空白
@@ -160,7 +184,7 @@ public class Pines {
      * @return {@link Integer}
      */
     public static Integer toInt(String str) {
-        String regEx = "[^0-9]";
+        String regEx = "\\D";
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(str);
         return Integer.valueOf(m.replaceAll("").trim());

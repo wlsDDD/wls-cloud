@@ -44,6 +44,8 @@ public class SignatureFilter implements GlobalFilter, Ordered {
      * 3.拼接参数 拼接方式为 key=value;key=value;...
      * 4.拼接完后用 {@link URLEncoder} 中的 encode 方法进行编码
      * 5.编码完成后用sha256计算摘要
+     * 6.签名字符串生成结束
+     * 7.比对签名串 一致签名通过
      *
      * @return {@link Mono}<{@link Void}>
      */
@@ -62,7 +64,7 @@ public class SignatureFilter implements GlobalFilter, Ordered {
         String timestamp = LamUtil.getFieldName(Signature::getTimestamp);
         String version = LamUtil.getFieldName(Signature::getVersion);
         String randomStr = LamUtil.getFieldName(Signature::getRandomStr);
-        String signatureKey = LamUtil.getFieldName(Signature::getSignature);
+        String signatureKey = LamUtil.getFieldName(Signature::getSign);
         signatureMap.put(appKey, Pines.getOrException(headerMap, appKey));
         signatureMap.put(appSecret, Pines.getOrException(headerMap, appSecret));
         signatureMap.put(timestamp, Pines.getOrException(headerMap, timestamp));

@@ -62,6 +62,6 @@ public class AsyncLog {
     /**
      * 完整堆栈日志 暂时不记录
      */
-    private JSONArray error;
+    private JSONArray stacktrace;
     
 }
