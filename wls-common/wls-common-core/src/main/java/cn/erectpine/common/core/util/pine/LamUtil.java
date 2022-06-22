@@ -24,17 +24,6 @@ public class LamUtil {
     private static final Cache<FunctionSerializable<?, ?>, String> CACHE = new Cache<>(3, TimeUnit.DAYS);
     
     /**
-     * 获取字段名s
-     *
-     * @param func 方法引用型函数
-     *
-     * @return {@link String[]}
-     */
-    public static String[] getFieldNames(FunctionSerializable<?, ?>... func) {
-        return Arrays.stream(func).map(LamUtil::getFieldName).toArray(String[]::new);
-    }
-    
-    /**
      * 获取字段名
      *
      * @param function 函数
@@ -43,6 +32,17 @@ public class LamUtil {
      */
     public static <T, R> String getFieldName(FunctionSerializable<T, R> function) {
         return CACHE.computeIfAbsent(function, LamUtil::findFieldName);
+    }
+    
+    /**
+     * 获取字段名s
+     *
+     * @param func 方法引用型函数
+     *
+     * @return {@link String[]}
+     */
+    public static String[] getFieldNames(FunctionSerializable<?, ?>... func) {
+        return Arrays.stream(func).map(LamUtil::getFieldName).toArray(String[]::new);
     }
     
     /**
@@ -61,6 +61,7 @@ public class LamUtil {
             method.setAccessible(Boolean.TRUE);
             serializedLambda = (SerializedLambda) method.invoke(function);
         } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+            log.error("反射异常 获取字段函数时");
             throw new BaseRunTimeException(e);
         }
         String implMethodName = serializedLambda.getImplMethodName();
