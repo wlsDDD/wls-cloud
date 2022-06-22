@@ -1,4 +1,4 @@
-package cn.erectpine.common.redis.constant;
+package cn.erectpine.common.redis.enums;
 
 /**
  * 看枚举

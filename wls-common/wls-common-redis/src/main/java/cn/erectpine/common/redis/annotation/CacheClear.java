@@ -1,6 +1,6 @@
 package cn.erectpine.common.redis.annotation;
 
-import cn.erectpine.common.redis.constant.CacheLevelEnum;
+import cn.erectpine.common.redis.enums.CacheLevelEnum;
 
 import java.lang.annotation.*;
 

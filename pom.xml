@@ -37,16 +37,7 @@
         <pagehelper.version>1.4.2</pagehelper.version>
         <knife4j.version>2.0.8</knife4j.version>
         <!-- 微服务聚合 -->
-        <wls.system.version>1.0.0</wls.system.version>
-        <!-- 通用模块聚合 -->
-        <wls.common.core.version>1.0.0</wls.common.core.version>
-        <wls.common.gencode.version>1.0.0</wls.common.gencode.version>
-        <wls.common.log.version>1.0.0</wls.common.log.version>
-        <wls.common.redis.version>1.0.0</wls.common.redis.version>
-        <wls.common.web.version>1.0.0</wls.common.web.version>
-        <wls.common.swagger.version>1.0.0</wls.common.swagger.version>
-        <!-- api模块聚合 -->
-        <wls.dict.api.version>1.0.0</wls.dict.api.version>
+        <wls.cloud.version>1.0.0</wls.cloud.version>
     </properties>
     
     <modules>
@@ -56,6 +47,7 @@
         <module>wls-dict</module>
         <module>wls-api</module>
         <module>wls-elasticsearch</module>
+        <module>wls-auth</module>
     </modules>
     
     <packaging>pom</packaging>
@@ -182,38 +174,38 @@
             <dependency>
                 <groupId>cn.erectpine</groupId>
                 <artifactId>wls-common-core</artifactId>
-                <version>${wls.common.core.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.erectpine</groupId>
                 <artifactId>wls-common-gencode</artifactId>
-                <version>${wls.common.gencode.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.erectpine</groupId>
                 <artifactId>wls-common-log</artifactId>
-                <version>${wls.common.log.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.erectpine</groupId>
                 <artifactId>wls-common-redis</artifactId>
-                <version>${wls.common.redis.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.erectpine</groupId>
                 <artifactId>wls-common-web</artifactId>
-                <version>${wls.common.web.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.erectpine</groupId>
                 <artifactId>wls-common-swagger</artifactId>
-                <version>${wls.common.swagger.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <!--API模块-->
             <dependency>
                 <groupId>cn.erectpine</groupId>
                 <artifactId>wls-dict-api</artifactId>
-                <version>${wls.dict.api.version}</version>
+                <version>${project.version}</version>
             </dependency>
 
         </dependencies>

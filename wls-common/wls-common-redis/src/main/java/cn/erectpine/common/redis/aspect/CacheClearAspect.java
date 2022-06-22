@@ -2,8 +2,7 @@ package cn.erectpine.common.redis.aspect;
 
 import cn.erectpine.common.redis.RedisUtil;
 import cn.erectpine.common.redis.annotation.CacheClear;
-import cn.erectpine.common.redis.constant.CachePrefixEnum;
-import cn.erectpine.common.web.util.AspectUtil;
+import cn.erectpine.common.redis.enums.CachePrefixEnum;
 import cn.hutool.core.collection.CollUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
-import static cn.erectpine.common.redis.constant.CachePrefixEnum.format;
+import static cn.erectpine.common.redis.enums.CachePrefixEnum.format;
 
 /**
  * 缓存清理切面
@@ -27,11 +26,10 @@ import static cn.erectpine.common.redis.constant.CachePrefixEnum.format;
 @Component
 public class CacheClearAspect {
     
-    @Around("@annotation(cn.erectpine.common.redis.annotation.CacheClear)")
-    public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
+    @Around("@annotation(cacheClear)")
+    public Object around(final ProceedingJoinPoint joinPoint, CacheClear cacheClear) throws Throwable {
         Object proceed;
         try {
-            CacheClear cacheClear = AspectUtil.getAnnotation(joinPoint, CacheClear.class);
             Set<String> keys = RedisUtil.scan(format(CachePrefixEnum.METHOD_CACHE.getPrefix(), cacheClear.cacheLevel().getLevelFunc().get(), cacheClear.value()));
             if (CollUtil.isNotEmpty(keys)) {
                 RedisUtil.redisTemplate.delete(keys);

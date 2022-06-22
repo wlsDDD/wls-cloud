@@ -7,10 +7,12 @@ import cn.erectpine.dict.api.DictDataApi;
 import cn.erectpine.system.project.entity.User;
 import cn.erectpine.system.project.service.IUserService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,9 +34,14 @@ public class UserController extends BaseController {
     /**
      * 用户信息-分页列表
      */
-    @GetMapping("/page")
-    public Result<IPage<User>> pageUser(@RequestBody @Validated ValidationList<User> user) {
-        return Result.ok();
+    @PostMapping("/page")
+    public Result<IPage<User>> pageUser(@RequestBody User user) {
+        List<User> list = new ArrayList<>();
+        list.add(new User().setUserName("wls1").setNickName("nick1"));
+        list.add(new User().setUserName("wls2").setNickName("nick2"));
+        Page<User> page = new Page<>();
+        page.setRecords(list);
+        return Result.ok(page);
     }
     
     /**

@@ -40,7 +40,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
      */
     @Override
     public IPage<Role> pageRole(Role role) {
-        return page(PageUtil.getPlusPage(role), Wrappers.lambdaQuery(role));
+        return page(PageUtil.getPlusPage(role), Wrappers.lambdaQuery(role).select(Role::getRoleId));
     }
     
     /**

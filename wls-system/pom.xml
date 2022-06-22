@@ -9,7 +9,6 @@
     </parent>
     
     <artifactId>wls-system</artifactId>
-    <version>1.0.0</version>
     <name>wls-system</name>
     <description>系统核心项目</description>
     
@@ -50,6 +49,9 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.6.4</version>
+                <configuration>
+                    <fork>true</fork> <!-- 如果没有该配置，devtools不会生效 -->
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -75,6 +77,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- 文档插件 -->
             <plugin>
                 <groupId>com.github.shalousun</groupId>
                 <artifactId>smart-doc-maven-plugin</artifactId>

@@ -3,6 +3,8 @@ import cn.hutool.core.convert.Convert;
 import cn.hutool.system.SystemUtil;
 import org.junit.jupiter.api.Test;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author wls
  * @since 2021/8/21 21:28
@@ -18,6 +20,14 @@ public class Tests {
         Integer numeric = Pines.toInt(str);
     }
     
+    @Test
+    void test03() {
+        TimeUnit unit = TimeUnit.SECONDS;
+        long timeout = 30;
+        long l = unit.toSeconds(timeout);
+        long l2 = TimeUnit.HOURS.toSeconds(timeout);
+        long l3 = TimeUnit.MINUTES.toSeconds(timeout);
+    }
     
     @Test
     public void test01() {

@@ -35,9 +35,8 @@ public class DistributedLockAspect {
     private static final String LOCK_NAME = GlobalConstants.PROJECT_NAME + ":" + GlobalConstants.serviceName + ":" + GlobalConstants.active + ":" + "distributed-lock:";
     static Supplier<String> diyLookFunc = () -> Optional.ofNullable(HttpContext.getContext()).orElseGet(Context::new).getDiyDistributedLockKey();
     
-    @Around("@annotation(cn.erectpine.common.redis.annotation.DistributedLock)")
-    public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
-        DistributedLock distributedLock = AspectUtil.getAnnotation(joinPoint, DistributedLock.class);
+    @Around("@annotation(distributedLock)")
+    public Object around(final ProceedingJoinPoint joinPoint, DistributedLock distributedLock) throws Throwable {
         String lockKey = LOCK_NAME + joinPoint.getSignature().getName() + ":" + DigestUtil.sha256Hex(AspectUtil.getMethodName(joinPoint));
         String diyDistributedLockKey = diyLookFunc.get();
         // 支持自定义扩展更细粒度的锁

@@ -1,6 +1,6 @@
 package cn.erectpine.common.redis.annotation;
 
-import cn.erectpine.common.redis.constant.LookEnum;
+import cn.erectpine.common.redis.enums.LookEnum;
 
 import java.lang.annotation.*;
 

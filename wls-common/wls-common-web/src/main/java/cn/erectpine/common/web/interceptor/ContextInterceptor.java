@@ -1,7 +1,6 @@
 package cn.erectpine.common.web.interceptor;
 
 import cn.erectpine.common.core.pojo.ApiLog;
-import cn.erectpine.common.core.util.pine.LamUtil;
 import cn.erectpine.common.web.context.Context;
 import cn.erectpine.common.web.context.HttpContext;
 import org.springframework.core.annotation.Order;
@@ -25,7 +24,7 @@ public class ContextInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpContext.setContext(new Context().setRequest(request).setResponse(response)
-                                            .setApiLog(new ApiLog().setRequestId(request.getHeader(LamUtil.getFieldName(ApiLog::getRequestId)))));
+                                            .setApiLog(new ApiLog()));
         return true;
     }
     

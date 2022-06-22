@@ -2,8 +2,7 @@ package cn.erectpine.common.redis.aspect;
 
 import cn.erectpine.common.redis.RedisUtil;
 import cn.erectpine.common.redis.annotation.Cache;
-import cn.erectpine.common.redis.constant.CachePrefixEnum;
-import cn.erectpine.common.web.util.AspectUtil;
+import cn.erectpine.common.redis.enums.CachePrefixEnum;
 import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.crypto.digest.DigestUtil;
@@ -15,7 +14,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
-import static cn.erectpine.common.redis.constant.CachePrefixEnum.format;
+import static cn.erectpine.common.redis.enums.CachePrefixEnum.format;
 
 /**
  * 缓存切面
@@ -29,9 +28,8 @@ import static cn.erectpine.common.redis.constant.CachePrefixEnum.format;
 @Component
 public class CacheAspect {
     
-    @Around("@annotation(cn.erectpine.common.redis.annotation.Cache)")
-    public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
-        Cache cache = AspectUtil.getAnnotation(joinPoint, Cache.class);
+    @Around("@annotation(cache)")
+    public Object around(final ProceedingJoinPoint joinPoint, Cache cache) throws Throwable {
         String cacheKey;
         try {
             JSONConfig config = new JSONConfig().setOrder(true).setDateFormat(DatePattern.NORM_DATETIME_MS_PATTERN).setIgnoreError(true);

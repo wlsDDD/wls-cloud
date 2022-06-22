@@ -6,7 +6,7 @@ import org.springframework.lang.Nullable;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-import static cn.erectpine.common.redis.constant.CachePrefixEnum.CACHE_PREFIX;
+import static cn.erectpine.common.redis.enums.CachePrefixEnum.CACHE_PREFIX;
 
 /**
  * 自定义Redis key 缓存序列化

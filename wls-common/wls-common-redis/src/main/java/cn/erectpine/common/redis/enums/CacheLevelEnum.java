@@ -1,4 +1,4 @@
-package cn.erectpine.common.redis.constant;
+package cn.erectpine.common.redis.enums;
 
 import cn.erectpine.common.web.context.HttpContext;
 import lombok.AllArgsConstructor;
