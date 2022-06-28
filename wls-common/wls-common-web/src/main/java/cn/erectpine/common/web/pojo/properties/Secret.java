@@ -1,4 +1,4 @@
-package cn.erectpine.common.web.pojo;
+package cn.erectpine.common.web.pojo.properties;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

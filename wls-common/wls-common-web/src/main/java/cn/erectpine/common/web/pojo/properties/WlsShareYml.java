@@ -1,4 +1,4 @@
-package cn.erectpine.common.web.properties;
+package cn.erectpine.common.web.pojo.properties;
 
 import cn.erectpine.common.core.enums.ActiveEnum;
 import lombok.Data;

@@ -5,7 +5,7 @@ import cn.erectpine.common.core.enums.ActiveEnum;
 import cn.erectpine.common.core.enums.CodeInfoEnum;
 import cn.erectpine.common.core.thread.PineThreadPoolExecutor;
 import cn.erectpine.common.web.context.Context;
-import cn.erectpine.common.web.properties.WlsShareYml;
+import cn.erectpine.common.web.pojo.properties.WlsShareYml;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

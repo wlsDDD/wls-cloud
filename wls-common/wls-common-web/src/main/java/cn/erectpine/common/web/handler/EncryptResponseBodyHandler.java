@@ -1,6 +1,6 @@
 package cn.erectpine.common.web.handler;
 
-import cn.erectpine.common.web.pojo.Secret;
+import cn.erectpine.common.web.pojo.properties.Secret;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.crypto.SmUtil;
 import cn.hutool.crypto.asymmetric.KeyType;

@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class LamUtil {
     
-    private static final Cache<FunctionSerializable<?, ?>, String> CACHE = new Cache<>(3, TimeUnit.DAYS);
+    private static final Cache<FunctionSerializable<?, ?>, String> CACHE = new Cache<>(5, TimeUnit.DAYS);
     
     /**
      * 获取字段名

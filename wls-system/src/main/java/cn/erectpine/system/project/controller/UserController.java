@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class UserController extends BaseController {
      * 用户信息-分页列表
      */
     @PostMapping("/page")
-    public Result<IPage<User>> pageUser(@RequestBody User user) {
+    public Result<IPage<User>> pageUser(@RequestBody @Validated List<@Valid User> user) {
         List<User> list = new ArrayList<>();
         list.add(new User().setUserName("wls1").setNickName("nick1"));
         list.add(new User().setUserName("wls2").setNickName("nick2"));
@@ -57,8 +58,12 @@ public class UserController extends BaseController {
      */
     @PostMapping
     public Result<?> insertUser(@RequestBody @Validated ValidationList<User> user) {
-        userService.insertUser(user.get(0));
-        return Result.ok();
+        List<User> list = new ArrayList<>();
+        list.add(new User().setUserName("wls1").setNickName("nick1"));
+        list.add(new User().setUserName("wls2").setNickName("nick2"));
+        Page<User> page = new Page<>();
+        page.setRecords(list);
+        return Result.ok(page);
     }
     
     /**
