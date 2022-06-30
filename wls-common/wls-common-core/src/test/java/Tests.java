@@ -1,6 +1,6 @@
-import cn.erectpine.common.core.util.pine.Pines;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.system.SystemUtil;
+import cn.wlsxl.common.core.util.Pines;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;

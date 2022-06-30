@@ -1,6 +1,6 @@
-import cn.erectpine.common.core.function.FunctionSerializable;
-import cn.erectpine.common.core.util.pine.LamUtil;
-import cn.erectpine.system.project.entity.User;
+import cn.wlsxl.common.core.function.FunctionSerializable;
+import cn.wlsxl.common.core.util.LamUtil;
+import cn.wlsxl.system.project.entity.User;
 import com.baomidou.mybatisplus.core.toolkit.LambdaUtils;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import org.apache.ibatis.reflection.property.PropertyNamer;
@@ -62,7 +62,7 @@ class test01 {
                                                          .enableSwagger()
                                                          .outputDir(System.getProperty("user.dir"))
                          )
-                         .packageConfig(builder -> builder.parent("cn.erectpine.common.gencode")
+                         .packageConfig(builder -> builder.parent("cn.wlsxl.common.gencode")
                                                           .moduleName("demo")
                          )
                          .strategyConfig(builder -> builder.addInclude("dict_data")
