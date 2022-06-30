@@ -31,17 +31,21 @@ public class UserController extends BaseController {
     @Autowired private IUserService userService;
     @Autowired private DictDataApi dictDataApi;
     
+    static Page<User> page = new Page<>();
+    
+    static {
+        List<User> list = new ArrayList<>();
+        list.add(new User().setUserName("wls1").setNickName("nick1"));
+        list.add(new User().setUserName("wls2").setNickName("nick2"));
+        page.setRecords(list);
+    }
+    
     
     /**
      * 用户信息-分页列表
      */
     @PostMapping("/page")
     public Result<IPage<User>> pageUser(@RequestBody @Validated List<@Valid User> user) {
-        List<User> list = new ArrayList<>();
-        list.add(new User().setUserName("wls1").setNickName("nick1"));
-        list.add(new User().setUserName("wls2").setNickName("nick2"));
-        Page<User> page = new Page<>();
-        page.setRecords(list);
         return Result.ok(page);
     }
     
@@ -58,11 +62,6 @@ public class UserController extends BaseController {
      */
     @PostMapping
     public Result<?> insertUser(@RequestBody @Validated ValidationList<User> user) {
-        List<User> list = new ArrayList<>();
-        list.add(new User().setUserName("wls1").setNickName("nick1"));
-        list.add(new User().setUserName("wls2").setNickName("nick2"));
-        Page<User> page = new Page<>();
-        page.setRecords(list);
         return Result.ok(page);
     }
     

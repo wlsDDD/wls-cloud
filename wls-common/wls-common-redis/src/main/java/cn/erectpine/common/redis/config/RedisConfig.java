@@ -1,5 +1,7 @@
-package cn.erectpine.common.redis;
+package cn.erectpine.common.redis.config;
 
+import cn.erectpine.common.redis.FastJson2JsonRedisSerializer;
+import cn.erectpine.common.redis.KeyStringRedisSerializer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

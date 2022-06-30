@@ -2,11 +2,11 @@ package cn.erectpine.common.redis;
 
 import cn.erectpine.common.core.function.FunctionSerializable;
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.extra.spring.SpringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.data.redis.core.*;
-import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,25 +18,30 @@ import java.util.Set;
  * @since 2021/9/17 9:27
  */
 @Slf4j
-@Component
 public class RedisUtil {
     
     /**
      * redis客户端
      * 启动时自动初始化
      */
-    public static RedisTemplate<String, Object> redisTemplate;
+    public static final RedisTemplate<String, Object> redisTemplate;
     /**
      * 自带序列化的客户端
      * 启动时自动初始化
      */
-    public static StringRedisTemplate stringRedisTemplate;
+    public static final StringRedisTemplate stringRedisTemplate;
     
     /**
      * redisson客户端
      * 启动时自动初始化
      */
-    public static RedissonClient redissonClient;
+    public static final RedissonClient redissonClient;
+    
+    static {
+        redisTemplate = SpringUtil.getBean(RedisTemplate.class);
+        stringRedisTemplate = SpringUtil.getBean(StringRedisTemplate.class);
+        redissonClient = SpringUtil.getBean(RedissonClient.class);
+    }
     
     /**
      * 分布式锁
