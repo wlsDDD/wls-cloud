@@ -30,12 +30,16 @@ server:
 
 # Spring配置
 spring:
+  profiles:
+    active: dev
+  application:
+    name: wls-gencode
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://159.75.93.83:3306/dev_bluetax_persontax?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&allowMultiQueries=true
-    username: dev_bluetax
-    password: dC2tM0eA7qD0bD0p
+    url: jdbc:mysql://159.75.93.83:3306/wls-gencode?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&allowMultiQueries=true
+    username: root
+    password: wls-mysql-tencent
     druid:
       # 初始连接数
       initialSize: 5
