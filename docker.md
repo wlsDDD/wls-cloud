@@ -1,7 +1,7 @@
 ### 创建docker镜像
 
 ```shell
-docker build -f /var/lib/jenkins/workspace/wls-cloud-system/wls-system/Dockerfile -t wls-system:test
+docker build -f /var/lib/jenkins/workspace/wls-cloud-system/wls-system/Dockerfile -t wls-system:test .
 ```
 
 ### 创建容器
