@@ -12,7 +12,7 @@ VOLUME /data/wls-cloud/docker
 COPY /var/lib/jenkins/workspace/wls-cloud-system/wls-system/target/wls-system.jar /data/wls-cloud/docker/wls-system.jar
 
 # 启动系统服务
-ENTRYPOINT ["java","-jar","wls-system.jar","--"]
+ENTRYPOINT ["java","-jar","wls-system.jar"]
 
 
 
