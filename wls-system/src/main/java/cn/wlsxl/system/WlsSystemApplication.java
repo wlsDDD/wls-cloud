@@ -26,7 +26,7 @@ public class WlsSystemApplication {
     
     public static void main(String[] args) {
         SpringApplication.run(WlsSystemApplication.class, args);
-        log.info(StrUtil.format("{}微服务: {}-{} 启动完成", "\n\t", GlobalConstants.serviceName, GlobalConstants.active));
+        log.info(StrUtil.format("\n\t---{}微服务: {}-{} 启动完成\n\t---", "\n\t", GlobalConstants.serviceName, GlobalConstants.active));
     }
     
 }
