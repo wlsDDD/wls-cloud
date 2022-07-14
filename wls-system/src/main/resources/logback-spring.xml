@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!-- 配置文件名必须为logback-spring.xml，否则env在一开始会找不到，会生成一个env_IS_UNDEFINED.log的空文件 -->
-    <springProperty name="name" scope="context" source="spring.application.name" defaultValue="bluetax-server"/>
+    <springProperty name="name" scope="context" source="spring.application.name" defaultValue="wls-server"/>
     <springProperty name="active" scope="context" source="spring.profiles.active" defaultValue="dev"/>
-    <springProperty name="logsPath" scope="context" source="bluetax.log.logsPath" defaultValue="logs/${name}"/>
-    <springProperty name="logLevel" scope="context" source="bluetax.log.logLevel" defaultValue="info"/>
-    <springProperty name="logErrorDay" scope="context" source="bluetax.log.logErrorDay" defaultValue="400"/>
-    <springProperty name="logInfoDay" scope="context" source="bluetax.log.logInfoDay" defaultValue="400"/>
-    <springProperty name="logWarnDay" scope="context" source="bluetax.log.logWarnDay" defaultValue="60"/>
-    <springProperty name="logDebugDay" scope="context" source="bluetax.log.logDebugDay" defaultValue="30"/>
+    <springProperty name="logsPath" scope="context" source="wls.log.logsPath" defaultValue="logs/${name}"/>
+    <springProperty name="logLevel" scope="context" source="wls.log.logLevel" defaultValue="info"/>
+    <springProperty name="logErrorDay" scope="context" source="wls.log.logErrorDay" defaultValue="400"/>
+    <springProperty name="logInfoDay" scope="context" source="wls.log.logInfoDay" defaultValue="400"/>
+    <springProperty name="logWarnDay" scope="context" source="wls.log.logWarnDay" defaultValue="60"/>
+    <springProperty name="logDebugDay" scope="context" source="wls.log.logDebugDay" defaultValue="30"/>
     
     <property name="logFormat" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%file:%line] [%thread] : %msg%n"/>
     
