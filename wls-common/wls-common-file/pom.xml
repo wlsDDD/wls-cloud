@@ -16,6 +16,11 @@
             <groupId>cn.wlsxl</groupId>
             <artifactId>wls-common-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
