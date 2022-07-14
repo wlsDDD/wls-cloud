@@ -1,7 +1,7 @@
 package cn.wlsxl.common.web.config;
 
-import cn.wlsxl.common.core.thread.PineThreadFactory;
-import cn.wlsxl.common.core.thread.PineThreadPoolExecutor;
+import cn.wlsxl.common.web.thread.PineThreadFactory;
+import cn.wlsxl.common.web.thread.PineThreadPoolExecutor;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.context.annotation.Bean;

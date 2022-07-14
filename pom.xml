@@ -28,6 +28,7 @@
         <druid.version>1.2.4</druid.version>
         <redisson.version>3.16.2</redisson.version>
         <elasticsearch.version>7.9.3</elasticsearch.version>
+        <minio.version>7.0.2</minio.version>
         <shardingsphere.version>5.0.0</shardingsphere.version>
         <!-- 工具类 -->
         <hutool.version>5.5.7</hutool.version>
@@ -80,57 +81,64 @@
                 <scope>import</scope>
             </dependency>
     
-            <!--主要框架-->
-            <!--阿里数据库连接池 -->
+            <!-- 主要框架 -->
+            <!-- 阿里数据库连接池 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
-            <!--mybatis-plus-->
+            <!-- mybatis-plus -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis.plus.version}</version>
             </dependency>
-            <!--redisson-->
+            <!-- redisson -->
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson.version}</version>
             </dependency>
-            <!--elasticsearch-->
+            <!-- elasticsearch -->
             <dependency>
                 <groupId>org.elasticsearch</groupId>
                 <artifactId>elasticsearch</artifactId>
                 <version>${elasticsearch.version}</version>
             </dependency>
+            <!-- elasticsearch 客户端 -->
             <dependency>
                 <groupId>org.elasticsearch.client</groupId>
                 <artifactId>elasticsearch-rest-high-level-client</artifactId>
                 <version>${elasticsearch.version}</version>
             </dependency>
+            <!-- 文件服务 -->
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
+            </dependency>
     
-            <!--工具类-->
-            <!--hu tool工具包-->
+            <!-- 工具类 -->
+            <!-- hutool工具包 -->
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
-            <!--阿里fastjson-->
+            <!-- 阿里fastjson -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
-            <!--分页插件-->
+            <!-- 分页插件 -->
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pagehelper.version}</version>
             </dependency>
-            <!--mybatis-plus-代码生成器-->
+            <!-- mybatis-plus-代码生成器 -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
@@ -214,7 +222,7 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!--springboot配置处理-->
+        <!-- springboot配置处理 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>

@@ -1,4 +1,4 @@
-package cn.wlsxl.common.core.thread;
+package cn.wlsxl.common.web.thread;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,4 +1,4 @@
-package cn.wlsxl.common.core.thread;
+package cn.wlsxl.common.web.thread;
 
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;

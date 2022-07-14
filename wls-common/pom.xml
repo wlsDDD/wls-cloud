@@ -19,6 +19,8 @@
         <module>wls-common-redis</module>
         <module>wls-common-gencode</module>
         <module>wls-common-swagger</module>
+        <module>wls-common-mail</module>
+        <module>wls-common-file</module>
     </modules>
 
     <dependencyManagement>

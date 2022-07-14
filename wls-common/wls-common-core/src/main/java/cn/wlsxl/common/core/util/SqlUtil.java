@@ -1,7 +1,6 @@
 package cn.wlsxl.common.core.util;
 
 import cn.hutool.core.util.StrUtil;
-import cn.wlsxl.common.core.constant.SuppressWarningConstants;
 
 import java.util.Arrays;
 
@@ -11,7 +10,6 @@ import java.util.Arrays;
  * @author wls
  * @since 2021/09/20 23:44:45
  */
-@SuppressWarnings(SuppressWarningConstants.UNUSED)
 public class SqlUtil {
     
     /**

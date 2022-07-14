@@ -3,7 +3,7 @@ package cn.wlsxl.common.web.context;
 import cn.hutool.extra.spring.SpringUtil;
 import cn.hutool.system.UserInfo;
 import cn.wlsxl.common.core.pojo.ApiLog;
-import cn.wlsxl.common.core.thread.PineThreadPoolExecutor;
+import cn.wlsxl.common.web.thread.PineThreadPoolExecutor;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
