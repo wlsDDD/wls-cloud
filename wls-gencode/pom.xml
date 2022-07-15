@@ -43,6 +43,15 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
+        <!-- 代码生成器 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+        </dependency>
     
         <!--热启动依赖-->
         <dependency>
@@ -51,6 +60,6 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-    
+
     </dependencies>
 </project>

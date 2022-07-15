@@ -1,30 +1,30 @@
-//package cn.wlsxl.common.gencode;
+// package cn.wlsxl.common.gencode;
 //
-//import cn.wlsxl.common.core.enums.CodeInfoEnum;
-//import cn.wlsxl.common.core.exception.BusinessException;
-//import cn.wlsxl.common.core.util.Asserts;
-//import com.baomidou.mybatisplus.annotation.DbType;
-//import com.baomidou.mybatisplus.annotation.IdType;
-//import com.baomidou.mybatisplus.core.toolkit.StringPool;
-//import com.baomidou.mybatisplus.generator.AutoGenerator;
-//import com.baomidou.mybatisplus.generator.InjectionConfig;
-//import com.baomidou.mybatisplus.generator.config.*;
-//import com.baomidou.mybatisplus.generator.config.po.TableInfo;
-//import com.baomidou.mybatisplus.generator.config.rules.DateType;
-//import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-//import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+// import cn.wlsxl.common.core.enums.CodeInfoEnum;
+// import cn.wlsxl.common.core.exception.BusinessException;
+// import cn.wlsxl.common.core.util.Asserts;
+// import com.baomidou.mybatisplus.annotation.DbType;
+// import com.baomidou.mybatisplus.annotation.IdType;
+// import com.baomidou.mybatisplus.core.toolkit.StringPool;
+// import com.baomidou.mybatisplus.generator.AutoGenerator;
+// import com.baomidou.mybatisplus.generator.InjectionConfig;
+// import com.baomidou.mybatisplus.generator.config.*;
+// import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+// import com.baomidou.mybatisplus.generator.config.rules.DateType;
+// import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+// import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 //
-//import java.util.ArrayList;
-//import java.util.HashMap;
-//import java.util.List;
-//import java.util.Map;
+// import java.util.ArrayList;
+// import java.util.HashMap;
+// import java.util.List;
+// import java.util.Map;
 //
-///**
+// /**
 // * 自定义代码生成器
 // *
 // * @author wls
 // */
-//public class MysqlGenerator {
+// public class MysqlGenerator {
 //
 //    /**
 //     * 去除表前缀
@@ -131,7 +131,7 @@
 //        // 如果模板引擎是 freemarker
 //        String templatePath = "/templates/mapper.xml.ftl";
 //        // 如果模板引擎是 velocity
-////         String templatePath = "/templates/mapper.xml.vm";
+// //         String templatePath = "/templates/mapper.xml.vm";
 //        // 自定义输出配置
 //        List<FileOutConfig> focList = new ArrayList<>();
 //        // 自定义配置会被优先输出
@@ -178,5 +178,5 @@
 //        mpg.execute();
 //    }
 //
-//}
+// }
 //

@@ -83,10 +83,20 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-        
+    
+        <!--分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+        </dependency>
+    
         <dependency>
             <groupId>cn.wlsxl</groupId>
             <artifactId>wls-common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.wlsxl</groupId>
+            <artifactId>wls-common-mail</artifactId>
         </dependency>
     </dependencies>
 

@@ -12,30 +12,22 @@
     <artifactId>wls-common-gencode</artifactId>
     
     <dependencies>
+        <!-- 核心依赖包 -->
+        <dependency>
+            <groupId>cn.wlsxl</groupId>
+            <artifactId>wls-common-core</artifactId>
+        </dependency>
         <!--mybatis-plus-代码生成器-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
         </dependency>
+        <!-- mybatis-plus -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
-    
-        <!--mybatis-plus-代码生成器依赖freemarker模板-->
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity-engine-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.wlsxl</groupId>
-            <artifactId>wls-common-core</artifactId>
-        </dependency>
-
+        
     </dependencies>
 
 </project>

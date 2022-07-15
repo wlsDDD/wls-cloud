@@ -1,17 +1,17 @@
-//import cn.wlsxl.common.gencode.MysqlGenerator;
-//import com.baomidou.mybatisplus.annotation.DbType;
-//import com.baomidou.mybatisplus.annotation.IdType;
-//import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-//import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-//import com.baomidou.mybatisplus.generator.config.PackageConfig;
-//import com.baomidou.mybatisplus.generator.config.rules.DateType;
-//import org.junit.jupiter.api.Test;
+// import cn.wlsxl.common.gencode.MysqlGenerator;
+// import com.baomidou.mybatisplus.annotation.DbType;
+// import com.baomidou.mybatisplus.annotation.IdType;
+// import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
+// import com.baomidou.mybatisplus.generator.config.GlobalConfig;
+// import com.baomidou.mybatisplus.generator.config.PackageConfig;
+// import com.baomidou.mybatisplus.generator.config.rules.DateType;
+// import org.junit.jupiter.api.Test;
 //
-///**
+// /**
 // * @author wls
 // * @since 2021/9/4 22:55
 // */
-//public class GenCode {
+// public class GenCode {
 //
 //    @Test
 //    public void test01() {
@@ -41,4 +41,4 @@
 //        MysqlGenerator.generatorCode(gc, dsc, pc, "t_compute_tax_non_resident_result_compare", "t_compute_tax_classify_result_compare");
 //    }
 //
-//}
+// }
