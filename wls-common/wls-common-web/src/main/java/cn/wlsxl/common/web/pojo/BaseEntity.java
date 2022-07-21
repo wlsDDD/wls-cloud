@@ -1,6 +1,8 @@
 package cn.wlsxl.common.web.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -17,7 +19,20 @@ import java.time.LocalDateTime;
  */
 @Data
 public abstract class BaseEntity implements Serializable {
+    
     private static final long serialVersionUID = 1L;
+    
+    /**
+     * 主键ID 自增策略
+     */
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
+    
+    /**
+     * 租户ID
+     */
+    @JsonIgnore
+    private String tenantId;
     
     /**
      * 创建时间
@@ -34,25 +49,10 @@ public abstract class BaseEntity implements Serializable {
     private LocalDateTime updateTime;
     
     /**
-     * 创建人
-     */
-    @JsonIgnore
-    private String createBy;
-    
-    /**
-     * 修改人
-     */
-    @JsonIgnore
-    private String updateBy;
-    
-    /**
-     * 逻辑删除字段
-     * 0未删除 1已删除
-     * false 未删除
-     * true 已删除
+     * 逻辑删除字段 0未删除 其他已删除 已删除时存ID值
      */
     @JsonIgnore
     @TableField("is_deleted")
-    private Boolean deleted;
+    private Long deleted;
     
 }

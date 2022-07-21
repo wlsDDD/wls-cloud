@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.groups.Default;
 import java.util.List;
 
 /**
@@ -59,7 +60,7 @@ public interface DictDataApi {
      * @return {@link Result}<{@link ?}>
      */
     @PutMapping
-    Result<?> updateDictData(@RequestBody @Validated DictData dictData);
+    Result<?> updateDictData(@RequestBody @Validated(Default.class) DictData dictData);
     
     /**
      * 删除-字典数据

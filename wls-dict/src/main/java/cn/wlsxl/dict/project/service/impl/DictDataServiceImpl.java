@@ -1,12 +1,12 @@
-package cn.wlsxl.dict.api.project.service.impl;
+package cn.wlsxl.dict.project.service.impl;
 
 import cn.wlsxl.common.core.enums.CodeInfoEnum;
 import cn.wlsxl.common.core.exception.BusinessException;
 import cn.wlsxl.common.core.util.Asserts;
 import cn.wlsxl.common.web.util.PageUtil;
 import cn.wlsxl.dict.api.entity.DictData;
-import cn.wlsxl.dict.api.project.mapper.DictDataMapper;
-import cn.wlsxl.dict.api.project.service.IDictDataService;
+import cn.wlsxl.dict.project.mapper.DictDataMapper;
+import cn.wlsxl.dict.project.service.IDictDataService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

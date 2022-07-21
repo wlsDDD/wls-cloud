@@ -1,7 +1,9 @@
 package cn.wlsxl.common.web.config;
 
+import cn.hutool.extra.spring.SpringUtil;
 import cn.wlsxl.common.web.interceptor.ContextInterceptor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @since 2021/3/16 10:37
  */
 @Configuration
+@Import(SpringUtil.class)
 public class WebConfig implements WebMvcConfigurer {
     
     /**

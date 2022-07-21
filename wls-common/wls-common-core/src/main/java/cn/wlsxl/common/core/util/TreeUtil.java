@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
  * @since 2021/09/29 14:52:15
  */
 public class TreeUtil {
+    
     /**
      * 自定义树相关属性配置
      * 树属性配置参考  {@link TreeNodeConfig}

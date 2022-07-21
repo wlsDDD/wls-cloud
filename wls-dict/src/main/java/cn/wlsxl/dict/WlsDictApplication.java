@@ -1,4 +1,4 @@
-package cn.wlsxl.dict.api;
+package cn.wlsxl.dict;
 
 import cn.hutool.core.util.StrUtil;
 import cn.wlsxl.common.core.constant.GlobalConstants;

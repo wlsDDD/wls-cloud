@@ -1,4 +1,4 @@
-package cn.wlsxl.dict.api;
+package cn.wlsxl.dict;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

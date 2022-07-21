@@ -1,4 +1,4 @@
-package cn.wlsxl.dict.api.project.mapper;
+package cn.wlsxl.dict.project.mapper;
 
 import cn.wlsxl.dict.api.entity.DictData;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

@@ -11,7 +11,7 @@ import cn.wlsxl.common.web.context.Context;
 public class AsyncUtil {
     
     public static void async(Runnable runnable) {
-        Context.threadPool.execute(runnable);
+        // Context.threadPool.execute(runnable);
     }
     
 }

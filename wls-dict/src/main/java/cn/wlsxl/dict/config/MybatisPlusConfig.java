@@ -1,4 +1,4 @@
-package cn.wlsxl.dict.api.config;
+package cn.wlsxl.dict.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;

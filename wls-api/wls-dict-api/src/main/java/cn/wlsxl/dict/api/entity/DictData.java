@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -34,6 +35,7 @@ public class DictData extends BaseEntity {
     /**
      * 字典排序
      */
+    @NotNull
     private Integer dictSort;
     /**
      * 字典标签

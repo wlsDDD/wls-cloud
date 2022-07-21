@@ -23,7 +23,7 @@ public class Context {
     /**
      * 线程池
      */
-    public static final PineThreadPoolExecutor threadPool = SpringUtil.getBean(PineThreadPoolExecutor.class);
+    // public static final PineThreadPoolExecutor threadPool = SpringUtil.getBean(PineThreadPoolExecutor.class);
     /**
      * http 请求对象
      */

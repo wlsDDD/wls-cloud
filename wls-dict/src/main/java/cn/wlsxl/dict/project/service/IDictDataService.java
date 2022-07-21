@@ -1,4 +1,4 @@
-package cn.wlsxl.dict.api.project.service;
+package cn.wlsxl.dict.project.service;
 
 import cn.wlsxl.dict.api.entity.DictData;
 import com.baomidou.mybatisplus.core.metadata.IPage;
