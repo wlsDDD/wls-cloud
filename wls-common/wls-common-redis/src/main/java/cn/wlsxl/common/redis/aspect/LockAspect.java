@@ -4,7 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.wlsxl.common.core.constant.GlobalConstants;
 import cn.wlsxl.common.redis.RedisUtil;
-import cn.wlsxl.common.redis.annotation.DistributedLock;
+import cn.wlsxl.common.redis.annotation.Lock;
 import cn.wlsxl.common.web.context.Context;
 import cn.wlsxl.common.web.context.HttpContext;
 import cn.wlsxl.common.web.util.AspectUtil;
@@ -27,7 +27,7 @@ import java.util.function.Supplier;
 @Slf4j
 @Aspect
 @Component
-public class DistributedLockAspect {
+public class LockAspect {
     
     /**
      * 分布式锁前缀
@@ -36,7 +36,7 @@ public class DistributedLockAspect {
     static Supplier<String> diyLookFunc = () -> Optional.ofNullable(HttpContext.getContext()).orElseGet(Context::new).getDiyDistributedLockKey();
     
     @Around("@annotation(distributedLock)")
-    public Object around(final ProceedingJoinPoint joinPoint, DistributedLock distributedLock) throws Throwable {
+    public Object around(final ProceedingJoinPoint joinPoint, Lock distributedLock) throws Throwable {
         String lockKey = LOCK_NAME + joinPoint.getSignature().getName() + ":" + DigestUtil.sha256Hex(AspectUtil.getMethodName(joinPoint));
         String diyDistributedLockKey = diyLookFunc.get();
         // 支持自定义扩展更细粒度的锁
@@ -45,7 +45,7 @@ public class DistributedLockAspect {
         }
         RLock lock = RedisUtil.redissonClient.getLock(lockKey);
         switch (distributedLock.value()) {
-            case LOCK:
+            case WAIT:
                 return lock(joinPoint, lock);
             case TRY_LOCK:
                 return tryLock(joinPoint, lock);

@@ -14,13 +14,13 @@ import java.lang.annotation.*;
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface DistributedLock {
+public @interface Lock {
     
     /**
      * 锁类型
      *
      * @return {@link LookEnum}
      */
-    LookEnum value() default LookEnum.LOCK;
+    LookEnum value() default LookEnum.WAIT;
     
 }
