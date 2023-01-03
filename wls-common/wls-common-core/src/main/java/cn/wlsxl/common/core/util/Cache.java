@@ -57,10 +57,9 @@ public class Cache<K, V> extends TimedCache<K, V> {
     public V computeIfAbsent(K key, Function<K, V> func) {
         V v;
         if ((v = get(key)) == null) {
-            V newValue;
-            if ((newValue = func.apply(key)) != null) {
-                put(key, newValue);
-                return newValue;
+            if ((v = func.apply(key)) != null) {
+                put(key, v);
+                return v;
             }
         }
         return v;
