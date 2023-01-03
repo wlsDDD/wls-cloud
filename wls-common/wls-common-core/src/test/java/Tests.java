@@ -21,18 +21,18 @@ public class Tests {
     }
     
     @Test
+    public void test01() {
+        System.out.println("SystemUtil.getTotalThreadCount() = " + SystemUtil.getTotalThreadCount());
+        SystemUtil.dumpSystemInfo();
+    }
+    
+    @Test
     void test03() {
         TimeUnit unit = TimeUnit.SECONDS;
         long timeout = 30;
         long l = unit.toSeconds(timeout);
         long l2 = TimeUnit.HOURS.toSeconds(timeout);
         long l3 = TimeUnit.MINUTES.toSeconds(timeout);
-    }
-    
-    @Test
-    public void test01() {
-        System.out.println("SystemUtil.getTotalThreadCount() = " + SystemUtil.getTotalThreadCount());
-        SystemUtil.dumpSystemInfo();
     }
     
     

@@ -21,7 +21,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ElasticsearchRestClientConfig {
     
-    @Autowired ElasticSearchProperties elasticSearchProperties;
+    @Autowired
+    ElasticSearchProperties elasticSearchProperties;
     
     @Bean
     public RestClientBuilder restClientBuilder() {

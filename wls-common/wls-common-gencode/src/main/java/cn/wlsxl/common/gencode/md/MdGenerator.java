@@ -1,23 +1,23 @@
-//package cn.wlsxl.common.gencode.md;
+// package cn.wlsxl.common.gencode.md;
 //
-//import cn.hutool.core.annotation.AnnotationUtil;
-//import cn.hutool.core.bean.BeanDesc;
-//import cn.hutool.core.bean.BeanUtil;
-//import com.baomidou.mybatisplus.core.toolkit.StringPool;
-//import com.baomidou.mybatisplus.generator.config.ConstVal;
-//import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-//import freemarker.template.Configuration;
-//import freemarker.template.Template;
-//import lombok.extern.slf4j.Slf4j;
+// import cn.hutool.core.annotation.AnnotationUtil;
+// import cn.hutool.core.bean.BeanDesc;
+// import cn.hutool.core.bean.BeanUtil;
+// import com.baomidou.mybatisplus.core.toolkit.StringPool;
+// import com.baomidou.mybatisplus.generator.config.ConstVal;
+// import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+// import freemarker.template.Configuration;
+// import freemarker.template.Template;
+// import lombok.extern.slf4j.Slf4j;
 //
-//import java.io.File;
-//import java.io.FileOutputStream;
-//import java.io.OutputStreamWriter;
-//import java.lang.reflect.Field;
-//import java.util.LinkedHashMap;
-//import java.util.LinkedList;
-//import java.util.List;
-//import java.util.Map;
+// import java.io.File;
+// import java.io.FileOutputStream;
+// import java.io.OutputStreamWriter;
+// import java.lang.reflect.Field;
+// import java.util.LinkedHashMap;
+// import java.util.LinkedList;
+// import java.util.List;
+// import java.util.Map;
 //
 ///**
 // * 实体类md文档生成器
@@ -26,7 +26,7 @@
 // * @since 2021/5/17 15:47
 // */
 //@Slf4j
-//public class MdGenerator {
+// public class MdGenerator {
 //
 //    static String entityPath = "ftl/md/entity.md.ftl";
 //    static String paramPath = "ftl/md/param.md.ftl";

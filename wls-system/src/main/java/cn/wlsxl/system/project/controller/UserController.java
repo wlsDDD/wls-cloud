@@ -28,9 +28,6 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController extends BaseController {
     
-    @Autowired private IUserService userService;
-    @Autowired private DictDataApi dictDataApi;
-    
     static Page<User> page = new Page<>();
     
     static {
@@ -40,6 +37,10 @@ public class UserController extends BaseController {
         page.setRecords(list);
     }
     
+    @Autowired
+    private IUserService userService;
+    @Autowired
+    private DictDataApi dictDataApi;
     
     /**
      * 用户信息-分页列表

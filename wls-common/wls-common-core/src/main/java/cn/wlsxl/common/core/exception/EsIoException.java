@@ -11,6 +11,10 @@ import cn.wlsxl.common.core.enums.CodeInfoEnum;
 public class EsIoException extends BaseRunTimeException {
     private static final long serialVersionUID = 1L;
     
+    public EsIoException() {
+        this(CodeInfoEnum.ES_SERVER_IO_ERROR);
+    }
+    
     /**
      * 基本运行时异常
      * 构造方法-带code
@@ -20,10 +24,6 @@ public class EsIoException extends BaseRunTimeException {
      */
     public EsIoException(CodeInfoEnum codeInfoEnum, Object... params) {
         super(codeInfoEnum, params);
-    }
-    
-    public EsIoException() {
-        this(CodeInfoEnum.ES_SERVER_IO_ERROR);
     }
     
     public EsIoException(String message) {

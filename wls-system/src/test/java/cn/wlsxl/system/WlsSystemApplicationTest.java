@@ -14,8 +14,10 @@ import java.util.Set;
 @SpringBootTest
 class WlsSystemApplicationTest {
     
-    @Autowired PineThreadPoolExecutor pineThreadPoolExecutor;
-    @Autowired RedisTemplate<String, String> redisTemplate;
+    @Autowired
+    PineThreadPoolExecutor pineThreadPoolExecutor;
+    @Autowired
+    RedisTemplate<String, String> redisTemplate;
     
     @Test
     public void test02() {

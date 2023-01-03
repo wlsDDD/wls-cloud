@@ -69,9 +69,9 @@ public class EncryptResponseBodyHandler implements ResponseBodyAdvice<Object> {
         if (ObjectUtil.isNull(body)) {
             return body;
         }
-        //获取请求数据
+        // 获取请求数据
         String srcData = new JSONObject(body).toJSONString(0);
-        //加密
+        // 加密
         byte[] decrypt;
         // todo 从租户信息中获取私钥
         String privateKey = "MIGTAgEAMBMGByqGSM49AgEGCCqBHM9VAYItBHkwdwIBAQQg8DLSZ2SmfqEuF+v0Vrv0iRJHYYd3koVWsFnE0iPXlZKgCgYIKoEcz1UBgi2hRANCAAQp/KklBiuPDyG2lx8p8VF0yeLfzMlXjUPQUqH/TqsQsNbhsBjC80rwsUpru8Kh7B6J58rNh2ILWrlG4XpqMBza";

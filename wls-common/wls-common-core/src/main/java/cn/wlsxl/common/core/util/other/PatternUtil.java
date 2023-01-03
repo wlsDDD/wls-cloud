@@ -43,6 +43,10 @@ public final class PatternUtil {
         return null != src && matches(LANDLINE_PTN_N, src);
     }
     
+    private static boolean matches(String pattern, String src) {
+        return Pattern.matches(pattern, src);
+    }
+    
     /**
      * 座机号码校验(带区号）
      *
@@ -230,10 +234,6 @@ public final class PatternUtil {
             return null;
         }
         return str.replaceAll(SPECIAL_PATTERN, "").trim();
-    }
-    
-    private static boolean matches(String pattern, String src) {
-        return Pattern.matches(pattern, src);
     }
     
 }

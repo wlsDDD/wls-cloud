@@ -60,6 +60,26 @@ public class EsUtil {
     }
     
     /**
+     * 判断某个index是否存在
+     *
+     * @param index index
+     *
+     * @return true 存在
+     */
+    public static boolean indexExist(String index) {
+        GetIndexRequest request = new GetIndexRequest(index);
+        request.local(false);
+        request.humanReadable(true);
+        request.includeDefaults(false);
+        try {
+            return esClient.indices().exists(request, RequestOptions.DEFAULT);
+        } catch (IOException e) {
+            log.error("indexExist 方法IO异常", e);
+            throw new EsIoException("indexExist 方法IO异常");
+        }
+    }
+    
+    /**
      * 删除索引
      * 仅当索引存在时删除
      *
@@ -79,26 +99,6 @@ public class EsUtil {
             }
         }
         return false;
-    }
-    
-    /**
-     * 判断某个index是否存在
-     *
-     * @param index index
-     *
-     * @return true 存在
-     */
-    public static boolean indexExist(String index) {
-        GetIndexRequest request = new GetIndexRequest(index);
-        request.local(false);
-        request.humanReadable(true);
-        request.includeDefaults(false);
-        try {
-            return esClient.indices().exists(request, RequestOptions.DEFAULT);
-        } catch (IOException e) {
-            log.error("indexExist 方法IO异常", e);
-            throw new EsIoException("indexExist 方法IO异常");
-        }
     }
     
     /*-------------------------------------------------------文档--------------------------------------------------*/
@@ -204,7 +204,7 @@ public class EsUtil {
     public static void deleteByQuery(String index, QueryBuilder builder) {
         DeleteByQueryRequest request = new DeleteByQueryRequest(index);
         request.setQuery(builder);
-        //设置批量操作数量,最大为10000
+        // 设置批量操作数量,最大为10000
         request.setBatchSize(10000);
         request.setConflicts("proceed");
         try {

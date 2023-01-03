@@ -31,7 +31,8 @@ import java.util.TreeMap;
 @Component
 public class SignatureFilter implements GlobalFilter, Ordered {
     
-    @Autowired Signature signature;
+    @Autowired
+    Signature signature;
     
     /**
      * 1.生成 requestId 此唯一id将会传递到每一个服务

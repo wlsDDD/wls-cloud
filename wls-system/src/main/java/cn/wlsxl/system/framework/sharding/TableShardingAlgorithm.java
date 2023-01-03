@@ -1,11 +1,11 @@
-//package cn.wlsxl.system.framework.sharding;
+// package cn.wlsxl.system.framework.sharding;
 //
-//import lombok.extern.slf4j.Slf4j;
-//import org.apache.shardingsphere.sharding.algorithm.sharding.classbased.ClassBasedShardingAlgorithm;
-//import org.apache.shardingsphere.sharding.api.sharding.standard.PreciseShardingValue;
+// import lombok.extern.slf4j.Slf4j;
+// import org.apache.shardingsphere.sharding.algorithm.sharding.classbased.ClassBasedShardingAlgorithm;
+// import org.apache.shardingsphere.sharding.api.sharding.standard.PreciseShardingValue;
 //
-//import java.util.Collection;
-//import java.util.Date;
+// import java.util.Collection;
+// import java.util.Date;
 //
 ///**
 // * 表切分算法
@@ -14,7 +14,7 @@
 // * @since 2021/11/16 16:07:00
 // */
 //@Slf4j
-//public class TableShardingAlgorithm implements PreciseShardingAlgorithm {
+// public class TableShardingAlgorithm implements PreciseShardingAlgorithm {
 //    @Override
 //    public String doSharding(Collection<String> availableTargetNames, PreciseShardingValue<Date> shardingValue) {
 //

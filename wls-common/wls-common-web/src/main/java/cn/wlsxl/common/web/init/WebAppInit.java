@@ -21,8 +21,10 @@ import javax.annotation.PostConstruct;
 @Component
 public class WebAppInit {
     
-    @Autowired WlsShareYml wlsShareYml;
-    @Autowired PineThreadPoolExecutor pineThreadPoolExecutor;
+    @Autowired
+    WlsShareYml wlsShareYml;
+    @Autowired
+    PineThreadPoolExecutor pineThreadPoolExecutor;
     
     
     /**

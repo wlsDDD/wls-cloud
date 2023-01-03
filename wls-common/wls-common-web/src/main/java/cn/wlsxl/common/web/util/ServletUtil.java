@@ -32,6 +32,22 @@ public class ServletUtil {
     }
     
     /**
+     * 获取request
+     */
+    public static HttpServletRequest getRequest() {
+        return Objects.requireNonNull(getRequestAttributes()).getRequest();
+    }
+    
+    public static ServletRequestAttributes getRequestAttributes() {
+        try {
+            RequestAttributes attributes = RequestContextHolder.getRequestAttributes();
+            return (ServletRequestAttributes) attributes;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    /**
      * 获取String参数
      */
     public static String getParameter(String name, String defaultValue) {
@@ -50,13 +66,6 @@ public class ServletUtil {
      */
     public static Integer getParameterToInt(String name, Integer defaultValue) {
         return Convert.toInt(getRequest().getParameter(name), defaultValue);
-    }
-    
-    /**
-     * 获取request
-     */
-    public static HttpServletRequest getRequest() {
-        return Objects.requireNonNull(getRequestAttributes()).getRequest();
     }
     
     public static Object getAttribute(String key) {
@@ -79,15 +88,6 @@ public class ServletUtil {
      */
     public static HttpSession getSession() {
         return getRequest().getSession();
-    }
-    
-    public static ServletRequestAttributes getRequestAttributes() {
-        try {
-            RequestAttributes attributes = RequestContextHolder.getRequestAttributes();
-            return (ServletRequestAttributes) attributes;
-        } catch (Exception e) {
-            return null;
-        }
     }
     
     public static Map<String, String> getHeaders() {

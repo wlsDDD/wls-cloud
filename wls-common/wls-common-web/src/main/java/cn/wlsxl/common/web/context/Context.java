@@ -1,9 +1,7 @@
 package cn.wlsxl.common.web.context;
 
-import cn.hutool.extra.spring.SpringUtil;
 import cn.hutool.system.UserInfo;
 import cn.wlsxl.common.core.pojo.ApiLog;
-import cn.wlsxl.common.web.thread.PineThreadPoolExecutor;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -42,7 +40,9 @@ public class Context {
      * 如 用户锁
      */
     private String diyDistributedLockKey;
-    /** 用户信息 */
+    /**
+     * 用户信息
+     */
     private UserInfo userInfo;
     
 }

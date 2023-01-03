@@ -15,7 +15,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum CachePrefixEnum {
     
-    /** 统一前缀缓存 */
+    /**
+     * 统一前缀缓存
+     */
     CACHE_PREFIX(format(GlobalConstants.PROJECT_NAME, GlobalConstants.serviceName, GlobalConstants.active)),
     
     /**

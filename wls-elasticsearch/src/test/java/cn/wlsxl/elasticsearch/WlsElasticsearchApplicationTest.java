@@ -15,7 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class WlsElasticsearchApplicationTest {
     
-    @Autowired RestHighLevelClient esClient;
+    @Autowired
+    RestHighLevelClient esClient;
     
     @Test
     public void test01() throws Exception {

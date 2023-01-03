@@ -128,22 +128,6 @@ public class IpUtils {
         return bytes;
     }
     
-    public static String getHostIp() {
-        try {
-            return InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException ignored) {
-        }
-        return "127.0.0.1";
-    }
-    
-    public static String getHostName() {
-        try {
-            return InetAddress.getLocalHost().getHostName();
-        } catch (UnknownHostException ignored) {
-        }
-        return "未知";
-    }
-    
     private static boolean internalIp(byte[] addr) {
         if (StrUtil.isBlankIfStr(addr) || addr.length < 2) {
             return true;
@@ -174,6 +158,22 @@ public class IpUtils {
             default:
                 return false;
         }
+    }
+    
+    public static String getHostIp() {
+        try {
+            return InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException ignored) {
+        }
+        return "127.0.0.1";
+    }
+    
+    public static String getHostName() {
+        try {
+            return InetAddress.getLocalHost().getHostName();
+        } catch (UnknownHostException ignored) {
+        }
+        return "未知";
     }
     
 }

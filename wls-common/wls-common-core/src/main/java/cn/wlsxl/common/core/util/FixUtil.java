@@ -19,17 +19,6 @@ import java.util.*;
 public class FixUtil {
     
     /**
-     * 转换 "yyyy-MM" 为 LocalDate
-     *
-     * @param yearMonth 年月 yyyy-MM
-     *
-     * @return {@link LocalDate}
-     */
-    public static LocalDate convertLocalDate(String yearMonth) {
-        return LocalDateTimeUtil.parseDate(yearMonth, DatePattern.NORM_MONTH_PATTERN);
-    }
-    
-    /**
      * 获取两个时间间的所有月份
      *
      * @param start 起始时间 格式 yyyy-MM
@@ -56,6 +45,17 @@ public class FixUtil {
             startDate = startDate.plusMonths(1);
         }
         return dates;
+    }
+    
+    /**
+     * 转换 "yyyy-MM" 为 LocalDate
+     *
+     * @param yearMonth 年月 yyyy-MM
+     *
+     * @return {@link LocalDate}
+     */
+    public static LocalDate convertLocalDate(String yearMonth) {
+        return LocalDateTimeUtil.parseDate(yearMonth, DatePattern.NORM_MONTH_PATTERN);
     }
     
     /**

@@ -18,13 +18,21 @@ import java.util.function.Supplier;
 @AllArgsConstructor
 public enum CacheLevelEnum {
     
-    /** 用户 */
+    /**
+     * 用户
+     */
     USER(() -> HttpContext.getContext().getUserInfo().getName()),
-    /** 租户 */
+    /**
+     * 租户
+     */
     TENANT(() -> HttpContext.getContext().getUserInfo().getName()),
-    /** 全局 */
+    /**
+     * 全局
+     */
     GLOBAL(() -> HttpContext.getContext().getUserInfo().getName()),
-    /** 可自定义扩展 */
+    /**
+     * 可自定义扩展
+     */
     DIY(() -> "DIY"),
     
     ;

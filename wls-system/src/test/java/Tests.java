@@ -1,20 +1,20 @@
-//import cn.wlsxl.common.core.pojo.ApiLog;
-//import cn.wlsxl.common.core.util.Pines;
-//import cn.wlsxl.common.gencode.MysqlGenerator;
-//import cn.wlsxl.common.redis.annotation.Cache;
-//import cn.hutool.core.util.IdUtil;
-//import cn.hutool.system.SystemUtil;
-//import org.junit.jupiter.api.Test;
+// import cn.wlsxl.common.core.pojo.ApiLog;
+// import cn.wlsxl.common.core.util.Pines;
+// import cn.wlsxl.common.gencode.MysqlGenerator;
+// import cn.wlsxl.common.redis.annotation.Cache;
+// import cn.hutool.core.util.IdUtil;
+// import cn.hutool.system.SystemUtil;
+// import org.junit.jupiter.api.Test;
 //
-//import java.util.concurrent.LinkedBlockingQueue;
-//import java.util.concurrent.ThreadPoolExecutor;
-//import java.util.concurrent.TimeUnit;
+// import java.util.concurrent.LinkedBlockingQueue;
+// import java.util.concurrent.ThreadPoolExecutor;
+// import java.util.concurrent.TimeUnit;
 //
 ///**
 // * @author wls
 // * @since 2021/4/4 14:39
 // */
-//public class Tests {
+// public class Tests {
 //
 //    String str = "varchar(255)";
 //    boolean a;

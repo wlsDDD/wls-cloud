@@ -34,7 +34,8 @@ public class CacheAspect {
         try {
             JSONConfig config = new JSONConfig().setOrder(true).setDateFormat(DatePattern.NORM_DATETIME_MS_PATTERN).setIgnoreError(true);
             String joinPointStr = new JSONArray(joinPoint.getArgs(), config).toJSONString(0);
-            cacheKey = format(CachePrefixEnum.METHOD_CACHE.getPrefix(), cache.cacheLevel().getLevelFunc().get(), cache.value(), DigestUtil.md5Hex16(joinPointStr));
+            cacheKey = format(CachePrefixEnum.METHOD_CACHE.getPrefix(), cache.cacheLevel().getLevelFunc()
+                                                                             .get(), cache.value(), DigestUtil.md5Hex16(joinPointStr));
             Object result = RedisUtil.redisTemplate.opsForValue().get(cacheKey);
             if (ObjectUtil.isNotNull(result)) {
                 return result;

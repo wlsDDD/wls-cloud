@@ -17,21 +17,21 @@ public class HttpContext {
     private static final InheritableThreadLocal<Context> INHERITABLE_THREAD_LOCAL = new InheritableThreadLocal<>();
     
     /**
-     * 获得api日志
-     *
-     * @return {@link ApiLog}
-     */
-    public static ApiLog getApiLog() {
-        return getContext().getApiLog();
-    }
-    
-    /**
      * 获取请求唯一id
      *
      * @return {@link String}
      */
     public static String getRequestId() {
         return getApiLog().getRequestId();
+    }
+    
+    /**
+     * 获得api日志
+     *
+     * @return {@link ApiLog}
+     */
+    public static ApiLog getApiLog() {
+        return getContext().getApiLog();
     }
     
     /**

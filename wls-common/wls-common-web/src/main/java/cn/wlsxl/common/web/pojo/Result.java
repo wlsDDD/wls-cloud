@@ -57,6 +57,70 @@ public class Result<T> implements Serializable {
     }
     
     /**
+     * 成功消息
+     *
+     * @return {@link Result}<{@link T}>
+     */
+    public static <T> Result<T> ok() {
+        return ok(null);
+    }
+    
+    /**
+     * 成功消息
+     *
+     * @param data 数据
+     *
+     * @return {@link Result}<{@link T}>
+     */
+    public static <T> Result<T> ok(T data) {
+        return build(data, CodeInfoEnum.SUCCESS);
+    }
+    
+    /**
+     * 构建返回体
+     *
+     * @param data         数据
+     * @param codeInfoEnum codeMsgEnum
+     *
+     * @return {@link Result}<{@link T}>
+     */
+    public static <T> Result<T> build(T data, CodeInfoEnum codeInfoEnum) {
+        codeInfoEnum = Optional.ofNullable(codeInfoEnum).orElse(CodeInfoEnum.UNKNOWN_ERROR);
+        return new Result<T>().setCode(codeInfoEnum.getCode()).setInfo(codeInfoEnum.getInfo()).setData(data);
+    }
+    
+    /**
+     * 失败
+     *
+     * @return {@link Result}<{@link T}>
+     */
+    public static <T> Result<T> fail() {
+        return fail(null);
+    }
+    
+    /**
+     * 失败
+     *
+     * @param codeInfoEnum codeMsgEnum
+     *
+     * @return {@link Result}<{@link T}>
+     */
+    public static <T> Result<T> fail(CodeInfoEnum codeInfoEnum) {
+        return build(null, codeInfoEnum);
+    }
+    
+    /**
+     * 失败
+     *
+     * @param data 数据
+     *
+     * @return {@link Result}<{@link T}>
+     */
+    public static <T> Result<T> fail(T data) {
+        return build(data, CodeInfoEnum.UNKNOWN_ERROR);
+    }
+    
+    /**
      * 列表->树
      *
      * @return {@link Result}<{@link T}>
@@ -92,70 +156,6 @@ public class Result<T> implements Serializable {
     public Result<T> paramErrors(Map<String, String> paramErrors) {
         extra = Optional.ofNullable(extra).orElseGet(ResultExtra::new).setParamErrors(paramErrors);
         return this;
-    }
-    
-    /**
-     * 成功消息
-     *
-     * @return {@link Result}<{@link T}>
-     */
-    public static <T> Result<T> ok() {
-        return ok(null);
-    }
-    
-    /**
-     * 成功消息
-     *
-     * @param data 数据
-     *
-     * @return {@link Result}<{@link T}>
-     */
-    public static <T> Result<T> ok(T data) {
-        return build(data, CodeInfoEnum.SUCCESS);
-    }
-    
-    /**
-     * 失败
-     *
-     * @return {@link Result}<{@link T}>
-     */
-    public static <T> Result<T> fail() {
-        return fail(null);
-    }
-    
-    /**
-     * 失败
-     *
-     * @param data 数据
-     *
-     * @return {@link Result}<{@link T}>
-     */
-    public static <T> Result<T> fail(T data) {
-        return build(data, CodeInfoEnum.UNKNOWN_ERROR);
-    }
-    
-    /**
-     * 失败
-     *
-     * @param codeInfoEnum codeMsgEnum
-     *
-     * @return {@link Result}<{@link T}>
-     */
-    public static <T> Result<T> fail(CodeInfoEnum codeInfoEnum) {
-        return build(null, codeInfoEnum);
-    }
-    
-    /**
-     * 构建返回体
-     *
-     * @param data         数据
-     * @param codeInfoEnum codeMsgEnum
-     *
-     * @return {@link Result}<{@link T}>
-     */
-    public static <T> Result<T> build(T data, CodeInfoEnum codeInfoEnum) {
-        codeInfoEnum = Optional.ofNullable(codeInfoEnum).orElse(CodeInfoEnum.UNKNOWN_ERROR);
-        return new Result<T>().setCode(codeInfoEnum.getCode()).setInfo(codeInfoEnum.getInfo()).setData(data);
     }
     
 }

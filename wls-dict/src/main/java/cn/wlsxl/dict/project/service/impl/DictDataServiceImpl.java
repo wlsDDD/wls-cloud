@@ -26,7 +26,8 @@ import java.util.List;
 @Service
 public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> implements IDictDataService {
     
-    @Autowired private DictDataMapper dictDataMapper;
+    @Autowired
+    private DictDataMapper dictDataMapper;
     
     /**
      * 字典数据-列表

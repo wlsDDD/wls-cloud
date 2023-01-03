@@ -25,7 +25,8 @@ import java.util.List;
 @Slf4j
 public class RoleController extends BaseController {
     
-    @Autowired private RoleServiceImpl roleService;
+    @Autowired
+    private RoleServiceImpl roleService;
     
     
     /**

@@ -26,7 +26,8 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
     
-    @Autowired private UserMapper userMapper;
+    @Autowired
+    private UserMapper userMapper;
     
     /**
      * 用户信息-列表

@@ -23,8 +23,10 @@ import java.util.Date;
 @Component
 public class MailServer {
     
-    @Autowired public MailYml mailYml;
-    @Autowired private JavaMailSender javaMailSender;
+    @Autowired
+    public MailYml mailYml;
+    @Autowired
+    private JavaMailSender javaMailSender;
     
     /**
      * 发送普通邮件
@@ -68,17 +70,17 @@ public class MailServer {
      * @param address 收件人-可以是多个
      */
     public void sendHtmlMail(String title, String text, String... address) {
-        //获取MimeMessage对象
+        // 获取MimeMessage对象
         MimeMessage message = javaMailSender.createMimeMessage();
         try {
             MimeMessageHelper messageHelper = new MimeMessageHelper(message, true);
-            //邮件发送人
+            // 邮件发送人
             messageHelper.setFrom(mailYml.getEmailFrom());
-            //邮件接收人
+            // 邮件接收人
             messageHelper.setTo(address);
-            //邮件主题
+            // 邮件主题
             message.setSubject(title);
-            //邮件内容，html格式
+            // 邮件内容，html格式
             messageHelper.setText(text, true);
             // 发送
             javaMailSender.send(message);

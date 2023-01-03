@@ -10,8 +10,8 @@ import cn.wlsxl.system.project.service.IRoleService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +27,10 @@ import java.util.List;
  */
 @Service
 @Slf4j
+@AllArgsConstructor
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
     
-    @Autowired private RoleMapper roleMapper;
+    private RoleMapper roleMapper;
     
     /**
      * 角色信息-列表

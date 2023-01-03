@@ -8,10 +8,10 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    
     <artifactId>wls-common</artifactId>
     <packaging>pom</packaging>
-
+    
     <modules>
         <module>wls-common-log</module>
         <module>wls-common-core</module>
@@ -22,15 +22,15 @@
         <module>wls-common-mail</module>
         <module>wls-common-file</module>
     </modules>
-
+    
     <dependencyManagement>
         <dependencies>
 
         </dependencies>
     </dependencyManagement>
-
+    
     <dependencies>
-
+    
     </dependencies>
 
 </project>

@@ -37,15 +37,6 @@ public class PageUtil {
     }
     
     /**
-     * 分页
-     *
-     * @param page 我的页面
-     */
-    public static void pageStart(Page<?> page) {
-        pageStart(page.getPageNum(), page.getPageSize());
-    }
-    
-    /**
      * 封装PageHelper分页
      * 使其支持 pageSize=0 时返回全部数据
      *
@@ -58,6 +49,15 @@ public class PageUtil {
             pageNum = 0;
         }
         PageHelper.startPage(pageNum, pageSize, true, null, true);
+    }
+    
+    /**
+     * 分页
+     *
+     * @param page 我的页面
+     */
+    public static void pageStart(Page<?> page) {
+        pageStart(page.getPageNum(), page.getPageSize());
     }
     
     /**

@@ -1,7 +1,5 @@
 package cn.wlsxl.common.web.util;
 
-import cn.wlsxl.common.web.context.Context;
-
 /**
  * 异步工具类
  *

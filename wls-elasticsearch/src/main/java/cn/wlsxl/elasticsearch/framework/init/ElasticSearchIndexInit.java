@@ -1,21 +1,21 @@
-//package cn.wlsxl.elasticsearch.framework.init;
+// package cn.wlsxl.elasticsearch.framework.init;
 //
-//import cn.wlsxl.common.core.exception.BusinessException;
-//import cn.wlsxl.common.core.pojo.ApiLog;
-//import cn.wlsxl.elasticsearch.framework.pojo.EsData;
-//import cn.wlsxl.elasticsearch.framework.properties.ElasticSearchProperties;
-//import cn.wlsxl.elasticsearch.framework.util.EsUtil;
-//import lombok.extern.slf4j.Slf4j;
-//import org.elasticsearch.action.admin.indices.alias.Alias;
-//import org.elasticsearch.client.RequestOptions;
-//import org.elasticsearch.client.indices.CreateIndexRequest;
-//import org.elasticsearch.client.indices.CreateIndexResponse;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Component;
+// import cn.wlsxl.common.core.exception.BusinessException;
+// import cn.wlsxl.common.core.pojo.ApiLog;
+// import cn.wlsxl.elasticsearch.framework.pojo.EsData;
+// import cn.wlsxl.elasticsearch.framework.properties.ElasticSearchProperties;
+// import cn.wlsxl.elasticsearch.framework.util.EsUtil;
+// import lombok.extern.slf4j.Slf4j;
+// import org.elasticsearch.action.admin.indices.alias.Alias;
+// import org.elasticsearch.client.RequestOptions;
+// import org.elasticsearch.client.indices.CreateIndexRequest;
+// import org.elasticsearch.client.indices.CreateIndexResponse;
+// import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.stereotype.Component;
 //
-//import javax.annotation.PostConstruct;
-//import java.util.LinkedList;
-//import java.util.List;
+// import javax.annotation.PostConstruct;
+// import java.util.LinkedList;
+// import java.util.List;
 //
 ///**
 // * es搜索引擎索引初始化
@@ -25,7 +25,7 @@
 // */
 //@Slf4j
 //@Component
-//public class ElasticSearchIndexInit {
+// public class ElasticSearchIndexInit {
 //
 //    @Autowired ElasticSearchProperties elasticSearchProperties;
 //    @Autowired EsUtil es;
