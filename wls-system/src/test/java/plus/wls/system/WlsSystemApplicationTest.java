@@ -1,4 +1,4 @@
-package cn.wlsxl.system;
+package plus.wls.system;
 
 import plus.wls.common.redis.RedisUtil;
 import plus.wls.common.web.thread.PineThreadPoolExecutor;

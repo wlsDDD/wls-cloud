@@ -1,4 +1,4 @@
-package cn.wlsxl.system.framework.interceptor;
+package plus.wls.system.framework.interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

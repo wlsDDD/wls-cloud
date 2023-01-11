@@ -1,4 +1,4 @@
-package cn.wlsxl.system.project.entity;
+package plus.wls.system.project.entity;
 
 import plus.wls.common.web.pojo.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;

@@ -1,12 +1,12 @@
-package cn.wlsxl.system.project.service.impl;
+package plus.wls.system.project.service.impl;
 
 import plus.wls.common.core.enums.CodeInfoEnum;
 import plus.wls.common.core.exception.BusinessException;
 import plus.wls.common.core.util.Asserts;
 import plus.wls.common.web.util.PageUtil;
-import cn.wlsxl.system.project.entity.Role;
-import cn.wlsxl.system.project.mapper.RoleMapper;
-import cn.wlsxl.system.project.service.IRoleService;
+import plus.wls.system.project.entity.Role;
+import plus.wls.system.project.mapper.RoleMapper;
+import plus.wls.system.project.service.IRoleService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

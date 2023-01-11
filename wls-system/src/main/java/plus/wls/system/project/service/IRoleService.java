@@ -1,6 +1,6 @@
-package cn.wlsxl.system.project.service;
+package plus.wls.system.project.service;
 
-import cn.wlsxl.system.project.entity.Role;
+import plus.wls.system.project.entity.Role;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 

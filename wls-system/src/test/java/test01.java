@@ -1,6 +1,6 @@
 import plus.wls.common.core.function.FunctionSerializable;
 import plus.wls.common.core.util.LamUtil;
-import cn.wlsxl.system.project.entity.User;
+import plus.wls.system.project.entity.User;
 import com.baomidou.mybatisplus.core.toolkit.LambdaUtils;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import org.apache.ibatis.reflection.property.PropertyNamer;

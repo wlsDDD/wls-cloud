@@ -1,4 +1,4 @@
-package cn.wlsxl.system.framework.config;
+package plus.wls.system.framework.config;
 
 import org.springframework.context.annotation.Configuration;
 

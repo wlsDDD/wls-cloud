@@ -1,4 +1,4 @@
-package cn.wlsxl.system;
+package plus.wls.system;
 
 import plus.wls.common.core.constant.GlobalConstants;
 import lombok.extern.slf4j.Slf4j;

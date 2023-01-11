@@ -1,11 +1,11 @@
-package cn.wlsxl.system.project.controller;
+package plus.wls.system.project.controller;
 
 import plus.wls.common.web.pojo.BaseController;
 import plus.wls.common.web.pojo.Result;
 import plus.wls.common.web.pojo.ValidationList;
 import plus.wls.dict.api.DictDataApi;
-import cn.wlsxl.system.project.entity.User;
-import cn.wlsxl.system.project.service.IUserService;
+import plus.wls.system.project.entity.User;
+import plus.wls.system.project.service.IUserService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
-package cn.wlsxl.system.project.controller;
+package plus.wls.system.project.controller;
 
 import plus.wls.common.web.pojo.BaseController;
 import plus.wls.common.web.pojo.Result;
-import cn.wlsxl.system.project.entity.Role;
-import cn.wlsxl.system.project.service.impl.RoleServiceImpl;
+import plus.wls.system.project.entity.Role;
+import plus.wls.system.project.service.impl.RoleServiceImpl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

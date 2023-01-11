@@ -1,6 +1,6 @@
-package cn.wlsxl.system.project.mapper;
+package plus.wls.system.project.mapper;
 
-import cn.wlsxl.system.project.entity.Role;
+import plus.wls.system.project.entity.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
