@@ -1,14 +1,11 @@
 package ${package.Controller};
 
 
-import cn.wlsxl.common.web.pojo.Result;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ${package.Entity}.${entity};
 import ${package.Service}.${table.serviceName};
-import java.util.List;
 #if(${restControllerStyle})
 import org.springframework.web.bind.annotation.RestController;
 #else

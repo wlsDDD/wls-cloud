@@ -5,14 +5,6 @@ import ${package.Mapper}.${table.mapperName};
 import ${package.Service}.${table.serviceName};
 import ${superServiceImplClassPackage};
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import cn.wlsxl.common.core.enums.CodeInfoEnum;
-import cn.wlsxl.common.core.exception.BusinessException;
-import cn.wlsxl.common.core.util.Asserts;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import cn.wlsxl.common.web.util.PageUtil;
-import java.util.List;
 
 /**
  * <p>

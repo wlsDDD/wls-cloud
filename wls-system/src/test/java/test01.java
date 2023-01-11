@@ -1,5 +1,5 @@
-import cn.wlsxl.common.core.function.FunctionSerializable;
-import cn.wlsxl.common.core.util.LamUtil;
+import plus.wls.common.core.function.FunctionSerializable;
+import plus.wls.common.core.util.LamUtil;
 import cn.wlsxl.system.project.entity.User;
 import com.baomidou.mybatisplus.core.toolkit.LambdaUtils;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;

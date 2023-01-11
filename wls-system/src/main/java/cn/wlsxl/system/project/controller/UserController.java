@@ -1,9 +1,9 @@
 package cn.wlsxl.system.project.controller;
 
-import cn.wlsxl.common.web.pojo.BaseController;
-import cn.wlsxl.common.web.pojo.Result;
-import cn.wlsxl.common.web.pojo.ValidationList;
-import cn.wlsxl.dict.api.DictDataApi;
+import plus.wls.common.web.pojo.BaseController;
+import plus.wls.common.web.pojo.Result;
+import plus.wls.common.web.pojo.ValidationList;
+import plus.wls.dict.api.DictDataApi;
 import cn.wlsxl.system.project.entity.User;
 import cn.wlsxl.system.project.service.IUserService;
 import com.baomidou.mybatisplus.core.metadata.IPage;

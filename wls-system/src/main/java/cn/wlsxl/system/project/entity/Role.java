@@ -1,6 +1,6 @@
 package cn.wlsxl.system.project.entity;
 
-import cn.wlsxl.common.web.pojo.BaseEntity;
+import plus.wls.common.web.pojo.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;

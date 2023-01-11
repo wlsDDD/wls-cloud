@@ -1,7 +1,7 @@
 package cn.wlsxl.system.project.controller;
 
-import cn.wlsxl.common.web.pojo.BaseController;
-import cn.wlsxl.common.web.pojo.Result;
+import plus.wls.common.web.pojo.BaseController;
+import plus.wls.common.web.pojo.Result;
 import cn.wlsxl.system.project.entity.Role;
 import cn.wlsxl.system.project.service.impl.RoleServiceImpl;
 import com.baomidou.mybatisplus.core.metadata.IPage;

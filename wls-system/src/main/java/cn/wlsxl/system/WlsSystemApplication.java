@@ -1,7 +1,6 @@
 package cn.wlsxl.system;
 
-import cn.hutool.core.util.StrUtil;
-import cn.wlsxl.common.core.constant.GlobalConstants;
+import plus.wls.common.core.constant.GlobalConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,7 +25,7 @@ public class WlsSystemApplication {
     
     public static void main(String[] args) {
         SpringApplication.run(WlsSystemApplication.class, args);
-        log.info(StrUtil.format("\n\t---{}微服务: {}-{} 启动完成\n\t---", "\n\t", GlobalConstants.serviceName, GlobalConstants.active));
+        log.info("\n\t---{}微服务: {}-{} 启动完成\n\t---", "\n\t", GlobalConstants.serviceName, GlobalConstants.active);
     }
     
 }

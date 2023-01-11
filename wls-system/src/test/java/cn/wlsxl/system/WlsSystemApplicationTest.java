@@ -1,7 +1,7 @@
 package cn.wlsxl.system;
 
-import cn.wlsxl.common.redis.RedisUtil;
-import cn.wlsxl.common.web.thread.PineThreadPoolExecutor;
+import plus.wls.common.redis.RedisUtil;
+import plus.wls.common.web.thread.PineThreadPoolExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
