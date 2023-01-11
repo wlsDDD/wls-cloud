@@ -10,7 +10,7 @@ package plus.wls.common.redis.enums;
  */
 public enum LookEnum {
     /**
-     * 阻塞锁，获取不到锁，阻塞当前线程直到获取到锁
+     * 阻塞锁，获取不到锁，阻塞当前线程获取锁
      */
     WAIT,
     /**

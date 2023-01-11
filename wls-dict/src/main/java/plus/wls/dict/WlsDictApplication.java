@@ -1,12 +1,12 @@
 package plus.wls.dict;
 
-import cn.hutool.core.util.StrUtil;
-import plus.wls.common.core.constant.GlobalConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+
+import static plus.wls.common.core.constant.GlobalConstants.*;
 
 /**
  * wls-数据字典服务
@@ -14,15 +14,15 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author wls
  * @since 2021-03-18 16:29:10
  */
-@EnableFeignClients(basePackages = "cn.wlsxl")
+@EnableFeignClients(basePackages = BASE_PACKAGE_NAME)
 @EnableDiscoveryClient
 @Slf4j
-@SpringBootApplication(scanBasePackages = "cn.wlsxl")
+@SpringBootApplication(scanBasePackages = BASE_PACKAGE_NAME)
 public class WlsDictApplication {
     
     public static void main(String[] args) {
         SpringApplication.run(WlsDictApplication.class, args);
-        log.info(StrUtil.format("微服务: {}-{} 启动完成", GlobalConstants.serviceName, GlobalConstants.active));
+        log.info("微服务: {}-{} 启动完成", serviceName, active);
     }
     
 }

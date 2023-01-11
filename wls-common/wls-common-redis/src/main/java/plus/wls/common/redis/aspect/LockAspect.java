@@ -46,9 +46,9 @@ public class LockAspect {
         }
         RLock lock = RedisUtil.redissonClient.getLock(lockKey);
         switch (distributedLock.value()) {
-            case LookEnum.WAIT:
+            case WAIT:
                 return lock(joinPoint, lock);
-            case LookEnum.TRY_LOCK:
+            case TRY_LOCK:
                 return tryLock(joinPoint, lock);
             default:
                 log.error("[分布式锁 <> -> 匹配锁失败, 放弃执行代理方法]");
