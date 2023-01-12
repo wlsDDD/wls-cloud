@@ -24,7 +24,7 @@ public class GenCode {
                                                    .mapper("template/mapper.java")
                                                    .mapperXml("template/mapper.xml")
                          ).packageConfig(
-                                 builder -> builder.parent("cn.wlsxl.gencode.project").moduleName(moduleName)
+                                 builder -> builder.parent("plus.wls.gencode.project").moduleName(moduleName)
                                                    .pathInfo(Collections.singletonMap(OutputFile.mapperXml, outputDir + "/src/main/resources/mapper/" + moduleName))
                          ).strategyConfig(
                                  builder -> builder.addInclude("gen_database").addTablePrefix("gen_").entityBuilder().enableLombok().enableChainModel()

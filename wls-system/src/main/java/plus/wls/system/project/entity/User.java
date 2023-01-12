@@ -32,7 +32,7 @@ public class User extends BaseEntity {
      * 用户ID
      * bigint
      */
-    @TableId(value = "user_id", type = IdType.AUTO)
+    // @TableId(value = "user_id", type = IdType.AUTO)
     private Long userId;
     /**
      * 部门ID

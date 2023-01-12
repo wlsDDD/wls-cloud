@@ -1,7 +1,7 @@
-// import cn.wlsxl.common.core.pojo.ApiLog;
-// import cn.wlsxl.common.core.util.Pines;
-// import cn.wlsxl.common.gencode.MysqlGenerator;
-// import cn.wlsxl.common.redis.annotation.Cache;
+// import plus.wls.common.core.pojo.ApiLog;
+// import plus.wls.common.core.util.Pines;
+// import plus.wls.common.gencode.MysqlGenerator;
+// import plus.wls.common.redis.annotation.Cache;
 // import cn.hutool.core.util.IdUtil;
 // import cn.hutool.system.SystemUtil;
 // import org.junit.jupiter.api.Test;
@@ -49,7 +49,7 @@
 //
 //    @Test
 //    public void genCode() {
-//        MysqlGenerator.packagePath = "cn.wlsxl.system.project";
+//        MysqlGenerator.packagePath = "plus.wls.system.project";
 //        MysqlGenerator.tablePrefix = "sys_";
 //        MysqlGenerator.generatorCode("sys_config", "sys_user");
 //    }

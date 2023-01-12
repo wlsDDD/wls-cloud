@@ -1,10 +1,10 @@
-// package cn.wlsxl.elasticsearch.framework.init;
+// package plus.wls.elasticsearch.framework.init;
 //
-// import cn.wlsxl.common.core.exception.BusinessException;
-// import cn.wlsxl.common.core.pojo.ApiLog;
-// import cn.wlsxl.elasticsearch.framework.pojo.EsData;
-// import cn.wlsxl.elasticsearch.framework.properties.ElasticSearchProperties;
-// import cn.wlsxl.elasticsearch.framework.util.EsUtil;
+// import plus.wls.common.core.exception.BusinessException;
+// import plus.wls.common.core.pojo.ApiLog;
+// import plus.wls.elasticsearch.framework.pojo.EsData;
+// import plus.wls.elasticsearch.framework.properties.ElasticSearchProperties;
+// import plus.wls.elasticsearch.framework.util.EsUtil;
 // import lombok.extern.slf4j.Slf4j;
 // import org.elasticsearch.action.admin.indices.alias.Alias;
 // import org.elasticsearch.client.RequestOptions;

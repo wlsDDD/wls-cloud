@@ -14,10 +14,10 @@ import static plus.wls.common.core.constant.GlobalConstants.*;
  * @author wls
  * @since 2021-03-18 16:29:10
  */
-@EnableFeignClients(basePackages = BASE_PACKAGE_NAME)
+@EnableFeignClients(basePackages = BASE_PACKAGE)
 @EnableDiscoveryClient
 @Slf4j
-@SpringBootApplication(scanBasePackages = BASE_PACKAGE_NAME)
+@SpringBootApplication(scanBasePackages = BASE_PACKAGE)
 public class WlsDictApplication {
     
     public static void main(String[] args) {

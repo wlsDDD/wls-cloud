@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>cn.wlsxl</groupId>
+    <groupId>plus.wls</groupId>
     <artifactId>wls-cloud</artifactId>
     <version>1.0.0</version>
     
@@ -170,49 +170,54 @@
     
             <!--服务内模块模块-->
             <dependency>
-                <groupId>cn.wlsxl</groupId>
+                <groupId>plus.wls</groupId>
                 <artifactId>wls-common-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.wlsxl</groupId>
+                <groupId>plus.wls</groupId>
                 <artifactId>wls-common-gencode</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.wlsxl</groupId>
+                <groupId>plus.wls</groupId>
                 <artifactId>wls-common-mail</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.wlsxl</groupId>
+                <groupId>plus.wls</groupId>
                 <artifactId>wls-common-log</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.wlsxl</groupId>
+                <groupId>plus.wls</groupId>
                 <artifactId>wls-common-redis</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.wlsxl</groupId>
+                <groupId>plus.wls</groupId>
                 <artifactId>wls-common-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.wlsxl</groupId>
+                <groupId>plus.wls</groupId>
                 <artifactId>wls-common-swagger</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>plus.wls</groupId>
+                <artifactId>wls-common-pulsar</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!--API模块-->
             <dependency>
-                <groupId>cn.wlsxl</groupId>
+                <groupId>plus.wls</groupId>
                 <artifactId>wls-dict-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!--API模块-->
             <dependency>
-                <groupId>cn.wlsxl</groupId>
+                <groupId>plus.wls</groupId>
                 <artifactId>wls-gencode</artifactId>
                 <version>${project.version}</version>
             </dependency>

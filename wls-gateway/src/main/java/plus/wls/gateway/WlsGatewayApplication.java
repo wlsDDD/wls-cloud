@@ -15,7 +15,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @since 2021/01/20 14:28:02
  */
 @EnableDiscoveryClient
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class}, scanBasePackages = "cn.wlsxl")
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class}, scanBasePackages = "plus.wls")
 @Slf4j
 public class WlsGatewayApplication {
     

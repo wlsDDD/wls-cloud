@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @author wls
  * @since 2021-03-18 16:38:46
  */
-@MapperScan("cn.wlsxl.dict.project.mapper")
+@MapperScan("plus.wls.dict.project.mapper")
 @Configuration
 public class MybatisPlusConfig {
     

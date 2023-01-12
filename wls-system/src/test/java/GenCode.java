@@ -1,4 +1,4 @@
-// import cn.wlsxl.common.gencode.MysqlGenerator;
+// import plus.wls.common.gencode.MysqlGenerator;
 // import com.baomidou.mybatisplus.annotation.DbType;
 // import com.baomidou.mybatisplus.annotation.IdType;
 // import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
@@ -15,7 +15,7 @@
 //
 //    @Test
 //    public void test01() {
-//        MysqlGenerator.generatorCode("cn.wlsxl.system.project", "sys_user", "sys_role");
+//        MysqlGenerator.generatorCode("plus.wls.system.project", "sys_user", "sys_role");
 //    }
 //
 //    @Test

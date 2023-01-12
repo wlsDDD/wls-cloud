@@ -1,5 +1,6 @@
 package plus.wls.system.project.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import plus.wls.system.project.entity.Role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author wls
  * @since 2021-11-19
  */
+@Mapper
 public interface RoleMapper extends BaseMapper<Role> {
 
 }

@@ -62,7 +62,7 @@ class test01 {
                                                          .enableSwagger()
                                                          .outputDir(System.getProperty("user.dir"))
                          )
-                         .packageConfig(builder -> builder.parent("cn.wlsxl.common.gencode")
+                         .packageConfig(builder -> builder.parent("plus.wls.common.gencode")
                                                           .moduleName("demo")
                          )
                          .strategyConfig(builder -> builder.addInclude("dict_data")

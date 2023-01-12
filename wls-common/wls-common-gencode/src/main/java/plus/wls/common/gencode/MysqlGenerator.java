@@ -1,8 +1,8 @@
-// package cn.wlsxl.common.gencode;
+// package plus.wls.common.gencode;
 //
-// import cn.wlsxl.common.core.enums.CodeInfoEnum;
-// import cn.wlsxl.common.core.exception.BusinessException;
-// import cn.wlsxl.common.core.util.Asserts;
+// import plus.wls.common.core.enums.CodeInfoEnum;
+// import plus.wls.common.core.exception.BusinessException;
+// import plus.wls.common.core.util.Asserts;
 // import com.baomidou.mybatisplus.annotation.DbType;
 // import com.baomidou.mybatisplus.annotation.IdType;
 // import com.baomidou.mybatisplus.core.toolkit.StringPool;
@@ -42,7 +42,7 @@
 //    /**
 //     * 包路径
 //     */
-//    public static String packagePath = "cn.wlsxl.dict.project";
+//    public static String packagePath = "plus.wls.dict.project";
 //
 //    /**
 //     * 数据源-URL
@@ -120,8 +120,8 @@
 //            @Override
 //            public void initMap() {
 //                Map<String, Object> map = new HashMap<>(16);
-//                map.put("Result", "cn.wlsxl.common.web.pojo.Result");
-//                map.put("PageUtil", "cn.wlsxl.common.web.util.PageUtil");
+//                map.put("Result", "plus.wls.common.web.pojo.Result");
+//                map.put("PageUtil", "plus.wls.common.web.util.PageUtil");
 //                map.put("PineAssert", Asserts.class.getName());
 //                map.put("BusinessException", BusinessException.class.getName());
 //                map.put("CodeMsgEnum", CodeInfoEnum.class.getName());
@@ -166,8 +166,8 @@
 //        // 是否生成实体时，生成字段注解
 //        // strategy.setEntityTableFieldAnnotationEnable(true)
 //        // 公共父类
-//        strategy.setSuperControllerClass("cn.wlsxl.common.web.pojo.BaseController");
-//        strategy.setSuperEntityClass("cn.wlsxl.common.web.pojo.BaseEntity");
+//        strategy.setSuperControllerClass("plus.wls.common.web.pojo.BaseController");
+//        strategy.setSuperEntityClass("plus.wls.common.web.pojo.BaseEntity");
 //        // 写于父类中的公共字段
 //        strategy.setSuperEntityColumns("create_time", "update_time", "create_by", "update_by", "is_deleted");
 //        strategy.setInclude(tableName);

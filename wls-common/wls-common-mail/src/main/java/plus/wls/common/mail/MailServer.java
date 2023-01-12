@@ -1,13 +1,12 @@
 package plus.wls.common.mail;
 
 import cn.hutool.core.util.StrUtil;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -20,13 +19,11 @@ import java.util.Date;
  * @since 2021/3/15 16:27
  */
 @Slf4j
-@Component
+@AllArgsConstructor
 public class MailServer {
     
-    @Autowired
     public MailYml mailYml;
-    @Autowired
-    private JavaMailSender javaMailSender;
+    private JavaMailSender mailSender;
     
     /**
      * 发送普通邮件
@@ -54,7 +51,7 @@ public class MailServer {
             // 设置邮件的正文
             message.setText(text);
             // 发送邮件
-            javaMailSender.send(message);
+            mailSender.send(message);
             // 日志信息
             log.info("普通邮件发送成功。");
         } catch (MailException e) {
@@ -71,7 +68,7 @@ public class MailServer {
      */
     public void sendHtmlMail(String title, String text, String... address) {
         // 获取MimeMessage对象
-        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessage message = mailSender.createMimeMessage();
         try {
             MimeMessageHelper messageHelper = new MimeMessageHelper(message, true);
             // 邮件发送人
@@ -83,7 +80,7 @@ public class MailServer {
             // 邮件内容，html格式
             messageHelper.setText(text, true);
             // 发送
-            javaMailSender.send(message);
+            mailSender.send(message);
             // 日志信息
             log.info("html邮件发送成功。");
         } catch (MessagingException e) {

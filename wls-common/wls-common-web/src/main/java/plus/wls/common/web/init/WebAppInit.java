@@ -1,5 +1,6 @@
 package plus.wls.common.web.init;
 
+import lombok.AllArgsConstructor;
 import plus.wls.common.core.constant.GlobalConstants;
 import plus.wls.common.core.enums.ActiveEnum;
 import plus.wls.common.core.enums.CodeInfoEnum;
@@ -19,12 +20,11 @@ import javax.annotation.PostConstruct;
  */
 @Slf4j
 @Component
+@AllArgsConstructor
 public class WebAppInit {
     
-    @Autowired
-    WlsShareYml wlsShareYml;
-    @Autowired
-    PineThreadPoolExecutor pineThreadPoolExecutor;
+    private WlsShareYml wlsShareYml;
+    private PineThreadPoolExecutor pineThreadPoolExecutor;
     
     
     /**

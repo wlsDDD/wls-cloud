@@ -1,5 +1,5 @@
 ### 分页列表
-POST http://{{host}}/user/page?name=王&size=20&ids=1,2,3&age=&hex=
+POST {{host}}/user/page?name=王&size=20&ids=1,2,3&age=&hex=
 Content-Type: application/json
 appKey: 5646213
 appSecret: 4656231
@@ -21,27 +21,19 @@ signature: e3ec0557e013d55cd1b6753f429f73cec87eb9715058e3c4c2c5e9322cebd3b7
 ]
 
 ### 根据id获取用户信息详情
-GET http://{{host}}/user/1
+GET {{host}}/user/1
 
 
 ### 新增-用户信息
-POST http://{{host}}/user
+POST {{host}}/user
 Content-Type: application/json
 
-[
-  {
-    "email": "1626961806@qq.com"
-  },
-  {
-    "userName": "username"
-  },
-  {
-    "nickName": "xxx"
-  }
-]
+{
+  "userName": "name"
+}
 
 ### 修改-用户信息
-PUT http://{{host}}/user
+PUT {{host}}/user
 Content-Type: application/json
 
 {
@@ -50,7 +42,7 @@ Content-Type: application/json
 }
 
 ### 删除-用户信息
-DELETE http://{{host}}/user/100
+DELETE {{host}}/user/100
 Content-Type: application/json
 
 {

@@ -1,4 +1,4 @@
-// package cn.wlsxl.common.gencode.md;
+// package plus.wls.common.gencode.md;
 //
 // import cn.hutool.core.annotation.AnnotationUtil;
 // import cn.hutool.core.bean.BeanDesc;

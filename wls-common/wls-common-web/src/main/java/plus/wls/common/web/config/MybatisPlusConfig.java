@@ -11,6 +11,7 @@ import net.sf.jsqlparser.expression.LongValue;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import plus.wls.common.core.constant.GlobalConstants;
 
 /**
  * MybatisPlus配置
@@ -18,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
  * @author wls
  * @since 2021-01-11 13:53
  */
-@MapperScan("cn.wlsxl.**.mapper")
+@MapperScan(GlobalConstants.BASE_PACKAGE + ".**.mapper")
 @Configuration
 public class MybatisPlusConfig {
     
@@ -36,7 +37,7 @@ public class MybatisPlusConfig {
             public Expression getTenantId() {
                 return new LongValue(1);
             }
-    
+            
             // 这是 default 方法,默认返回 false 表示所有表都需要拼多租户条件
             @Override
             public boolean ignoreTable(String tableName) {

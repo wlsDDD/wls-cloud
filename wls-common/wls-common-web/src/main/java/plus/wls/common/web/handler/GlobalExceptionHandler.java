@@ -33,8 +33,7 @@ import java.util.stream.Collectors;
 public class GlobalExceptionHandler {
     
     private static final String MSG_PREFIX = "【全局异常拦截】-[{}]";
-    @Autowired
-    private MailServer mailServer;
+    // private MailServer mailServer;
     
     /**
      * 将日志输出到控制台

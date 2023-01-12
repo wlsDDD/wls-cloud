@@ -24,7 +24,7 @@ class Test01 {
                                                            .mapperXml("")
                          )
                          .packageConfig(builder ->
-                                 builder.parent("cn.wlsxl.gencode.project").moduleName(moduleName)
+                                 builder.parent("plus.wls.gencode.project").moduleName(moduleName)
                                         .pathInfo(Collections.singletonMap(OutputFile.mapperXml, outputDir + "/src/main/resources/mapper/" + moduleName)))
                          .strategyConfig(builder ->
                                  builder.addInclude("gen_database").addTablePrefix("gen_"))

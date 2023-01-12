@@ -36,7 +36,7 @@ public class LogAspect {
      * 日志切面
      * 记录日志
      */
-    @Around("execution(* cn.wlsxl.*..controller..*.*(..))")
+    @Around("execution(* plus.wls.*..controller..*.*(..))")
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         return logAround(joinPoint);
     }

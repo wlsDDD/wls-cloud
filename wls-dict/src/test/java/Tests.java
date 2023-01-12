@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class Tests {
     @Test
     public void test01() {
-//        MysqlGenerator.generatorCode("cn.wlsxl.dict.project", "sys_dict_data");
+//        MysqlGenerator.generatorCode("plus.wls.dict.project", "sys_dict_data");
     }
     
 }

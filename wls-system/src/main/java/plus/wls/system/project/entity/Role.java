@@ -27,7 +27,7 @@ public class Role extends BaseEntity {
      * 角色ID
      * bigint
      */
-    @TableId(value = "role_id", type = IdType.AUTO)
+    // @TableId(value = "role_id", type = IdType.AUTO)
     private Long roleId;
     /**
      * 角色名称

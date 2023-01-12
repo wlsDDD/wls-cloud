@@ -1,16 +1,20 @@
 package plus.wls.system.project.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.github.majusko.pulsar.annotation.PulsarConsumer;
+import io.github.majusko.pulsar.producer.PulsarTemplate;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.pulsar.client.api.MessageId;
+import org.apache.pulsar.client.api.PulsarClientException;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import plus.wls.common.web.pojo.BaseController;
 import plus.wls.common.web.pojo.Result;
-import plus.wls.common.web.pojo.ValidationList;
 import plus.wls.dict.api.DictDataApi;
 import plus.wls.system.project.entity.User;
 import plus.wls.system.project.service.IUserService;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -26,6 +30,8 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/user")
+@AllArgsConstructor
+@Slf4j
 public class UserController extends BaseController {
     
     static Page<User> page = new Page<>();
@@ -37,10 +43,9 @@ public class UserController extends BaseController {
         page.setRecords(list);
     }
     
-    @Autowired
     private IUserService userService;
-    @Autowired
     private DictDataApi dictDataApi;
+    private PulsarTemplate<String> pulsar;
     
     /**
      * 用户信息-分页列表
@@ -62,8 +67,15 @@ public class UserController extends BaseController {
      * 新增-用户信息
      */
     @PostMapping
-    public Result<?> insertUser(@RequestBody @Validated ValidationList<User> user) {
-        return Result.ok(page);
+    public Result<User> insertUser(@RequestBody User user) throws PulsarClientException {
+        MessageId messageId = pulsar.send("wls", user.toString());
+        log.info("消息发送成功 消息id {}", messageId);
+        return Result.ok(user);
+    }
+    
+    @PulsarConsumer(topic = "wls", clazz = String.class)
+    public void consume(String message) {
+        log.info("收到一个消息 并消费成功 {}", message);
     }
     
     /**

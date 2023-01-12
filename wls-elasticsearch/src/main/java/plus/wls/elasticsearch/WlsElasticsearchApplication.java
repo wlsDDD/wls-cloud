@@ -15,7 +15,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @EnableDiscoveryClient
 @Slf4j
-@SpringBootApplication(scanBasePackages = "cn.wlsxl")
+@SpringBootApplication(scanBasePackages = "plus.wls")
 public class WlsElasticsearchApplication {
     
     public static void main(String[] args) {

@@ -1,5 +1,6 @@
 package plus.wls.system.project.controller;
 
+import lombok.AllArgsConstructor;
 import plus.wls.common.web.pojo.BaseController;
 import plus.wls.common.web.pojo.Result;
 import plus.wls.system.project.entity.Role;
@@ -23,9 +24,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/role")
 @Slf4j
+@AllArgsConstructor
 public class RoleController extends BaseController {
     
-    @Autowired
     private RoleServiceImpl roleService;
     
     
