@@ -21,7 +21,7 @@ signature: e3ec0557e013d55cd1b6753f429f73cec87eb9715058e3c4c2c5e9322cebd3b7
 ]
 
 ### 根据id获取用户信息详情
-GET {{host}}/user/1
+GET {{host}}/user/1,
 
 
 ### 新增-用户信息
@@ -29,7 +29,8 @@ POST {{host}}/user
 Content-Type: application/json
 
 {
-  "userName": "name"
+  "userName": "name",
+  "nickName": "xxx"
 }
 
 ### 修改-用户信息

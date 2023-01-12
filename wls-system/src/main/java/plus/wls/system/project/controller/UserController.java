@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.pulsar.client.api.MessageId;
 import org.apache.pulsar.client.api.PulsarClientException;
+import org.apache.pulsar.client.api.SubscriptionType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import plus.wls.common.web.pojo.BaseController;
@@ -19,6 +20,7 @@ import plus.wls.system.project.service.IUserService;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -68,14 +70,30 @@ public class UserController extends BaseController {
      */
     @PostMapping
     public Result<User> insertUser(@RequestBody User user) throws PulsarClientException {
-        MessageId messageId = pulsar.send("wls", user.toString());
-        log.info("消息发送成功 消息id {}", messageId);
+        MessageId send = pulsar.createMessage("wls", user.toString()).deliverAfter(10, TimeUnit.SECONDS).send();
+        
+        // MessageId messageId = pulsar.send("wls", user.toString());
+        log.info("消息发送成功 wls 消息id {}", send);
         return Result.ok(user);
     }
     
-    @PulsarConsumer(topic = "wls", clazz = String.class)
+    static int count = 1;
+    
+    @PulsarConsumer(topic = "wls", clazz = String.class, subscriptionType = SubscriptionType.Shared)
     public void consume(String message) {
-        log.info("收到一个消息 并消费成功 {}", message);
+        // throw new RuntimeException("消费失败了");
+        if (count < 10) {
+            log.info("消费失败了 {}", count);
+            count++;
+            throw new RuntimeException("消费失败了");
+        }
+        log.info("收到一个消息 wls 并消费成功 {}", message);
+    }
+    
+    @PulsarConsumer(topic = "bootTopic", clazz = String.class)
+    public void consumeBoot(String message) {
+        // throw new RuntimeException("消费失败了");
+        log.info("收到一个消息 bootTopic 并消费成功 {}", message);
     }
     
     /**
