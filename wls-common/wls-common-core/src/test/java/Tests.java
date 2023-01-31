@@ -1,7 +1,7 @@
 import cn.hutool.core.convert.Convert;
 import cn.hutool.system.SystemUtil;
-import plus.wls.common.core.util.Pines;
 import org.junit.jupiter.api.Test;
+import plus.wls.common.core.util.Pines;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,8 +1,5 @@
 package plus.wls.elasticsearch.framework.util;
 
-import plus.wls.common.core.exception.EsIoException;
-import plus.wls.elasticsearch.framework.pojo.EsData;
-import plus.wls.elasticsearch.framework.pojo.EsId;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
@@ -21,6 +18,9 @@ import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.reindex.DeleteByQueryRequest;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import plus.wls.common.core.exception.EsIoException;
+import plus.wls.elasticsearch.framework.pojo.EsData;
+import plus.wls.elasticsearch.framework.pojo.EsId;
 
 import java.io.IOException;
 import java.util.ArrayList;

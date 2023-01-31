@@ -1,11 +1,11 @@
 package plus.wls.common.core.exception;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import plus.wls.common.core.constant.GlobalConstants;
 import plus.wls.common.core.enums.ActiveEnum;
 import plus.wls.common.core.enums.CodeInfoEnum;
 import plus.wls.common.core.util.Pines;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  * 自定义异常基类

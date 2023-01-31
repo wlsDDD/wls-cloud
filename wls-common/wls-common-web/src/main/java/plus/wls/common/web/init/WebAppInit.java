@@ -1,14 +1,13 @@
 package plus.wls.common.web.init;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import plus.wls.common.core.constant.GlobalConstants;
 import plus.wls.common.core.enums.ActiveEnum;
 import plus.wls.common.core.enums.CodeInfoEnum;
 import plus.wls.common.web.pojo.properties.WlsShareYml;
 import plus.wls.common.web.thread.PineThreadPoolExecutor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 

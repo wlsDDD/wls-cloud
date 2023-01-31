@@ -1,9 +1,9 @@
 package plus.wls.common.core.pojo;
 
 import cn.hutool.json.JSON;
-import plus.wls.common.core.enums.CodeInfoEnum;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import plus.wls.common.core.enums.CodeInfoEnum;
 
 import java.time.LocalDateTime;
 

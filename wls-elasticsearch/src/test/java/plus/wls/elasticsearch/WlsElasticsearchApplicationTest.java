@@ -1,7 +1,5 @@
 package plus.wls.elasticsearch;
 
-import plus.wls.elasticsearch.framework.pojo.User;
-import plus.wls.elasticsearch.framework.util.EsUtil;
 import com.alibaba.fastjson.JSON;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
@@ -11,6 +9,8 @@ import org.elasticsearch.common.xcontent.XContentType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import plus.wls.elasticsearch.framework.pojo.User;
+import plus.wls.elasticsearch.framework.util.EsUtil;
 
 @SpringBootTest
 class WlsElasticsearchApplicationTest {

@@ -1,12 +1,12 @@
 package plus.wls.dict.api.entity;
 
-import plus.wls.common.web.pojo.BaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import plus.wls.common.web.pojo.BaseEntity;
 
 import javax.validation.constraints.NotNull;
 

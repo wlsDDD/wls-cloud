@@ -1,7 +1,5 @@
 package plus.wls.elasticsearch.framework.config;
 
-import plus.wls.elasticsearch.framework.properties.ElasticSearchProperties;
-import plus.wls.elasticsearch.framework.util.EsUtil;
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
@@ -9,6 +7,8 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import plus.wls.elasticsearch.framework.properties.ElasticSearchProperties;
+import plus.wls.elasticsearch.framework.util.EsUtil;
 
 /**
  * 1、导入依赖

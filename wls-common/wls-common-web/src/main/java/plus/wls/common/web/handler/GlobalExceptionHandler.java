@@ -1,20 +1,18 @@
 package plus.wls.common.web.handler;
 
 import cn.hutool.core.bean.BeanUtil;
-import plus.wls.common.core.enums.CodeInfoEnum;
-import plus.wls.common.core.enums.LogTypeEnum;
-import plus.wls.common.core.exception.BusinessException;
-import plus.wls.common.core.pojo.ApiLog;
-import plus.wls.common.mail.MailServer;
-import plus.wls.common.web.context.HttpContext;
-import plus.wls.common.web.pojo.Result;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import plus.wls.common.core.enums.CodeInfoEnum;
+import plus.wls.common.core.enums.LogTypeEnum;
+import plus.wls.common.core.exception.BusinessException;
+import plus.wls.common.core.pojo.ApiLog;
+import plus.wls.common.web.context.HttpContext;
+import plus.wls.common.web.pojo.Result;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

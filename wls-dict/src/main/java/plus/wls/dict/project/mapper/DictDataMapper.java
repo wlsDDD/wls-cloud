@@ -1,7 +1,7 @@
 package plus.wls.dict.project.mapper;
 
-import plus.wls.dict.api.entity.DictData;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import plus.wls.dict.api.entity.DictData;
 
 /**
  * <p>

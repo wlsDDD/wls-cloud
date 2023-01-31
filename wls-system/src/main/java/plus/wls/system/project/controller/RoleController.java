@@ -1,15 +1,14 @@
 package plus.wls.system.project.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import plus.wls.common.web.pojo.BaseController;
 import plus.wls.common.web.pojo.Result;
 import plus.wls.system.project.entity.Role;
 import plus.wls.system.project.service.impl.RoleServiceImpl;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

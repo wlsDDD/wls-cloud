@@ -34,13 +34,13 @@ import ${superControllerClassPackage};
 class ${table.controllerName}#if(${superControllerClass}) : ${superControllerClass}()#end
 
 #else
-#if(${superControllerClass})
-public class ${table.controllerName} extends ${superControllerClass} {
-#else
-public class ${table.controllerName} {
-#end
+    #if(${superControllerClass})
+    public class ${table.controllerName} extends ${superControllerClass} {
+    #else
+    public class ${table.controllerName} {
+    #end
 
-    @Autowired private ${table.serviceName} ${table.entityPath}Service;
+@Autowired private ${table.serviceName} ${table.entityPath}Service;
 
     #if(${swagger})
     @ApiOperation("$!{table.comment}-分页列表")
@@ -49,10 +49,10 @@ public class ${table.controllerName} {
      * 分页列表-$!{table.comment}
      */
     #end
-    @GetMapping("/page")
-    public Result<IPage<${entity}>> page${entity}(${entity} ${table.entityPath}) {
+@GetMapping("/page")
+public Result<IPage<${entity}>>page${entity}(${entity} ${table.entityPath}){
         return Result.ok(${table.entityPath}Service.page${entity}(${table.entityPath}));
-    }
+        }
 
     #if(${swagger})
     @ApiOperation("根据id获取$!{table.comment}详情")
@@ -61,10 +61,10 @@ public class ${table.controllerName} {
      * 根据id获取$!{table.comment}详情
      */
     #end
-    @GetMapping("/{id}")
-    public Result<${entity}> get${entity}ById(@PathVariable("id") Long id) {
+@GetMapping("/{id}")
+public Result<${entity}> get${entity}ById(@PathVariable("id") Long id){
         return Result.ok(${table.entityPath}Service.get${entity}ById(id));
-    }
+        }
 
     #if(${swagger})
     @ApiOperation("新增-$!{table.comment}")
@@ -73,11 +73,11 @@ public class ${table.controllerName} {
      * 新增-$!{table.comment}
      */
     #end
-    @PostMapping
-    public Result<?> insert${entity}(@RequestBody @Validated ${entity} ${table.entityPath}) {
-        ${table.entityPath}Service.insert${entity}(${table.entityPath});
+@PostMapping
+public Result<?> insert${entity}(@RequestBody @Validated ${entity} ${table.entityPath}){
+    ${table.entityPath}Service.insert${entity}(${table.entityPath});
         return Result.ok();
-    }
+        }
 
     #if(${swagger})
     @ApiOperation("修改-$!{table.comment}")
@@ -86,11 +86,11 @@ public class ${table.controllerName} {
      * 修改-$!{table.comment}
      */
     #end
-    @PutMapping
-    public Result<?> update${entity}(@RequestBody @Validated ${entity} ${table.entityPath}) {
-        ${table.entityPath}Service.update${entity}(${table.entityPath});
+@PutMapping
+public Result<?> update${entity}(@RequestBody @Validated ${entity} ${table.entityPath}){
+    ${table.entityPath}Service.update${entity}(${table.entityPath});
         return Result.ok();
-    }
+        }
 
     #if(${swagger})
     @ApiOperation("删除-$!{table.comment}")
@@ -99,11 +99,11 @@ public class ${table.controllerName} {
      * 删除-$!{table.comment}
      */
     #end
-    @DeleteMapping("/{ids}")
-    public Result<?> delete${entity}(@PathVariable("ids") List<Long> ids) {
-        ${table.entityPath}Service.delete${entity}(ids);
+@DeleteMapping("/{ids}")
+public Result<?> delete${entity}(@PathVariable("ids") List<Long> ids){
+    ${table.entityPath}Service.delete${entity}(ids);
         return Result.ok();
-    }
+        }
 
-}
+        }
 #end

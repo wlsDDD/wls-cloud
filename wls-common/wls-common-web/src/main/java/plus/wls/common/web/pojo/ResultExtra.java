@@ -1,8 +1,8 @@
 package plus.wls.common.web.pojo;
 
-import plus.wls.common.core.pojo.Page;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import plus.wls.common.core.pojo.Page;
 
 import java.io.Serializable;
 import java.util.Collection;

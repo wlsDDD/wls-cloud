@@ -1,10 +1,10 @@
-import plus.wls.common.core.function.FunctionSerializable;
-import plus.wls.common.core.util.LamUtil;
-import plus.wls.system.project.entity.User;
 import com.baomidou.mybatisplus.core.toolkit.LambdaUtils;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import org.apache.ibatis.reflection.property.PropertyNamer;
 import org.junit.jupiter.api.Test;
+import plus.wls.common.core.function.FunctionSerializable;
+import plus.wls.common.core.util.LamUtil;
+import plus.wls.system.project.entity.User;
 
 import java.lang.invoke.SerializedLambda;
 import java.lang.reflect.InvocationTargetException;

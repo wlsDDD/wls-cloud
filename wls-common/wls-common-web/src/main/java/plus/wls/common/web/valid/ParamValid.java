@@ -21,7 +21,8 @@ public class ParamValid implements ConstraintValidator<EnumValid, Object> {
     
     @Override
     public void initialize(EnumValid constraintAnnotation) {
-        ordinal = EnumUtil.getFieldValues(constraintAnnotation.value(), constraintAnnotation.fieldName()).stream().map(o -> o + "").collect(Collectors.toSet());
+        ordinal = EnumUtil.getFieldValues(constraintAnnotation.value(), constraintAnnotation.fieldName()).stream().map(o -> o + "")
+                          .collect(Collectors.toSet());
     }
     
     /**

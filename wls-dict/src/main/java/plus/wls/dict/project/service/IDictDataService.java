@@ -1,8 +1,8 @@
 package plus.wls.dict.project.service;
 
-import plus.wls.dict.api.entity.DictData;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import plus.wls.dict.api.entity.DictData;
 
 import java.util.List;
 

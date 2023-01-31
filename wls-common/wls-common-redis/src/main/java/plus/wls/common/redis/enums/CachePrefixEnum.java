@@ -1,9 +1,9 @@
 package plus.wls.common.redis.enums;
 
 import cn.hutool.core.util.StrUtil;
-import plus.wls.common.core.constant.GlobalConstants;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import plus.wls.common.core.constant.GlobalConstants;
 
 /**
  * Redis缓存前缀

@@ -98,7 +98,7 @@
             <groupId>plus.wls</groupId>
             <artifactId>wls-common-mail</artifactId>
         </dependency>
-        
+
     </dependencies>
 
 </project>

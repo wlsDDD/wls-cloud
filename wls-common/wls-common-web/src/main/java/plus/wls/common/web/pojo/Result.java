@@ -1,13 +1,13 @@
 package plus.wls.common.web.pojo;
 
 
+import lombok.Data;
+import lombok.experimental.Accessors;
 import plus.wls.common.core.constant.SuppressWarningConstants;
 import plus.wls.common.core.enums.CodeInfoEnum;
 import plus.wls.common.core.util.TreeUtil;
 import plus.wls.common.web.context.HttpContext;
 import plus.wls.common.web.util.PageUtil;
-import lombok.Data;
-import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.List;

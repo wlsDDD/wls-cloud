@@ -1,13 +1,13 @@
 package plus.wls.dict.api;
 
-import plus.wls.common.core.constant.ServiceNameConstants;
-import plus.wls.common.web.pojo.Result;
-import plus.wls.dict.api.entity.DictData;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import plus.wls.common.core.constant.ServiceNameConstants;
+import plus.wls.common.web.pojo.Result;
+import plus.wls.dict.api.entity.DictData;
 
 import javax.validation.groups.Default;
 import java.util.List;

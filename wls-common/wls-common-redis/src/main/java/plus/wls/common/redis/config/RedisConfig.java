@@ -1,7 +1,5 @@
 package plus.wls.common.redis.config;
 
-import plus.wls.common.redis.FastJson2JsonRedisSerializer;
-import plus.wls.common.redis.KeyStringRedisSerializer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -13,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import plus.wls.common.redis.FastJson2JsonRedisSerializer;
+import plus.wls.common.redis.KeyStringRedisSerializer;
 
 /**
  * redis配置

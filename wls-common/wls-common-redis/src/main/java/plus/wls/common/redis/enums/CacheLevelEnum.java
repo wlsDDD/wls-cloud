@@ -1,8 +1,8 @@
 package plus.wls.common.redis.enums;
 
-import plus.wls.common.web.context.HttpContext;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import plus.wls.common.web.context.HttpContext;
 
 import java.util.function.Supplier;
 

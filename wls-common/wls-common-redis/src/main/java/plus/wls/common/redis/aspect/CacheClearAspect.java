@@ -1,14 +1,14 @@
 package plus.wls.common.redis.aspect;
 
 import cn.hutool.core.collection.CollUtil;
-import plus.wls.common.redis.RedisUtil;
-import plus.wls.common.redis.annotation.CacheClear;
-import plus.wls.common.redis.enums.CachePrefixEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
+import plus.wls.common.redis.RedisUtil;
+import plus.wls.common.redis.annotation.CacheClear;
+import plus.wls.common.redis.enums.CachePrefixEnum;
 
 import java.util.Set;
 
@@ -28,7 +28,8 @@ public class CacheClearAspect {
     public Object around(final ProceedingJoinPoint joinPoint, CacheClear cacheClear) throws Throwable {
         Object proceed;
         try {
-            Set<String> keys = RedisUtil.scan(CachePrefixEnum.format(CachePrefixEnum.METHOD_CACHE.getPrefix(), cacheClear.cacheLevel().getLevelFunc().get(), cacheClear.value()));
+            Set<String> keys = RedisUtil.scan(CachePrefixEnum.format(CachePrefixEnum.METHOD_CACHE.getPrefix(), cacheClear.cacheLevel().getLevelFunc()
+                                                                                                                         .get(), cacheClear.value()));
             if (CollUtil.isNotEmpty(keys)) {
                 RedisUtil.redisTemplate.delete(keys);
             }

@@ -1,8 +1,8 @@
 package plus.wls.common.core.util;
 
+import lombok.extern.slf4j.Slf4j;
 import plus.wls.common.core.exception.BaseRunTimeException;
 import plus.wls.common.core.function.FunctionSerializable;
-import lombok.extern.slf4j.Slf4j;
 
 import java.beans.Introspector;
 import java.lang.invoke.SerializedLambda;

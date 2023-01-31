@@ -1,9 +1,9 @@
 package plus.wls.common.web.pojo.properties;
 
-import plus.wls.common.core.enums.ActiveEnum;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+import plus.wls.common.core.enums.ActiveEnum;
 
 /**
  * 共享yml配置

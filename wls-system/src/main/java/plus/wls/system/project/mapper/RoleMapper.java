@@ -1,8 +1,8 @@
 package plus.wls.system.project.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import plus.wls.system.project.entity.Role;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>

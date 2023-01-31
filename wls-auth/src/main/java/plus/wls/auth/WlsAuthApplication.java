@@ -1,11 +1,11 @@
 package plus.wls.auth;
 
 import cn.hutool.core.util.StrUtil;
-import plus.wls.common.core.constant.GlobalConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import plus.wls.common.core.constant.GlobalConstants;
 
 /**
  * wls系统应用

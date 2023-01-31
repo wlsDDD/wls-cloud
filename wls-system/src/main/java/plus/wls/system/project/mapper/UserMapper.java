@@ -1,7 +1,7 @@
 package plus.wls.system.project.mapper;
 
-import plus.wls.system.project.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import plus.wls.system.project.entity.User;
 
 /**
  * <p>

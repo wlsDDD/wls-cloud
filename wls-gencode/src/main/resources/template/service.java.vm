@@ -3,6 +3,7 @@ package ${package.Service};
 import ${package.Entity}.${entity};
 import ${superServiceClassPackage};
 import com.baomidou.mybatisplus.core.metadata.IPage;
+
 import java.util.List;
 
 /**
@@ -18,42 +19,42 @@ interface ${table.serviceName} : ${superServiceClass}<${entity}>
 #else
 public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
 
-    /**
-     * 分页列表-${table.comment}
-     *
-     * @param ${table.entityPath} 查询条件
-     * @return 分页列表
-     */
-    IPage<${entity}> page${entity}(${entity} ${table.entityPath});
-    
-    /**
-     * 根据id获取${table.comment}详情
-     *
-     * @param id id
-     * @return {@link ${entity}}
-     */
+        /**
+         * 分页列表-${table.comment}
+         *
+         * @param ${table.entityPath} 查询条件
+         * @return 分页列表
+         */
+        IPage<${entity}> page${entity}(${entity} ${table.entityPath});
+
+        /**
+         * 根据id获取${table.comment}详情
+         *
+         * @param id id
+         * @return {@link ${entity}}
+         */
     ${entity} get${entity}ById(Long id);
 
-    /**
-     * 新增-${table.comment}
-     *
-     * @param ${table.entityPath} ${table.comment}
-     */
-    void insert${entity}(${entity} ${table.entityPath});
-    
-    /**
-     * 修改-${table.comment}
-     *
-     * @param ${table.entityPath} ${table.comment}
-     */
-    void update${entity}(${entity} ${table.entityPath});
-    
-    /**
-     * 删除-${table.comment}
-     *
-     * @param ids ids
-     */
-    void delete${entity}(List<Long> ids);
+        /**
+         * 新增-${table.comment}
+         *
+         * @param ${table.entityPath} ${table.comment}
+         */
+        void insert${entity}(${entity} ${table.entityPath});
 
-}
+        /**
+         * 修改-${table.comment}
+         *
+         * @param ${table.entityPath} ${table.comment}
+         */
+        void update${entity}(${entity} ${table.entityPath});
+
+        /**
+         * 删除-${table.comment}
+         *
+         * @param ids ids
+         */
+        void delete${entity}(List<Long> ids);
+
+        }
 #end

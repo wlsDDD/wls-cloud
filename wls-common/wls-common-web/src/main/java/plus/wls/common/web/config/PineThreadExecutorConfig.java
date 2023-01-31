@@ -1,11 +1,11 @@
 package plus.wls.common.web.config;
 
-import plus.wls.common.web.thread.PineThreadFactory;
-import plus.wls.common.web.thread.PineThreadPoolExecutor;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import plus.wls.common.web.thread.PineThreadFactory;
+import plus.wls.common.web.thread.PineThreadPoolExecutor;
 
 import java.util.concurrent.*;
 

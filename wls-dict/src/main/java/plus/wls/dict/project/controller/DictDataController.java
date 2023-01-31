@@ -1,10 +1,5 @@
 package plus.wls.dict.project.controller;
 
-import plus.wls.common.web.pojo.BaseController;
-import plus.wls.common.web.pojo.Result;
-import plus.wls.dict.api.DictDataApi;
-import plus.wls.dict.api.entity.DictData;
-import plus.wls.dict.project.service.IDictDataService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import plus.wls.common.web.pojo.BaseController;
+import plus.wls.common.web.pojo.Result;
+import plus.wls.dict.api.DictDataApi;
+import plus.wls.dict.api.entity.DictData;
+import plus.wls.dict.project.service.IDictDataService;
 
 import java.util.List;
 
