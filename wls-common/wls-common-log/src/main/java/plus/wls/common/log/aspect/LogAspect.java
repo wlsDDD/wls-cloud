@@ -1,6 +1,12 @@
 package plus.wls.common.log.aspect;
 
 import cn.hutool.json.JSONUtil;
+import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import plus.wls.common.core.constant.GlobalConstants;
 import plus.wls.common.core.enums.CodeInfoEnum;
 import plus.wls.common.core.pojo.ApiLog;
@@ -10,12 +16,6 @@ import plus.wls.common.web.context.HttpContext;
 import plus.wls.common.web.util.AspectUtil;
 import plus.wls.common.web.util.IpUtils;
 import plus.wls.common.web.util.ServletUtil;
-import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.Duration;
@@ -66,14 +66,10 @@ public class LogAspect {
             proceed = joinPoint.proceed();
         } catch (Throwable e) {
             // 记录异常日志
-            try {
-                Assert.notNull(apiLog, "日志切面异常");
-                apiLog.setStatus(CodeInfoEnum.UNKNOWN_ERROR)
-                      .setErrorMsg(e.toString())
-                      .setSimpleStacktrace(JSONUtil.parse(Pines.getSimpleStackTrace(e, GlobalConstants.stackFilter)));
-            } catch (Exception exception) {
-                log.error("日志切面catch块异常", e);
-            }
+            Assert.notNull(apiLog, "日志切面异常");
+            apiLog.setStatus(CodeInfoEnum.UNKNOWN_ERROR)
+                  .setErrorMsg(e.toString())
+                  .setSimpleStacktrace(JSONUtil.parse(Pines.toSimpleStackTrace(e, GlobalConstants.stackFilter)));
             throw e;
         } finally {
             try {

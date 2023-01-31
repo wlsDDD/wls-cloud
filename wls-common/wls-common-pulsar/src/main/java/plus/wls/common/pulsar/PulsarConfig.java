@@ -1,13 +1,14 @@
 package plus.wls.common.pulsar;
 
+import io.github.majusko.pulsar.error.exception.ClientInitException;
 import io.github.majusko.pulsar.producer.ProducerFactory;
-import org.apache.pulsar.client.api.Consumer;
-import org.apache.pulsar.client.api.PulsarClient;
+import io.github.majusko.pulsar.reactor.FluxConsumer;
+import io.github.majusko.pulsar.reactor.FluxConsumerFactory;
+import io.github.majusko.pulsar.reactor.PulsarFluxConsumer;
 import org.apache.pulsar.client.api.PulsarClientException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * pulsar配置
@@ -18,26 +19,39 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 public class PulsarConfig {
     
-    private PulsarClient pulsarClient;
+    
+    @Autowired
+    private FluxConsumerFactory fluxConsumerFactory;
     
     @Bean
     public ProducerFactory producerFactory() {
-        return new ProducerFactory()
-                .addProducer("bootTopic", String.class)
-                .addProducer("stringTopic", String.class)
-                .addProducer("wls", String.class)
-                ;
+        return new ProducerFactory().addProducer("bootTopic", String.class)
+                                    .addProducer("stringTopic", String.class)
+                                    // .addProducer("wls-topic", String.class)
+                                    .addProducer("wls", String.class);
     }
     
     @Bean
-    public Consumer configProducer(PulsarClient pulsarClient) throws PulsarClientException {
-        return pulsarClient.newConsumer()
-                           .topic("wls")
-                           .consumerName("wls-blue")
-                           // .subscriptionName("wls-desc")
-                           .negativeAckRedeliveryDelay(10, TimeUnit.SECONDS)
-                           .subscribe();
-        
+    public FluxConsumer<String> wlsConsumer() throws ClientInitException, PulsarClientException {
+        return fluxConsumerFactory.newConsumer(
+                PulsarFluxConsumer.builder()
+                                  .setTopic("wls")
+                                  .setConsumerName("wls-consumer")
+                                  .setSubscriptionName("wls-subscription")
+                                  .setSimple(false)
+                                  .setMessageClass(String.class)
+                                  .build());
     }
+    // @Bean
+    // public Consumer<byte[]> wlsConsumer(PulsarClient pulsarClient) throws PulsarClientException {
+    //     return pulsarClient.newConsumer()
+    //                        .topic("wls")
+    //                        .consumerName("wls-blue")
+    //                        .subscriptionName("wls-desc")
+    //                        .enableRetry(true)
+    //                        .negativeAckRedeliveryDelay(10, TimeUnit.SECONDS)
+    //                        .subscribe();
+    //
+    // }
     
 }

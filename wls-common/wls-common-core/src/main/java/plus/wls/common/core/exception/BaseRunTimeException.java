@@ -75,7 +75,7 @@ public class BaseRunTimeException extends RuntimeException {
      * @return {@link StackTraceElement[]}
      */
     public StackTraceElement[] getSimpleStackTrace() {
-        return Pines.getSimpleStackTrace(this, GlobalConstants.stackFilter);
+        return Pines.toSimpleStackTrace(this, GlobalConstants.stackFilter);
     }
     
 }

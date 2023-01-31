@@ -42,7 +42,7 @@ public class AsyncAspect {
         } catch (Exception e) {
             asyncLog.setStatus(1)
                     .setErrorMsg(e.getMessage())
-                    .setSimpleStacktrace(new JSONArray(Pines.getSimpleStackTrace(e, GlobalConstants.stackFilter)))
+                    .setSimpleStacktrace(new JSONArray(Pines.toSimpleStackTrace(e, GlobalConstants.stackFilter)))
                     .setStacktrace(new JSONArray(e.getStackTrace()));
             log.error("异步任务执行异常", e);
             throw e;

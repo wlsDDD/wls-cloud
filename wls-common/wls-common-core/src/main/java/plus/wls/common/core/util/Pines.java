@@ -2,10 +2,10 @@ package plus.wls.common.core.util;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ReflectUtil;
+import lombok.extern.slf4j.Slf4j;
 import plus.wls.common.core.enums.CodeInfoEnum;
 import plus.wls.common.core.exception.RequestHeaderException;
 import plus.wls.common.core.function.FunctionSerializable;
-import lombok.extern.slf4j.Slf4j;
 
 import java.lang.annotation.Annotation;
 import java.util.*;
@@ -59,13 +59,13 @@ public class Pines {
      * @param bean bean
      */
     public static void trimBean(Object bean) {
-        BeanUtil.getBeanDesc(bean.getClass()).getProps().forEach(propDesc -> {
-            if (String.class.getName().equals(propDesc.getFieldType().getTypeName())) {
-                Object str = ReflectUtil.invoke(bean, propDesc.getGetter());
+        BeanUtil.getBeanDesc(bean.getClass()).getProps().forEach(prop -> {
+            if (String.class.equals(prop.getFieldClass())) {
+                Object str = ReflectUtil.invoke(bean, prop.getGetter());
                 if (str == null) {
                     return;
                 }
-                ReflectUtil.invoke(bean, propDesc.getSetter(), str.toString().trim());
+                ReflectUtil.invoke(bean, prop.getSetter(), str.toString().trim());
             }
         });
     }
@@ -78,7 +78,7 @@ public class Pines {
      *
      * @return {@link String}
      */
-    public static String getSeq(Integer seq, String rexStr) {
+    public static String toSeq(Integer seq, String rexStr) {
         int flag = seq;
         StringBuilder result = new StringBuilder();
         while (true) {
@@ -149,14 +149,14 @@ public class Pines {
     }
     
     /**
-     * 得到简单的堆栈跟踪
+     * 得到含有指定字符串的简单的堆栈跟踪
      *
      * @param e       e
      * @param contain 包含字符串
      *
      * @return {@link StackTraceElement[]}
      */
-    public static StackTraceElement[] getSimpleStackTrace(Throwable e, String contain) {
+    public static StackTraceElement[] toSimpleStackTrace(Throwable e, String contain) {
         return Arrays.stream(e.getStackTrace()).distinct().parallel()
                      .filter(item -> item.getLineNumber() != -1 && item.getClassName().contains(contain))
                      .toArray(StackTraceElement[]::new);

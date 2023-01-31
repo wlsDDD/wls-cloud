@@ -2,13 +2,19 @@ package plus.wls.system.project.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.github.majusko.pulsar.PulsarMessage;
 import io.github.majusko.pulsar.annotation.PulsarConsumer;
 import io.github.majusko.pulsar.producer.PulsarTemplate;
+import io.github.majusko.pulsar.reactor.FluxConsumer;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.pulsar.client.api.Consumer;
 import org.apache.pulsar.client.api.MessageId;
 import org.apache.pulsar.client.api.PulsarClientException;
 import org.apache.pulsar.client.api.SubscriptionType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import plus.wls.common.web.pojo.BaseController;
@@ -37,6 +43,7 @@ import java.util.concurrent.TimeUnit;
 public class UserController extends BaseController {
     
     static Page<User> page = new Page<>();
+    static int count = 0;
     
     static {
         List<User> list = new ArrayList<>();
@@ -48,6 +55,7 @@ public class UserController extends BaseController {
     private IUserService userService;
     private DictDataApi dictDataApi;
     private PulsarTemplate<String> pulsar;
+    
     
     /**
      * 用户信息-分页列表
@@ -70,25 +78,19 @@ public class UserController extends BaseController {
      */
     @PostMapping
     public Result<User> insertUser(@RequestBody User user) throws PulsarClientException {
-        MessageId send = pulsar.createMessage("wls", user.toString()).deliverAfter(10, TimeUnit.SECONDS).send();
-        
-        // MessageId messageId = pulsar.send("wls", user.toString());
-        log.info("消息发送成功 wls 消息id {}", send);
-        return Result.ok(user);
+        userService.insertUser(user);
+        return Result.ok();
     }
     
-    static int count = 1;
-    
-    @PulsarConsumer(topic = "wls", clazz = String.class, subscriptionType = SubscriptionType.Shared)
-    public void consume(String message) {
-        // throw new RuntimeException("消费失败了");
-        if (count < 10) {
-            log.info("消费失败了 {}", count);
-            count++;
-            throw new RuntimeException("消费失败了");
-        }
-        log.info("收到一个消息 wls 并消费成功 {}", message);
-    }
+    // @PulsarConsumer(topic = "wls", clazz = String.class, subscriptionType = SubscriptionType.Shared)
+    // public void consume(PulsarMessage<String> message) throws PulsarClientException {
+    //     // message.get
+    //     if (count < 10) {
+    //         log.info("消费失败了 {}", count++);
+    //         throw new RuntimeException("消费失败了");
+    //     }
+    //     log.info("收到一个消息 wls 并消费成功 {}", message);
+    // }
     
     @PulsarConsumer(topic = "bootTopic", clazz = String.class)
     public void consumeBoot(String message) {

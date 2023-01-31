@@ -1,5 +1,6 @@
 package plus.wls.system.project.service;
 
+import org.apache.pulsar.client.api.PulsarClientException;
 import plus.wls.system.project.entity.User;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -39,7 +40,7 @@ public interface IUserService extends IService<User> {
      *
      * @param user 用户信息
      */
-    void insertUser(User user);
+    void insertUser(User user) throws PulsarClientException;
     
     /**
      * 修改-用户信息
