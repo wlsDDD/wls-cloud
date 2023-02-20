@@ -41,7 +41,7 @@
             <groupId>plus.wls</groupId>
             <artifactId>wls-common-core</artifactId>
         </dependency>
-
+    
     </dependencies>
     
     <build>

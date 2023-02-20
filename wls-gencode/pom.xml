@@ -40,13 +40,13 @@
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
         </dependency>
-    
+        
         <dependency>
             <groupId>plus.wls</groupId>
             <artifactId>wls-common-swagger</artifactId>
         </dependency>
-
-
+    
+    
     </dependencies>
     
     <build>

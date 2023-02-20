@@ -38,7 +38,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
-    
+        
         <!-- SpringBoot -->
         <!--SpringBoot-web-->
         <dependency>
@@ -60,7 +60,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-    
+        
         <!--mysql-->
         <dependency>
             <groupId>mysql</groupId>
@@ -83,13 +83,13 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-    
+        
         <!--分页插件-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
         </dependency>
-    
+        
         <dependency>
             <groupId>plus.wls</groupId>
             <artifactId>wls-common-core</artifactId>
@@ -98,7 +98,7 @@
             <groupId>plus.wls</groupId>
             <artifactId>wls-common-mail</artifactId>
         </dependency>
-
+    
     </dependencies>
 
 </project>

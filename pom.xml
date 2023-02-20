@@ -80,7 +80,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-    
+            
             <!-- 主要框架 -->
             <!-- 阿里数据库连接池 -->
             <dependency>
@@ -118,7 +118,7 @@
                 <artifactId>minio</artifactId>
                 <version>${minio.version}</version>
             </dependency>
-    
+            
             <!-- 工具类 -->
             <!-- hutool工具包 -->
             <dependency>
@@ -167,7 +167,7 @@
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
-    
+            
             <!--服务内模块模块-->
             <dependency>
                 <groupId>plus.wls</groupId>
@@ -221,7 +221,7 @@
                 <artifactId>wls-gencode</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
+        
         </dependencies>
     </dependencyManagement>
     
