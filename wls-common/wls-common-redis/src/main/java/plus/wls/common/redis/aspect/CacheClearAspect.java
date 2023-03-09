@@ -31,7 +31,7 @@ public class CacheClearAspect {
             Set<String> keys = RedisUtil.scan(CachePrefixEnum.format(CachePrefixEnum.METHOD_CACHE.getPrefix(), cacheClear.cacheLevel().getLevelFunc()
                                                                                                                          .get(), cacheClear.value()));
             if (CollUtil.isNotEmpty(keys)) {
-                RedisUtil.redisTemplate.delete(keys);
+                RedisUtil.redis.delete(keys);
             }
         } catch (Exception e) {
             log.error("缓存清理失败 异常", e);

@@ -34,7 +34,7 @@ public class CacheAspect {
             String joinPointStr = new JSONArray(joinPoint.getArgs(), config).toJSONString(0);
             cacheKey = CachePrefixEnum.format(CachePrefixEnum.METHOD_CACHE.getPrefix(), cache.cacheLevel().getLevelFunc()
                                                                                              .get(), cache.value(), DigestUtil.md5Hex16(joinPointStr));
-            Object result = RedisUtil.redisTemplate.opsForValue().get(cacheKey);
+            Object result = RedisUtil.redis.opsForValue().get(cacheKey);
             if (ObjectUtil.isNotNull(result)) {
                 return result;
             }
@@ -44,7 +44,7 @@ public class CacheAspect {
         }
         Object proceed = joinPoint.proceed();
         try {
-            RedisUtil.redisTemplate.opsForValue().set(cacheKey, proceed, cache.duration(), cache.timeUnit());
+            RedisUtil.redis.opsForValue().set(cacheKey, proceed, cache.duration(), cache.timeUnit());
         } catch (Exception e) {
             log.error("缓存失败 后置异常 直接返回代理方法执行结果", e);
         }

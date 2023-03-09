@@ -5,7 +5,9 @@ import cn.hutool.extra.spring.SpringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
+import org.springframework.stereotype.Component;
 import plus.wls.common.core.function.FunctionSerializable;
 
 import java.util.HashSet;
@@ -18,30 +20,40 @@ import java.util.Set;
  * @since 2021/9/17 9:27
  */
 @Slf4j
+@Component
 public class RedisUtil {
     
     /**
      * redis客户端
      * 启动时自动初始化
      */
-    public static final RedisTemplate<String, Object> redisTemplate;
+    public static RedisTemplate<String, Object> redis;
     /**
      * 自带序列化的客户端
      * 启动时自动初始化
      */
-    public static final StringRedisTemplate stringRedisTemplate;
-    
+    public static StringRedisTemplate stringRedis;
     /**
      * redisson客户端
      * 启动时自动初始化
      */
-    public static final RedissonClient redissonClient;
+    public static RedissonClient redissonClient;
     
-    static {
-        redisTemplate = SpringUtil.getBean(RedisTemplate.class);
-        stringRedisTemplate = SpringUtil.getBean(StringRedisTemplate.class);
-        redissonClient = SpringUtil.getBean(RedissonClient.class);
+    @Autowired
+    public void setRedis(RedisTemplate<String, Object> redis) {
+        RedisUtil.redis = redis;
     }
+    
+    @Autowired
+    public void setStringRedis(StringRedisTemplate stringRedis) {
+        RedisUtil.stringRedis = stringRedis;
+    }
+    
+    @Autowired
+    public void setRedissonClient(RedissonClient redissonClient) {
+        RedisUtil.redissonClient = redissonClient;
+    }
+    
     
     /**
      * 分布式锁
@@ -77,7 +89,7 @@ public class RedisUtil {
      * @return {@link Set}<{@link String}>
      */
     public static Set<String> scan(String matchKey) {
-        return redisTemplate.execute((RedisCallback<Set<String>>) connection -> {
+        return redis.execute((RedisCallback<Set<String>>) connection -> {
             Set<String> keysTmp = new HashSet<>();
             Cursor<byte[]> cursor = connection.scan(ScanOptions.scanOptions().match("*" + matchKey + "*").count(1000).build());
             while (cursor.hasNext()) {

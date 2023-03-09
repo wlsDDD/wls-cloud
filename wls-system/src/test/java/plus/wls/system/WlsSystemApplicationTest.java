@@ -31,8 +31,8 @@ class WlsSystemApplicationTest {
     
     @Test
     public void test03() {
-        RedisUtil.redisTemplate.opsForValue().set("helloKey", "helloValue");
-        Object helloKey = RedisUtil.redisTemplate.opsForValue().get("helloKey");
+        RedisUtil.redis.opsForValue().set("helloKey", "helloValue");
+        Object helloKey = RedisUtil.redis.opsForValue().get("helloKey");
     }
     
     @Test
