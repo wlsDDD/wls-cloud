@@ -12,7 +12,7 @@ public class GlobalConstants {
     /**
      * 项目名称
      */
-    public static final String PROJECT_NAME = "wls-cloud";
+    public static String PROJECT_NAME = "wls-cloud";
     public static final String BASE_PACKAGE = "plus.wls";
     /**
      * 服务名称
