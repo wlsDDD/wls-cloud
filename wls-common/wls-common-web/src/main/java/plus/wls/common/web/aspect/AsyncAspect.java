@@ -32,9 +32,7 @@ public class AsyncAspect {
     public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
         AsyncLog asyncLog = new AsyncLog();
         LocalDateTime startTime = LocalDateTime.now();
-        asyncLog.setStartTime(startTime)
-                .setMethodName(AspectUtil.getMethodName(joinPoint))
-                .setParam(new JSONArray(joinPoint.getArgs()));
+        asyncLog.setStartTime(startTime).setMethodName(AspectUtil.getMethodName(joinPoint)).setParam(new JSONArray(joinPoint.getArgs()));
         try {
             Object proceed = joinPoint.proceed();
             asyncLog.setStatus(0);
@@ -48,8 +46,7 @@ public class AsyncAspect {
             throw e;
         } finally {
             LocalDateTime endTime = LocalDateTime.now();
-            asyncLog.setEndTime(endTime)
-                    .setConsumeTime(LocalDateTimeUtil.between(startTime, endTime, ChronoUnit.MILLIS));
+            asyncLog.setEndTime(endTime).setConsumeTime(LocalDateTimeUtil.between(startTime, endTime, ChronoUnit.MILLIS));
             // TODO 保存日志
         }
     }

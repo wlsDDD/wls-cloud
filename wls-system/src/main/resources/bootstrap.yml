@@ -35,4 +35,3 @@ spring:
           - dataId: wls-system-swagger-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
             group: dev
             refresh: true
-

@@ -1,4 +1,4 @@
-package plus.wls.common.web.pojo.properties;
+package plus.wls.common.web.yml;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -14,7 +14,12 @@ import plus.wls.common.core.enums.ActiveEnum;
 @Data
 @Component
 @ConfigurationProperties("share")
-public class WlsShareYml {
+public class ShareYml {
+    
+    /**
+     * 项目名称
+     */
+    private String projectName;
     /**
      * 服务名
      */
@@ -23,19 +28,25 @@ public class WlsShareYml {
      * 项目启动环境
      */
     private ActiveEnum active;
-    
     /**
-     * 邮件发送人
+     * 版本
      */
-    private String emailFrom;
+    private String version;
     /**
-     * 邮件收件人
+     * 版权年份
      */
-    private String[] addressee;
-    
+    private String copyrightYear;
+    /**
+     * 文件路径
+     */
+    private String profile;
+    /**
+     * 获取ip地址开关
+     */
+    private Boolean addressEnabled = false;
     /**
      * 堆栈信息过滤关键字
      */
-    private String stackFilter;
+    private String logFilter;
     
 }

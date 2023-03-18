@@ -15,7 +15,7 @@ public enum ActiveEnum {
     /**
      * 测试环境
      */
-    beta,
+    test,
     /**
      * 集成测试环境
      */

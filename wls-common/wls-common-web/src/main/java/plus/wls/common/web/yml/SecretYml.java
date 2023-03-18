@@ -1,4 +1,4 @@
-package plus.wls.common.web.pojo.properties;
+package plus.wls.common.web.yml;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Accessors(chain = true)
 @ConfigurationProperties("wls.secret")
-public class Secret {
+public class SecretYml {
     
     /**
      * 加密开关 默认false

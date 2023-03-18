@@ -7,13 +7,14 @@ import cn.hutool.extra.spring.SpringUtil;
 import cn.hutool.json.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
-import plus.wls.common.web.pojo.properties.Secret;
+import plus.wls.common.web.yml.SecretYml;
 
 import javax.annotation.Nullable;
 
@@ -30,6 +31,7 @@ import javax.annotation.Nullable;
  */
 @RestControllerAdvice
 @Slf4j
+@Order
 public class EncryptResponseBodyHandler implements ResponseBodyAdvice<Object> {
     
     /**
@@ -42,8 +44,8 @@ public class EncryptResponseBodyHandler implements ResponseBodyAdvice<Object> {
      */
     @Override
     public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> converterType) {
-        Secret secret = SpringUtil.getBean(Secret.class);
-        if (secret.getEncryptionEnable()) {
+        SecretYml secretYml = SpringUtil.getBean(SecretYml.class);
+        if (secretYml.getEncryptionEnable()) {
             return true;
         }
         // todo 获取租户信息 判断是否需要解密

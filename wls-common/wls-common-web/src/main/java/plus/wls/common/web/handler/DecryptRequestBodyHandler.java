@@ -13,7 +13,7 @@ import org.springframework.http.HttpInputMessage;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdviceAdapter;
-import plus.wls.common.web.pojo.properties.Secret;
+import plus.wls.common.web.yml.SecretYml;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -46,8 +46,8 @@ public class DecryptRequestBodyHandler extends RequestBodyAdviceAdapter {
      */
     @Override
     public boolean supports(MethodParameter methodParameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
-        Secret secret = SpringUtil.getBean(Secret.class);
-        if (secret.getDecryptEnable()) {
+        SecretYml secretYml = SpringUtil.getBean(SecretYml.class);
+        if (secretYml.getDecryptEnable()) {
             return true;
         }
         // todo 获取租户信息 判断是否需要解密
