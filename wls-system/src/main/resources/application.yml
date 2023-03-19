@@ -1,19 +1,27 @@
-#pulsar:
-#  allow-interceptor: false
-#  auto-start: true
-#  connection-timeout-sec: 10
-##  consumer:
-##    default:
-##      ack-timeout-ms: 3000
-##      dead-letter-policy-max-redeliver-count: -1
-#  consumer-name-delimiter: ''
-#  enable-tcp-no-delay: false
-#  io-threads: 10
-#  keep-alive-interval-sec: 20
-#  listener-threads: 10
-#  namespace: default
-#  operation-timeout-sec: 10
-##  service-url: pulsar://localhost:6650
-#  starting-backoff-interval-ms: 10
-#  max-backoff-interval-sec: 20
-#  tenant: public
+# 服务内配置
+wls:
+  swagger:
+    enabled: true
+    groupName: "wls-system-api"
+    basePackage: "cn.erectpine"
+    title: "系统服务接口文档"
+    description: "调用接口前请详细阅读文档，并遵守文档调用规范"
+    version: "1.0.0"
+    contact-name: "wls"
+    contact-url: "erectpine.cn"
+    contact-email: "1626961806@qq.com"
+
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 9003
+  servlet:
+    # 应用的访问路径
+    context-path: /wls-system
+
+# Spring配置
+spring:
+  datasource:
+    url: jdbc:mysql://159.75.93.83:3306/wls-ry-vue?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: wls-mysql-tencent

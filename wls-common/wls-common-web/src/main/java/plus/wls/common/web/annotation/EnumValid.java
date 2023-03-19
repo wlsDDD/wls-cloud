@@ -19,17 +19,17 @@ import java.lang.annotation.*;
 @Constraint(validatedBy = {ParamValid.class})
 public @interface EnumValid {
     /**
-     * 默认错误消息
+     * 错误消息
      */
     String message() default "必须为指定值";
     
     /**
-     * 枚举类 默认序列号
+     * 枚举类
      */
     Class<? extends Enum<?>> value();
     
     /**
-     * 字段名
+     * 枚举类中的字段名
      */
     String fieldName() default "ordinal";
     

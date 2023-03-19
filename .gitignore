@@ -33,3 +33,7 @@ build/
 .vscode/
 #**/.mvn/
 #**/test/
+
+logs/
+
+
