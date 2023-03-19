@@ -34,6 +34,3 @@ spring:
 #        locator:
 #          enabled: true
 
-
-server:
-  port: 8088

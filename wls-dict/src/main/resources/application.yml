@@ -1,0 +1,19 @@
+# 项目相关配置
+wls:
+  name: xxx
+
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 9100
+  servlet:
+    # 应用的访问路径
+    context-path: /wls-dict
+
+# Spring配置
+spring:
+  datasource:
+    url: jdbc:mysql://rm-uf66903d9ae3a6k15fo.mysql.rds.aliyuncs.com:3306/wls-nacos?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: ming
+    password: Ming2020--Yike
+

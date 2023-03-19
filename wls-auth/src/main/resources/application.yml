@@ -2,19 +2,19 @@
 wls:
   swagger:
     enabled: true
-    groupName: "wls-system-api"
-    basePackage: "plus.wls"
-    title: "系统服务接口文档"
-    description: "调用接口前请详细阅读文档，并遵守文档调用规范"
-    version: "1.0.0"
-    contact-name: "wls"
-    contact-url: "plus.wls"
-    contact-email: "1626961806@qq.com"
+    groupName: wls-auth-api
+    basePackage: plus.wls
+    title: 认证授权服务接口文档
+    description: 调用接口前请详细阅读文档，并遵守文档规范
+    version: 1.0.0
+    contact-name: wls
+    contact-url: plus.wls
+    contact-email: 1626961806@qq.com
 
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为8080
-  port: 9200
+  port: 9010
   servlet:
     # 应用的访问路径
     context-path: /wls-system

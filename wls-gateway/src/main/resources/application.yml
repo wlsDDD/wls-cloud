@@ -1,0 +1,30 @@
+server:
+  port: 9000
+  servlet:
+    # 应用的访问路径
+    context-path: /wls-gateway
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          #开启根据服务名动态获取路由地址
+          enabled: true
+      routes:
+        # 系统服务
+        - id: wls-system
+          uri: lb://wls-system
+          predicates:
+            - Path=/wls-system/**
+          filters:
+            - StripPrefix=0
+        # 数据字典服务
+        - id: wls-dict
+          uri: lb://wls-dict
+          predicates:
+            - Path=/wls-dict/**
+          filters:
+            - StripPrefix=0
+
+
