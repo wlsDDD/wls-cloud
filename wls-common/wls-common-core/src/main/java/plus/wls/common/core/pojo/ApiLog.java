@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
  * @author wls
  * @since 2021/1/13 16:54
  */
-@Accessors(chain = true)
 @Data
+@Accessors(chain = true)
 public class ApiLog {
     
     /**

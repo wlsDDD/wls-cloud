@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.handler.TenantLineHandler;
 import com.baomidou.mybatisplus.extension.plugins.inner.DynamicTableNameInnerInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.IllegalSQLInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
 import net.sf.jsqlparser.expression.Expression;
@@ -47,7 +48,7 @@ public class MybatisPlusConfig {
         // 分页插件
         plugin.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
         // sql 性能规范插件
-        // plugin.addInnerInterceptor(new IllegalSQLInnerInterceptor());
+        plugin.addInnerInterceptor(new IllegalSQLInnerInterceptor());
         // 动态表名插件
         DynamicTableNameInnerInterceptor dynamicTableNameInnerInterceptor = new DynamicTableNameInnerInterceptor();
         dynamicTableNameInnerInterceptor.setTableNameHandler((sql, tableName) -> null);

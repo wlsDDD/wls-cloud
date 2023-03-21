@@ -1,5 +1,6 @@
 package plus.wls.common.core.exception;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import plus.wls.common.core.constant.GlobalConstants;
@@ -34,6 +35,13 @@ public class BaseRunTimeException extends RuntimeException {
     
     private CodeInfoEnum codeInfoEnum = CodeInfoEnum.UNKNOWN_ERROR;
     
+    
+    public BaseRunTimeException(String message, Object... params) {
+        super(CodeInfoEnum.BUSINESS_ERROR.setInfo(StrUtil.format(message, params)).getInfo());
+        CodeInfoEnum infoEnum = CodeInfoEnum.BUSINESS_ERROR.setInfo(StrUtil.format(message, params));
+        this.codeInfoEnum = infoEnum;
+        this.code = infoEnum.getCode();
+    }
     
     /**
      * 基本运行时异常
