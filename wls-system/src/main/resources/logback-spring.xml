@@ -9,6 +9,8 @@
     <springProperty name="logInfoDay" scope="context" source="wls.log.logInfoDay" defaultValue="400"/>
     <springProperty name="logWarnDay" scope="context" source="wls.log.logWarnDay" defaultValue="60"/>
     <springProperty name="logDebugDay" scope="context" source="wls.log.logDebugDay" defaultValue="30"/>
+    <springProperty name="logFormat" scope="context" source="share.logFormat"
+                    defaultValue="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15.15t)] %cyan(%-40.40logger{50}:%-3line) : %highlight(%m%n)"/>
     
     <property name="logFormat" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%file:%line] [%thread] : %msg%n"/>
     
@@ -16,8 +18,8 @@
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>
-                %d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15.15t)] %cyan(%-40.40logger{50}:%-3line) :
-                %highlight(%m%n)
+                <!-- %d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15.15t)] %cyan(%-40.40logger{50}:%-3line) : %highlight(%m%n) -->
+                ${logFormat}
             </pattern>
             <charset>UTF-8</charset>
         </encoder>

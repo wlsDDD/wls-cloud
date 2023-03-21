@@ -22,18 +22,11 @@ spring:
         namespace: 49393289ebdd4971866122c51a949bac
         # 共享配置
         shared-configs:
-          - dataId: wls-base-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-            group: dev
-            refresh: true
-          - dataId: wls-mail-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-            group: dev
-            refresh: true
-          - dataId: wls-redis-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-            group: dev
-            refresh: true
-          - dataId: wls-system-swagger-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-            group: dev
-            refresh: true
+          - dataId: wls-share-base
+          - dataId: wls-share-redis
+          - dataId: wls-share-druid
+          - dataId: wls-share-mybatis-plus
+          - dataId: wls-share-pulsar
 
 
 

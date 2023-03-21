@@ -6,6 +6,7 @@ import io.github.majusko.pulsar.annotation.PulsarConsumer;
 import io.github.majusko.pulsar.producer.PulsarTemplate;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.pulsar.client.api.MessageId;
 import org.apache.pulsar.client.api.PulsarClientException;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -69,7 +70,9 @@ public class UserController extends BaseController {
      */
     @PostMapping
     public Result<User> insertUser(@RequestBody User user) throws PulsarClientException {
-        userService.insertUser(user);
+        MessageId messageId = pulsar.send("bootTopic", "这是一个消息");
+        log.info("消息发送成功 消息id {}", messageId);
+        // userService.insertUser(user);
         return Result.ok();
     }
     
@@ -85,8 +88,8 @@ public class UserController extends BaseController {
     
     @PulsarConsumer(topic = "bootTopic", clazz = String.class)
     public void consumeBoot(String message) {
-        // throw new RuntimeException("消费失败了");
-        log.info("收到一个消息 bootTopic 并消费成功 {}", message);
+        log.info("收到一个消息 bootTopic {}", message);
+        throw new RuntimeException("消费失败了");
     }
     
     /**
