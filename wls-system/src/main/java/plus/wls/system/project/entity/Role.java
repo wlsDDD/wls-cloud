@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import plus.wls.common.web.pojo.BaseEntity;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * <p>
  * 角色信息
@@ -36,6 +38,7 @@ public class Role extends BaseEntity {
      * 角色权限字符串
      * varchar(100)
      */
+    @NotBlank
     private String roleKey;
     /**
      * 显示顺序

@@ -20,7 +20,7 @@ class test01 {
     @Test
     void test02() {
         String implMethodName = LambdaUtils.extract(User::getUserId).getImplMethodName();
-        String fieldName1 = LamUtil.getFieldName(User::getNickName);
+        String fieldName1 = LamUtil.fieldName(User::getNickName);
         String s = PropertyNamer.methodToProperty(implMethodName);
         String fieldName = getFieldName(User::getUserId);
     }

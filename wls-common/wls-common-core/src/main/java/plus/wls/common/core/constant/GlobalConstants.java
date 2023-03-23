@@ -12,8 +12,8 @@ public class GlobalConstants {
     /**
      * 项目名称
      */
-    public static String PROJECT_NAME = "wls-cloud";
-    public static final String BASE_PACKAGE = "plus.wls";
+    public static String projectName = "wls-cloud";
+    public static final String basePackage = "plus.wls";
     /**
      * 服务名称
      */
@@ -26,5 +26,25 @@ public class GlobalConstants {
      * 堆栈信息过滤关键字
      */
     public static String stackFilter;
+    
+    // @Autowired
+    // public static void setProjectName( projectName) {
+    //     GlobalConstants.projectName = projectName;
+    // }
+    //
+    // @Autowired
+    // public static void setServiceName(String serviceName) {
+    //     GlobalConstants.serviceName = serviceName;
+    // }
+    //
+    // @Autowired
+    // public static void setActive(ActiveEnum active) {
+    //     GlobalConstants.active = active;
+    // }
+    //
+    // @Autowired
+    // public static void setStackFilter(String stackFilter) {
+    //     GlobalConstants.stackFilter = stackFilter;
+    // }
     
 }

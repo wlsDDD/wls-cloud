@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import plus.wls.common.web.annotation.RequiredParam;
 import plus.wls.common.web.pojo.BaseController;
 import plus.wls.common.web.pojo.Result;
 import plus.wls.system.project.entity.Role;
@@ -53,6 +54,7 @@ public class RoleController extends BaseController {
      * 新增-角色信息
      */
     @PostMapping
+    @RequiredParam({"roleName", "status"})
     public Result<?> insertRole(@RequestBody @Validated Role role) {
         roleService.insertRole(role);
         return Result.ok();

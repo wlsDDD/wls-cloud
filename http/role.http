@@ -9,7 +9,8 @@ POST http://{{host}}/role
 Content-Type: application/json
 
 {
-  "roleKey": "list"
+  "roleKey": "list",
+  "roleSort": 5
 }
 
 ### 根据ID修改角色

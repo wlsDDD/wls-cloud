@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import plus.wls.common.core.constant.GlobalConstants;
 import plus.wls.common.core.util.Pines;
@@ -28,8 +29,8 @@ import java.time.temporal.ChronoUnit;
 @Component
 public class AsyncAspect {
     
-    @Around("@annotation(org.springframework.scheduling.annotation.Async)")
-    public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
+    @Around("@annotation(async)")
+    public Object around(final ProceedingJoinPoint joinPoint, Async async) throws Throwable {
         AsyncLog asyncLog = new AsyncLog();
         LocalDateTime startTime = LocalDateTime.now();
         asyncLog.setStartTime(startTime).setMethodName(AspectUtil.getMethodName(joinPoint)).setParam(new JSONArray(joinPoint.getArgs()));
@@ -40,7 +41,7 @@ public class AsyncAspect {
         } catch (Exception e) {
             asyncLog.setStatus(1)
                     .setErrorMsg(e.getMessage())
-                    .setSimpleStacktrace(new JSONArray(Pines.toSimpleStackTrace(e, GlobalConstants.stackFilter)))
+                    .setSimpleStacktrace(new JSONArray(Pines.toSimpleStackTrace(e, GlobalConstants.basePackage)))
                     .setStacktrace(new JSONArray(e.getStackTrace()));
             log.error("异步任务执行异常", e);
             throw e;

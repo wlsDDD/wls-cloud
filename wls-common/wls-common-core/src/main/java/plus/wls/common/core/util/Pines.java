@@ -111,7 +111,7 @@ public class Pines {
      * @return {@link V}
      */
     public static <V, T, R> V getOrException(Map<String, V> map, FunctionSerializable<T, R> func) {
-        return Optional.ofNullable(map.get(LamUtil.getFieldName(func)))
+        return Optional.ofNullable(map.get(LamUtil.fieldName(func)))
                        .orElseThrow(() -> new RequestHeaderException(CodeInfoEnum.GATEWAY_HEADER_NOT_FOUND_ERROR));
     }
     

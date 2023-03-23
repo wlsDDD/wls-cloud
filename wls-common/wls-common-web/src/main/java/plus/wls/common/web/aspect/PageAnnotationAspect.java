@@ -9,7 +9,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import plus.wls.common.web.annotation.Page;
-import plus.wls.common.web.util.AspectUtil;
 import plus.wls.common.web.util.PageUtil;
 
 import java.util.List;
@@ -29,8 +28,8 @@ public class PageAnnotationAspect {
     /**
      * 分页
      */
-    @Around("@annotation(plus.wls.common.web.annotation.Page)")
-    public Object around(final ProceedingJoinPoint joinPoint) throws Throwable {
+    @Around("@annotation(page)")
+    public Object around(final ProceedingJoinPoint joinPoint, Page page) throws Throwable {
         int pageNum = 0;
         int pageSize = 0;
         // 获取参数
@@ -46,7 +45,6 @@ public class PageAnnotationAspect {
         // 未获取到值使用默认值
         if (pageNum == 0 && pageSize == 0) {
             // 获取注解
-            Page page = AspectUtil.getAnnotation(joinPoint, Page.class);
             Assert.notNull(page, "未获取到注解");
             pageNum = page.defaultPageNum();
             pageSize = page.defaultPageSize();

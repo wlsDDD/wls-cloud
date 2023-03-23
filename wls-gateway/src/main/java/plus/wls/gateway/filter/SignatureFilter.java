@@ -60,12 +60,12 @@ public class SignatureFilter implements GlobalFilter, Ordered {
         Map<String, String> headerMap = request.getHeaders().toSingleValueMap();
         // 获取签名参数
         TreeMap<String, String> signatureMap = new TreeMap<>();
-        String appKey = LamUtil.getFieldName(Signature::getAppKey);
-        String appSecret = LamUtil.getFieldName(Signature::getAppSecret);
-        String timestamp = LamUtil.getFieldName(Signature::getTimestamp);
-        String version = LamUtil.getFieldName(Signature::getVersion);
-        String randomStr = LamUtil.getFieldName(Signature::getRandomStr);
-        String signatureKey = LamUtil.getFieldName(Signature::getSign);
+        String appKey = LamUtil.fieldName(Signature::getAppKey);
+        String appSecret = LamUtil.fieldName(Signature::getAppSecret);
+        String timestamp = LamUtil.fieldName(Signature::getTimestamp);
+        String version = LamUtil.fieldName(Signature::getVersion);
+        String randomStr = LamUtil.fieldName(Signature::getRandomStr);
+        String signatureKey = LamUtil.fieldName(Signature::getSign);
         signatureMap.put(appKey, Pines.getOrException(headerMap, appKey));
         signatureMap.put(appSecret, Pines.getOrException(headerMap, appSecret));
         signatureMap.put(timestamp, Pines.getOrException(headerMap, timestamp));

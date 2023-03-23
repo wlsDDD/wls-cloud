@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-import static plus.wls.common.core.constant.GlobalConstants.BASE_PACKAGE;
+import static plus.wls.common.core.constant.GlobalConstants.basePackage;
 
 /**
  * wls系统应用
@@ -22,9 +22,9 @@ import static plus.wls.common.core.constant.GlobalConstants.BASE_PACKAGE;
  * @since 2021/01/20 14:28:02
  */
 @Slf4j
-@ComponentScan(BASE_PACKAGE)
+@ComponentScan(basePackage)
 @EnableAsync
-@EnableFeignClients(BASE_PACKAGE)
+@EnableFeignClients(basePackage)
 @EnableDiscoveryClient
 @SpringBootApplication
 public class WlsSystemApplication {
@@ -37,7 +37,7 @@ public class WlsSystemApplication {
         String port = env.getProperty("server.port");
         String appName = env.getProperty("spring.application.name");
         String active = env.getProperty("spring.profiles.active");
-        String path = String.valueOf(env.getProperty("server.servlet.context-path"));
+        String path = String.valueOf(env.getProperty("server.servlet.context-path") + "/");
         log.info(String.format("\n---------------------------------------------------------\n\t" +
                         "Application %s %s is running! Access URLs:path:%s\n\t" +
                         "Local: http://localhost:%s%s\n\t" +

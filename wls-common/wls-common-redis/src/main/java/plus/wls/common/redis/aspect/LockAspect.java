@@ -32,7 +32,7 @@ public class LockAspect {
     /**
      * 分布式锁前缀
      */
-    private static final String LOCK_NAME = GlobalConstants.PROJECT_NAME + ":" + GlobalConstants.serviceName + ":" + GlobalConstants.active + ":" + "distributed-lock:";
+    private static final String LOCK_NAME = GlobalConstants.projectName + ":" + GlobalConstants.serviceName + ":" + GlobalConstants.active + ":" + "distributed-lock:";
     static Supplier<String> diyLookFunc = () -> Optional.ofNullable(HttpContext.getContext()).orElseGet(Context::new).getDiyDistributedLockKey();
     
     @Around("@annotation(distributedLock)")

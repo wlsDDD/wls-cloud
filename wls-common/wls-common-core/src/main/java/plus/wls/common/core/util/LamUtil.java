@@ -31,7 +31,7 @@ public class LamUtil {
      * @return {@link String[]}
      */
     public static String[] getFieldNames(FunctionSerializable<?, ?>... func) {
-        return Arrays.stream(func).map(LamUtil::getFieldName).toArray(String[]::new);
+        return Arrays.stream(func).map(LamUtil::fieldName).toArray(String[]::new);
     }
     
     /**
@@ -41,7 +41,7 @@ public class LamUtil {
      *
      * @return {@link Field}
      */
-    public static <T, R> String getFieldName(FunctionSerializable<T, R> function) {
+    public static <T, R> String fieldName(FunctionSerializable<T, R> function) {
         return CACHE.computeIfAbsent(function, LamUtil::findFieldName);
     }
     

@@ -18,7 +18,7 @@ public enum CachePrefixEnum {
     /**
      * 统一前缀缓存
      */
-    CACHE_PREFIX(format(GlobalConstants.PROJECT_NAME, GlobalConstants.serviceName, GlobalConstants.active)),
+    CACHE_PREFIX(format(GlobalConstants.projectName, GlobalConstants.serviceName, GlobalConstants.active)),
     
     /**
      * 方法缓存前缀
