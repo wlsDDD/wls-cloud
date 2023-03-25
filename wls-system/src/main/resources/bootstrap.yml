@@ -12,7 +12,6 @@ spring:
         namespace: 49393289ebdd4971866122c51a949bac
         # 服务注册地址
         server-addr: https://nacos.wls.plus
-        group: dev
       config:
         # 配置中心地址
         server-addr: https://nacos.wls.plus

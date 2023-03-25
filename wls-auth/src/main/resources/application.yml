@@ -22,6 +22,11 @@ server:
 # Spring配置
 spring:
   datasource:
-    url: jdbc:mysql://159.75.93.83:3306/wls-ry-vue?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://159.75.93.83:3306/wls-auth?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     username: root
     password: wls-mysql-tencent
+
+
+
+
+

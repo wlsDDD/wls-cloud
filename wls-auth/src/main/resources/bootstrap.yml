@@ -11,30 +11,21 @@ spring:
         # 命名空间
         namespace: 49393289ebdd4971866122c51a949bac
         # 服务注册地址
-        server-addr: http://159.75.93.83:8849
-        group: dev
+        server-addr: https://nacos.wls.plus
       config:
         # 配置中心地址
-        server-addr: http://159.75.93.83:8849
+        server-addr: https://nacos.wls.plus
         # 配置文件格式
         file-extension: yml
         # 命名空间
         namespace: 49393289ebdd4971866122c51a949bac
-        group: dev
         # 共享配置
         shared-configs:
-          - dataId: wls-base-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-            group: dev
-            refresh: true
-          - dataId: wls-mail-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-            group: dev
-            refresh: true
-          - dataId: wls-redis-share-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-            group: dev
-            refresh: true
-          - dataId: wls-system-swagger-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-            group: dev
-            refresh: true
+          - dataId: wls-share-base-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          - dataId: wls-share-redis-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          - dataId: wls-share-druid-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          - dataId: wls-share-mybatisPlus-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          - dataId: wls-share-pulsar-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
 
 
 

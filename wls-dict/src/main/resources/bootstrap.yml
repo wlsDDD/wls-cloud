@@ -11,11 +11,11 @@ spring:
         # 命名空间
         namespace: 49393289ebdd4971866122c51a949bac
         # 服务注册地址
-        server-addr: http://159.75.93.83:8849
+        server-addr: https://nacos.wls.plus
         group: dev
       config:
         # 配置中心地址
-        server-addr: http://159.75.93.83:8849
+        server-addr: https://nacos.wls.plus
         # 配置文件格式
         file-extension: yml
         # 命名空间
