@@ -12,7 +12,9 @@
     <springProperty name="logFormat" scope="context" source="share.logFormat"
                     defaultValue="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5p) %magenta(${PID:-}) [%magenta(%-15.15t)] %cyan(%-40.40logger{50}:%-3line) : %highlight(%m%n)"/>
     
-    <property name="logFormat" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%file:%line] [%thread] : %msg%n"/>
+    <!-- <property name="logFormat" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%file:%line] [%thread] : %msg%n"/> -->
+    
+    <conversionRule conversionWord="m" converterClass="plus.wls.common.web.mask.LogMaskConverter"/>
     
     <!-- ConsoleAppender 控制台输出日志 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">

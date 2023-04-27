@@ -1,10 +1,14 @@
 import cn.hutool.core.codec.Base64;
+import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.SmUtil;
 import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.crypto.asymmetric.SM2;
+import com.alibaba.fastjson.JSON;
 import org.junit.jupiter.api.Test;
+import plus.wls.common.web.mask.DataMaskFilter;
+import plus.wls.common.web.pojo.AsyncLog;
 
 import java.security.KeyPair;
 
@@ -26,7 +30,10 @@ public class Tests {
     
     @Test
     void test03() {
-        String str = "";
+        AsyncLog asyncLog = new AsyncLog().setMethodName("这是个方法名称").setAsyncLog(new AsyncLog().setMethodName("这是个方法名称222"))
+                                          .setAsyncLogs(ListUtil.of(new AsyncLog().setMethodName("这是个方法名称333"),
+                                                  new AsyncLog().setMethodName("这是个方法名称444")));
+        String jsonString = JSON.toJSONString(asyncLog, new DataMaskFilter());
         
     }
     

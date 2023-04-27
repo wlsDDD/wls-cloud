@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 异步任务执行日志
@@ -55,6 +56,8 @@ public class AsyncLog {
      * 错误消息
      */
     private String errorMsg;
+    private AsyncLog asyncLog;
+    private List<AsyncLog> asyncLogs;
     /**
      * 简单异常堆栈信息
      */

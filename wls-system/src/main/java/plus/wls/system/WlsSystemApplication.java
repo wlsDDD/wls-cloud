@@ -37,15 +37,12 @@ public class WlsSystemApplication {
         String port = env.getProperty("server.port");
         String appName = env.getProperty("spring.application.name");
         String active = env.getProperty("spring.profiles.active");
-        String path = String.valueOf(env.getProperty("server.servlet.context-path") + "/");
-        log.info(String.format("\n---------------------------------------------------------\n\t" +
-                        "Application %s %s is running! Access URLs:path:%s\n\t" +
-                        "Local: http://localhost:%s%s\n\t" +
-                        "External: http://%s:%s%s\n\t" +
-                        "Doc文档: http://%s:%s%sdoc.html\n" +
-                        "------------------------------------------------------------",
-                appName, active, path, port, path, ip, port, path, ip, port, path));
-        // log.info("\n\t---\n\t微服务: {}-{} 启动完成\n\t---", serviceName, active);
+        String path = env.getProperty("server.servlet.context-path") + "/";
+        log.info("-------------------------------------------------------");
+        log.info("Application {} {} is running! Access URLs:path:{}", appName, active, path);
+        log.info("Local: http://localhost:{}{}", port, path);
+        log.info("External: http://{}:{}{}", ip, port, path);
+        log.info("Doc文档: http://{}:{}{}doc.html", ip, port, path);
     }
     
 }

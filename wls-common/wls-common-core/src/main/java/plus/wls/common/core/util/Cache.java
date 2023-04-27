@@ -2,6 +2,7 @@ package plus.wls.common.core.util;
 
 import cn.hutool.cache.impl.CacheObj;
 import cn.hutool.cache.impl.TimedCache;
+import cn.hutool.core.lang.mutable.Mutable;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -41,7 +42,7 @@ public class Cache<K, V> extends TimedCache<K, V> {
      * @param timeout 过期时长
      * @param map     存储缓存对象的map
      */
-    public Cache(long timeout, Map<K, CacheObj<K, V>> map) {
+    public Cache(long timeout, Map<Mutable<K>, CacheObj<K, V>> map) {
         super(timeout, map);
     }
     
