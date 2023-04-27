@@ -26,13 +26,6 @@ public class LogMaskConverter extends MessageConverter {
         } catch (Exception e) {
             return event.getMessage();
         }
-        // try {
-        //     String msg = event.getFormattedMessage();
-        //     // 这里自定义脱敏的逻辑
-        //     return JSON.toJSONString(msg, new DataMaskFilter());
-        // } catch (Exception e) {
-        //     return super.convert(event);
-        // }
     }
     
 }

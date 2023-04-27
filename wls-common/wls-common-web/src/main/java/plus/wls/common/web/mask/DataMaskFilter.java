@@ -19,7 +19,9 @@ public class DataMaskFilter implements ValueFilter {
      * 所有要脱敏的字段名称
      */
     private final Set<String> fieldNames = Stream.of(
-            "methodName", "wls"
+            "methodName",
+            "methodName",
+            "wls"
     ).collect(Collectors.toSet());
     
     @Override
