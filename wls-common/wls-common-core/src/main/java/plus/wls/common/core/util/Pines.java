@@ -45,32 +45,6 @@ public class Pines {
     }
     
     /**
-     * 去除对象中所有String类型的前后空白
-     *
-     * @param coll coll
-     */
-    public static void trimBean(Collection<?> coll) {
-        coll.forEach(Pines::trimBean);
-    }
-    
-    /**
-     * 去除对象中所有String类型的前后空白
-     *
-     * @param bean bean
-     */
-    public static void trimBean(Object bean) {
-        BeanUtil.getBeanDesc(bean.getClass()).getProps().forEach(prop -> {
-            if (String.class.equals(prop.getFieldClass())) {
-                Object str = ReflectUtil.invoke(bean, prop.getGetter());
-                if (str == null) {
-                    return;
-                }
-                ReflectUtil.invoke(bean, prop.getSetter(), str.toString().trim());
-            }
-        });
-    }
-    
-    /**
      * 自定义进制转换
      *
      * @param seq    对应规则的值
@@ -144,7 +118,7 @@ public class Pines {
      */
     @SafeVarargs
     public static <T> T copyBean(Object old, T fresh, FunctionSerializable<T, ?>... ignores) {
-        BeanUtil.copyProperties(old, fresh, LamUtil.getFieldNames(ignores));
+        BeanUtil.copyProperties(old, fresh, LamUtil.fieldNames(ignores));
         return fresh;
     }
     
@@ -189,6 +163,35 @@ public class Pines {
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(str);
         return Integer.valueOf(m.replaceAll("").trim());
+    }
+    
+    /**
+     * 改用 BeanUtil.trimStrFields()
+     * 去除对象中所有String类型的前后空白
+     *
+     * @param coll coll
+     */
+    @Deprecated
+    public static void trimBean(Collection<?> coll) {
+        coll.forEach(Pines::trimBean);
+    }
+    
+    /**
+     * 去除对象中所有String类型的前后空白
+     *
+     * @param bean bean
+     */
+    @Deprecated
+    public static void trimBean(Object bean) {
+        BeanUtil.getBeanDesc(bean.getClass()).getProps().forEach(prop -> {
+            if (String.class.equals(prop.getFieldClass())) {
+                Object str = ReflectUtil.invoke(bean, prop.getGetter());
+                if (str == null) {
+                    return;
+                }
+                ReflectUtil.invoke(bean, prop.getSetter(), str.toString().trim());
+            }
+        });
     }
     
 }

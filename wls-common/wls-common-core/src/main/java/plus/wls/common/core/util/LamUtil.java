@@ -30,7 +30,7 @@ public class LamUtil {
      *
      * @return {@link String[]}
      */
-    public static String[] getFieldNames(FunctionSerializable<?, ?>... func) {
+    public static String[] fieldNames(FunctionSerializable<?, ?>... func) {
         return Arrays.stream(func).map(LamUtil::fieldName).toArray(String[]::new);
     }
     

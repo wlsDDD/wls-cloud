@@ -2,8 +2,8 @@
 wls:
   swagger:
     enabled: true
-    groupName: "wls-system-api"
-    basePackage: "plus.wls"
+    group-name: "wls-system-api"
+    base-package: "plus.wls"
     title: "系统服务接口文档"
     description: "调用接口前请详细阅读文档，并遵守文档调用规范"
     version: "1.0.0"
@@ -25,3 +25,13 @@ spring:
     url: jdbc:mysql://159.75.93.83:3306/wls-ry-vue?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     username: root
     password: wls-mysql-tencent
+
+
+
+
+
+
+
+
+
+
