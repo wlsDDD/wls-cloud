@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import plus.wls.common.core.enums.CodeInfoEnum;
 import plus.wls.common.core.exception.BusinessException;
 import plus.wls.common.core.util.Asserts;
@@ -79,6 +80,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData> i
      * @param ids ids
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void deleteDictData(List<Long> ids) {
         Asserts.isTrue(removeByIds(ids), () -> new BusinessException(CodeInfoEnum.DATA_DELETE_ERROR));
     }
